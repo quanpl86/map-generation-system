@@ -1,0 +1,49 @@
+{
+    "metadata": {
+        "grid_size": [
+            14,
+            14,
+            14
+        ],
+        "map_type_source": "simple_path",
+        "logic_type_source": "sequencing"
+    },
+    "player": {
+        "start_position": [
+            6,
+            0,
+            8
+        ]
+    },
+    "world_objects": {
+        "target_position": [
+            11,
+            0,
+            8
+        ],
+        "path_coords": [
+            [
+                7,
+                0,
+                8
+            ],
+            [
+                8,
+                0,
+                8
+            ],
+            [
+                9,
+                0,
+                8
+            ],
+            [
+                10,
+                0,
+                8
+            ]
+        ],
+        "items": [],
+        "obstacles": []
+    }
+}

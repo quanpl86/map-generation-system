@@ -1,0 +1,135 @@
+{
+    "gameConfig": {
+        "type": "maze",
+        "renderer": "3d",
+        "blocks": [
+            {
+                "modelKey": "ground.normal",
+                "position": {
+                    "x": 12,
+                    "y": 0,
+                    "z": 3
+                }
+            },
+            {
+                "modelKey": "ground.normal",
+                "position": {
+                    "x": 12,
+                    "y": 0,
+                    "z": 5
+                }
+            },
+            {
+                "modelKey": "ground.normal",
+                "position": {
+                    "x": 12,
+                    "y": 0,
+                    "z": 6
+                }
+            },
+            {
+                "modelKey": "ground.normal",
+                "position": {
+                    "x": 12,
+                    "y": 0,
+                    "z": 7
+                }
+            },
+            {
+                "modelKey": "ground.normal",
+                "position": {
+                    "x": 12,
+                    "y": 0,
+                    "z": 8
+                }
+            },
+            {
+                "modelKey": "ground.normal",
+                "position": {
+                    "x": 12,
+                    "y": 0,
+                    "z": 9
+                }
+            },
+            {
+                "modelKey": "ground.normal",
+                "position": {
+                    "x": 12,
+                    "y": 0,
+                    "z": 10
+                }
+            },
+            {
+                "modelKey": "ground.normal",
+                "position": {
+                    "x": 12,
+                    "y": 0,
+                    "z": 11
+                }
+            },
+            {
+                "modelKey": "ground.normal",
+                "position": {
+                    "x": 12,
+                    "y": 0,
+                    "z": 12
+                }
+            },
+            {
+                "modelKey": "wall.brick01",
+                "position": {
+                    "x": 12,
+                    "y": 1,
+                    "z": 6
+                }
+            },
+            {
+                "modelKey": "wall.brick01",
+                "position": {
+                    "x": 12,
+                    "y": 1,
+                    "z": 7
+                }
+            }
+        ],
+        "players": [
+            {
+                "id": "player1",
+                "start": {
+                    "x": 12,
+                    "y": 1,
+                    "z": 3,
+                    "direction": 1
+                }
+            }
+        ],
+        "collectibles": [],
+        "interactibles": [
+            {
+                "id": "s2",
+                "type": "switch",
+                "position": {
+                    "x": 12,
+                    "y": 1,
+                    "z": 8
+                },
+                "initialState": "off"
+            },
+            {
+                "id": "s3",
+                "type": "switch",
+                "position": {
+                    "x": 12,
+                    "y": 1,
+                    "z": 9
+                },
+                "initialState": "off"
+            }
+        ],
+        "finish": {
+            "x": 12,
+            "y": 1,
+            "z": 12
+        }
+    }
+}

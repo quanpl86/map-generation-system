@@ -1,0 +1,108 @@
+{
+    "metadata": {
+        "grid_size": [
+            14,
+            14,
+            14
+        ],
+        "map_type_source": "variable_length_sides",
+        "logic_type_source": "function_with_params"
+    },
+    "player": {
+        "start_position": [
+            13,
+            0,
+            6
+        ]
+    },
+    "world_objects": {
+        "target_position": [
+            13,
+            0,
+            13
+        ],
+        "path_coords": [
+            [
+                13,
+                0,
+                7
+            ],
+            [
+                13,
+                0,
+                8
+            ],
+            [
+                13,
+                0,
+                9
+            ],
+            [
+                13,
+                0,
+                10
+            ],
+            [
+                13,
+                0,
+                11
+            ],
+            [
+                13,
+                0,
+                12
+            ]
+        ],
+        "items": [
+            {
+                "type": "crystal",
+                "pos": [
+                    13,
+                    0,
+                    7
+                ]
+            },
+            {
+                "type": "crystal",
+                "pos": [
+                    13,
+                    0,
+                    8
+                ]
+            },
+            {
+                "type": "crystal",
+                "pos": [
+                    13,
+                    0,
+                    9
+                ]
+            },
+            {
+                "type": "crystal",
+                "pos": [
+                    13,
+                    0,
+                    10
+                ]
+            },
+            {
+                "type": "crystal",
+                "pos": [
+                    13,
+                    0,
+                    11
+                ]
+            },
+            {
+                "type": "crystal",
+                "pos": [
+                    13,
+                    0,
+                    12
+                ]
+            }
+        ],
+        "obstacles": []
+    }
+}

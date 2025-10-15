@@ -1,0 +1,68 @@
+{
+    "metadata": {
+        "grid_size": [
+            14,
+            14,
+            14
+        ],
+        "map_type_source": "simple_path",
+        "logic_type_source": "sequencing"
+    },
+    "player": {
+        "start_position": [
+            4,
+            0,
+            3
+        ]
+    },
+    "world_objects": {
+        "target_position": [
+            11,
+            0,
+            3
+        ],
+        "path_coords": [
+            [
+                5,
+                0,
+                3
+            ],
+            [
+                6,
+                0,
+                3
+            ],
+            [
+                7,
+                0,
+                3
+            ],
+            [
+                8,
+                0,
+                3
+            ],
+            [
+                9,
+                0,
+                3
+            ],
+            [
+                10,
+                0,
+                3
+            ]
+        ],
+        "items": [],
+        "obstacles": [
+            {
+                "type": "pit",
+                "pos": [
+                    7,
+                    0,
+                    3
+                ]
+            }
+        ]
+    }
+}

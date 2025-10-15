@@ -1,0 +1,87 @@
+{
+    "metadata": {
+        "grid_size": [
+            14,
+            14,
+            14
+        ],
+        "map_type_source": "staircase",
+        "logic_type_source": "for_loop_complex"
+    },
+    "player": {
+        "start_position": [
+            9,
+            0,
+            8
+        ]
+    },
+    "world_objects": {
+        "target_position": [
+            4,
+            5,
+            8
+        ],
+        "path_coords": [
+            [
+                8,
+                1,
+                8
+            ],
+            [
+                7,
+                2,
+                8
+            ],
+            [
+                6,
+                3,
+                8
+            ],
+            [
+                5,
+                4,
+                8
+            ],
+            [
+                4,
+                5,
+                8
+            ]
+        ],
+        "items": [
+            {
+                "type": "crystal",
+                "pos": [
+                    8,
+                    1,
+                    8
+                ]
+            },
+            {
+                "type": "crystal",
+                "pos": [
+                    7,
+                    2,
+                    8
+                ]
+            },
+            {
+                "type": "crystal",
+                "pos": [
+                    6,
+                    3,
+                    8
+                ]
+            },
+            {
+                "type": "crystal",
+                "pos": [
+                    5,
+                    4,
+                    8
+                ]
+            }
+        ],
+        "obstacles": []
+    }
+}

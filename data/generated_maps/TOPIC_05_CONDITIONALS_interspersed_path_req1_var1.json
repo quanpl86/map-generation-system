@@ -1,0 +1,128 @@
+{
+    "metadata": {
+        "grid_size": [
+            14,
+            14,
+            14
+        ],
+        "map_type_source": "interspersed_path",
+        "logic_type_source": "if_else_logic"
+    },
+    "player": {
+        "start_position": [
+            0,
+            0,
+            4
+        ]
+    },
+    "world_objects": {
+        "target_position": [
+            9,
+            0,
+            4
+        ],
+        "path_coords": [
+            [
+                2,
+                0,
+                4
+            ],
+            [
+                3,
+                0,
+                4
+            ],
+            [
+                4,
+                0,
+                4
+            ],
+            [
+                5,
+                0,
+                4
+            ],
+            [
+                6,
+                0,
+                4
+            ],
+            [
+                7,
+                0,
+                4
+            ],
+            [
+                8,
+                0,
+                4
+            ],
+            [
+                9,
+                0,
+                4
+            ]
+        ],
+        "items": [
+            {
+                "type": "switch",
+                "pos": [
+                    2,
+                    0,
+                    4
+                ]
+            },
+            {
+                "type": "switch",
+                "pos": [
+                    3,
+                    0,
+                    4
+                ]
+            },
+            {
+                "type": "switch",
+                "pos": [
+                    4,
+                    0,
+                    4
+                ]
+            },
+            {
+                "type": "switch",
+                "pos": [
+                    5,
+                    0,
+                    4
+                ],
+                "initial_state": "off"
+            },
+            {
+                "type": "key",
+                "pos": [
+                    7,
+                    0,
+                    4
+                ]
+            },
+            {
+                "type": "switch",
+                "pos": [
+                    8,
+                    0,
+                    4
+                ]
+            }
+        ],
+        "obstacles": [
+            {
+                "type": "pit",
+                "pos": [
+                    6,
+                    0,
+                    4
+                ]
+            }
+        ]
+    }
+}

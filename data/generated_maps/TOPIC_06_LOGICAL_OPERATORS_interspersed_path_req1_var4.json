@@ -1,0 +1,103 @@
+{
+    "metadata": {
+        "grid_size": [
+            14,
+            14,
+            14
+        ],
+        "map_type_source": "interspersed_path",
+        "logic_type_source": "logical_operators"
+    },
+    "player": {
+        "start_position": [
+            1,
+            0,
+            1
+        ]
+    },
+    "world_objects": {
+        "target_position": [
+            1,
+            0,
+            10
+        ],
+        "path_coords": [
+            [
+                1,
+                0,
+                3
+            ],
+            [
+                1,
+                0,
+                4
+            ],
+            [
+                1,
+                0,
+                5
+            ],
+            [
+                1,
+                0,
+                6
+            ],
+            [
+                1,
+                0,
+                7
+            ],
+            [
+                1,
+                0,
+                8
+            ],
+            [
+                1,
+                0,
+                9
+            ],
+            [
+                1,
+                0,
+                10
+            ]
+        ],
+        "items": [
+            {
+                "type": "crystal",
+                "pos": [
+                    1,
+                    0,
+                    3
+                ]
+            },
+            {
+                "type": "crystal",
+                "pos": [
+                    1,
+                    0,
+                    5
+                ]
+            }
+        ],
+        "obstacles": [
+            {
+                "type": "pit",
+                "pos": [
+                    1,
+                    0,
+                    6
+                ]
+            },
+            {
+                "type": "pit",
+                "pos": [
+                    1,
+                    0,
+                    9
+                ]
+            }
+        ]
+    }
+}

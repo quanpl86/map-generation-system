@@ -1,0 +1,111 @@
+{
+    "metadata": {
+        "grid_size": [
+            14,
+            14,
+            14
+        ],
+        "map_type_source": "interspersed_path",
+        "logic_type_source": "if_else_logic"
+    },
+    "player": {
+        "start_position": [
+            8,
+            0,
+            2
+        ]
+    },
+    "world_objects": {
+        "target_position": [
+            8,
+            0,
+            11
+        ],
+        "path_coords": [
+            [
+                8,
+                0,
+                4
+            ],
+            [
+                8,
+                0,
+                5
+            ],
+            [
+                8,
+                0,
+                6
+            ],
+            [
+                8,
+                0,
+                7
+            ],
+            [
+                8,
+                0,
+                8
+            ],
+            [
+                8,
+                0,
+                9
+            ],
+            [
+                8,
+                0,
+                10
+            ],
+            [
+                8,
+                0,
+                11
+            ]
+        ],
+        "items": [
+            {
+                "type": "switch",
+                "pos": [
+                    8,
+                    0,
+                    5
+                ]
+            },
+            {
+                "type": "crystal",
+                "pos": [
+                    8,
+                    0,
+                    7
+                ]
+            },
+            {
+                "type": "key",
+                "pos": [
+                    8,
+                    0,
+                    10
+                ]
+            }
+        ],
+        "obstacles": [
+            {
+                "type": "pit",
+                "pos": [
+                    8,
+                    0,
+                    4
+                ]
+            },
+            {
+                "type": "pit",
+                "pos": [
+                    8,
+                    0,
+                    8
+                ]
+            }
+        ]
+    }
+}

@@ -1,0 +1,92 @@
+# src/map_generator/service.py
+
+from .models.map_data import MapData
+from .models.path_info import PathInfo
+from .topologies.simple_path import SimplePathTopology
+from .topologies.straight_line import StraightLineTopology
+from .topologies.staircase import StaircaseTopology
+from .topologies.square import SquareTopology
+from .topologies.plowing_field import PlowingFieldTopology
+from .topologies.symmetrical_islands import SymmetricalIslandsTopology
+from .topologies.spiral import SpiralTopology
+from .topologies.interspersed_path import InterspersedPathTopology
+from .topologies.complex_maze import ComplexMazeTopology
+from .placements.sequencing_placer import SequencingPlacer
+from .placements.for_loop_placer import ForLoopPlacer
+from .placements.function_placer import FunctionPlacer
+from .placements.variable_placer import VariablePlacer
+from .placements.while_if_placer import WhileIfPlacer
+from .placements.algorithm_placer import AlgorithmPlacer
+
+class MapGeneratorService:
+    def __init__(self):
+        print("⚙️  Khởi tạo MapGeneratorService...")
+        self.topologies = {
+            'simple_path': SimplePathTopology(),
+            'straight_line': StraightLineTopology(),
+            'staircase': StaircaseTopology(),
+            'square_shape': SquareTopology(),
+            'plowing_field': PlowingFieldTopology(),
+            'symmetrical_islands': SymmetricalIslandsTopology(),
+            'spiral_path': SpiralTopology(),
+            'interspersed_path': InterspersedPathTopology(),
+            'complex_maze_2d': ComplexMazeTopology(),
+            'variable_length_sides': StraightLineTopology(),
+            'item_counting_path': StraightLineTopology(),
+            'unknown_length_hallway': StraightLineTopology(),
+            'unknown_height_tower': StaircaseTopology(),
+            'variable_size_rectangles': PlowingFieldTopology(),
+        }
+        self.placements = {
+            'sequencing': SequencingPlacer(),
+            'function_definition': FunctionPlacer(),
+            'function_decomposition': FunctionPlacer(),
+            'function_with_params': FunctionPlacer(),
+            'function_with_multi_params': FunctionPlacer(),
+            'for_loop_simple': ForLoopPlacer(),
+            'for_loop_complex': ForLoopPlacer(),
+            'nested_for_loop': ForLoopPlacer(),
+            'variable_update': VariablePlacer(),
+            'variable_control_loop': VariablePlacer(),
+            'if_else_logic': WhileIfPlacer(),
+            'if_elseif_logic': WhileIfPlacer(),
+            'logical_operators': WhileIfPlacer(),
+            'while_loop': WhileIfPlacer(),
+            'algorithm_design': AlgorithmPlacer(),
+        }
+        print("👍 Đã đăng ký thành công tất cả các chiến lược.")
+
+    def generate_map(self, map_type: str, logic_type: str, params: dict) -> MapData:
+        
+        # --- DEBUG POINT B ---
+        print(f"    DEBUG (B): Service nhận được params: {params}")
+        
+        print(f"\n--- Bắt đầu sinh map: [Topology: '{map_type}', Placer: '{logic_type}'] ---")
+        
+        topology_strategy = self.topologies.get(map_type)
+        if not topology_strategy:
+            raise ValueError(f"Không tìm thấy chiến lược topology nào có tên '{map_type}' đã được đăng ký.")
+            
+        # (CẢI TIẾN) Tăng kích thước lưới để có không gian cho các map lớn hơn
+        grid_size = (14, 14, 14)
+        path_info: PathInfo = topology_strategy.generate_path_info(grid_size=grid_size, params=params)
+        
+        placement_strategy = self.placements.get(logic_type)
+        if not placement_strategy:
+            raise ValueError(f"Không tìm thấy chiến lược placement nào có tên '{logic_type}' đã được đăng ký.")
+            
+        final_layout: dict = placement_strategy.place_items(path_info, params=params)
+        
+        map_data = MapData(
+            grid_size=grid_size,
+            start_pos=final_layout.get('start_pos'),
+            target_pos=final_layout.get('target_pos'),
+            items=final_layout.get('items', []),
+            obstacles=final_layout.get('obstacles', []),
+            path_coords=path_info.path_coords, # (SỬA LỖI) Truyền path_coords vào MapData
+            map_type=map_type,
+            logic_type=logic_type
+        )
+        
+        print(f"--- Hoàn thành sinh map: '{map_type}' ---")
+        return map_data

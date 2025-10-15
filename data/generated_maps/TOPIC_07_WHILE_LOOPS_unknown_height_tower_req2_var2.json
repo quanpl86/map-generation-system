@@ -1,0 +1,81 @@
+{
+    "metadata": {
+        "grid_size": [
+            14,
+            14,
+            14
+        ],
+        "map_type_source": "unknown_height_tower",
+        "logic_type_source": "while_loop"
+    },
+    "player": {
+        "start_position": [
+            11,
+            0,
+            10
+        ]
+    },
+    "world_objects": {
+        "target_position": [
+            6,
+            5,
+            10
+        ],
+        "path_coords": [
+            [
+                10,
+                1,
+                10
+            ],
+            [
+                9,
+                2,
+                10
+            ],
+            [
+                8,
+                3,
+                10
+            ],
+            [
+                7,
+                4,
+                10
+            ],
+            [
+                6,
+                5,
+                10
+            ]
+        ],
+        "items": [
+            {
+                "type": "switch",
+                "pos": [
+                    10,
+                    1,
+                    10
+                ],
+                "initial_state": "off"
+            },
+            {
+                "type": "crystal",
+                "pos": [
+                    7,
+                    4,
+                    10
+                ]
+            }
+        ],
+        "obstacles": [
+            {
+                "type": "pit",
+                "pos": [
+                    9,
+                    2,
+                    10
+                ]
+            }
+        ]
+    }
+}

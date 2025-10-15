@@ -1,0 +1,230 @@
+{
+    "metadata": {
+        "grid_size": [
+            14,
+            14,
+            14
+        ],
+        "map_type_source": "symmetrical_islands",
+        "logic_type_source": "function_decomposition"
+    },
+    "player": {
+        "start_position": [
+            1,
+            0,
+            6
+        ]
+    },
+    "world_objects": {
+        "target_position": [
+            11,
+            0,
+            7
+        ],
+        "path_coords": [
+            [
+                1,
+                0,
+                6
+            ],
+            [
+                2,
+                0,
+                6
+            ],
+            [
+                2,
+                0,
+                7
+            ],
+            [
+                1,
+                0,
+                7
+            ],
+            [
+                3,
+                0,
+                6
+            ],
+            [
+                4,
+                0,
+                6
+            ],
+            [
+                5,
+                0,
+                6
+            ],
+            [
+                6,
+                0,
+                6
+            ],
+            [
+                7,
+                0,
+                6
+            ],
+            [
+                8,
+                0,
+                6
+            ],
+            [
+                9,
+                0,
+                6
+            ],
+            [
+                10,
+                0,
+                6
+            ],
+            [
+                11,
+                0,
+                6
+            ],
+            [
+                12,
+                0,
+                6
+            ],
+            [
+                12,
+                0,
+                7
+            ],
+            [
+                11,
+                0,
+                7
+            ]
+        ],
+        "items": [
+            {
+                "type": "crystal",
+                "pos": [
+                    1,
+                    0,
+                    6
+                ]
+            },
+            {
+                "type": "crystal",
+                "pos": [
+                    2,
+                    0,
+                    6
+                ]
+            },
+            {
+                "type": "crystal",
+                "pos": [
+                    2,
+                    0,
+                    7
+                ]
+            },
+            {
+                "type": "crystal",
+                "pos": [
+                    1,
+                    0,
+                    7
+                ]
+            },
+            {
+                "type": "crystal",
+                "pos": [
+                    3,
+                    0,
+                    6
+                ]
+            },
+            {
+                "type": "crystal",
+                "pos": [
+                    4,
+                    0,
+                    6
+                ]
+            },
+            {
+                "type": "crystal",
+                "pos": [
+                    5,
+                    0,
+                    6
+                ]
+            },
+            {
+                "type": "crystal",
+                "pos": [
+                    6,
+                    0,
+                    6
+                ]
+            },
+            {
+                "type": "crystal",
+                "pos": [
+                    7,
+                    0,
+                    6
+                ]
+            },
+            {
+                "type": "crystal",
+                "pos": [
+                    8,
+                    0,
+                    6
+                ]
+            },
+            {
+                "type": "crystal",
+                "pos": [
+                    9,
+                    0,
+                    6
+                ]
+            },
+            {
+                "type": "crystal",
+                "pos": [
+                    10,
+                    0,
+                    6
+                ]
+            },
+            {
+                "type": "crystal",
+                "pos": [
+                    11,
+                    0,
+                    6
+                ]
+            },
+            {
+                "type": "crystal",
+                "pos": [
+                    12,
+                    0,
+                    6
+                ]
+            },
+            {
+                "type": "crystal",
+                "pos": [
+                    12,
+                    0,
+                    7
+                ]
+            }
+        ],
+        "obstacles": []
+    }
+}

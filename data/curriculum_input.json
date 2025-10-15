@@ -1,0 +1,202 @@
+[
+  {
+    "topic_code": "TOPIC_01_COMMANDS",
+    "topic_name": "Lệnh & Tuần tự",
+    "suggested_maps": [
+      {
+        "map_type": "simple_path",
+        "logic_type": "sequencing",
+        "description": "Cấp 1: Chỉ di chuyển.",
+        "num_variants": 1,
+        "params": { "path_length": 4, "items_to_place": [], "obstacles_to_place": [] }
+      },
+      {
+        "map_type": "simple_path",
+        "logic_type": "sequencing",
+        "description": "Cấp 2: Giới thiệu 1 vật phẩm.",
+        "num_variants": 1,
+        "params": { "path_length": 5, "items_to_place": ["crystal"], "obstacles_to_place": [] }
+      },
+      {
+        "map_type": "simple_path",
+        "logic_type": "sequencing",
+        "description": "Cấp 3: Giới thiệu chướng ngại vật.",
+        "num_variants": 1,
+        "params": { "path_length": 6, "items_to_place": [], "obstacles_to_place": ["pit"] }
+      },
+      {
+        "map_type": "simple_path",
+        "logic_type": "sequencing",
+        "description": "Cấp 4: Kết hợp các lệnh.",
+        "num_variants": 1,
+        "params": { "path_length": 7, "items_to_place": ["crystal"], "obstacles_to_place": ["pit"] }
+      },
+      {
+        "map_type": "simple_path",
+        "logic_type": "sequencing",
+        "description": "Cấp 5: Thêm lệnh Rẽ.",
+        "num_variants": 1,
+        "params": { "path_length": 10, "pattern": "corner", "items_to_place": ["switch"], "obstacles_to_place": ["pit"] }
+      }
+    ]
+  },
+  {
+    "topic_code": "TOPIC_02_FUNCTIONS",
+    "topic_name": "Hàm",
+    "suggested_maps": [
+      {
+        "map_type": "symmetrical_islands",
+        "logic_type": "function_decomposition",
+        "description": "Các khu vực giống hệt nhau để khuyến khích việc phân rã vấn đề thành hàm.",
+        "num_variants": 4,
+        "difficulty_tags": ["medium"],
+        "params": {
+          "num_islands": [2, 4]
+        }
+      }
+    ]
+  },
+  {
+    "topic_code": "TOPIC_03_FOR_LOOPS",
+    "topic_name": "Vòng lặp For",
+    "suggested_maps": [
+      {
+        "map_type": "straight_line",
+        "logic_type": "for_loop_simple",
+        "description": "Đường thẳng dài để giới thiệu vòng lặp với một hành động.",
+        "num_variants": 4,
+        "difficulty_tags": ["easy"]
+      },
+      {
+        "map_type": "staircase",
+        "logic_type": "for_loop_complex",
+        "description": "Cầu thang đi lên để thực hành vòng lặp với nhiều hành động.",
+        "num_variants": 4,
+        "difficulty_tags": ["easy", "medium"]
+      },
+      {
+        "map_type": "square_shape",
+        "logic_type": "for_loop_complex",
+        "description": "Vẽ hình vuông để thực hành vòng lặp với chuỗi lệnh.",
+        "num_variants": 3,
+        "difficulty_tags": ["medium"],
+        "params": {
+          "side_length": [3, 10]
+        }
+      },
+      {
+        "map_type": "plowing_field",
+        "logic_type": "nested_for_loop",
+        "description": "Dọn dẹp khu vực hình chữ nhật để dạy về vòng lặp lồng nhau.",
+        "num_variants": 3,
+        "difficulty_tags": ["hard"],
+        "params": {
+          "rows": [3, 5],
+          "cols": [5, 7]
+        }
+      }
+    ]
+  },
+  {
+    "topic_code": "TOPIC_04_VARIABLES",
+    "topic_name": "Biến",
+    "suggested_maps": [
+      {
+        "map_type": "item_counting_path",
+        "logic_type": "variable_update",
+        "description": "Đếm vật phẩm trên đường đi và sử dụng giá trị đó ở cuối.",
+        "num_variants": 3,
+        "difficulty_tags": ["medium"]
+      },
+      {
+        "map_type": "spiral_path",
+        "logic_type": "variable_control_loop",
+        "description": "Đường xoắn ốc có cạnh giảm dần, yêu cầu dùng biến để điều khiển số lần lặp.",
+        "num_variants": 2,
+        "difficulty_tags": ["hard"]
+      }
+    ]
+  },
+  {
+    "topic_code": "TOPIC_05_CONDITIONALS",
+    "topic_name": "Mã điều kiện",
+    "suggested_maps": [
+      {
+        "map_type": "interspersed_path",
+        "logic_type": "if_else_logic",
+        "description": "Con đường có hố và vật phẩm xen kẽ, yêu cầu dùng if/else để xử lý.",
+        "num_variants": 5,
+        "params": {
+        "possible_items": ["crystal", "key", "switch"]
+        },
+        "difficulty_tags": ["easy", "medium"]
+      }
+    ]
+  },
+  {
+    "topic_code": "TOPIC_06_LOGICAL_OPERATORS",
+    "topic_name": "Toán tử Logic",
+    "suggested_maps": [
+      {
+        "map_type": "interspersed_path",
+        "logic_type": "logical_operators",
+        "description": "Các tình huống đòi hỏi kết hợp nhiều điều kiện (AND, OR, NOT).",
+        "num_variants": 4,
+        "difficulty_tags": ["medium", "hard"]
+      }
+    ]
+  },
+  {
+    "topic_code": "TOPIC_07_WHILE_LOOPS",
+    "topic_name": "Vòng lặp While",
+    "suggested_maps": [
+      {
+        "map_type": "unknown_length_hallway",
+        "logic_type": "while_loop",
+        "description": "Đi hết hành lang không rõ độ dài.",
+        "num_variants": 3,
+        "difficulty_tags": ["easy"]
+      },
+      {
+        "map_type": "unknown_height_tower",
+        "logic_type": "while_loop",
+        "description": "Leo lên một tòa tháp không rõ độ cao.",
+        "num_variants": 3,
+        "difficulty_tags": ["medium"]
+      }
+    ]
+  },
+  {
+    "topic_code": "TOPIC_08_ALGORITHMS",
+    "topic_name": "Thuật toán",
+    "suggested_maps": [
+      {
+        "map_type": "complex_maze_2d",
+        "logic_type": "algorithm_design",
+        "description": "Mê cung 2D phức tạp yêu cầu thiết kế thuật toán bám tường.",
+        "num_variants": 5,
+        "difficulty_tags": ["hard", "very_hard"]
+      }
+    ]
+  },
+  {
+    "topic_code": "TOPIC_09_PARAMETERS",
+    "topic_name": "Tham số",
+    "suggested_maps": [
+      {
+        "map_type": "variable_length_sides",
+        "logic_type": "function_with_params",
+        "description": "Vẽ các đường thẳng có độ dài khác nhau.",
+        "num_variants": 3,
+        "difficulty_tags": ["medium"]
+      },
+      {
+        "map_type": "variable_size_rectangles",
+        "logic_type": "function_with_multi_params",
+        "description": "Vẽ các hình chữ nhật khác nhau.",
+        "num_variants": 2,
+        "difficulty_tags": ["hard"]
+      }
+    ]
+  }
+]
