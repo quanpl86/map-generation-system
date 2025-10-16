@@ -1,0 +1,153 @@
+.
+├── base_maps
+│   ├── grid_variant1_complexity-hard.json
+│   ├── l_shape_variant1_complexity-medium.json
+│   ├── l_shape_variant2_complexity-medium.json
+│   ├── l_shape_variant3_complexity-medium.json
+│   └── straight_variant1_complexity-easy.json
+├── BK.zip
+├── map_generation_system
+│   ├── data
+│   │   ├── base_maps
+│   │   │   ├── topic01-req01-move-intro-var1.json
+│   │   │   ├── topic01-req02-collect-intro-var1.json
+│   │   │   ├── topic01-req03-jump-intro-var1.json
+│   │   │   ├── topic01-req04-turn-intro-var1.json
+│   │   │   ├── topic02-req01-island-decomposition-var1.json
+│   │   │   ├── topic02-req01-island-decomposition-var2.json
+│   │   │   ├── topic02-req01-island-decomposition-var3.json
+│   │   │   ├── topic02-req02-refactor-square-var1.json
+│   │   │   ├── topic02-req02-refactor-square-var2.json
+│   │   │   ├── topic02-req03-function-with-param-var1.json
+│   │   │   ├── topic02-req03-function-with-param-var2.json
+│   │   │   ├── topic02-req03-function-with-param-var3.json
+│   │   │   ├── topic08-req01-wall-follower-var1.json
+│   │   │   ├── topic08-req01-wall-follower-var2.json
+│   │   │   ├── topic08-req01-wall-follower-var3.json
+│   │   │   ├── topic08-req02-key-and-door-var1.json
+│   │   │   ├── topic08-req02-key-and-door-var2.json
+│   │   │   ├── topic08-req02-key-and-door-var3.json
+│   │   │   ├── topic08-req03-collect-all-gems-var1.json
+│   │   │   ├── topic08-req03-collect-all-gems-var2.json
+│   │   │   └── topic08-req04-debug-algorithm-var1.json
+│   │   ├── Correct-map.json
+│   │   ├── curriculum
+│   │   │   ├── 01_commands.json
+│   │   │   ├── 02_functions.json
+│   │   │   ├── 03_for_loops.json
+│   │   │   └── 08_algorithms.json
+│   │   ├── curriculum_input.json
+│   │   ├── final_game_levels
+│   │   │   ├── topic01-req01-move-intro-var1.json
+│   │   │   ├── topic01-req02-collect-intro-var1.json
+│   │   │   ├── topic01-req03-jump-intro-var1.json
+│   │   │   ├── topic01-req04-turn-intro-var1.json
+│   │   │   ├── topic02-req01-island-decomposition-var1.json
+│   │   │   ├── topic02-req01-island-decomposition-var2.json
+│   │   │   ├── topic02-req01-island-decomposition-var3.json
+│   │   │   ├── topic02-req02-refactor-square-var1.json
+│   │   │   ├── topic02-req02-refactor-square-var2.json
+│   │   │   ├── topic02-req03-function-with-param-var1.json
+│   │   │   ├── topic02-req03-function-with-param-var2.json
+│   │   │   ├── topic02-req03-function-with-param-var3.json
+│   │   │   ├── topic08-req01-wall-follower-var1.json
+│   │   │   ├── topic08-req01-wall-follower-var2.json
+│   │   │   ├── topic08-req01-wall-follower-var3.json
+│   │   │   ├── topic08-req02-key-and-door-var1.json
+│   │   │   ├── topic08-req02-key-and-door-var2.json
+│   │   │   ├── topic08-req02-key-and-door-var3.json
+│   │   │   ├── topic08-req03-collect-all-gems-var1.json
+│   │   │   ├── topic08-req03-collect-all-gems-var2.json
+│   │   │   └── topic08-req04-debug-algorithm-var1.json
+│   │   ├── generated_maps
+│   │   ├── map-config-template.json
+│   │   ├── questions_rows.json
+│   │   ├── StandJsonMapIm.json
+│   │   ├── toolbox_presets.json
+│   │   └── topic1-challengeC1_L2_T2_e01b07.json
+│   ├── gitignore   
+│   ├── gitignore   .sh
+│   ├── main.py
+│   ├── README.md
+│   ├── requirements.txt
+│   ├── scripts
+│   │   ├── __pycache__
+│   │   │   ├── gameSolver.cpython-312.pyc
+│   │   │   └── generate_all_maps.cpython-312.pyc
+│   │   ├── gameSolver.py
+│   │   └── generate_all_maps.py
+│   ├── src
+│   │   ├── __init__.py
+│   │   ├── __pycache__
+│   │   │   └── __init__.cpython-312.pyc
+│   │   ├── map_generator
+│   │   │   ├── __init__.py
+│   │   │   ├── __pycache__
+│   │   │   │   ├── __init__.cpython-312.pyc
+│   │   │   │   └── service.cpython-312.pyc
+│   │   │   ├── models
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── __pycache__
+│   │   │   │   │   ├── __init__.cpython-312.pyc
+│   │   │   │   │   ├── map_data.cpython-312.pyc
+│   │   │   │   │   └── path_info.cpython-312.pyc
+│   │   │   │   ├── map_data.py
+│   │   │   │   └── path_info.py
+│   │   │   ├── placements
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── __pycache__
+│   │   │   │   │   ├── __init__.cpython-312.pyc
+│   │   │   │   │   ├── algorithm_placer.cpython-312.pyc
+│   │   │   │   │   ├── base_placer.cpython-312.pyc
+│   │   │   │   │   ├── for_loop_placer.cpython-312.pyc
+│   │   │   │   │   ├── function_placer.cpython-312.pyc
+│   │   │   │   │   ├── sequencing_placer.cpython-312.pyc
+│   │   │   │   │   ├── variable_placer.cpython-312.pyc
+│   │   │   │   │   └── while_if_placer.cpython-312.pyc
+│   │   │   │   ├── algorithm_placer.py
+│   │   │   │   ├── base_placer.py
+│   │   │   │   ├── for_loop_placer.py
+│   │   │   │   ├── function_placer.py
+│   │   │   │   ├── sequencing_placer.py
+│   │   │   │   ├── variable_placer.py
+│   │   │   │   └── while_if_placer.py
+│   │   │   ├── service.py
+│   │   │   └── topologies
+│   │   │       ├── __init__.py
+│   │   │       ├── __pycache__
+│   │   │       │   ├── __init__.cpython-312.pyc
+│   │   │       │   ├── base_topology.cpython-312.pyc
+│   │   │       │   ├── complex_maze.cpython-312.pyc
+│   │   │       │   ├── interspersed_path.cpython-312.pyc
+│   │   │       │   ├── plowing_field.cpython-312.pyc
+│   │   │       │   ├── simple_path.cpython-312.pyc
+│   │   │       │   ├── spiral.cpython-312.pyc
+│   │   │       │   ├── square.cpython-312.pyc
+│   │   │       │   ├── staircase.cpython-312.pyc
+│   │   │       │   ├── straight_line.cpython-312.pyc
+│   │   │       │   └── symmetrical_islands.cpython-312.pyc
+│   │   │       ├── base_topology.py
+│   │   │       ├── complex_maze.py
+│   │   │       ├── interspersed_path.py
+│   │   │       ├── plowing_field.py
+│   │   │       ├── simple_path.py
+│   │   │       ├── spiral.py
+│   │   │       ├── square.py
+│   │   │       ├── staircase.py
+│   │   │       ├── straight_line.py
+│   │   │       └── symmetrical_islands.py
+│   │   └── utils
+│   │       ├── __pycache__
+│   │       │   ├── geometry.cpython-312.pyc
+│   │       │   └── randomizer.cpython-312.pyc
+│   │       ├── geometry.py
+│   │       └── randomizer.py
+│   └── tests
+│       ├── placements
+│       │   ├── test_for_loop_placer.py
+│       │   └── test_straight_line.py
+│       ├── test_map_generator_service.py
+│       └── topologies
+└── structure.txt
+
+25 directories, 126 files
