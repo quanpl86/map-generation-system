@@ -351,7 +351,10 @@ def compress_actions_to_structure(actions: List[str], available_blocks: Set[str]
             if action_str.startswith("CALL:"):
                 structured_code.append({"type": "CALL", "name": action_str.split(":", 1)[1]})
             else:
-                structured_code.append({"type": action_str})
+                if action_str == "turnLeft" or action_str == "turnRight":
+                    structured_code.append({"type": "maze_turn", "direction": action_str})
+                else:
+                    structured_code.append({"type": action_str})
             i += 1
     return structured_code
 
@@ -409,30 +412,38 @@ def count_blocks(program: Dict) -> int:
     
     return total
 
-def format_program(program: Dict, indent=0) -> str:
-    """Hàm helper để in chương trình ra màn hình theo cấu trúc Blockly."""
-    output, prefix = "", "  " * indent
-    if indent == 0 and program["procedures"]:
-        for name, body in program["procedures"].items():
-            output += f"{prefix}DEFINE {name}:\n"
-            output += format_program({"main": body}, indent + 1)
-        output += "\n"
-    if indent == 0:
-        output += f"{prefix}MAIN PROGRAM:\n{prefix}  On start:\n"
-        indent += 2
-        prefix = "  " * indent
-    
-    body_to_print = program.get("main", program.get("body", []))
-    for block in body_to_print:
-        block_type = block.get("type")
-        if block_type == 'maze_repeat':
-            output += f"{prefix}repeat {block['times']} times:\n"
-            output += format_program(block, indent + 1)
-        elif block_type == 'CALL':
-            output += f"{prefix}CALL {block['name']}\n"
-        else:
-            output += f"{prefix}{block_type}\n"
-    return output
+def format_program(program: Dict[str, Any]) -> List[str]:
+    """
+    [REFACTORED] Hàm helper để in chương trình ra màn hình theo cấu trúc mã giả thụt đầu dòng.
+    """
+    def _format_recursively(block_list: List[Dict], indent_level: int) -> List[str]:
+        """Hàm đệ quy để định dạng một danh sách các khối lệnh."""
+        lines = []
+        prefix = "  " * indent_level # 2 khoảng trắng cho mỗi cấp độ thụt lề
+        for block in block_list:
+            block_type = block.get("type")
+            if block_type == 'maze_repeat':
+                lines.append(f"{prefix}repeat ({block.get('times', 0)}) do")
+                lines.extend(_format_recursively(block.get("body", []), indent_level + 1))
+            elif block_type == 'CALL':
+                # Thay vì hiển thị "CALL", chúng ta sẽ "inline" nội dung của hàm vào đây
+                proc_name = block.get('name', '')
+                if proc_name and "procedures" in program and proc_name in program["procedures"]:
+                    # Lấy nội dung của hàm và định dạng nó ở cấp độ thụt lề hiện tại
+                    proc_body = program["procedures"][proc_name]
+                    lines.extend(_format_recursively(proc_body, indent_level))
+            else:
+                # Xử lý cho các khối lệnh đơn giản (e.g., moveForward, collect)
+                action_name = block_type.replace("maze_", "") if block_type.startswith("maze_") else block_type
+                lines.append(f"{prefix}{action_name}")
+        return lines
+
+    output_lines = []
+    # Xử lý chương trình chính
+    output_lines.append("when Run clicked")
+    # Bắt đầu thụt lề từ cấp 1
+    output_lines.extend(_format_recursively(program.get("main", []), 1))
+    return output_lines
 
 def calculate_accurate_optimal_blocks(level_data: Dict[str, Any], verbose=True, print_solution=False, return_solution=False) -> Optional[Any]:
     """
@@ -461,7 +472,7 @@ def calculate_accurate_optimal_blocks(level_data: Dict[str, Any], verbose=True, 
         if print_solution:
             print("\n" + "="*40)
             print("LỜI GIẢI CHI TIẾT ĐƯỢC TỔNG HỢP:")
-            print(format_program(program_solution).strip())
+            print("\n".join(format_program(program_solution)))
             print("="*40)
         
         if return_solution:
@@ -470,7 +481,7 @@ def calculate_accurate_optimal_blocks(level_data: Dict[str, Any], verbose=True, 
                 "block_count": optimized_block_count, 
                 "program_solution_dict": program_solution,
                 "raw_actions": optimal_actions,
-                "program_solution_string": format_program(program_solution).strip()}
+                "structuredSolution": format_program(program_solution)}
         else:
             return optimized_block_count
     else:
@@ -485,7 +496,7 @@ def solve_map_and_get_solution(level_data: Dict[str, Any]) -> Optional[Dict[str,
     """
     try:
         solution_data = calculate_accurate_optimal_blocks(level_data, verbose=False, print_solution=False, return_solution=True)
-        return solution_data
+        return solution_data # type: ignore
     except Exception as e:
         print(f"   - ❌ Lỗi khi giải map: {e}")
         # traceback.print_exc() # Bỏ comment để gỡ lỗi chi tiết
