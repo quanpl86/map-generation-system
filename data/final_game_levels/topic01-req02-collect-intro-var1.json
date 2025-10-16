@@ -70,7 +70,7 @@
       ]
     },
     "maxBlocks": 13,
-    "startBlocks": ""
+    "startBlocks": "<xml><block type=\"maze_start\"><statement name=\"DO\"></block></statement></block></xml>"
   },
   "gameConfig": {
     "type": "maze",
@@ -79,9 +79,25 @@
       {
         "modelKey": "ground.normal",
         "position": {
+          "x": 1,
+          "y": 0,
+          "z": 3
+        }
+      },
+      {
+        "modelKey": "ground.normal",
+        "position": {
+          "x": 2,
+          "y": 0,
+          "z": 3
+        }
+      },
+      {
+        "modelKey": "ground.normal",
+        "position": {
           "x": 3,
           "y": 0,
-          "z": 7
+          "z": 3
         }
       },
       {
@@ -89,7 +105,7 @@
         "position": {
           "x": 4,
           "y": 0,
-          "z": 7
+          "z": 3
         }
       },
       {
@@ -97,7 +113,7 @@
         "position": {
           "x": 5,
           "y": 0,
-          "z": 7
+          "z": 3
         }
       },
       {
@@ -105,7 +121,7 @@
         "position": {
           "x": 6,
           "y": 0,
-          "z": 7
+          "z": 3
         }
       },
       {
@@ -113,23 +129,7 @@
         "position": {
           "x": 7,
           "y": 0,
-          "z": 7
-        }
-      },
-      {
-        "modelKey": "ground.normal",
-        "position": {
-          "x": 8,
-          "y": 0,
-          "z": 7
-        }
-      },
-      {
-        "modelKey": "ground.normal",
-        "position": {
-          "x": 9,
-          "y": 0,
-          "z": 7
+          "z": 3
         }
       }
     ],
@@ -137,9 +137,9 @@
       {
         "id": "player1",
         "start": {
-          "x": 3,
+          "x": 1,
           "y": 1,
-          "z": 7,
+          "z": 3,
           "direction": 1
         }
       }
@@ -149,17 +149,17 @@
         "id": "c1",
         "type": "crystal",
         "position": {
-          "x": 7,
+          "x": 4,
           "y": 1,
-          "z": 7
+          "z": 3
         }
       }
     ],
     "interactibles": [],
     "finish": {
-      "x": 9,
+      "x": 7,
       "y": 1,
-      "z": 7
+      "z": 3
     }
   },
   "solution": {
@@ -170,12 +170,12 @@
       "moveForward",
       "moveForward",
       "moveForward",
-      "moveForward",
       "collect",
+      "moveForward",
       "moveForward",
       "moveForward"
     ],
-    "structuredSolution": "MAIN PROGRAM:\n  On start:\n    moveForward\n    moveForward\n    moveForward\n    moveForward\n    collect\n    moveForward\n    moveForward"
+    "structuredSolution": "MAIN PROGRAM:\n  On start:\n    moveForward\n    moveForward\n    moveForward\n    collect\n    moveForward\n    moveForward\n    moveForward"
   },
   "sounds": {
     "win": "/assets/maze/win.mp3",

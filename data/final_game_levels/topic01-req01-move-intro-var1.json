@@ -51,7 +51,7 @@
       ]
     },
     "maxBlocks": 11,
-    "startBlocks": ""
+    "startBlocks": "<xml><block type=\"maze_start\"><statement name=\"DO\"></block></statement></block></xml>"
   },
   "gameConfig": {
     "type": "maze",
@@ -60,25 +60,9 @@
       {
         "modelKey": "ground.normal",
         "position": {
-          "x": 6,
-          "y": 0,
-          "z": 4
-        }
-      },
-      {
-        "modelKey": "ground.normal",
-        "position": {
-          "x": 7,
-          "y": 0,
-          "z": 4
-        }
-      },
-      {
-        "modelKey": "ground.normal",
-        "position": {
           "x": 8,
           "y": 0,
-          "z": 4
+          "z": 5
         }
       },
       {
@@ -86,7 +70,7 @@
         "position": {
           "x": 9,
           "y": 0,
-          "z": 4
+          "z": 5
         }
       },
       {
@@ -94,7 +78,7 @@
         "position": {
           "x": 10,
           "y": 0,
-          "z": 4
+          "z": 5
         }
       },
       {
@@ -102,7 +86,23 @@
         "position": {
           "x": 11,
           "y": 0,
-          "z": 4
+          "z": 5
+        }
+      },
+      {
+        "modelKey": "ground.normal",
+        "position": {
+          "x": 12,
+          "y": 0,
+          "z": 5
+        }
+      },
+      {
+        "modelKey": "ground.normal",
+        "position": {
+          "x": 13,
+          "y": 0,
+          "z": 5
         }
       }
     ],
@@ -110,9 +110,9 @@
       {
         "id": "player1",
         "start": {
-          "x": 6,
+          "x": 8,
           "y": 1,
-          "z": 4,
+          "z": 5,
           "direction": 1
         }
       }
@@ -120,9 +120,9 @@
     "collectibles": [],
     "interactibles": [],
     "finish": {
-      "x": 11,
+      "x": 13,
       "y": 1,
-      "z": 4
+      "z": 5
     }
   },
   "solution": {

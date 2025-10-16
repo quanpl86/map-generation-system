@@ -79,7 +79,7 @@
       ]
     },
     "maxBlocks": 28,
-    "startBlocks": ""
+    "startBlocks": "<xml><block type=\"maze_start\"><statement name=\"DO\"></block></statement></block></xml>"
   },
   "gameConfig": {
     "type": "maze",
@@ -90,7 +90,7 @@
         "position": {
           "x": 1,
           "y": 0,
-          "z": 8
+          "z": 1
         }
       },
       {
@@ -98,7 +98,7 @@
         "position": {
           "x": 1,
           "y": 0,
-          "z": 9
+          "z": 2
         }
       },
       {
@@ -106,7 +106,7 @@
         "position": {
           "x": 2,
           "y": 0,
-          "z": 8
+          "z": 1
         }
       },
       {
@@ -114,7 +114,7 @@
         "position": {
           "x": 2,
           "y": 0,
-          "z": 9
+          "z": 2
         }
       },
       {
@@ -122,7 +122,7 @@
         "position": {
           "x": 3,
           "y": 0,
-          "z": 8
+          "z": 1
         }
       },
       {
@@ -130,7 +130,7 @@
         "position": {
           "x": 4,
           "y": 0,
-          "z": 8
+          "z": 1
         }
       },
       {
@@ -138,7 +138,7 @@
         "position": {
           "x": 5,
           "y": 0,
-          "z": 8
+          "z": 1
         }
       },
       {
@@ -146,7 +146,15 @@
         "position": {
           "x": 6,
           "y": 0,
-          "z": 8
+          "z": 1
+        }
+      },
+      {
+        "modelKey": "ground.normal",
+        "position": {
+          "x": 6,
+          "y": 0,
+          "z": 2
         }
       },
       {
@@ -154,7 +162,15 @@
         "position": {
           "x": 7,
           "y": 0,
-          "z": 8
+          "z": 1
+        }
+      },
+      {
+        "modelKey": "ground.normal",
+        "position": {
+          "x": 7,
+          "y": 0,
+          "z": 2
         }
       },
       {
@@ -162,7 +178,7 @@
         "position": {
           "x": 8,
           "y": 0,
-          "z": 8
+          "z": 1
         }
       },
       {
@@ -170,7 +186,7 @@
         "position": {
           "x": 9,
           "y": 0,
-          "z": 8
+          "z": 1
         }
       },
       {
@@ -178,7 +194,7 @@
         "position": {
           "x": 10,
           "y": 0,
-          "z": 8
+          "z": 1
         }
       },
       {
@@ -186,7 +202,7 @@
         "position": {
           "x": 11,
           "y": 0,
-          "z": 8
+          "z": 1
         }
       },
       {
@@ -194,7 +210,7 @@
         "position": {
           "x": 11,
           "y": 0,
-          "z": 9
+          "z": 2
         }
       },
       {
@@ -202,7 +218,7 @@
         "position": {
           "x": 12,
           "y": 0,
-          "z": 8
+          "z": 1
         }
       },
       {
@@ -210,7 +226,7 @@
         "position": {
           "x": 12,
           "y": 0,
-          "z": 9
+          "z": 2
         }
       }
     ],
@@ -220,7 +236,7 @@
         "start": {
           "x": 1,
           "y": 1,
-          "z": 8,
+          "z": 1,
           "direction": 1
         }
       }
@@ -232,7 +248,7 @@
         "position": {
           "x": 1,
           "y": 1,
-          "z": 8
+          "z": 1
         }
       },
       {
@@ -241,7 +257,7 @@
         "position": {
           "x": 2,
           "y": 1,
-          "z": 8
+          "z": 1
         }
       },
       {
@@ -250,7 +266,7 @@
         "position": {
           "x": 2,
           "y": 1,
-          "z": 9
+          "z": 2
         }
       },
       {
@@ -259,7 +275,7 @@
         "position": {
           "x": 1,
           "y": 1,
-          "z": 9
+          "z": 2
         }
       },
       {
@@ -268,7 +284,7 @@
         "position": {
           "x": 3,
           "y": 1,
-          "z": 8
+          "z": 1
         }
       },
       {
@@ -277,7 +293,7 @@
         "position": {
           "x": 4,
           "y": 1,
-          "z": 8
+          "z": 1
         }
       },
       {
@@ -286,7 +302,7 @@
         "position": {
           "x": 5,
           "y": 1,
-          "z": 8
+          "z": 1
         }
       },
       {
@@ -295,7 +311,7 @@
         "position": {
           "x": 6,
           "y": 1,
-          "z": 8
+          "z": 1
         }
       },
       {
@@ -304,61 +320,79 @@
         "position": {
           "x": 7,
           "y": 1,
-          "z": 8
+          "z": 1
         }
       },
       {
         "id": "c10",
         "type": "crystal",
         "position": {
-          "x": 8,
+          "x": 7,
           "y": 1,
-          "z": 8
+          "z": 2
         }
       },
       {
         "id": "c11",
         "type": "crystal",
         "position": {
-          "x": 9,
+          "x": 6,
           "y": 1,
-          "z": 8
+          "z": 2
         }
       },
       {
         "id": "c12",
         "type": "crystal",
         "position": {
-          "x": 10,
+          "x": 8,
           "y": 1,
-          "z": 8
+          "z": 1
         }
       },
       {
         "id": "c13",
         "type": "crystal",
         "position": {
-          "x": 11,
+          "x": 9,
           "y": 1,
-          "z": 8
+          "z": 1
         }
       },
       {
         "id": "c14",
         "type": "crystal",
         "position": {
-          "x": 12,
+          "x": 10,
           "y": 1,
-          "z": 8
+          "z": 1
         }
       },
       {
         "id": "c15",
         "type": "crystal",
         "position": {
+          "x": 11,
+          "y": 1,
+          "z": 1
+        }
+      },
+      {
+        "id": "c16",
+        "type": "crystal",
+        "position": {
           "x": 12,
           "y": 1,
-          "z": 9
+          "z": 1
+        }
+      },
+      {
+        "id": "c17",
+        "type": "crystal",
+        "position": {
+          "x": 12,
+          "y": 1,
+          "z": 2
         }
       }
     ],
@@ -366,7 +400,7 @@
     "finish": {
       "x": 11,
       "y": 1,
-      "z": 9
+      "z": 2
     }
   },
   "solution": {
@@ -399,11 +433,11 @@
       "collect",
       "turnRight",
       "moveForward",
-      "turnRight",
       "collect",
+      "turnRight",
       "moveForward"
     ],
-    "structuredSolution": "DEFINE PROCEDURE_1:\n  collect\n  moveForward\n  collect\n  moveForward\n  collect\n  moveForward\n  collect\n  moveForward\n  collect\n\nMAIN PROGRAM:\n  On start:\n    CALL PROCEDURE_1\n    moveForward\n    CALL PROCEDURE_1\n    moveForward\n    collect\n    moveForward\n    collect\n    turnRight\n    moveForward\n    turnRight\n    collect\n    moveForward"
+    "structuredSolution": "DEFINE PROCEDURE_1:\n  collect\n  moveForward\n  collect\n  moveForward\n  collect\n  moveForward\n  collect\n  moveForward\n  collect\n\nMAIN PROGRAM:\n  On start:\n    CALL PROCEDURE_1\n    moveForward\n    CALL PROCEDURE_1\n    moveForward\n    collect\n    moveForward\n    collect\n    turnRight\n    moveForward\n    collect\n    turnRight\n    moveForward"
   },
   "sounds": {
     "win": "/assets/maze/win.mp3",

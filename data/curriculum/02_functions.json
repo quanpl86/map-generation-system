@@ -49,7 +49,7 @@
       },
       "blockly_config": {
         "toolbox_preset": "functions_basic",
-        "start_blocks": "<xml><block type=\"maze_moveForward\"></block><block type=\"maze_moveForward\"></block><block type=\"maze_moveForward\"></block><block type=\"maze_moveForward\"></block><block type=\"maze_turn\"><field name=\"DIR\">turnLeft</field></block><block type=\"maze_moveForward\"></block><block type=\"maze_moveForward\"></block><block type=\"maze_moveForward\"></block><block type=\"maze_moveForward\"></block><block type=\"maze_turn\"><field name=\"DIR\">turnLeft</field></block></xml>"
+        "start_block_type": "refactor_from_raw_actions"
       },
       "solution_config": { "type": "reach_target" }
     },

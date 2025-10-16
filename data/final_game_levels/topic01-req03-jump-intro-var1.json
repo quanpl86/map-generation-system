@@ -55,7 +55,7 @@
       ]
     },
     "maxBlocks": 13,
-    "startBlocks": ""
+    "startBlocks": "<xml><block type=\"maze_start\"><statement name=\"DO\"></block></statement></block></xml>"
   },
   "gameConfig": {
     "type": "maze",
@@ -66,7 +66,7 @@
         "position": {
           "x": 5,
           "y": 0,
-          "z": 5
+          "z": 4
         }
       },
       {
@@ -74,7 +74,7 @@
         "position": {
           "x": 6,
           "y": 0,
-          "z": 5
+          "z": 4
         }
       },
       {
@@ -82,7 +82,7 @@
         "position": {
           "x": 7,
           "y": 0,
-          "z": 5
+          "z": 4
         }
       },
       {
@@ -90,7 +90,7 @@
         "position": {
           "x": 8,
           "y": 0,
-          "z": 5
+          "z": 4
         }
       },
       {
@@ -98,7 +98,7 @@
         "position": {
           "x": 9,
           "y": 0,
-          "z": 5
+          "z": 4
         }
       },
       {
@@ -106,7 +106,7 @@
         "position": {
           "x": 10,
           "y": 0,
-          "z": 5
+          "z": 4
         }
       },
       {
@@ -114,7 +114,7 @@
         "position": {
           "x": 11,
           "y": 0,
-          "z": 5
+          "z": 4
         }
       },
       {
@@ -122,15 +122,15 @@
         "position": {
           "x": 12,
           "y": 0,
-          "z": 5
+          "z": 4
         }
       },
       {
         "modelKey": "wall.brick01",
         "position": {
-          "x": 7,
+          "x": 8,
           "y": 1,
-          "z": 5
+          "z": 4
         }
       }
     ],
@@ -140,7 +140,7 @@
         "start": {
           "x": 5,
           "y": 1,
-          "z": 5,
+          "z": 4,
           "direction": 1
         }
       }
@@ -150,7 +150,7 @@
     "finish": {
       "x": 12,
       "y": 1,
-      "z": 5
+      "z": 4
     }
   },
   "solution": {
@@ -159,14 +159,14 @@
     "optimalBlocks": 8,
     "rawActions": [
       "moveForward",
-      "jump",
       "moveForward",
+      "jump",
       "moveForward",
       "moveForward",
       "moveForward",
       "moveForward"
     ],
-    "structuredSolution": "MAIN PROGRAM:\n  On start:\n    moveForward\n    jump\n    moveForward\n    moveForward\n    moveForward\n    moveForward\n    moveForward"
+    "structuredSolution": "MAIN PROGRAM:\n  On start:\n    moveForward\n    moveForward\n    jump\n    moveForward\n    moveForward\n    moveForward\n    moveForward"
   },
   "sounds": {
     "win": "/assets/maze/win.mp3",

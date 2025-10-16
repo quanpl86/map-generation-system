@@ -6,25 +6,33 @@
       {
         "modelKey": "ground.normal",
         "position": {
-          "x": 9,
+          "x": 12,
           "y": 0,
-          "z": 10
+          "z": 6
         }
       },
       {
         "modelKey": "ground.normal",
         "position": {
-          "x": 10,
+          "x": 12,
           "y": 0,
-          "z": 10
+          "z": 7
         }
       },
       {
         "modelKey": "ground.normal",
         "position": {
-          "x": 11,
+          "x": 12,
           "y": 0,
-          "z": 10
+          "z": 8
+        }
+      },
+      {
+        "modelKey": "ground.normal",
+        "position": {
+          "x": 12,
+          "y": 0,
+          "z": 9
         }
       },
       {
@@ -34,21 +42,13 @@
           "y": 0,
           "z": 10
         }
-      },
-      {
-        "modelKey": "ground.normal",
-        "position": {
-          "x": 13,
-          "y": 0,
-          "z": 10
-        }
       }
     ],
     "players": [
       {
         "id": "player1",
         "start": {
-          "x": 9,
+          "x": 12,
           "y": 1,
           "z": 10,
           "direction": 1
@@ -60,18 +60,18 @@
         "id": "c1",
         "type": "crystal",
         "position": {
-          "x": 10,
+          "x": 12,
           "y": 1,
-          "z": 10
+          "z": 9
         }
       },
       {
         "id": "c2",
         "type": "crystal",
         "position": {
-          "x": 11,
+          "x": 12,
           "y": 1,
-          "z": 10
+          "z": 8
         }
       },
       {
@@ -80,15 +80,15 @@
         "position": {
           "x": 12,
           "y": 1,
-          "z": 10
+          "z": 7
         }
       }
     ],
     "interactibles": [],
     "finish": {
-      "x": 13,
+      "x": 12,
       "y": 1,
-      "z": 10
+      "z": 6
     }
   }
 }

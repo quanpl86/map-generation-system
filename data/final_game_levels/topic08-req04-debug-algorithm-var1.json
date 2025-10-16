@@ -1,7 +1,7 @@
 {
   "id": "topic08-req04-debug-algorithm-var1",
   "gameType": "maze",
-  "level": 904,
+  "level": 4,
   "titleKey": "Challenge.T8.C1.L4.Title",
   "descriptionKey": "Challenge.T8.C1.L4.Description",
   "translations": {
@@ -178,7 +178,7 @@
       ]
     },
     "maxBlocks": 16,
-    "startBlocks": "<xml><block type=\"maze_forever\"><statement name=\"DO\"><block type=\"maze_if\"><field name=\"DIR\">isPathRight</field><statement name=\"DO\"><block type=\"maze_turn\"><field name=\"DIR\">turnRight</field></block><block type=\"maze_moveForward\"></block></statement><next><block type=\"maze_if\"><field name=\"DIR\">isPathForward</field><statement name=\"DO\"><block type=\"maze_moveForward\"></block></statement></block></next></block></statement></block></xml>"
+    "startBlocks": "<xml><block type=\"maze_start\"><statement name=\"DO\"><block type=\"maze_forever\"><statement name=\"DO\"><block type=\"maze_if\"><field name=\"DIR\">isPathRight</field><statement name=\"DO\"><block type=\"maze_turn\"><field name=\"DIR\">turnRight</field><next><block type=\"maze_moveForward\"><next><block type=\"maze_if\"><field name=\"DIR\">isPathForward</field><statement name=\"DO\"><block type=\"maze_moveForward\"></block></next></block></next></block></statement></block></xml>"
   },
   "gameConfig": {
     "type": "maze",
@@ -917,7 +917,7 @@
         "position": {
           "x": 1,
           "y": 1,
-          "z": 2
+          "z": 4
         }
       },
       {
@@ -957,14 +957,6 @@
         "position": {
           "x": 2,
           "y": 1,
-          "z": 5
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 2,
-          "y": 1,
           "z": 6
         }
       },
@@ -972,78 +964,6 @@
         "modelKey": "wall.brick01",
         "position": {
           "x": 2,
-          "y": 1,
-          "z": 8
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 3,
-          "y": 1,
-          "z": 0
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 3,
-          "y": 1,
-          "z": 2
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 3,
-          "y": 1,
-          "z": 4
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 3,
-          "y": 1,
-          "z": 8
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 4,
-          "y": 1,
-          "z": 0
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 4,
-          "y": 1,
-          "z": 2
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 4,
-          "y": 1,
-          "z": 4
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 4,
-          "y": 1,
-          "z": 6
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 4,
           "y": 1,
           "z": 7
         }
@@ -1051,6 +971,94 @@
       {
         "modelKey": "wall.brick01",
         "position": {
+          "x": 2,
+          "y": 1,
+          "z": 8
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 3,
+          "y": 1,
+          "z": 0
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 3,
+          "y": 1,
+          "z": 2
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 3,
+          "y": 1,
+          "z": 6
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 3,
+          "y": 1,
+          "z": 8
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 4,
+          "y": 1,
+          "z": 0
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 4,
+          "y": 1,
+          "z": 2
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 4,
+          "y": 1,
+          "z": 3
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 4,
+          "y": 1,
+          "z": 4
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 4,
+          "y": 1,
+          "z": 5
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 4,
+          "y": 1,
+          "z": 6
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
           "x": 4,
           "y": 1,
           "z": 8
@@ -1069,7 +1077,7 @@
         "position": {
           "x": 5,
           "y": 1,
-          "z": 4
+          "z": 6
         }
       },
       {
@@ -1086,6 +1094,14 @@
           "x": 6,
           "y": 1,
           "z": 0
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 6,
+          "y": 1,
+          "z": 1
         }
       },
       {
@@ -1117,14 +1133,6 @@
         "position": {
           "x": 6,
           "y": 1,
-          "z": 5
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 6,
-          "y": 1,
           "z": 6
         }
       },
@@ -1142,14 +1150,6 @@
           "x": 7,
           "y": 1,
           "z": 0
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 7,
-          "y": 1,
-          "z": 4
         }
       },
       {
@@ -1261,17 +1261,17 @@
       "moveForward",
       "moveForward",
       "moveForward",
-      "moveForward",
+      "jump",
       "moveForward",
       "turnRight",
       "moveForward",
       "moveForward",
-      "jump",
+      "moveForward",
       "moveForward",
       "moveForward",
       "moveForward"
     ],
-    "structuredSolution": "DEFINE PROCEDURE_1:\n  repeat 3 times:\n    moveForward\n\nMAIN PROGRAM:\n  On start:\n    CALL PROCEDURE_1\n    CALL PROCEDURE_1\n    turnRight\n    moveForward\n    moveForward\n    jump\n    CALL PROCEDURE_1"
+    "structuredSolution": "DEFINE PROCEDURE_1:\n  repeat 3 times:\n    moveForward\n\nMAIN PROGRAM:\n  On start:\n    CALL PROCEDURE_1\n    moveForward\n    jump\n    moveForward\n    turnRight\n    CALL PROCEDURE_1\n    CALL PROCEDURE_1"
   },
   "sounds": {
     "win": "/assets/maze/win.mp3",

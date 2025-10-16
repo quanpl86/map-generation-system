@@ -17,6 +17,42 @@ if SRC_PATH not in sys.path:
 # Bây giờ chúng ta có thể import từ src một cách an toàn
 from map_generator.service import MapGeneratorService
 from scripts.gameSolver import solve_map_and_get_solution
+import re
+
+def _create_chained_xml(inner_xml_str: str) -> str:
+    """
+    Nhận một chuỗi XML chứa nhiều khối <block> và lồng chúng vào nhau bằng thẻ <next>.
+    Ví dụ: '<block A></block><block B></block>' -> '<block A><next><block B></block></next></block>'
+    """
+    if not inner_xml_str:
+        return ""
+    
+    # Sử dụng regex để tìm tất cả các thẻ <block>...</block> ở cấp cao nhất
+    blocks = re.findall(r'(<block.*?</block>)', inner_xml_str)
+    
+    if not blocks:
+        return ""
+
+    # Lồng các khối từ trong ra ngoài
+    chained_xml = blocks[-1]
+    for i in range(len(blocks) - 2, -1, -1):
+        # Chèn khối đã được lồng vào bên trong thẻ <next> của khối trước đó
+        chained_xml = blocks[i].replace('</block>', f'<next>{chained_xml}</next></block>')
+        
+    return chained_xml
+
+def _create_xml_from_actions(actions: list) -> str:
+    """
+    Tạo một chuỗi XML chứa các khối lệnh từ một danh sách các hành động (actions).
+    """
+    xml_blocks = []
+    for action in actions:
+        if action == 'turnLeft' or action == 'turnRight':
+            xml_blocks.append(f'<block type="maze_turn"><field name="DIR">{action}</field></block>')
+        else:
+            # Giả định các action khác có type trùng tên (e.g., 'moveForward' -> <block type="maze_moveForward">)
+            xml_blocks.append(f'<block type="maze_{action}"></block>')
+    return "".join(xml_blocks)
 
 def main():
     """
@@ -153,6 +189,29 @@ def main():
                     }
                     solution_result = solve_map_and_get_solution(temp_level_for_solver)
 
+                    # --- (CẢI TIẾN) Tự động bọc start_blocks vào trong khối maze_start ---
+                    start_block_type = blockly_config_req.get('start_block_type', '') # Logic mới
+                    final_start_blocks = ''
+                    
+                    # Logic mới để sinh startBlocks động
+                    if start_block_type == 'refactor_from_raw_actions' and solution_result:
+                        print("    -> Sinh startBlocks động từ 'raw_actions' cho bài toán tái cấu trúc.")
+                        # 1. Tạo chuỗi XML thô từ raw_actions của solver
+                        raw_actions_xml = _create_xml_from_actions(solution_result['raw_actions'])
+                        # 2. Lồng các khối lại với nhau
+                        chained_inner_blocks = _create_chained_xml(raw_actions_xml)
+                        # 3. Bọc trong khối maze_start
+                        final_start_blocks = f"<xml><block type=\"maze_start\"><statement name=\"DO\">{chained_inner_blocks}</statement></block></xml>"
+                    # Giữ lại logic cũ cho các trường hợp chưa được nâng cấp
+                    elif 'start_blocks' in blockly_config_req and blockly_config_req['start_blocks']:
+                        raw_start_blocks = blockly_config_req['start_blocks']
+                        inner_blocks = raw_start_blocks.replace('<xml>', '').replace('</xml>', '')
+                        chained_inner_blocks = _create_chained_xml(inner_blocks)
+                        final_start_blocks = f"<xml><block type=\"maze_start\"><statement name=\"DO\">{chained_inner_blocks}</statement></block></xml>"
+                    else:
+                        # Mặc định: tạo một khối maze_start rỗng
+                        final_start_blocks = "<xml><block type=\"maze_start\"><statement name=\"DO\"></block></statement></block></xml>"
+
                     # --- Bước 7: Tổng hợp file JSON cuối cùng ---
                     final_json = {
                         "id": f"{map_request.get('id', 'unknown')}-var{variant_index + 1}",
@@ -165,7 +224,7 @@ def main():
                         "blocklyConfig": {
                             "toolbox": toolbox_data,
                             "maxBlocks": (solution_result['block_count'] + 5) if solution_result else 99,
-                            "startBlocks": blockly_config_req.get('start_blocks', '')
+                            "startBlocks": final_start_blocks
                         },
                         "gameConfig": game_config['gameConfig'],
                         "solution": {

@@ -178,7 +178,7 @@
       ]
     },
     "maxBlocks": 32,
-    "startBlocks": ""
+    "startBlocks": "<xml><block type=\"maze_start\"><statement name=\"DO\"></block></statement></block></xml>"
   },
   "gameConfig": {
     "type": "maze",
@@ -1653,7 +1653,7 @@
         "position": {
           "x": 1,
           "y": 1,
-          "z": 6
+          "z": 10
         }
       },
       {
@@ -1701,6 +1701,14 @@
         "position": {
           "x": 2,
           "y": 1,
+          "z": 5
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 2,
+          "y": 1,
           "z": 6
         }
       },
@@ -1718,14 +1726,6 @@
           "x": 2,
           "y": 1,
           "z": 8
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 2,
-          "y": 1,
-          "z": 9
         }
       },
       {
@@ -1757,7 +1757,15 @@
         "position": {
           "x": 3,
           "y": 1,
-          "z": 4
+          "z": 8
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 3,
+          "y": 1,
+          "z": 10
         }
       },
       {
@@ -1789,7 +1797,23 @@
         "position": {
           "x": 4,
           "y": 1,
+          "z": 3
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 4,
+          "y": 1,
           "z": 4
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 4,
+          "y": 1,
+          "z": 5
         }
       },
       {
@@ -1805,23 +1829,7 @@
         "position": {
           "x": 4,
           "y": 1,
-          "z": 7
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 4,
-          "y": 1,
           "z": 8
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 4,
-          "y": 1,
-          "z": 9
         }
       },
       {
@@ -1853,22 +1861,6 @@
         "position": {
           "x": 5,
           "y": 1,
-          "z": 2
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 5,
-          "y": 1,
-          "z": 4
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 5,
-          "y": 1,
           "z": 6
         }
       },
@@ -1878,14 +1870,6 @@
           "x": 5,
           "y": 1,
           "z": 8
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 5,
-          "y": 1,
-          "z": 10
         }
       },
       {
@@ -1933,124 +1917,116 @@
         "position": {
           "x": 6,
           "y": 1,
-          "z": 6
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 6,
-          "y": 1,
-          "z": 8
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 6,
-          "y": 1,
-          "z": 10
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 6,
-          "y": 1,
-          "z": 12
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 7,
-          "y": 1,
-          "z": 0
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 7,
-          "y": 1,
-          "z": 4
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 7,
-          "y": 1,
-          "z": 6
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 7,
-          "y": 1,
-          "z": 8
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 7,
-          "y": 1,
-          "z": 10
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 7,
-          "y": 1,
-          "z": 12
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 8,
-          "y": 1,
-          "z": 0
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 8,
-          "y": 1,
-          "z": 2
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 8,
-          "y": 1,
-          "z": 3
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 8,
-          "y": 1,
-          "z": 4
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 8,
-          "y": 1,
           "z": 5
         }
       },
       {
         "modelKey": "wall.brick01",
         "position": {
+          "x": 6,
+          "y": 1,
+          "z": 6
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 6,
+          "y": 1,
+          "z": 8
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 6,
+          "y": 1,
+          "z": 9
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 6,
+          "y": 1,
+          "z": 10
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 6,
+          "y": 1,
+          "z": 12
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 7,
+          "y": 1,
+          "z": 0
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 7,
+          "y": 1,
+          "z": 4
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 7,
+          "y": 1,
+          "z": 8
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 7,
+          "y": 1,
+          "z": 12
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 8,
+          "y": 1,
+          "z": 0
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 8,
+          "y": 1,
+          "z": 2
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 8,
+          "y": 1,
+          "z": 3
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 8,
+          "y": 1,
+          "z": 4
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
           "x": 8,
           "y": 1,
           "z": 6
@@ -2069,7 +2045,23 @@
         "position": {
           "x": 8,
           "y": 1,
+          "z": 9
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 8,
+          "y": 1,
           "z": 10
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 8,
+          "y": 1,
+          "z": 11
         }
       },
       {
@@ -2093,6 +2085,22 @@
         "position": {
           "x": 9,
           "y": 1,
+          "z": 2
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 9,
+          "y": 1,
+          "z": 4
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 9,
+          "y": 1,
           "z": 6
         }
       },
@@ -2102,14 +2110,6 @@
           "x": 9,
           "y": 1,
           "z": 8
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 9,
-          "y": 1,
-          "z": 10
         }
       },
       {
@@ -2141,14 +2141,6 @@
         "position": {
           "x": 10,
           "y": 1,
-          "z": 3
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 10,
-          "y": 1,
           "z": 4
         }
       },
@@ -2158,6 +2150,14 @@
           "x": 10,
           "y": 1,
           "z": 6
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 10,
+          "y": 1,
+          "z": 7
         }
       },
       {
@@ -2205,7 +2205,7 @@
         "position": {
           "x": 11,
           "y": 1,
-          "z": 8
+          "z": 10
         }
       },
       {
@@ -2337,9 +2337,9 @@
         "id": "c1",
         "type": "gem",
         "position": {
-          "x": 1,
+          "x": 5,
           "y": 1,
-          "z": 7
+          "z": 5
         }
       },
       {
@@ -2348,16 +2348,16 @@
         "position": {
           "x": 7,
           "y": 1,
-          "z": 5
+          "z": 9
         }
       },
       {
         "id": "c3",
         "type": "gem",
         "position": {
-          "x": 5,
+          "x": 9,
           "y": 1,
-          "z": 9
+          "z": 7
         }
       }
     ],
@@ -2373,44 +2373,41 @@
     "itemGoals": {},
     "optimalBlocks": 27,
     "rawActions": [
+      "moveForward",
+      "moveForward",
+      "moveForward",
+      "moveForward",
       "turnRight",
       "moveForward",
       "moveForward",
       "moveForward",
       "moveForward",
+      "collect",
+      "jump",
+      "moveForward",
+      "turnLeft",
+      "moveForward",
+      "moveForward",
+      "moveForward",
+      "moveForward",
+      "collect",
+      "turnRight",
+      "jump",
+      "moveForward",
+      "turnRight",
       "jump",
       "moveForward",
       "collect",
+      "turnLeft",
       "moveForward",
       "moveForward",
       "turnLeft",
-      "jump",
-      "moveForward",
-      "jump",
-      "moveForward",
-      "collect",
-      "moveForward",
-      "moveForward",
-      "turnLeft",
-      "jump",
-      "moveForward",
-      "jump",
-      "moveForward",
-      "turnRight",
-      "collect",
-      "jump",
-      "moveForward",
-      "moveForward",
-      "moveForward",
-      "turnRight",
-      "moveForward",
-      "moveForward",
       "jump",
       "moveForward",
       "moveForward",
       "moveForward"
     ],
-    "structuredSolution": "DEFINE PROCEDURE_1:\n  repeat 3 times:\n    moveForward\n\nMAIN PROGRAM:\n  On start:\n    turnRight\n    CALL PROCEDURE_1\n    repeat 2 times:\n      moveForward\n      jump\n      moveForward\n      collect\n      moveForward\n      moveForward\n      turnLeft\n      jump\n    moveForward\n    jump\n    moveForward\n    turnRight\n    collect\n    jump\n    CALL PROCEDURE_1\n    turnRight\n    moveForward\n    moveForward\n    jump\n    CALL PROCEDURE_1"
+    "structuredSolution": "DEFINE PROCEDURE_1:\n  repeat 3 times:\n    moveForward\n\nMAIN PROGRAM:\n  On start:\n    CALL PROCEDURE_1\n    moveForward\n    turnRight\n    CALL PROCEDURE_1\n    moveForward\n    collect\n    jump\n    moveForward\n    turnLeft\n    CALL PROCEDURE_1\n    moveForward\n    collect\n    repeat 2 times:\n      turnRight\n      jump\n      moveForward\n    collect\n    turnLeft\n    moveForward\n    moveForward\n    turnLeft\n    jump\n    CALL PROCEDURE_1"
   },
   "sounds": {
     "win": "/assets/maze/win.mp3",
