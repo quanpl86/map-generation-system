@@ -26,8 +26,14 @@ class StraightLineTopology(BaseTopology):
         """
         print("    LOG: Generating 'straight_line' topology...")
         
-        # Chiều dài là số ô nằm giữa start và target.
-        path_length = params.get('path_length', 6)
+        # --- (CẢI TIẾN) Đọc và ngẫu nhiên hóa chiều dài đường đi ---
+        path_length_param = params.get('path_length', [5, 8])
+        if isinstance(path_length_param, list) and len(path_length_param) == 2:
+            # Nếu path_length là một khoảng [min, max], chọn ngẫu nhiên một giá trị
+            path_length = random.randint(path_length_param[0], path_length_param[1])
+        else:
+            # Nếu không, sử dụng giá trị được cung cấp
+            path_length = int(path_length_param)
 
         # Đảm bảo đường đi không quá dài so với map
         max_dim = max(grid_size[0], grid_size[2])

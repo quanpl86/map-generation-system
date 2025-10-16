@@ -1,0 +1,27 @@
+{
+  "id": "topic03-req02-staircase-loop",
+  "level": 2,
+  "titleKey": "Challenge.T3.C1.L2.Title",
+  "descriptionKey": "Challenge.T3.C1.L2.Description",
+  "translations": {
+    "vi": {
+      "Challenge.T3.C1.L2.Title": "Leo cầu thang",
+      "Challenge.T3.C1.L2.Description": "Mô tả: Sử dụng vòng lặp để leo lên hết các bậc thang.\\nMục tiêu: Thực hành vòng lặp với nhiều hành động."
+    },
+    "en": {
+      "Challenge.T3.C1.L2.Title": "Climb the Stairs",
+      "Challenge.T3.C1.L2.Description": "Description: Use a loop to climb all the stairs.\\nGoal: Practice loops with multiple actions."
+    }
+  },
+  "generation_config": {
+    "map_type": "staircase",
+    "logic_type": "for_loop_complex",
+    "num_variants": 4,
+    "params": {
+      "num_steps": [4, 7],
+      "step_size": [1, 2]
+    }
+  },
+  "blockly_config": { "toolbox_preset": "loops_basic", "start_blocks": "" },
+  "solution_config": { "type": "reach_target" }
+}

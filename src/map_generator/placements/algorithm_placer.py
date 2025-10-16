@@ -2,6 +2,7 @@
 
 from .base_placer import BasePlacer
 from src.map_generator.models.path_info import PathInfo
+from src.utils.randomizer import shuffle_list
 import random
 
 class AlgorithmPlacer(BasePlacer):
@@ -15,38 +16,55 @@ class AlgorithmPlacer(BasePlacer):
 
     def place_items(self, path_info: PathInfo, params: dict) -> dict:
         """
-        Nhận một map mê cung và đặt một vật phẩm duy nhất ở một vị trí khó tìm.
+        Nhận một map mê cung và đặt các vật phẩm vào các vị trí chiến lược
+        (ví dụ: ngõ cụt) để tạo ra thử thách tìm kiếm.
 
         Args:
             path_info (PathInfo): Thông tin từ ComplexMazeTopology, chủ yếu
                                   chứa chướng ngại vật (tường).
-            params (dict): Các tham số bổ sung.
+            params (dict): Có thể chứa 'items_to_place'.
 
         Returns:
             dict: Một dictionary chứa layout map hoàn chỉnh.
         """
         print("    LOG: Placing items with 'algorithm' logic...")
         
-        # Trong một bài toán thuật toán, thường chỉ có một mục tiêu duy nhất
-        # để người chơi tập trung vào việc tìm đường.
+        items_to_place = params.get('items_to_place', [])
+        items = []
+        obstacles = path_info.obstacles
         
-        # Chúng ta có thể đặt vật phẩm ở gần đích để làm mục tiêu cuối cùng.
-        # Một cách khác là chọn một vị trí ngẫu nhiên không phải là tường.
-        # Ở đây, chúng ta sẽ đặt nó ở gần đích.
-        
-        target_x, target_y, target_z = path_info.target_pos
-        
-        # Chọn một vị trí gần đích nhưng không trùng với đích
-        # để người chơi phải nhặt nó trước khi kết thúc.
-        item_pos = (target_x - 1, target_y, target_z - 1)
-        
-        # Kiểm tra để đảm bảo vị trí item không nằm ngoài map (dù hiếm)
-        if item_pos[0] < 0 or item_pos[2] < 0:
-            item_pos = path_info.target_pos # Nếu tính toán bị lỗi, đặt ngay tại đích
+        if items_to_place:
+            # --- Tìm các vị trí có thể đặt vật phẩm (ngõ cụt) ---
+            wall_coords = {obs['pos'] for obs in obstacles}
+            possible_placements = []
+            
+            # Duyệt qua các ô không phải là tường
+            grid_width = max(c[0] for c in wall_coords) + 1
+            grid_depth = max(c[2] for c in wall_coords) + 1
+
+            for x in range(1, grid_width, 2):
+                for z in range(1, grid_depth, 2):
+                    pos = (x, 0, z)
+                    if pos not in wall_coords and pos != path_info.start_pos and pos != path_info.target_pos:
+                        # Đếm số lượng tường xung quanh
+                        neighbor_walls = 0
+                        for dx, _, dz in [(1,0,0), (-1,0,0), (0,0,1), (0,0,-1)]:
+                            if (pos[0] + dx, 0, pos[2] + dz) in wall_coords:
+                                neighbor_walls += 1
+                        # Nếu có 3 bức tường xung quanh, đó là ngõ cụt
+                        if neighbor_walls == 3:
+                            possible_placements.append(pos)
+            
+            # Xáo trộn các vị trí và đặt vật phẩm
+            shuffled_placements = shuffle_list(possible_placements)
+            for item_type in items_to_place:
+                if shuffled_placements:
+                    item_pos = shuffled_placements.pop()
+                    items.append({"type": item_type, "pos": item_pos})
 
         return {
             "start_pos": path_info.start_pos,
             "target_pos": path_info.target_pos,
-            "items": [{"type": "gem", "pos": item_pos}],
-            "obstacles": path_info.obstacles
+            "items": items,
+            "obstacles": obstacles
         }

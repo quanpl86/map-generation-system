@@ -20,11 +20,17 @@ class ComplexMazeTopology(BaseTopology):
         """
         print("    LOG: Generating 'complex_maze' topology using Randomized DFS...")
 
+        # --- (CẢI TIẾN) Đọc và ngẫu nhiên hóa kích thước mê cung từ params ---
+        width_param = params.get('maze_width', [9, 13])
+        depth_param = params.get('maze_depth', [9, 13])
+
+        req_width = random.randint(*width_param) if isinstance(width_param, list) else width_param
+        req_depth = random.randint(*depth_param) if isinstance(depth_param, list) else depth_param
+
         # Mê cung sẽ được tạo trên lưới 2D (XZ), với chiều cao Y cố định là 0.
         # Để thuật toán hoạt động tốt, lưới phải có kích thước lẻ.
-        # Ví dụ: grid_size(10) -> width(9), grid_size(11) -> width(11).
-        width = grid_size[0] - 1 if grid_size[0] % 2 == 0 else grid_size[0]
-        depth = grid_size[2] - 1 if grid_size[2] % 2 == 0 else grid_size[2]
+        width = req_width if req_width % 2 != 0 else req_width - 1
+        depth = req_depth if req_depth % 2 != 0 else req_depth - 1
         
         # Tạo một lưới ban đầu chứa đầy tường.
         # Giá trị '1' đại diện cho tường (wall), '0' đại diện cho đường đi (path).

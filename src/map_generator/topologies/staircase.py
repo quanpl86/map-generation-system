@@ -3,6 +3,7 @@
 import random
 from .base_topology import BaseTopology
 from src.map_generator.models.path_info import PathInfo, Coord
+from src.utils.geometry import add_vectors, scale_vector, FORWARD_X, UP_Y
 
 class StaircaseTopology(BaseTopology):
     """

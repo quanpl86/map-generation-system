@@ -1,0 +1,102 @@
+{
+  "topic_code": "TOPIC_01_COMMANDS",
+  "topic_name": "Lệnh & Tuần tự",
+  "suggested_maps": [
+    {
+      "id": "topic01-req01-move-intro",
+      "level": 1,
+      "titleKey": "Challenge.T1.C1.L1.Title",
+      "descriptionKey": "Challenge.T1.C1.L1.Description",
+      "translations": {
+        "vi": {
+          "Challenge.T1.C1.L1.Title": "Di chuyển cơ bản",
+          "Challenge.T1.C1.L1.Description": "Mô tả: Giúp nhân vật đi đến đích.\\nMục tiêu: Học cách sử dụng lệnh 'đi thẳng'."
+        },
+        "en": {
+          "Challenge.T1.C1.L1.Title": "Basic Movement",
+          "Challenge.T1.C1.L1.Description": "Description: Help the character reach the finish.\\nGoal: Learn to use the 'move forward' command."
+        }
+      },
+      "generation_config": {
+        "map_type": "simple_path",
+        "logic_type": "sequencing",
+        "num_variants": 1,
+        "params": { "path_length": 4, "items_to_place": [], "obstacles_to_place": [] }
+      },
+      "blockly_config": { "toolbox_preset": "movement_only", "start_blocks": "" },
+      "solution_config": { "type": "reach_target" }
+    },
+    {
+      "id": "topic01-req02-collect-intro",
+      "level": 2,
+      "titleKey": "Challenge.T1.C1.L2.Title",
+      "descriptionKey": "Challenge.T1.C1.L2.Description",
+      "translations": {
+        "vi": {
+          "Challenge.T1.C1.L2.Title": "Thu thập vật phẩm",
+          "Challenge.T1.C1.L2.Description": "Mô tả: Thu thập viên pha lê trên đường đi.\\nMục tiêu: Học cách sử dụng lệnh 'thu thập'."
+        },
+        "en": {
+          "Challenge.T1.C1.L2.Title": "Collect Item",
+          "Challenge.T1.C1.L2.Description": "Description: Collect the crystal on the path.\\nGoal: Learn to use the 'collect' command."
+        }
+      },
+      "generation_config": {
+        "map_type": "simple_path",
+        "logic_type": "sequencing",
+        "num_variants": 1,
+        "params": { "path_length": 5, "items_to_place": ["crystal"], "obstacles_to_place": [] }
+      },
+      "blockly_config": { "toolbox_preset": "movement_actions", "start_blocks": "" },
+      "solution_config": { "type": "reach_target", "itemGoals": { "crystal": 1 } }
+    },
+    {
+      "id": "topic01-req03-jump-intro",
+      "level": 3,
+      "titleKey": "Challenge.T1.C1.L3.Title",
+      "descriptionKey": "Challenge.T1.C1.L3.Description",
+      "translations": {
+        "vi": {
+          "Challenge.T1.C1.L3.Title": "Bước nhảy đầu tiên",
+          "Challenge.T1.C1.L3.Description": "Mô tả: Sử dụng lệnh 'nhảy' để vượt qua chướng ngại vật.\\nMục tiêu: Học cách sử dụng lệnh 'jump'."
+        },
+        "en": {
+          "Challenge.T1.C1.L3.Title": "First Jump",
+          "Challenge.T1.C1.L3.Description": "Description: Use the 'jump' command to cross the obstacle.\\nGoal: Learn to use the 'jump' command."
+        }
+      },
+      "generation_config": {
+        "map_type": "simple_path",
+        "logic_type": "sequencing",
+        "num_variants": 1,
+        "params": { "path_length": 6, "items_to_place": [], "obstacles_to_place": ["pit"] }
+      },
+      "blockly_config": { "toolbox_preset": "movement_jump", "start_blocks": "" },
+      "solution_config": { "type": "reach_target" }
+    },
+    {
+      "id": "topic01-req04-turn-intro",
+      "level": 4,
+      "titleKey": "Challenge.T1.C1.L4.Title",
+      "descriptionKey": "Challenge.T1.C1.L4.Description",
+      "translations": {
+        "vi": {
+          "Challenge.T1.C1.L4.Title": "Đến lúc rẽ rồi!",
+          "Challenge.T1.C1.L4.Description": "Mô tả: Sử dụng lệnh rẽ để đi theo con đường hình góc.\\nMục tiêu: Học cách sử dụng lệnh 'rẽ trái' và 'rẽ phải'."
+        },
+        "en": {
+          "Challenge.T1.C1.L4.Title": "Time to Turn!",
+          "Challenge.T1.C1.L4.Description": "Description: Use the turn commands to follow the corner path.\\nGoal: Learn to use 'turn left' and 'turn right'."
+        }
+      },
+      "generation_config": {
+        "map_type": "simple_path",
+        "logic_type": "sequencing",
+        "num_variants": 1,
+        "params": { "path_length": 10, "pattern": "corner", "items_to_place": ["switch"], "obstacles_to_place": ["pit"] }
+      },
+      "blockly_config": { "toolbox_preset": "movement_actions", "start_blocks": "" },
+      "solution_config": { "type": "reach_target", "itemGoals": { "switch": 1 } }
+    }
+  ]
+}
