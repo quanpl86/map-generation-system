@@ -1,13 +1,13 @@
 {
-  "id": "topic01-req03-single-switch-var1",
+  "id": "topic02-fixbug02-incorrect-param-var1",
   "gameType": "maze",
-  "level": 5,
-  "titleKey": "Challenge.topic01-req03.Title",
-  "descriptionKey": "Challenge.topic01-req03.Description",
+  "level": 4,
+  "titleKey": "Challenge.topic02-fixbug02.Title",
+  "descriptionKey": "Challenge.topic02-fixbug02.Description",
   "translations": {
     "vi": {
-      "Challenge.topic01-req03.Title": "Công Tắc Đơn Lẻ",
-      "Challenge.topic01-req03.Description": "Di chuyển đến công tắc, sử dụng lệnh `toggleSwitch` để bật nó lên, sau đó đi đến đích."
+      "Challenge.topic02-fixbug02.Title": "Sửa lỗi: Logic sai trong hàm",
+      "Challenge.topic02-fixbug02.Description": "Hàm 'crossObstacle' đã được tạo, nhưng logic bên trong nó bị sai. Hãy sửa lại để nhân vật có thể vượt qua tường."
     }
   },
   "supportedEditors": [
@@ -40,11 +40,11 @@
             },
             {
               "kind": "block",
-              "type": "maze_turn"
+              "type": "maze_jump"
             },
             {
               "kind": "block",
-              "type": "maze_jump"
+              "type": "maze_turn"
             }
           ]
         },
@@ -62,11 +62,20 @@
               "type": "maze_toggle_switch"
             }
           ]
+        },
+        {
+          "kind": "sep"
+        },
+        {
+          "kind": "category",
+          "name": "%{BKY_GAMES_CATPROCEDURES}",
+          "custom": "PROCEDURE",
+          "categorystyle": "procedure_category"
         }
       ]
     },
-    "maxBlocks": 13,
-    "startBlocks": "<xml><block type=\"maze_start\" deletable=\"false\" movable=\"false\"><statement name=\"DO\"></statement></block></xml>"
+    "maxBlocks": 12,
+    "startBlocks": "<xml><block type=\"maze_start\" deletable=\"false\" movable=\"false\"><statement name=\"DO\"><block type=\"maze_jump\"><next><block type=\"maze_moveForward\"><next><block type=\"maze_moveForward\"><next><block type=\"maze_moveForward\"><next><block type=\"maze_moveForward\"><next><block type=\"maze_moveForward\" /></next></block></next></block></next></block></next></block></next></block></statement></block></xml>"
   },
   "gameConfig": {
     "type": "maze",
@@ -75,41 +84,9 @@
       {
         "modelKey": "ground.normal",
         "position": {
-          "x": 1,
-          "y": 0,
-          "z": 5
-        }
-      },
-      {
-        "modelKey": "ground.normal",
-        "position": {
-          "x": 2,
-          "y": 0,
-          "z": 5
-        }
-      },
-      {
-        "modelKey": "ground.normal",
-        "position": {
-          "x": 3,
-          "y": 0,
-          "z": 5
-        }
-      },
-      {
-        "modelKey": "ground.normal",
-        "position": {
-          "x": 4,
-          "y": 0,
-          "z": 5
-        }
-      },
-      {
-        "modelKey": "ground.normal",
-        "position": {
           "x": 5,
           "y": 0,
-          "z": 5
+          "z": 2
         }
       },
       {
@@ -117,7 +94,7 @@
         "position": {
           "x": 6,
           "y": 0,
-          "z": 5
+          "z": 2
         }
       },
       {
@@ -125,7 +102,7 @@
         "position": {
           "x": 7,
           "y": 0,
-          "z": 5
+          "z": 2
         }
       },
       {
@@ -133,15 +110,39 @@
         "position": {
           "x": 8,
           "y": 0,
-          "z": 5
+          "z": 2
+        }
+      },
+      {
+        "modelKey": "ground.normal",
+        "position": {
+          "x": 9,
+          "y": 0,
+          "z": 2
+        }
+      },
+      {
+        "modelKey": "ground.normal",
+        "position": {
+          "x": 10,
+          "y": 0,
+          "z": 2
+        }
+      },
+      {
+        "modelKey": "ground.normal",
+        "position": {
+          "x": 11,
+          "y": 0,
+          "z": 2
         }
       },
       {
         "modelKey": "wall.brick01",
         "position": {
-          "x": 5,
+          "x": 6,
           "y": 1,
-          "z": 5
+          "z": 2
         }
       }
     ],
@@ -149,41 +150,29 @@
       {
         "id": "player1",
         "start": {
-          "x": 1,
+          "x": 5,
           "y": 1,
-          "z": 5,
+          "z": 2,
           "direction": 1
         }
       }
     ],
     "collectibles": [],
-    "interactibles": [
-      {
-        "id": "s1",
-        "type": "switch",
-        "position": {
-          "x": 3,
-          "y": 1,
-          "z": 5
-        },
-        "initialState": "on"
-      }
-    ],
+    "interactibles": [],
     "finish": {
-      "x": 8,
+      "x": 11,
       "y": 1,
-      "z": 5
+      "z": 2
     }
   },
   "solution": {
     "type": "reach_target",
     "itemGoals": {},
-    "optimalBlocks": 8,
+    "optimalBlocks": 7,
     "rawActions": [
-      "moveForward",
-      "moveForward",
-      "moveForward",
       "jump",
+      "moveForward",
+      "moveForward",
       "moveForward",
       "moveForward",
       "moveForward"
@@ -191,10 +180,9 @@
     "structuredSolution": [
       "MAIN PROGRAM:",
       "  On start:",
-      "  moveForward",
-      "  moveForward",
-      "  moveForward",
       "  jump",
+      "  moveForward",
+      "  moveForward",
       "  moveForward",
       "  moveForward",
       "  moveForward"

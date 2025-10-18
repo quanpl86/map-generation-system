@@ -66,28 +66,12 @@
       ]
     },
     "maxBlocks": 12,
-    "startBlocks": "<xml><block type=\"maze_start\" deletable=\"false\" movable=\"false\"><statement name=\"DO\"><block type=\"maze_moveForward\"><next><block type=\"maze_collect\"><next><block type=\"maze_moveForward\"><next><block type=\"maze_moveForward\"><next><block type=\"maze_moveForward\"><next><block type=\"maze_jump\"></block></next></block></next></block></next></block></next></block></next></block></statement></block></xml>"
+    "startBlocks": "<xml><block type=\"maze_jump\"><next><block type=\"maze_moveForward\"><next><block type=\"maze_moveForward\"><next><block type=\"maze_moveForward\"><next><block type=\"maze_collect\"><next><block type=\"maze_moveForward\"></block></next></block></next></block></next></block></next></block></next></block></xml>"
   },
   "gameConfig": {
     "type": "maze",
     "renderer": "3d",
     "blocks": [
-      {
-        "modelKey": "ground.normal",
-        "position": {
-          "x": 1,
-          "y": 0,
-          "z": 2
-        }
-      },
-      {
-        "modelKey": "ground.normal",
-        "position": {
-          "x": 2,
-          "y": 0,
-          "z": 2
-        }
-      },
       {
         "modelKey": "ground.normal",
         "position": {
@@ -121,9 +105,25 @@
         }
       },
       {
+        "modelKey": "ground.normal",
+        "position": {
+          "x": 7,
+          "y": 0,
+          "z": 2
+        }
+      },
+      {
+        "modelKey": "ground.normal",
+        "position": {
+          "x": 8,
+          "y": 0,
+          "z": 2
+        }
+      },
+      {
         "modelKey": "wall.brick01",
         "position": {
-          "x": 5,
+          "x": 4,
           "y": 1,
           "z": 2
         }
@@ -133,7 +133,7 @@
       {
         "id": "player1",
         "start": {
-          "x": 1,
+          "x": 3,
           "y": 1,
           "z": 2,
           "direction": 1
@@ -145,7 +145,7 @@
         "id": "c1",
         "type": "crystal",
         "position": {
-          "x": 2,
+          "x": 5,
           "y": 1,
           "z": 2
         }
@@ -153,7 +153,7 @@
     ],
     "interactibles": [],
     "finish": {
-      "x": 6,
+      "x": 8,
       "y": 1,
       "z": 2
     }
@@ -163,20 +163,21 @@
     "itemGoals": {},
     "optimalBlocks": 7,
     "rawActions": [
+      "jump",
       "moveForward",
       "collect",
       "moveForward",
       "moveForward",
-      "jump",
       "moveForward"
     ],
     "structuredSolution": [
-      "when Run clicked",
+      "MAIN PROGRAM:",
+      "  On start:",
+      "  jump",
       "  moveForward",
       "  collect",
       "  moveForward",
       "  moveForward",
-      "  jump",
       "  moveForward"
     ]
   },

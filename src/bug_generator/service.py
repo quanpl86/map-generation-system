@@ -92,6 +92,37 @@ def _introduce_parameter_bug_xml(xml_string: str) -> str:
     print(f"   - ⚠️ Không tìm thấy mục tiêu (vòng lặp/rẽ) để tạo lỗi tham số. Trả về chuỗi gốc.")
     return xml_string
 
+def _introduce_misplaced_function_call_bug_xml(xml_string: str) -> str:
+    """
+    [MỚI] Tạo lỗi sai vị trí các khối GỌI HÀM trong một chuỗi XML.
+    Hàm này tìm tất cả các khối gọi hàm và hoán đổi vị trí của hai khối ngẫu nhiên.
+    """
+    if not xml_string: return ""
+    try:
+        # Bọc trong thẻ root để phân tích cú pháp an toàn
+        root = ET.fromstring(f"<root>{xml_string}</root>")
+        
+        # Tìm tất cả các khối gọi hàm (procedures_callnoreturn)
+        # Lưu ý: Hàm này không xử lý các khối định nghĩa hàm (procedures_defnoreturn)
+        call_blocks = root.findall(".//block[@type='procedures_callnoreturn']")
+        
+        if len(call_blocks) >= 2:
+            # Hoán đổi hai khối gọi hàm ngẫu nhiên bằng cách tráo đổi các thuộc tính và con của chúng.
+            # Đây là một cách tiếp cận đơn giản và hiệu quả.
+            idx1, idx2 = random.sample(range(len(call_blocks)), 2)
+            block1, block2 = call_blocks[idx1], call_blocks[idx2]
+            
+            # Tráo đổi nội dung (mutation tag) và các thuộc tính khác
+            block1.tag, block2.tag = block2.tag, block1.tag
+            block1.attrib, block2.attrib = block2.attrib, block1.attrib
+            block1[:], block2[:] = block2[:], block1[:]
+            
+            print(f"      -> Bug 'misplaced_function_call': Hoán đổi khối gọi hàm ở vị trí {idx1} và {idx2}.")
+            return "".join(ET.tostring(child, encoding='unicode') for child in root)
+    except Exception as e:
+        print(f"   - ⚠️ Lỗi khi tạo lỗi misplaced_function_call: {e}. Trả về chuỗi gốc.")
+    return xml_string
+
 # --- SECTION 3: Registry and Dispatcher ---
 
 # --- Bảng đăng ký các trình tạo lỗi (Bug Generator Registry) ---
@@ -104,6 +135,7 @@ BUG_GENERATORS: Dict[str, Callable[[Any], Any]] = {
 
     # Hàm này nhận vào chuỗi XML và trả về chuỗi XML
     'incorrect_parameter': _introduce_parameter_bug_xml,
+    'misplaced_function_call': _introduce_misplaced_function_call_bug_xml,
     
     # 'refactor_challenge' được xử lý đặc biệt trong generate_all_maps.py
     # và không cần một hàm tạo lỗi ở đây.

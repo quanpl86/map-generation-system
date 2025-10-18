@@ -1,13 +1,13 @@
 {
-  "id": "topic02-req02-refactor-var2",
+  "id": "topic02-req01-repeated-linear-var1",
   "gameType": "maze",
-  "level": 2,
-  "titleKey": "Challenge.topic02-req02-refactor.Title",
-  "descriptionKey": "Challenge.topic02-req02-refactor.Description",
+  "level": 1,
+  "titleKey": "Challenge.topic02-req01.Title",
+  "descriptionKey": "Challenge.topic02-req01.Description",
   "translations": {
     "vi": {
-      "Challenge.topic02-req02-refactor.Title": "Tái cấu trúc Code",
-      "Challenge.topic02-req02-refactor.Description": "Chương trình này quá dài. Hãy tạo một hàm drawOneSide để làm cho chương trình chính ngắn gọn hơn."
+      "Challenge.topic02-req01.Title": "Tái sử dụng: Đường thẳng",
+      "Challenge.topic02-req01.Description": "Đoạn đường này có các hành động lặp lại. Hãy tạo một hàm để làm cho code của bạn ngắn gọn hơn!"
     }
   },
   "supportedEditors": [
@@ -74,8 +74,8 @@
         }
       ]
     },
-    "maxBlocks": 24,
-    "startBlocks": "<xml><block type=\"maze_start\" deletable=\"false\" movable=\"false\"><statement name=\"DO\"></block></statement></block></xml>"
+    "maxBlocks": 17,
+    "startBlocks": "<xml><block type=\"procedures_defnoreturn\" deletable=\"false\"><field name=\"NAME\">PROCEDURE_1</field><statement name=\"STACK\"><block type=\"maze_moveForward\"><next><block type=\"maze_collect\"><next><block type=\"maze_moveForward\"><next><block type=\"maze_collect\"><next><block type=\"maze_moveForward\"><next><block type=\"maze_collect\"><next><block type=\"maze_moveForward\" /></next></block></next></block></next></block></next></block></next></block></next></block></statement></block><block type=\"maze_start\" deletable=\"false\" movable=\"false\"><statement name=\"DO\"><block type=\"procedures_callnoreturn\"><mutation name=\"PROCEDURE_1\" /><next><block type=\"maze_collect\"><next><block type=\"procedures_callnoreturn\"><mutation name=\"PROCEDURE_1\" /></block></next></block></next></block></statement></block></xml>"
   },
   "gameConfig": {
     "type": "maze",
@@ -84,33 +84,9 @@
       {
         "modelKey": "ground.normal",
         "position": {
-          "x": 2,
-          "y": 0,
-          "z": 7
-        }
-      },
-      {
-        "modelKey": "ground.normal",
-        "position": {
-          "x": 2,
-          "y": 0,
-          "z": 11
-        }
-      },
-      {
-        "modelKey": "ground.normal",
-        "position": {
           "x": 3,
           "y": 0,
-          "z": 7
-        }
-      },
-      {
-        "modelKey": "ground.normal",
-        "position": {
-          "x": 3,
-          "y": 0,
-          "z": 11
+          "z": 1
         }
       },
       {
@@ -118,15 +94,7 @@
         "position": {
           "x": 4,
           "y": 0,
-          "z": 7
-        }
-      },
-      {
-        "modelKey": "ground.normal",
-        "position": {
-          "x": 4,
-          "y": 0,
-          "z": 11
+          "z": 1
         }
       },
       {
@@ -134,15 +102,7 @@
         "position": {
           "x": 5,
           "y": 0,
-          "z": 7
-        }
-      },
-      {
-        "modelKey": "ground.normal",
-        "position": {
-          "x": 5,
-          "y": 0,
-          "z": 11
+          "z": 1
         }
       },
       {
@@ -150,15 +110,7 @@
         "position": {
           "x": 6,
           "y": 0,
-          "z": 7
-        }
-      },
-      {
-        "modelKey": "ground.normal",
-        "position": {
-          "x": 6,
-          "y": 0,
-          "z": 11
+          "z": 1
         }
       },
       {
@@ -166,39 +118,39 @@
         "position": {
           "x": 7,
           "y": 0,
-          "z": 7
+          "z": 1
         }
       },
       {
         "modelKey": "ground.normal",
         "position": {
-          "x": 7,
+          "x": 8,
           "y": 0,
-          "z": 8
+          "z": 1
         }
       },
       {
         "modelKey": "ground.normal",
         "position": {
-          "x": 7,
+          "x": 9,
           "y": 0,
-          "z": 9
+          "z": 1
         }
       },
       {
         "modelKey": "ground.normal",
         "position": {
-          "x": 7,
+          "x": 10,
           "y": 0,
-          "z": 10
+          "z": 1
         }
       },
       {
         "modelKey": "ground.normal",
         "position": {
-          "x": 7,
+          "x": 11,
           "y": 0,
-          "z": 11
+          "z": 1
         }
       }
     ],
@@ -206,9 +158,9 @@
       {
         "id": "player1",
         "start": {
-          "x": 2,
+          "x": 3,
           "y": 1,
-          "z": 7,
+          "z": 1,
           "direction": 1
         }
       }
@@ -218,94 +170,109 @@
         "id": "c1",
         "type": "crystal",
         "position": {
-          "x": 3,
+          "x": 4,
           "y": 1,
-          "z": 7
+          "z": 1
         }
       },
       {
         "id": "c2",
         "type": "crystal",
         "position": {
-          "x": 7,
+          "x": 5,
           "y": 1,
-          "z": 7
+          "z": 1
         }
       },
       {
         "id": "c3",
         "type": "crystal",
         "position": {
-          "x": 7,
+          "x": 6,
           "y": 1,
-          "z": 11
+          "z": 1
         }
       },
       {
         "id": "c4",
         "type": "crystal",
         "position": {
-          "x": 3,
+          "x": 7,
           "y": 1,
-          "z": 11
+          "z": 1
+        }
+      },
+      {
+        "id": "c5",
+        "type": "crystal",
+        "position": {
+          "x": 8,
+          "y": 1,
+          "z": 1
+        }
+      },
+      {
+        "id": "c6",
+        "type": "crystal",
+        "position": {
+          "x": 9,
+          "y": 1,
+          "z": 1
+        }
+      },
+      {
+        "id": "c7",
+        "type": "crystal",
+        "position": {
+          "x": 10,
+          "y": 1,
+          "z": 1
         }
       }
     ],
     "interactibles": [],
     "finish": {
-      "x": 2,
+      "x": 11,
       "y": 1,
-      "z": 11
+      "z": 1
     }
   },
   "solution": {
     "type": "reach_target",
     "itemGoals": {},
-    "optimalBlocks": 19,
+    "optimalBlocks": 12,
     "rawActions": [
       "moveForward",
       "collect",
       "moveForward",
-      "moveForward",
-      "moveForward",
+      "collect",
       "moveForward",
       "collect",
-      "turnRight",
-      "moveForward",
-      "moveForward",
-      "moveForward",
       "moveForward",
       "collect",
-      "turnRight",
       "moveForward",
+      "collect",
       "moveForward",
-      "moveForward",
+      "collect",
       "moveForward",
       "collect",
       "moveForward"
     ],
     "structuredSolution": [
-      "when Run clicked",
+      "DEFINE PROCEDURE_1:",
       "  moveForward",
       "  collect",
       "  moveForward",
-      "  moveForward",
-      "  moveForward",
+      "  collect",
       "  moveForward",
       "  collect",
-      "  turn",
       "  moveForward",
-      "  moveForward",
-      "  moveForward",
-      "  moveForward",
+      "",
+      "MAIN PROGRAM:",
+      "  On start:",
+      "  CALL PROCEDURE_1",
       "  collect",
-      "  turn",
-      "  moveForward",
-      "  moveForward",
-      "  moveForward",
-      "  moveForward",
-      "  collect",
-      "  moveForward"
+      "  CALL PROCEDURE_1"
     ]
   },
   "sounds": {

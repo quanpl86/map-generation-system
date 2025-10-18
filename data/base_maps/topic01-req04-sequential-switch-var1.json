@@ -6,6 +6,14 @@
       {
         "modelKey": "ground.normal",
         "position": {
+          "x": 1,
+          "y": 0,
+          "z": 3
+        }
+      },
+      {
+        "modelKey": "ground.normal",
+        "position": {
           "x": 2,
           "y": 0,
           "z": 3
@@ -76,17 +84,9 @@
         }
       },
       {
-        "modelKey": "ground.normal",
-        "position": {
-          "x": 11,
-          "y": 0,
-          "z": 3
-        }
-      },
-      {
         "modelKey": "wall.brick01",
         "position": {
-          "x": 6,
+          "x": 7,
           "y": 1,
           "z": 3
         }
@@ -96,7 +96,7 @@
       {
         "id": "player1",
         "start": {
-          "x": 2,
+          "x": 1,
           "y": 1,
           "z": 3,
           "direction": 1
@@ -113,13 +113,13 @@
           "y": 1,
           "z": 3
         },
-        "initialState": "off"
+        "initialState": "on"
       },
       {
         "id": "s2",
         "type": "switch",
         "position": {
-          "x": 3,
+          "x": 2,
           "y": 1,
           "z": 3
         },
@@ -127,7 +127,7 @@
       }
     ],
     "finish": {
-      "x": 11,
+      "x": 10,
       "y": 1,
       "z": 3
     }

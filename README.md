@@ -7,7 +7,7 @@ Dự án này là một hệ thống mạnh mẽ được thiết kế để t�
 - **Tự động hóa**: Giảm thiểu công sức thủ công trong việc thiết kế và tạo màn chơi.
 - **Dựa trên Curriculum**: Sinh map dựa trên một "chương trình học" được định nghĩa trước, đảm bảo các màn chơi phù hợp với mục tiêu sư phạm.
 - **Đa dạng hóa**: Dễ dàng tạo ra nhiều biến thể (variant) cho cùng một yêu cầu màn chơi.
-- **Tích hợp Solver**: Tự động tìm lời giải tối ưu cho mỗi màn chơi để xác định độ khó và cung cấp gợi ý.
+- **Tích hợp Solver**: Tự động tìm lời giải tối ưu cho mỗi màn chơi để xác định độ khó và cung cấp gợi ý. 
 - **Tạo lỗi thông minh**: Tự động tạo ra các phiên bản code bị lỗi (sai tham số, sai thứ tự, thiếu lệnh...) cho các thử thách gỡ lỗi.
 
 ## Cấu trúc Thư mục

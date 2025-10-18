@@ -51,7 +51,11 @@ def _create_xml_from_structured_solution(program_dict: dict) -> str:
         for block_data in block_list:
             block_type = block_data.get("type")
             
-            if block_type == "maze_repeat":
+            if block_type == "CALL":
+                # [SỬA] Xử lý khối gọi hàm
+                block_element = ET.Element('block', {'type': 'procedures_callnoreturn'})
+                ET.SubElement(block_element, 'mutation', {'name': block_data.get("name")})
+            elif block_type == "maze_repeat":
                 block_element = ET.Element('block', {'type': 'maze_repeat'})
                 value_el = ET.SubElement(block_element, 'value', {'name': 'TIMES'})
                 shadow_el = ET.SubElement(value_el, 'shadow', {'type': 'math_number'})
@@ -63,14 +67,19 @@ def _create_xml_from_structured_solution(program_dict: dict) -> str:
                 if inner_blocks:
                     # Nối các khối bên trong statement lại với nhau
                     for i in range(len(inner_blocks) - 1):
-                        next_tag = ET.Element('next')
-                        next_tag.append(inner_blocks[i+1])
-                        inner_blocks[i].append(next_tag)
+                        ET.SubElement(inner_blocks[i], 'next').append(inner_blocks[i+1])
                     statement_el.append(inner_blocks[0])
             else:
-                # Các khối đơn giản khác
+                # [SỬA] Xử lý các khối đơn giản khác
                 action = block_type.replace("maze_", "") if block_type.startswith("maze_") else block_type
-                block_element = ET.Element('block', {'type': f'maze_{action}'})
+                # Blockly không có khối maze_collect, chỉ có maze_collect
+                if action == "collect":
+                    block_element = ET.Element('block', {'type': 'maze_collect'})
+                elif action == "toggleSwitch":
+                    block_element = ET.Element('block', {'type': 'maze_toggle_switch'})
+                else:
+                    block_element = ET.Element('block', {'type': f'maze_{action}'})
+
                 if action == "turn":
                     direction = block_data.get("direction", "turnLeft")
                     field_el = ET.SubElement(block_element, 'field', {'name': 'DIR'})
@@ -78,19 +87,44 @@ def _create_xml_from_structured_solution(program_dict: dict) -> str:
             
             elements.append(block_element)
         return elements
-
-    # Xử lý chương trình chính
-    main_blocks = build_blocks_recursively(program_dict.get("main", []))
     
-    # Nối các khối ở cấp cao nhất của chương trình chính
-    if not main_blocks:
-        return ""
-    for i in range(len(main_blocks) - 1):
-        next_tag = ET.Element('next')
-        next_tag.append(main_blocks[i+1])
-        main_blocks[i].append(next_tag)
+    # --- [SỬA LỖI] Logic mới để xử lý cả hàm và chương trình chính ---
+    # Sẽ trả về một dictionary chứa các khối định nghĩa và khối main riêng biệt.
+    final_xml_components = {"procedures": [], "main": None}
+    
+    # 1. Xử lý các khối định nghĩa hàm (procedures)
+    for proc_name, proc_body in program_dict.get("procedures", {}).items():
+        # [SỬA] Thêm deletable="false" và bỏ x, y
+        proc_def_block = ET.Element('block', {'type': 'procedures_defnoreturn', 'deletable': 'false'})
         
-    return ET.tostring(main_blocks[0], encoding='unicode')
+        field_el = ET.SubElement(proc_def_block, 'field', {'name': 'NAME'})
+        field_el.text = proc_name
+        
+        statement_el = ET.SubElement(proc_def_block, 'statement', {'name': 'STACK'})
+        inner_blocks = build_blocks_recursively(proc_body)
+        if inner_blocks:
+            for i in range(len(inner_blocks) - 1):
+                ET.SubElement(inner_blocks[i], 'next').append(inner_blocks[i+1])
+            statement_el.append(inner_blocks[0])
+        
+        final_xml_components["procedures"].append(ET.tostring(proc_def_block, encoding='unicode'))
+
+    # 2. Xử lý chương trình chính (main)
+    main_blocks = build_blocks_recursively(program_dict.get("main", []))
+    if main_blocks:
+        for i in range(len(main_blocks) - 1):
+            ET.SubElement(main_blocks[i], 'next').append(main_blocks[i+1])
+        final_xml_components["main"] = ET.tostring(main_blocks[0], encoding='unicode')
+
+    # Nối tất cả các thành phần lại thành một chuỗi XML duy nhất
+    # Các khối định nghĩa hàm sẽ ở cấp cao nhất, cùng cấp với maze_start
+    proc_defs_xml = "".join(final_xml_components["procedures"])
+    main_code_xml = final_xml_components["main"] or ""
+
+    # Bọc code chính trong khối maze_start
+    main_start_block = f'<block type="maze_start" deletable="false" movable="false"><statement name="DO">{main_code_xml}</statement></block>'
+    
+    return proc_defs_xml + main_start_block
 
 def main():
     """
@@ -231,7 +265,8 @@ def main():
                     final_inner_blocks = ''
                     bug_type = generation_config.get("params", {}).get("bug_type")
 
-                    # [CẢI TIẾN LỚN] Logic sinh startBlocks cho các bài FixBug
+                    # [CẢI TIẾN LỚN] Logic sinh startBlocks
+                    program_dict = solution_result.get("program_solution_dict", {}) if solution_result else {}
                     if bug_type and solution_result:
                         if bug_type == 'incorrect_parameter':
                             # 1. Lấy lời giải đã tối ưu (có vòng lặp).
@@ -241,27 +276,37 @@ def main():
                             # 3. "Làm hỏng" chuỗi XML đó.
                             final_inner_blocks = create_bug(bug_type, correct_xml)
                         elif bug_type in ['misplaced_block', 'missing_block', 'optimization']:
-                            # Với các lỗi đơn giản, ta làm hỏng danh sách hành động thô.
+                            # 2. Với các lỗi đơn giản, ta làm hỏng danh sách hành động thô.
                             raw_actions = solution_result.get("raw_actions", [])
                             buggy_actions = create_bug(bug_type, raw_actions)
                             final_inner_blocks = actions_to_xml(buggy_actions)
+                        elif bug_type == 'misplaced_function_call':
+                            # [SỬA LỖI] Xử lý bug_type 'misplaced_function_call' một cách chính xác
+                            correct_xml = _create_xml_from_structured_solution(program_dict)
+                            final_inner_blocks = create_bug(bug_type, correct_xml)
                         else:
                             print(f"   - ⚠️ Cảnh báo: bug_type '{bug_type}' chưa được xử lý, trả về start_blocks rỗng.")
                             final_inner_blocks = ''
 
                     # Logic cho các bài học thông thường (không phải fixbug)
-                    elif solution_result and logic_type in ['for_loop', 'function', 'variable']:
+                    elif solution_result and logic_type in ['for_loop', 'function_definition', 'function_decomposition', 'variable']:
                         # Cung cấp lời giải đã tối ưu làm startBlocks để người chơi tham khảo/tái cấu trúc
-                        final_inner_blocks = _create_xml_from_structured_solution(solution_result['program_solution_dict'])
+                        final_inner_blocks = _create_xml_from_structured_solution(program_dict)
                     elif 'start_blocks' in blockly_config_req and blockly_config_req['start_blocks']:
                         raw_start_blocks = blockly_config_req['start_blocks']
-                        final_inner_blocks = raw_start_blocks.replace('<xml>', '').replace('</xml>', '')
+                        # [CẢI TIẾN] Sử dụng XML parser để trích xuất nội dung một cách an toàn
+                        try:
+                            root = ET.fromstring(raw_start_blocks)
+                            final_inner_blocks = "".join(ET.tostring(child, encoding='unicode') for child in root)
+                        except ET.ParseError:
+                            print(f"   - ⚠️ Cảnh báo: Lỗi cú pháp XML trong 'start_blocks' được định nghĩa sẵn. Sử dụng chuỗi thô.")
+                            final_inner_blocks = raw_start_blocks.replace('<xml>', '').replace('</xml>', '')
                     
                     if final_inner_blocks:
-                        final_start_blocks = f"<xml><block type=\"maze_start\" deletable=\"false\" movable=\"false\"><statement name=\"DO\">{final_inner_blocks}</statement></block></xml>"
+                        final_start_blocks = f"<xml>{final_inner_blocks}</xml>"
                     else:
                         # Mặc định: tạo một khối maze_start rỗng
-                        final_start_blocks = "<xml><block type=\"maze_start\" deletable=\"false\" movable=\"false\"><statement name=\"DO\"></block></statement></block></xml>"
+                        final_start_blocks = "<xml><block type=\"maze_start\" deletable=\"false\" movable=\"false\"><statement name=\"DO\"></statement></block></xml>"
 
                     # --- Bước 7: Tổng hợp file JSON cuối cùng ---
                     final_json = {
