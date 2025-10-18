@@ -66,7 +66,7 @@
       ]
     },
     "maxBlocks": 15,
-    "startBlocks": "<xml><block type=\"maze_start\"><statement name=\"DO\"></block></statement></block></xml>"
+    "startBlocks": "<xml><block type=\"maze_start\" deletable=\"false\" movable=\"false\"><statement name=\"DO\"></block></statement></block></xml>"
   },
   "gameConfig": {
     "type": "maze",
@@ -77,7 +77,7 @@
         "position": {
           "x": 6,
           "y": 0,
-          "z": 3
+          "z": 6
         }
       },
       {
@@ -85,7 +85,7 @@
         "position": {
           "x": 7,
           "y": 0,
-          "z": 3
+          "z": 6
         }
       },
       {
@@ -93,7 +93,7 @@
         "position": {
           "x": 8,
           "y": 0,
-          "z": 3
+          "z": 6
         }
       },
       {
@@ -101,7 +101,7 @@
         "position": {
           "x": 9,
           "y": 0,
-          "z": 3
+          "z": 6
         }
       },
       {
@@ -109,7 +109,7 @@
         "position": {
           "x": 10,
           "y": 0,
-          "z": 3
+          "z": 6
         }
       },
       {
@@ -117,7 +117,7 @@
         "position": {
           "x": 11,
           "y": 0,
-          "z": 3
+          "z": 6
         }
       },
       {
@@ -125,7 +125,7 @@
         "position": {
           "x": 12,
           "y": 0,
-          "z": 3
+          "z": 6
         }
       },
       {
@@ -133,7 +133,7 @@
         "position": {
           "x": 13,
           "y": 0,
-          "z": 3
+          "z": 6
         }
       },
       {
@@ -141,7 +141,7 @@
         "position": {
           "x": 9,
           "y": 1,
-          "z": 3
+          "z": 6
         }
       }
     ],
@@ -151,7 +151,7 @@
         "start": {
           "x": 6,
           "y": 1,
-          "z": 3,
+          "z": 6,
           "direction": 1
         }
       }
@@ -161,18 +161,18 @@
         "id": "c1",
         "type": "crystal",
         "position": {
-          "x": 11,
+          "x": 10,
           "y": 1,
-          "z": 3
+          "z": 6
         }
       },
       {
         "id": "c2",
         "type": "crystal",
         "position": {
-          "x": 8,
+          "x": 12,
           "y": 1,
-          "z": 3
+          "z": 6
         }
       }
     ],
@@ -180,7 +180,7 @@
     "finish": {
       "x": 13,
       "y": 1,
-      "z": 3
+      "z": 6
     }
   },
   "solution": {
@@ -190,24 +190,24 @@
     "rawActions": [
       "moveForward",
       "moveForward",
-      "collect",
       "jump",
       "moveForward",
-      "moveForward",
       "collect",
       "moveForward",
+      "moveForward",
+      "collect",
       "moveForward"
     ],
     "structuredSolution": [
       "when Run clicked",
       "  moveForward",
       "  moveForward",
-      "  collect",
       "  jump",
       "  moveForward",
-      "  moveForward",
       "  collect",
       "  moveForward",
+      "  moveForward",
+      "  collect",
       "  moveForward"
     ]
   },

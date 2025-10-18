@@ -6,14 +6,6 @@
       {
         "modelKey": "ground.normal",
         "position": {
-          "x": 3,
-          "y": 0,
-          "z": 4
-        }
-      },
-      {
-        "modelKey": "ground.normal",
-        "position": {
           "x": 4,
           "y": 0,
           "z": 4
@@ -84,9 +76,17 @@
         }
       },
       {
+        "modelKey": "ground.normal",
+        "position": {
+          "x": 13,
+          "y": 0,
+          "z": 4
+        }
+      },
+      {
         "modelKey": "wall.brick01",
         "position": {
-          "x": 6,
+          "x": 11,
           "y": 1,
           "z": 4
         }
@@ -96,7 +96,7 @@
       {
         "id": "player1",
         "start": {
-          "x": 3,
+          "x": 4,
           "y": 1,
           "z": 4,
           "direction": 1
@@ -108,7 +108,7 @@
         "id": "c1",
         "type": "crystal",
         "position": {
-          "x": 8,
+          "x": 7,
           "y": 1,
           "z": 4
         }
@@ -117,7 +117,7 @@
         "id": "c3",
         "type": "crystal",
         "position": {
-          "x": 7,
+          "x": 9,
           "y": 1,
           "z": 4
         }
@@ -128,7 +128,7 @@
         "id": "s2",
         "type": "switch",
         "position": {
-          "x": 11,
+          "x": 5,
           "y": 1,
           "z": 4
         },
@@ -136,7 +136,7 @@
       }
     ],
     "finish": {
-      "x": 12,
+      "x": 13,
       "y": 1,
       "z": 4
     }

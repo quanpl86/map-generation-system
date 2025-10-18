@@ -62,22 +62,6 @@
       {
         "modelKey": "ground.normal",
         "position": {
-          "x": 0,
-          "y": 0,
-          "z": 7
-        }
-      },
-      {
-        "modelKey": "ground.normal",
-        "position": {
-          "x": 0,
-          "y": 0,
-          "z": 8
-        }
-      },
-      {
-        "modelKey": "ground.normal",
-        "position": {
           "x": 1,
           "y": 0,
           "z": 0
@@ -129,22 +113,6 @@
           "x": 1,
           "y": 0,
           "z": 6
-        }
-      },
-      {
-        "modelKey": "ground.normal",
-        "position": {
-          "x": 1,
-          "y": 0,
-          "z": 7
-        }
-      },
-      {
-        "modelKey": "ground.normal",
-        "position": {
-          "x": 1,
-          "y": 0,
-          "z": 8
         }
       },
       {
@@ -206,22 +174,6 @@
       {
         "modelKey": "ground.normal",
         "position": {
-          "x": 2,
-          "y": 0,
-          "z": 7
-        }
-      },
-      {
-        "modelKey": "ground.normal",
-        "position": {
-          "x": 2,
-          "y": 0,
-          "z": 8
-        }
-      },
-      {
-        "modelKey": "ground.normal",
-        "position": {
           "x": 3,
           "y": 0,
           "z": 0
@@ -273,22 +225,6 @@
           "x": 3,
           "y": 0,
           "z": 6
-        }
-      },
-      {
-        "modelKey": "ground.normal",
-        "position": {
-          "x": 3,
-          "y": 0,
-          "z": 7
-        }
-      },
-      {
-        "modelKey": "ground.normal",
-        "position": {
-          "x": 3,
-          "y": 0,
-          "z": 8
         }
       },
       {
@@ -350,22 +286,6 @@
       {
         "modelKey": "ground.normal",
         "position": {
-          "x": 4,
-          "y": 0,
-          "z": 7
-        }
-      },
-      {
-        "modelKey": "ground.normal",
-        "position": {
-          "x": 4,
-          "y": 0,
-          "z": 8
-        }
-      },
-      {
-        "modelKey": "ground.normal",
-        "position": {
           "x": 5,
           "y": 0,
           "z": 0
@@ -417,22 +337,6 @@
           "x": 5,
           "y": 0,
           "z": 6
-        }
-      },
-      {
-        "modelKey": "ground.normal",
-        "position": {
-          "x": 5,
-          "y": 0,
-          "z": 7
-        }
-      },
-      {
-        "modelKey": "ground.normal",
-        "position": {
-          "x": 5,
-          "y": 0,
-          "z": 8
         }
       },
       {
@@ -492,22 +396,6 @@
         }
       },
       {
-        "modelKey": "ground.normal",
-        "position": {
-          "x": 6,
-          "y": 0,
-          "z": 7
-        }
-      },
-      {
-        "modelKey": "ground.normal",
-        "position": {
-          "x": 6,
-          "y": 0,
-          "z": 8
-        }
-      },
-      {
         "modelKey": "wall.brick01",
         "position": {
           "x": 0,
@@ -561,22 +449,6 @@
           "x": 0,
           "y": 1,
           "z": 6
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 0,
-          "y": 1,
-          "z": 7
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 0,
-          "y": 1,
-          "z": 8
         }
       },
       {
@@ -592,7 +464,15 @@
         "position": {
           "x": 1,
           "y": 1,
-          "z": 8
+          "z": 4
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 1,
+          "y": 1,
+          "z": 6
         }
       },
       {
@@ -616,14 +496,6 @@
         "position": {
           "x": 2,
           "y": 1,
-          "z": 3
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 2,
-          "y": 1,
           "z": 4
         }
       },
@@ -631,6 +503,70 @@
         "modelKey": "wall.brick01",
         "position": {
           "x": 2,
+          "y": 1,
+          "z": 6
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 3,
+          "y": 1,
+          "z": 0
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 3,
+          "y": 1,
+          "z": 2
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 3,
+          "y": 1,
+          "z": 6
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 4,
+          "y": 1,
+          "z": 0
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 4,
+          "y": 1,
+          "z": 2
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 4,
+          "y": 1,
+          "z": 3
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 4,
+          "y": 1,
+          "z": 4
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 4,
           "y": 1,
           "z": 5
         }
@@ -638,89 +574,9 @@
       {
         "modelKey": "wall.brick01",
         "position": {
-          "x": 2,
-          "y": 1,
-          "z": 6
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 2,
-          "y": 1,
-          "z": 8
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 3,
-          "y": 1,
-          "z": 0
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 3,
-          "y": 1,
-          "z": 6
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 3,
-          "y": 1,
-          "z": 8
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 4,
-          "y": 1,
-          "z": 0
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 4,
-          "y": 1,
-          "z": 2
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 4,
-          "y": 1,
-          "z": 3
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 4,
-          "y": 1,
-          "z": 4
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
           "x": 4,
           "y": 1,
           "z": 6
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 4,
-          "y": 1,
-          "z": 8
         }
       },
       {
@@ -736,23 +592,7 @@
         "position": {
           "x": 5,
           "y": 1,
-          "z": 4
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 5,
-          "y": 1,
           "z": 6
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 5,
-          "y": 1,
-          "z": 8
         }
       },
       {
@@ -809,22 +649,6 @@
           "x": 6,
           "y": 1,
           "z": 6
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 6,
-          "y": 1,
-          "z": 7
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 6,
-          "y": 1,
-          "z": 8
         }
       }
     ],
@@ -844,7 +668,7 @@
     "finish": {
       "x": 5,
       "y": 1,
-      "z": 7
+      "z": 5
     }
   }
 }

@@ -1,13 +1,13 @@
 {
-  "id": "topic01-req05-item-switch-puzzle-var1",
+  "id": "topic02-req02-refactor-var2",
   "gameType": "maze",
-  "level": 8,
-  "titleKey": "Challenge.topic01-req05.Title",
-  "descriptionKey": "Challenge.topic01-req05.Description",
+  "level": 2,
+  "titleKey": "Challenge.topic02-req02-refactor.Title",
+  "descriptionKey": "Challenge.topic02-req02-refactor.Description",
   "translations": {
     "vi": {
-      "Challenge.topic01-req05.Title": "Câu Đố Vật Phẩm & Công Tắc",
-      "Challenge.topic01-req05.Description": "Thu thập các viên pha lê và bật các công tắc để hoàn thành thử thách."
+      "Challenge.topic02-req02-refactor.Title": "Tái cấu trúc Code",
+      "Challenge.topic02-req02-refactor.Description": "Chương trình này quá dài. Hãy tạo một hàm drawOneSide để làm cho chương trình chính ngắn gọn hơn."
     }
   },
   "supportedEditors": [
@@ -40,11 +40,11 @@
             },
             {
               "kind": "block",
-              "type": "maze_turn"
+              "type": "maze_jump"
             },
             {
               "kind": "block",
-              "type": "maze_jump"
+              "type": "maze_turn"
             }
           ]
         },
@@ -62,10 +62,19 @@
               "type": "maze_toggle_switch"
             }
           ]
+        },
+        {
+          "kind": "sep"
+        },
+        {
+          "kind": "category",
+          "name": "%{BKY_GAMES_CATPROCEDURES}",
+          "custom": "PROCEDURE",
+          "categorystyle": "procedure_category"
         }
       ]
     },
-    "maxBlocks": 17,
+    "maxBlocks": 24,
     "startBlocks": "<xml><block type=\"maze_start\" deletable=\"false\" movable=\"false\"><statement name=\"DO\"></block></statement></block></xml>"
   },
   "gameConfig": {
@@ -75,9 +84,49 @@
       {
         "modelKey": "ground.normal",
         "position": {
+          "x": 2,
+          "y": 0,
+          "z": 7
+        }
+      },
+      {
+        "modelKey": "ground.normal",
+        "position": {
+          "x": 2,
+          "y": 0,
+          "z": 11
+        }
+      },
+      {
+        "modelKey": "ground.normal",
+        "position": {
+          "x": 3,
+          "y": 0,
+          "z": 7
+        }
+      },
+      {
+        "modelKey": "ground.normal",
+        "position": {
+          "x": 3,
+          "y": 0,
+          "z": 11
+        }
+      },
+      {
+        "modelKey": "ground.normal",
+        "position": {
           "x": 4,
           "y": 0,
-          "z": 4
+          "z": 7
+        }
+      },
+      {
+        "modelKey": "ground.normal",
+        "position": {
+          "x": 4,
+          "y": 0,
+          "z": 11
         }
       },
       {
@@ -85,7 +134,15 @@
         "position": {
           "x": 5,
           "y": 0,
-          "z": 4
+          "z": 7
+        }
+      },
+      {
+        "modelKey": "ground.normal",
+        "position": {
+          "x": 5,
+          "y": 0,
+          "z": 11
         }
       },
       {
@@ -93,7 +150,15 @@
         "position": {
           "x": 6,
           "y": 0,
-          "z": 4
+          "z": 7
+        }
+      },
+      {
+        "modelKey": "ground.normal",
+        "position": {
+          "x": 6,
+          "y": 0,
+          "z": 11
         }
       },
       {
@@ -101,63 +166,39 @@
         "position": {
           "x": 7,
           "y": 0,
-          "z": 4
+          "z": 7
         }
       },
       {
         "modelKey": "ground.normal",
         "position": {
-          "x": 8,
+          "x": 7,
           "y": 0,
-          "z": 4
+          "z": 8
         }
       },
       {
         "modelKey": "ground.normal",
         "position": {
-          "x": 9,
+          "x": 7,
           "y": 0,
-          "z": 4
+          "z": 9
         }
       },
       {
         "modelKey": "ground.normal",
         "position": {
-          "x": 10,
+          "x": 7,
           "y": 0,
-          "z": 4
+          "z": 10
         }
       },
       {
         "modelKey": "ground.normal",
         "position": {
-          "x": 11,
+          "x": 7,
           "y": 0,
-          "z": 4
-        }
-      },
-      {
-        "modelKey": "ground.normal",
-        "position": {
-          "x": 12,
-          "y": 0,
-          "z": 4
-        }
-      },
-      {
-        "modelKey": "ground.normal",
-        "position": {
-          "x": 13,
-          "y": 0,
-          "z": 4
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 11,
-          "y": 1,
-          "z": 4
+          "z": 11
         }
       }
     ],
@@ -165,9 +206,9 @@
       {
         "id": "player1",
         "start": {
-          "x": 4,
+          "x": 2,
           "y": 1,
-          "z": 4,
+          "z": 7,
           "direction": 1
         }
       }
@@ -177,68 +218,93 @@
         "id": "c1",
         "type": "crystal",
         "position": {
+          "x": 3,
+          "y": 1,
+          "z": 7
+        }
+      },
+      {
+        "id": "c2",
+        "type": "crystal",
+        "position": {
           "x": 7,
           "y": 1,
-          "z": 4
+          "z": 7
         }
       },
       {
         "id": "c3",
         "type": "crystal",
         "position": {
-          "x": 9,
+          "x": 7,
           "y": 1,
-          "z": 4
+          "z": 11
+        }
+      },
+      {
+        "id": "c4",
+        "type": "crystal",
+        "position": {
+          "x": 3,
+          "y": 1,
+          "z": 11
         }
       }
     ],
-    "interactibles": [
-      {
-        "id": "s2",
-        "type": "switch",
-        "position": {
-          "x": 5,
-          "y": 1,
-          "z": 4
-        },
-        "initialState": "on"
-      }
-    ],
+    "interactibles": [],
     "finish": {
-      "x": 13,
+      "x": 2,
       "y": 1,
-      "z": 4
+      "z": 11
     }
   },
   "solution": {
     "type": "reach_target",
     "itemGoals": {},
-    "optimalBlocks": 12,
+    "optimalBlocks": 19,
     "rawActions": [
       "moveForward",
-      "moveForward",
-      "moveForward",
       "collect",
       "moveForward",
       "moveForward",
+      "moveForward",
+      "moveForward",
       "collect",
+      "turnRight",
       "moveForward",
-      "jump",
       "moveForward",
+      "moveForward",
+      "moveForward",
+      "collect",
+      "turnRight",
+      "moveForward",
+      "moveForward",
+      "moveForward",
+      "moveForward",
+      "collect",
       "moveForward"
     ],
     "structuredSolution": [
       "when Run clicked",
       "  moveForward",
-      "  moveForward",
-      "  moveForward",
       "  collect",
       "  moveForward",
       "  moveForward",
+      "  moveForward",
+      "  moveForward",
       "  collect",
+      "  turn",
       "  moveForward",
-      "  jump",
       "  moveForward",
+      "  moveForward",
+      "  moveForward",
+      "  collect",
+      "  turn",
+      "  moveForward",
+      "  moveForward",
+      "  moveForward",
+      "  moveForward",
+      "  collect",
       "  moveForward"
     ]
   },

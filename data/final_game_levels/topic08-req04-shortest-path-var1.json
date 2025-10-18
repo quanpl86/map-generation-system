@@ -174,7 +174,7 @@
       ]
     },
     "maxBlocks": 20,
-    "startBlocks": "<xml><block type=\"maze_start\"><statement name=\"DO\"></block></statement></block></xml>"
+    "startBlocks": "<xml><block type=\"maze_start\" deletable=\"false\" movable=\"false\"><statement name=\"DO\"></block></statement></block></xml>"
   },
   "gameConfig": {
     "type": "maze",
@@ -1649,6 +1649,14 @@
         "position": {
           "x": 1,
           "y": 1,
+          "z": 2
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 1,
+          "y": 1,
           "z": 12
         }
       },
@@ -1666,14 +1674,6 @@
           "x": 2,
           "y": 1,
           "z": 2
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 2,
-          "y": 1,
-          "z": 3
         }
       },
       {
@@ -1753,14 +1753,6 @@
         "position": {
           "x": 3,
           "y": 1,
-          "z": 8
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 3,
-          "y": 1,
           "z": 10
         }
       },
@@ -1833,7 +1825,23 @@
         "position": {
           "x": 4,
           "y": 1,
+          "z": 7
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 4,
+          "y": 1,
           "z": 8
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 4,
+          "y": 1,
+          "z": 9
         }
       },
       {
@@ -1865,31 +1873,7 @@
         "position": {
           "x": 5,
           "y": 1,
-          "z": 4
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 5,
-          "y": 1,
-          "z": 6
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 5,
-          "y": 1,
           "z": 8
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 5,
-          "y": 1,
-          "z": 10
         }
       },
       {
@@ -1921,7 +1905,23 @@
         "position": {
           "x": 6,
           "y": 1,
+          "z": 3
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 6,
+          "y": 1,
           "z": 4
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 6,
+          "y": 1,
+          "z": 5
         }
       },
       {
@@ -1953,6 +1953,14 @@
         "position": {
           "x": 6,
           "y": 1,
+          "z": 11
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 6,
+          "y": 1,
           "z": 12
         }
       },
@@ -1977,23 +1985,7 @@
         "position": {
           "x": 7,
           "y": 1,
-          "z": 4
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 7,
-          "y": 1,
-          "z": 6
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 7,
-          "y": 1,
-          "z": 10
+          "z": 8
         }
       },
       {
@@ -2026,6 +2018,14 @@
           "x": 8,
           "y": 1,
           "z": 4
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 8,
+          "y": 1,
+          "z": 5
         }
       },
       {
@@ -2057,6 +2057,14 @@
         "position": {
           "x": 8,
           "y": 1,
+          "z": 9
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 8,
+          "y": 1,
           "z": 10
         }
       },
@@ -2082,22 +2090,6 @@
           "x": 9,
           "y": 1,
           "z": 2
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 9,
-          "y": 1,
-          "z": 8
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 9,
-          "y": 1,
-          "z": 10
         }
       },
       {
@@ -2177,7 +2169,7 @@
         "position": {
           "x": 10,
           "y": 1,
-          "z": 10
+          "z": 9
         }
       },
       {
@@ -2185,7 +2177,7 @@
         "position": {
           "x": 10,
           "y": 1,
-          "z": 11
+          "z": 10
         }
       },
       {
@@ -2202,6 +2194,14 @@
           "x": 11,
           "y": 1,
           "z": 0
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 11,
+          "y": 1,
+          "z": 8
         }
       },
       {
@@ -2358,7 +2358,7 @@
       "moveForward",
       "moveForward",
       "moveForward",
-      "moveForward",
+      "jump",
       "moveForward",
       "moveForward",
       "moveForward"
@@ -2368,21 +2368,19 @@
       "  moveForward",
       "  moveForward",
       "  jump",
-      "  repeat (2) do",
+      "  repeat (3) do",
       "    moveForward",
+      "  repeat (3) do",
       "    moveForward",
-      "  moveForward",
-      "  moveForward",
       "  moveForward",
       "  turn",
-      "  repeat (2) do",
+      "  repeat (3) do",
       "    moveForward",
+      "  repeat (3) do",
       "    moveForward",
-      "  moveForward",
-      "  repeat (2) do",
-      "    moveForward",
-      "    moveForward",
-      "  moveForward"
+      "  jump",
+      "  repeat (3) do",
+      "    moveForward"
     ]
   },
   "sounds": {

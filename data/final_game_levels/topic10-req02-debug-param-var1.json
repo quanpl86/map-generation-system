@@ -1,13 +1,13 @@
 {
-  "id": "topic01-fixbug04-optimization-var1",
+  "id": "topic10-req02-debug-param-var1",
   "gameType": "maze",
-  "level": 10,
-  "titleKey": "Challenge.topic01-fixbug04.Title",
-  "descriptionKey": "Challenge.topic01-fixbug04.Description",
+  "level": 2,
+  "titleKey": "Challenge.topic10-req02-debug-param.Title",
+  "descriptionKey": "Challenge.topic10-req02-debug-param.Description",
   "translations": {
     "vi": {
-      "Challenge.topic01-fixbug04.Title": "Sửa Lỗi: Tối Ưu Hóa",
-      "Challenge.topic01-fixbug04.Description": "Chương trình này hoạt động được, nhưng nó đang thừa lệnh. Hãy xóa các khối không cần thiết để đạt 3 sao!"
+      "Challenge.topic10-req02-debug-param.Title": "Sửa lỗi: Rẽ sai hướng",
+      "Challenge.topic10-req02-debug-param.Description": "Nhân vật đang đi sai đường! Có vẻ như một lệnh rẽ đã bị nhầm. Bạn có thể sửa nó không?"
     }
   },
   "supportedEditors": [
@@ -41,32 +41,13 @@
             {
               "kind": "block",
               "type": "maze_turn"
-            },
-            {
-              "kind": "block",
-              "type": "maze_jump"
-            }
-          ]
-        },
-        {
-          "kind": "category",
-          "name": "Actions",
-          "categorystyle": "pond_category",
-          "contents": [
-            {
-              "kind": "block",
-              "type": "maze_collect"
-            },
-            {
-              "kind": "block",
-              "type": "maze_toggle_switch"
             }
           ]
         }
       ]
     },
     "maxBlocks": 12,
-    "startBlocks": "<xml><block type=\"maze_start\" deletable=\"false\" movable=\"false\"><statement name=\"DO\"><block type=\"maze_turn\"><field name=\"DIR\">turnLeft</field><next><block type=\"maze_turn\"><field name=\"DIR\">turnRight</field><next><block type=\"maze_moveForward\"><next><block type=\"maze_moveForward\"><next><block type=\"maze_moveForward\"><next><block type=\"maze_jump\"><next><block type=\"maze_moveForward\"><next><block type=\"maze_moveForward\"></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></statement></block></xml>"
+    "startBlocks": "<xml><block type=\"maze_start\" deletable=\"false\" movable=\"false\"><statement name=\"DO\"><block type=\"maze_moveForward\"><next><block type=\"maze_collect\"><next><block type=\"maze_turn\"><field name=\"DIR\">turnLeft</field><next><block type=\"maze_jump\"><next><block type=\"maze_moveForward\"><next><block type=\"maze_moveForward\" /></next></block></next></block></next></block></next></block></next></block></statement></block></xml>"
   },
   "gameConfig": {
     "type": "maze",
@@ -75,41 +56,25 @@
       {
         "modelKey": "ground.normal",
         "position": {
-          "x": 4,
-          "y": 0,
-          "z": 5
-        }
-      },
-      {
-        "modelKey": "ground.normal",
-        "position": {
-          "x": 5,
-          "y": 0,
-          "z": 5
-        }
-      },
-      {
-        "modelKey": "ground.normal",
-        "position": {
-          "x": 6,
-          "y": 0,
-          "z": 5
-        }
-      },
-      {
-        "modelKey": "ground.normal",
-        "position": {
-          "x": 7,
-          "y": 0,
-          "z": 5
-        }
-      },
-      {
-        "modelKey": "ground.normal",
-        "position": {
           "x": 8,
           "y": 0,
-          "z": 5
+          "z": 3
+        }
+      },
+      {
+        "modelKey": "ground.normal",
+        "position": {
+          "x": 9,
+          "y": 0,
+          "z": 3
+        }
+      },
+      {
+        "modelKey": "ground.normal",
+        "position": {
+          "x": 9,
+          "y": 0,
+          "z": 4
         }
       },
       {
@@ -123,17 +88,17 @@
       {
         "modelKey": "ground.normal",
         "position": {
-          "x": 10,
+          "x": 9,
           "y": 0,
-          "z": 5
+          "z": 6
         }
       },
       {
         "modelKey": "wall.brick01",
         "position": {
-          "x": 8,
+          "x": 9,
           "y": 1,
-          "z": 5
+          "z": 4
         }
       }
     ],
@@ -141,19 +106,29 @@
       {
         "id": "player1",
         "start": {
-          "x": 4,
+          "x": 8,
           "y": 1,
-          "z": 5,
+          "z": 3,
           "direction": 1
         }
       }
     ],
-    "collectibles": [],
+    "collectibles": [
+      {
+        "id": "c1",
+        "type": "crystal",
+        "position": {
+          "x": 9,
+          "y": 1,
+          "z": 3
+        }
+      }
+    ],
     "interactibles": [],
     "finish": {
-      "x": 10,
+      "x": 9,
       "y": 1,
-      "z": 5
+      "z": 6
     }
   },
   "solution": {
@@ -162,8 +137,8 @@
     "optimalBlocks": 7,
     "rawActions": [
       "moveForward",
-      "moveForward",
-      "moveForward",
+      "collect",
+      "turnRight",
       "jump",
       "moveForward",
       "moveForward"
@@ -171,8 +146,8 @@
     "structuredSolution": [
       "when Run clicked",
       "  moveForward",
-      "  moveForward",
-      "  moveForward",
+      "  collect",
+      "  turn",
       "  jump",
       "  moveForward",
       "  moveForward"
