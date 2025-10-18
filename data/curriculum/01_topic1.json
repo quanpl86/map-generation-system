@@ -1,0 +1,126 @@
+{
+  "topic_code": "TOPIC_01",
+  "topic_name": "Lệnh Command và Lập Trình Tuần Tự",
+  "suggested_maps": [
+    {
+      "id": "topic01-req01-linear-collection",
+      "level": 1,
+      "titleKey": "Challenge.topic01-req01.Title",
+      "descriptionKey": "Challenge.topic01-req01.Description",
+      "translations": { "vi": { "Challenge.topic01-req01.Title": "Đường Thẳng Thu Thập", "Challenge.topic01-req01.Description": "Sử dụng các lệnh `moveForward` và `collectItem` để di chuyển và thu thập tất cả các viên pha lê." }},
+      "generation_config": { "map_type": "simple_path", "logic_type": "sequencing", "num_variants": 1, "params": { "path_length": 6, "turns": 0, "items_to_place": ["crystal", "crystal"] }},
+      "blockly_config": { "toolbox_preset": "topic_1_sequencing" },
+      "solution_config": { "type": "reach_target", "itemGoals": { "crystal": 2 } }
+    },
+    {
+      "id": "topic01-fixbug01-misplaced-blocks",
+      "level": 2,
+      "titleKey": "Challenge.topic01-fixbug01.Title",
+      "descriptionKey": "Challenge.topic01-fixbug01.Description",
+      "translations": { "vi": { "Challenge.topic01-fixbug01.Title": "Sửa Lỗi: Sai Vị Trí", "Challenge.topic01-fixbug01.Description": "Các khối lệnh đang bị sai thứ tự. Hãy sắp xếp lại chúng để giúp nhân vật đến đích!" }},
+      "generation_config": { "map_type": "simple_path", "logic_type": "sequencing", "num_variants": 1, "params": { "path_length": 4, "turns": 0, "items_to_place": ["crystal"], "bug_type": "misplaced_block" }},
+      "blockly_config": { "toolbox_preset": "topic_1_sequencing" },
+      "solution_config": { "type": "reach_target", "itemGoals": { "crystal": 1 } }
+    },
+    {
+      "id": "topic01-req02-zigzag-path",
+      "level": 3,
+      "titleKey": "Challenge.topic01-req02.Title",
+      "descriptionKey": "Challenge.topic01-req02.Description",
+      "translations": { "vi": { "Challenge.topic01-req02.Title": "Đường Đi Ngoằn Ngoèo", "Challenge.topic01-req02.Description": "Kết hợp các lệnh di chuyển và rẽ (`turnLeft`/`turnRight`) để đi hết con đường." }},
+      "generation_config": { "map_type": "simple_path", "logic_type": "sequencing", "num_variants": 1, "params": { "path_length": 8, "turns": 2, "items_to_place": [] }},
+      "blockly_config": { "toolbox_preset": "topic_1_sequencing" },
+      "solution_config": { "type": "reach_target", "itemGoals": {} }
+    },
+    {
+      "id": "topic01-fixbug02-incorrect-params",
+      "level": 4,
+      "titleKey": "Challenge.topic01-fixbug02.Title",
+      "descriptionKey": "Challenge.topic01-fixbug02.Description",
+      "translations": { "vi": { "Challenge.topic01-fixbug02.Title": "Sửa Lỗi: Sai Tham Số", "Challenge.topic01-fixbug02.Description": "Chương trình đang chạy sai hướng. Hãy sửa lại khối lệnh rẽ cho đúng!" }},
+      "generation_config": { "map_type": "simple_path", "logic_type": "sequencing", "num_variants": 1, "params": { "path_length": 6, "turns": 1, "items_to_place": [], "bug_type": "incorrect_parameter" }},
+      "blockly_config": { "toolbox_preset": "topic_1_sequencing" },
+      "solution_config": { "type": "reach_target", "itemGoals": {} }
+    },
+    {
+      "id": "topic01-req03-single-switch",
+      "level": 5,
+      "titleKey": "Challenge.topic01-req03.Title",
+      "descriptionKey": "Challenge.topic01-req03.Description",
+      "translations": { "vi": { "Challenge.topic01-req03.Title": "Công Tắc Đơn Lẻ", "Challenge.topic01-req03.Description": "Di chuyển đến công tắc, sử dụng lệnh `toggleSwitch` để bật nó lên, sau đó đi đến đích." }},
+      "generation_config": { "map_type": "simple_path", "logic_type": "sequencing", "num_variants": 1, "params": { "path_length": 6, "turns": 0, "items_to_place": ["switch"] }},
+      "blockly_config": { "toolbox_preset": "topic_1_sequencing" },
+      "solution_config": { "type": "reach_target", "itemGoals": { "switch": 1 } }
+    },
+    {
+      "id": "topic01-req04-sequential-switch",
+      "level": 6,
+      "titleKey": "Challenge.topic01-req04.Title",
+      "descriptionKey": "Challenge.topic01-req04.Description",
+      "translations": { "vi": { "Challenge.topic01-req04.Title": "Công Tắc Tuần Tự", "Challenge.topic01-req04.Description": "Bật tất cả các công tắc theo thứ tự trên đường đi để hoàn thành nhiệm vụ." }},
+      "generation_config": { "map_type": "simple_path", "logic_type": "sequencing", "num_variants": 1, "params": { "path_length": 8, "turns": 0, "items_to_place": ["switch", "switch"] }},
+      "blockly_config": { "toolbox_preset": "topic_1_sequencing" },
+      "solution_config": { "type": "reach_target", "itemGoals": { "switch": 2 } }
+    },
+    {
+      "id": "topic01-fixbug03-missing-blocks",
+      "level": 7,
+      "titleKey": "Challenge.topic01-fixbug03.Title",
+      "descriptionKey": "Challenge.topic01-fixbug03.Description",
+      "translations": { "vi": { "Challenge.topic01-fixbug03.Title": "Sửa Lỗi: Thiếu Lệnh", "Challenge.topic01-fixbug03.Description": "Chương trình bị thiếu một lệnh quan trọng để vượt qua tường. Hãy tìm và bổ sung nó!" }},
+      "generation_config": { "map_type": "simple_path", "logic_type": "obstacle", "num_variants": 1, "params": { "path_length": 5, "turns": 0, "obstacles": 1, "bug_type": "missing_block" }},
+      "blockly_config": { "toolbox_preset": "topic_1_sequencing" },
+      "solution_config": { "type": "reach_target", "itemGoals": {} }
+    },
+    {
+      "id": "topic01-req05-item-switch-puzzle",
+      "level": 8,
+      "titleKey": "Challenge.topic01-req05.Title",
+      "descriptionKey": "Challenge.topic01-req05.Description",
+      "translations": { "vi": { "Challenge.topic01-req05.Title": "Câu Đố Vật Phẩm & Công Tắc", "Challenge.topic01-req05.Description": "Thu thập các viên pha lê và bật các công tắc để hoàn thành thử thách." }},
+      "generation_config": { "map_type": "simple_path", "logic_type": "sequencing", "num_variants": 1, "params": { "path_length": 8, "turns": 0, "items_to_place": ["crystal", "switch", "crystal"] }},
+      "blockly_config": { "toolbox_preset": "topic_1_sequencing" },
+      "solution_config": { "type": "reach_target", "itemGoals": { "crystal": 2, "switch": 1 } }
+    },
+    {
+      "id": "topic01-req06-obstacle-challenge",
+      "level": 9,
+      "titleKey": "Challenge.topic01-req06.Title",
+      "descriptionKey": "Challenge.topic01-req06.Description",
+      "translations": { "vi": { "Challenge.topic01-req06.Title": "Thử Thách Vật Cản", "Challenge.topic01-req06.Description": "Sử dụng `jump` và `moveForward` để vượt qua bức tường trên đường đi." }},
+      "generation_config": { "map_type": "simple_path", "logic_type": "obstacle", "num_variants": 1, "params": { "path_length": 6, "turns": 0, "obstacles": 1 }},
+      "blockly_config": { "toolbox_preset": "topic_1_sequencing" },
+      "solution_config": { "type": "reach_target", "itemGoals": {} }
+    },
+    {
+      "id": "topic01-fixbug04-optimization",
+      "level": 10,
+      "titleKey": "Challenge.topic01-fixbug04.Title",
+      "descriptionKey": "Challenge.topic01-fixbug04.Description",
+      "translations": { "vi": { "Challenge.topic01-fixbug04.Title": "Sửa Lỗi: Tối Ưu Hóa", "Challenge.topic01-fixbug04.Description": "Chương trình này hoạt động được, nhưng nó đang thừa lệnh. Hãy xóa các khối không cần thiết để đạt 3 sao!" }},
+      "generation_config": { "map_type": "simple_path", "logic_type": "sequencing", "num_variants": 1, "params": { "path_length": 5, "turns": 1, "items_to_place": [], "bug_type": "optimization" }},
+      "blockly_config": { "toolbox_preset": "topic_1_sequencing" },
+      "solution_config": { "type": "reach_target", "itemGoals": {} }
+    },
+    {
+      "id": "topic01-req07-comprehensive-challenge",
+      "level": 11,
+      "titleKey": "Challenge.topic01-req07.Title",
+      "descriptionKey": "Challenge.topic01-req07.Description",
+      "translations": { "vi": { "Challenge.topic01-req07.Title": "Thử Thách Tổng Hợp", "Challenge.topic01-req07.Description": "Áp dụng tất cả các kỹ năng: di chuyển, rẽ, thu thập, bật công tắc và vượt chướng ngại vật." }},
+      "generation_config": { "map_type": "simple_path", "logic_type": "obstacle", "num_variants": 1, "params": { "path_length": 9, "turns": 1, "obstacles": 1, "items_to_place": ["crystal", "switch"] }},
+      "blockly_config": { "toolbox_preset": "topic_1_sequencing" },
+      "solution_config": { "type": "reach_target", "itemGoals": { "crystal": 1, "switch": 1 } }
+    },
+    {
+      "id": "topic01-req08-pattern-recognition",
+      "level": 12,
+      "titleKey": "Challenge.topic01-req08.Title",
+      "descriptionKey": "Challenge.topic01-req08.Description",
+      "translations": { "vi": { "Challenge.topic01-req08.Title": "Nhận Diện Mẫu", "Challenge.topic01-req08.Description": "Tìm ra quy luật lặp lại của các hành động để đi đến đích. Gợi ý cho các bài học về vòng lặp sau này!" }},
+      "generation_config": { "map_type": "simple_path", "logic_type": "obstacle", "num_variants": 1, "params": { "path_length": 8, "turns": 0, "obstacles": 2, "items_to_place": ["crystal", "crystal"] }},
+      "blockly_config": { "toolbox_preset": "topic_1_sequencing" },
+      "solution_config": { "type": "reach_target", "itemGoals": { "crystal": 2 } }
+    }
+  ]
+}

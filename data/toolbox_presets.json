@@ -18,6 +18,20 @@
       ]}
     ]
   },
+  "topic_1_sequencing": {
+    "kind": "categoryToolbox",
+    "contents": [
+      { "kind": "category", "name": "Movement", "categorystyle": "turtle_category", "contents": [
+        { "kind": "block", "type": "maze_moveForward" },
+        { "kind": "block", "type": "maze_turn" },
+        { "kind": "block", "type": "maze_jump" }
+      ]},
+      { "kind": "category", "name": "Actions", "categorystyle": "pond_category", "contents": [
+        { "kind": "block", "type": "maze_collect" },
+        { "kind": "block", "type": "maze_toggle_switch" }
+      ]}
+    ]
+  },
   "movement_actions": {
     "kind": "categoryToolbox",
     "contents": [

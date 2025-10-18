@@ -1,13 +1,13 @@
 {
-  "id": "topic02-req02-refactor-var2",
+  "id": "topic01-req08-pattern-recognition-var1",
   "gameType": "maze",
-  "level": 2,
-  "titleKey": "Challenge.topic02-req02-refactor.Title",
-  "descriptionKey": "Challenge.topic02-req02-refactor.Description",
+  "level": 12,
+  "titleKey": "Challenge.topic01-req08.Title",
+  "descriptionKey": "Challenge.topic01-req08.Description",
   "translations": {
     "vi": {
-      "Challenge.topic02-req02-refactor.Title": "Tái cấu trúc Code",
-      "Challenge.topic02-req02-refactor.Description": "Chương trình này quá dài. Hãy tạo một hàm drawOneSide để làm cho chương trình chính ngắn gọn hơn."
+      "Challenge.topic01-req08.Title": "Nhận Diện Mẫu",
+      "Challenge.topic01-req08.Description": "Tìm ra quy luật lặp lại của các hành động để đi đến đích. Gợi ý cho các bài học về vòng lặp sau này!"
     }
   },
   "supportedEditors": [
@@ -40,11 +40,11 @@
             },
             {
               "kind": "block",
-              "type": "maze_jump"
+              "type": "maze_turn"
             },
             {
               "kind": "block",
-              "type": "maze_turn"
+              "type": "maze_jump"
             }
           ]
         },
@@ -62,20 +62,11 @@
               "type": "maze_toggle_switch"
             }
           ]
-        },
-        {
-          "kind": "sep"
-        },
-        {
-          "kind": "category",
-          "name": "%{BKY_GAMES_CATPROCEDURES}",
-          "custom": "PROCEDURE",
-          "categorystyle": "procedure_category"
         }
       ]
     },
-    "maxBlocks": 24,
-    "startBlocks": "<xml><block type=\"maze_start\"><statement name=\"DO\"><block type=\"maze_moveForward\"><next><block type=\"maze_collect\"><next><block type=\"maze_moveForward\"><next><block type=\"maze_moveForward\"><next><block type=\"maze_moveForward\"><next><block type=\"maze_moveForward\"><next><block type=\"maze_collect\"><next><block type=\"maze_turn\"><field name=\"DIR\">turnRight</field><next><block type=\"maze_moveForward\"><next><block type=\"maze_moveForward\"><next><block type=\"maze_moveForward\"><next><block type=\"maze_moveForward\"><next><block type=\"maze_collect\"><next><block type=\"maze_turn\"><field name=\"DIR\">turnRight</field><next><block type=\"maze_moveForward\"><next><block type=\"maze_moveForward\"><next><block type=\"maze_moveForward\"><next><block type=\"maze_moveForward\"><next><block type=\"maze_collect\"><next><block type=\"maze_moveForward\" /></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></statement></block></xml>"
+    "maxBlocks": 17,
+    "startBlocks": "<xml><block type=\"maze_start\"><statement name=\"DO\"></block></statement></block></xml>"
   },
   "gameConfig": {
     "type": "maze",
@@ -84,9 +75,25 @@
       {
         "modelKey": "ground.normal",
         "position": {
-          "x": 7,
+          "x": 4,
           "y": 0,
-          "z": 4
+          "z": 1
+        }
+      },
+      {
+        "modelKey": "ground.normal",
+        "position": {
+          "x": 5,
+          "y": 0,
+          "z": 1
+        }
+      },
+      {
+        "modelKey": "ground.normal",
+        "position": {
+          "x": 6,
+          "y": 0,
+          "z": 1
         }
       },
       {
@@ -94,7 +101,7 @@
         "position": {
           "x": 7,
           "y": 0,
-          "z": 8
+          "z": 1
         }
       },
       {
@@ -102,15 +109,7 @@
         "position": {
           "x": 8,
           "y": 0,
-          "z": 4
-        }
-      },
-      {
-        "modelKey": "ground.normal",
-        "position": {
-          "x": 8,
-          "y": 0,
-          "z": 8
+          "z": 1
         }
       },
       {
@@ -118,15 +117,7 @@
         "position": {
           "x": 9,
           "y": 0,
-          "z": 4
-        }
-      },
-      {
-        "modelKey": "ground.normal",
-        "position": {
-          "x": 9,
-          "y": 0,
-          "z": 8
+          "z": 1
         }
       },
       {
@@ -134,15 +125,7 @@
         "position": {
           "x": 10,
           "y": 0,
-          "z": 4
-        }
-      },
-      {
-        "modelKey": "ground.normal",
-        "position": {
-          "x": 10,
-          "y": 0,
-          "z": 8
+          "z": 1
         }
       },
       {
@@ -150,55 +133,39 @@
         "position": {
           "x": 11,
           "y": 0,
-          "z": 4
+          "z": 1
         }
       },
       {
         "modelKey": "ground.normal",
+        "position": {
+          "x": 12,
+          "y": 0,
+          "z": 1
+        }
+      },
+      {
+        "modelKey": "ground.normal",
+        "position": {
+          "x": 13,
+          "y": 0,
+          "z": 1
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
         "position": {
           "x": 11,
-          "y": 0,
-          "z": 8
+          "y": 1,
+          "z": 1
         }
       },
       {
-        "modelKey": "ground.normal",
+        "modelKey": "wall.brick01",
         "position": {
           "x": 12,
-          "y": 0,
-          "z": 4
-        }
-      },
-      {
-        "modelKey": "ground.normal",
-        "position": {
-          "x": 12,
-          "y": 0,
-          "z": 5
-        }
-      },
-      {
-        "modelKey": "ground.normal",
-        "position": {
-          "x": 12,
-          "y": 0,
-          "z": 6
-        }
-      },
-      {
-        "modelKey": "ground.normal",
-        "position": {
-          "x": 12,
-          "y": 0,
-          "z": 7
-        }
-      },
-      {
-        "modelKey": "ground.normal",
-        "position": {
-          "x": 12,
-          "y": 0,
-          "z": 8
+          "y": 1,
+          "z": 1
         }
       }
     ],
@@ -206,9 +173,9 @@
       {
         "id": "player1",
         "start": {
-          "x": 7,
+          "x": 4,
           "y": 1,
-          "z": 4,
+          "z": 1,
           "direction": 1
         }
       }
@@ -218,93 +185,57 @@
         "id": "c1",
         "type": "crystal",
         "position": {
-          "x": 8,
+          "x": 9,
           "y": 1,
-          "z": 4
+          "z": 1
         }
       },
       {
         "id": "c2",
         "type": "crystal",
         "position": {
-          "x": 12,
+          "x": 10,
           "y": 1,
-          "z": 4
-        }
-      },
-      {
-        "id": "c3",
-        "type": "crystal",
-        "position": {
-          "x": 12,
-          "y": 1,
-          "z": 8
-        }
-      },
-      {
-        "id": "c4",
-        "type": "crystal",
-        "position": {
-          "x": 8,
-          "y": 1,
-          "z": 8
+          "z": 1
         }
       }
     ],
     "interactibles": [],
     "finish": {
-      "x": 7,
+      "x": 13,
       "y": 1,
-      "z": 8
+      "z": 1
     }
   },
   "solution": {
     "type": "reach_target",
     "itemGoals": {},
-    "optimalBlocks": 19,
+    "optimalBlocks": 12,
     "rawActions": [
       "moveForward",
-      "collect",
       "moveForward",
       "moveForward",
       "moveForward",
       "moveForward",
       "collect",
-      "turnRight",
-      "moveForward",
-      "moveForward",
-      "moveForward",
       "moveForward",
       "collect",
-      "turnRight",
+      "jump",
       "moveForward",
-      "moveForward",
-      "moveForward",
-      "moveForward",
-      "collect",
       "moveForward"
     ],
     "structuredSolution": [
       "when Run clicked",
       "  moveForward",
-      "  collect",
       "  moveForward",
       "  moveForward",
       "  moveForward",
       "  moveForward",
       "  collect",
-      "  turn",
-      "  moveForward",
-      "  moveForward",
-      "  moveForward",
       "  moveForward",
       "  collect",
-      "  turn",
+      "  jump",
       "  moveForward",
-      "  moveForward",
-      "  moveForward",
-      "  moveForward",
-      "  collect",
       "  moveForward"
     ]
   },

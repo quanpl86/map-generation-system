@@ -1,13 +1,13 @@
 {
-  "id": "topic1-challengeC1_L2_T2_e01b07",
+  "id": "topic01-fixbug02-incorrect-params-var1",
   "gameType": "maze",
-  "level": 2,
-  "titleKey": "Challenge.T1.CC1.L2.T2.Title",
-  "descriptionKey": "Challenge.T1.CC1.L2.T2.Description",
+  "level": 4,
+  "titleKey": "Challenge.topic01-fixbug02.Title",
+  "descriptionKey": "Challenge.topic01-fixbug02.Description",
   "translations": {
-    "en": {
-      "name": "Jump and Toggle",
-      "description": "Description: Cross the gap and toggle the switch.\\nGoal: Combine move, jump, and toggle commands."
+    "vi": {
+      "Challenge.topic01-fixbug02.Title": "Sửa Lỗi: Sai Tham Số",
+      "Challenge.topic01-fixbug02.Description": "Chương trình đang chạy sai hướng. Hãy sửa lại khối lệnh rẽ cho đúng!"
     }
   },
   "supportedEditors": [
@@ -40,11 +40,11 @@
             },
             {
               "kind": "block",
-              "type": "maze_jump"
+              "type": "maze_turn"
             },
             {
               "kind": "block",
-              "type": "maze_turn"
+              "type": "maze_jump"
             }
           ]
         },
@@ -65,8 +65,8 @@
         }
       ]
     },
-    "maxBlocks": 9,
-    "startBlocks": ""
+    "maxBlocks": 13,
+    "startBlocks": "<xml><block type=\"maze_start\"><statement name=\"DO\"><block type=\"maze_jump\"><next><block type=\"maze_moveForward\"><next><block type=\"maze_moveForward\"><next><block type=\"maze_moveForward\"><next><block type=\"maze_moveForward\"><next><block type=\"maze_moveForward\"></block></next></block></next></block></next></block></next></block></next></block></statement></block></xml>"
   },
   "gameConfig": {
     "type": "maze",
@@ -75,17 +75,9 @@
       {
         "modelKey": "ground.normal",
         "position": {
-          "x": 2,
-          "y": 0,
-          "z": 0
-        }
-      },
-      {
-        "modelKey": "ground.normal",
-        "position": {
           "x": 3,
           "y": 0,
-          "z": 0
+          "z": 3
         }
       },
       {
@@ -93,7 +85,7 @@
         "position": {
           "x": 4,
           "y": 0,
-          "z": 0
+          "z": 3
         }
       },
       {
@@ -101,7 +93,7 @@
         "position": {
           "x": 5,
           "y": 0,
-          "z": 0
+          "z": 3
         }
       },
       {
@@ -109,7 +101,39 @@
         "position": {
           "x": 6,
           "y": 0,
-          "z": 0
+          "z": 3
+        }
+      },
+      {
+        "modelKey": "ground.normal",
+        "position": {
+          "x": 7,
+          "y": 0,
+          "z": 3
+        }
+      },
+      {
+        "modelKey": "ground.normal",
+        "position": {
+          "x": 8,
+          "y": 0,
+          "z": 3
+        }
+      },
+      {
+        "modelKey": "ground.normal",
+        "position": {
+          "x": 9,
+          "y": 0,
+          "z": 3
+        }
+      },
+      {
+        "modelKey": "ground.normal",
+        "position": {
+          "x": 10,
+          "y": 0,
+          "z": 3
         }
       },
       {
@@ -117,7 +141,7 @@
         "position": {
           "x": 4,
           "y": 1,
-          "z": 0
+          "z": 3
         }
       }
     ],
@@ -125,57 +149,44 @@
       {
         "id": "player1",
         "start": {
-          "x": 2,
+          "x": 3,
           "y": 1,
-          "z": 0,
+          "z": 3,
           "direction": 1
         }
       }
     ],
     "collectibles": [],
-    "interactibles": [
-      {
-        "id": "s1",
-        "type": "switch",
-        "position": {
-          "x": 3,
-          "y": 1,
-          "z": 0
-        },
-        "initialState": "off"
-      }
-    ],
-    "obstacles": [
-      {
-        "id": "o1",
-        "type": "wall",
-        "position": {
-          "x": 4,
-          "y": 1,
-          "z": 0
-        }
-      }
-    ],
+    "interactibles": [],
     "finish": {
-      "x": 6,
+      "x": 10,
       "y": 1,
-      "z": 0
+      "z": 3
     }
   },
   "solution": {
     "type": "reach_target",
-    "itemGoals": {
-      "obstacle": 1,
-      "switch": 1
-    },
-    "optimalBlocks": 5,
+    "itemGoals": {},
+    "optimalBlocks": 8,
     "rawActions": [
-      "moveForward",
-      "toggleSwitch",
       "jump",
+      "moveForward",
+      "moveForward",
+      "moveForward",
+      "moveForward",
+      "moveForward",
       "moveForward"
     ],
-    "structuredSolution": "MAIN PROGRAM:\n  On start:\n    moveForward\n    toggleSwitch\n    jump\n    moveForward"
+    "structuredSolution": [
+      "when Run clicked",
+      "  jump",
+      "  moveForward",
+      "  moveForward",
+      "  moveForward",
+      "  moveForward",
+      "  moveForward",
+      "  moveForward"
+    ]
   },
   "sounds": {
     "win": "/assets/maze/win.mp3",

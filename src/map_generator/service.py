@@ -12,6 +12,7 @@ from .topologies.spiral import SpiralTopology
 from .topologies.interspersed_path import InterspersedPathTopology
 from .topologies.complex_maze import ComplexMazeTopology
 from .placements.sequencing_placer import SequencingPlacer
+from .placements.obstacle_placer import ObstaclePlacer # THÊM MỚI
 from .placements.for_loop_placer import ForLoopPlacer
 from .placements.function_placer import FunctionPlacer
 from .placements.variable_placer import VariablePlacer
@@ -39,6 +40,7 @@ class MapGeneratorService:
         }
         self.placements = {
             'sequencing': SequencingPlacer(),
+            'obstacle': ObstaclePlacer(), # THÊM MỚI
             'function_definition': FunctionPlacer(),
             'function_decomposition': FunctionPlacer(),
             'function_with_params': FunctionPlacer(),

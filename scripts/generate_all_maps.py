@@ -4,6 +4,7 @@ import json
 import os
 import copy # Import module copy
 import sys
+import random
 
 # --- Thiết lập đường dẫn để import từ thư mục src ---
 # Lấy đường dẫn đến thư mục gốc của dự án (đi lên 2 cấp từ file hiện tại)
@@ -18,21 +19,83 @@ if SRC_PATH not in sys.path:
 from map_generator.service import MapGeneratorService
 from scripts.gameSolver import solve_map_and_get_solution
 import re
-import random
 import xml.etree.ElementTree as ET
 
-def _create_xml_from_actions(actions: list) -> str:
+def create_buggy_start_blocks(raw_actions: list, bug_type: str) -> list:
     """
-    Tạo một chuỗi XML chứa các khối lệnh từ một danh sách các hành động (actions).
+    Tạo ra một phiên bản lỗi của chuỗi hành động dựa trên loại lỗi được chỉ định.
     """
-    xml_blocks = []
-    for action in actions:
-        if action == 'turnLeft' or action == 'turnRight':
-            xml_blocks.append(f'<block type="maze_turn"><field name="DIR">{action}</field></block>')
+    buggy_actions = list(raw_actions)
+    if not buggy_actions:
+        return []
+
+    print(f"    LOG: Creating bug of type '{bug_type}' from {len(raw_actions)} optimal actions.")
+
+    if bug_type == 'misplaced_block' and len(buggy_actions) >= 2:
+        # Lỗi 1: Sai vị trí khối lệnh (Hoán đổi 2 khối lệnh ngẫu nhiên)
+        idx1, idx2 = random.sample(range(len(buggy_actions)), 2)
+        buggy_actions[idx1], buggy_actions[idx2] = buggy_actions[idx2], buggy_actions[idx1]
+        print(f"      -> Swapped actions at index {idx1} and {idx2}.")
+
+    elif bug_type == 'missing_block':
+        # Lỗi 2 & 3: Thiếu khối lệnh / Tham số sai (Xóa một khối lệnh ngẫu nhiên)
+        # Việc xóa một 'moveForward' tương đương với lỗi 'tham số sai' (di chuyển không đủ)
+        # Việc xóa 'jump' hoặc 'collect' là lỗi 'thiếu khối lệnh'
+        if len(buggy_actions) > 1:
+            # Ưu tiên xóa các hành động quan trọng
+            important_actions = ['collect', 'jump', 'toggleSwitch', 'turnLeft', 'turnRight']
+            for act in important_actions:
+                if act in buggy_actions:
+                    buggy_actions.remove(act)
+                    print(f"      -> Removed important action '{act}'.")
+                    return buggy_actions
+            # Nếu không có, xóa một hành động ngẫu nhiên
+            remove_idx = random.randint(0, len(buggy_actions) - 1)
+            removed_action = buggy_actions.pop(remove_idx)
+            print(f"      -> Removed random action '{removed_action}' at index {remove_idx}.")
+
+    elif bug_type == 'incorrect_parameter':
+        # Lỗi 2 (biến thể): Sai hướng rẽ
+        turn_indices = [i for i, action in enumerate(buggy_actions) if action.startswith('turn')]
+        if turn_indices:
+            idx_to_change = random.choice(turn_indices)
+            original_action = buggy_actions[idx_to_change]
+            buggy_actions[idx_to_change] = 'turnRight' if original_action == 'turnLeft' else 'turnLeft'
+            print(f"      -> Flipped turn direction at index {idx_to_change}.")
         else:
-            # Giả định các action khác có type trùng tên (e.g., 'moveForward' -> <block type="maze_moveForward">)
-            xml_blocks.append(f'<block type="maze_{action}"></block>')
-    return "".join(xml_blocks)
+            # Nếu không có turn, quay về lỗi thiếu khối 'moveForward' để mô phỏng sai tham số
+            if 'moveForward' in buggy_actions:
+                buggy_actions.remove('moveForward')
+                print("      -> No turn found, removed 'moveForward' to simulate incorrect parameter.")
+
+    elif bug_type == 'optimization':
+        # Lỗi 4: Tối ưu hóa (Thêm một khối lệnh thừa)
+        if len(buggy_actions) > 0:
+            insert_idx = random.randint(0, len(buggy_actions))
+            # Thêm một cặp lệnh thừa tự hủy (vd: turnLeft rồi turnRight)
+            buggy_actions.insert(insert_idx, 'turnRight')
+            buggy_actions.insert(insert_idx, 'turnLeft')
+            print(f"      -> Inserted redundant turn actions at index {insert_idx}.")
+
+    return buggy_actions
+
+def actions_to_xml(actions: list) -> str:
+    """Chuyển đổi danh sách hành động thành chuỗi XML lồng nhau cho Blockly."""
+    if not actions:
+        return ""
+    
+    action = actions[0]
+    # Đệ quy tạo chuỗi cho các khối còn lại
+    next_block_xml = actions_to_xml(actions[1:])
+    next_tag = f"<next>{next_block_xml}</next>" if next_block_xml else ""
+
+    if action == 'turnLeft' or action == 'turnRight':
+        direction = 'turnLeft' if action == 'turnLeft' else 'turnRight'
+        return f'<block type="maze_turn"><field name="DIR">{direction}</field>{next_tag}</block>'
+    
+    # Các action khác như moveForward, jump, collect, toggleSwitch
+    action_name = action.replace("maze_", "")
+    return f'<block type="maze_{action_name}">{next_tag}</block>'
 
 def _create_xml_from_structured_solution(program_dict: dict) -> str:
     """
@@ -120,46 +183,6 @@ def _introduce_parameter_bug(xml_string: str) -> str:
         return xml_string
 
     return xml_string # Trả về chuỗi gốc nếu không tìm thấy mục tiêu để tạo lỗi
-
-def _introduce_order_bug(actions: list) -> list:
-    """[MỚI] Cố tình tạo lỗi thứ tự bằng cách tráo đổi hai hành động liền kề."""
-    if len(actions) < 2: return actions
-    
-    # Tìm một vị trí "thú vị" để tráo đổi (ví dụ: collect và move)
-    possible_swaps = []
-    for i in range(len(actions) - 1):
-        a1, a2 = actions[i], actions[i+1]
-        if a1 != a2 and ('collect' in [a1, a2] or 'turn' in a1 or 'turn' in a2):
-            possible_swaps.append(i)
-    
-    if possible_swaps:
-        swap_index = random.choice(possible_swaps)
-        print(f"    -> Tạo lỗi thứ tự: Tráo đổi hành động tại vị trí {swap_index} và {swap_index + 1}.")
-        actions[swap_index], actions[swap_index+1] = actions[swap_index+1], actions[swap_index]
-    else: # Nếu không có vị trí nào thú vị, tráo đổi ngẫu nhiên một cặp không giống nhau
-        non_identical_indices = [i for i in range(len(actions) - 1) if actions[i] != actions[i+1]]
-        if non_identical_indices:
-            swap_index = random.choice(non_identical_indices)
-            actions[swap_index], actions[swap_index+1] = actions[swap_index+1], actions[swap_index]
-
-    return actions
-
-def _introduce_missing_block_bug(actions: list) -> list:
-    """[MỚI] Cố tình tạo lỗi thiếu sót bằng cách xóa một hành động quan trọng."""
-    if not actions: return []
-    
-    # Ưu tiên xóa các hành động quan trọng
-    important_actions = ['collect', 'turnLeft', 'turnRight', 'jump', 'toggleSwitch']
-    for action_type in important_actions:
-        if action_type in actions:
-            print(f"    -> Tạo lỗi thiếu sót: Xóa một khối '{action_type}'.")
-            actions.remove(action_type)
-            return actions
-    
-    # Nếu không có, xóa một hành động bất kỳ (trừ hành động đầu tiên)
-    if len(actions) > 1:
-        actions.pop(random.randint(1, len(actions) - 1))
-    return actions
 
 def main():
     """
@@ -296,65 +319,24 @@ def main():
                     }
                     solution_result = solve_map_and_get_solution(temp_level_for_solver)
 
-                    # --- (CẢI TIẾN) Tự động bọc start_blocks vào trong khối maze_start ---
-                    start_block_type = blockly_config_req.get('start_block_type', '') # Logic mới
+                    # --- Logic mới để sinh startBlocks động cho các thử thách FixBug ---
                     final_inner_blocks = ''
-                    
-                    # Logic mới để sinh startBlocks động
-                    if start_block_type == 'refactor_from_raw_actions' and solution_result:
-                        print("    -> Sinh startBlocks động từ 'raw_actions' cho bài toán tái cấu trúc.")
-                        # 1. Tạo chuỗi XML thô từ raw_actions của solver
-                        raw_actions_xml = _create_xml_from_actions(solution_result['raw_actions'])
-                        # 2. Nối các khối lại với nhau
-                        # Sử dụng hàm mới để tạo XML an toàn
-                        root = ET.fromstring(f"<root>{raw_actions_xml}</root>")
-                        blocks = list(root)
-                        for i in range(len(blocks) - 1):
-                            next_tag = ET.Element('next')
-                            next_tag.append(blocks[i+1])
-                            blocks[i].append(next_tag)
-                        final_inner_blocks = ET.tostring(blocks[0], encoding='unicode') if blocks else ''
+                    bug_type = generation_config.get("params", {}).get("bug_type")
 
-                    elif start_block_type == 'debug_wrong_parameter' and solution_result:
-                        print("    -> Sinh startBlocks động cho bài toán 'Gỡ lỗi tham số'.")
-                        # 1. Tạo chuỗi XML từ lời giải có cấu trúc
-                        final_inner_blocks = _create_xml_from_structured_solution(solution_result['program_solution_dict'])
-                        # 2. "Làm hỏng" chuỗi XML đã được nối bằng cách thay đổi một tham số
-                        final_inner_blocks = _introduce_parameter_bug(final_inner_blocks)
-
-                    elif start_block_type == 'debug_wrong_order' and solution_result:
-                        print("    -> Sinh startBlocks động cho bài toán 'Gỡ lỗi thứ tự'.")
-                        bugged_actions = _introduce_order_bug(solution_result['raw_actions'].copy())
-                        raw_actions_xml = _create_xml_from_actions(bugged_actions)
-                        root = ET.fromstring(f"<root>{raw_actions_xml}</root>")
-                        blocks = list(root)
-                        for i in range(len(blocks) - 1):
-                            next_tag = ET.Element('next')
-                            next_tag.append(blocks[i+1])
-                            blocks[i].append(next_tag)
-                        final_inner_blocks = ET.tostring(blocks[0], encoding='unicode') if blocks else ''
-
-                    elif start_block_type == 'debug_missing_block' and solution_result:
-                        print("    -> Sinh startBlocks động cho bài toán 'Gỡ lỗi thiếu sót'.")
-                        bugged_actions = _introduce_missing_block_bug(solution_result['raw_actions'].copy())
-                        raw_actions_xml = _create_xml_from_actions(bugged_actions)
-                        root = ET.fromstring(f"<root>{raw_actions_xml}</root>")
-                        blocks = list(root)
-                        for i in range(len(blocks) - 1):
-                            next_tag = ET.Element('next')
-                            next_tag.append(blocks[i+1])
-                            blocks[i].append(next_tag)
-                        final_inner_blocks = ET.tostring(blocks[0], encoding='unicode') if blocks else ''
-
-                    # Giữ lại logic cũ cho các trường hợp chưa được nâng cấp
+                    if bug_type and solution_result:
+                        # Nếu là thử thách FixBug, tạo start_blocks bị lỗi
+                        raw_actions = solution_result.get("raw_actions", [])
+                        buggy_actions = create_buggy_start_blocks(raw_actions, bug_type)
+                        final_inner_blocks = actions_to_xml(buggy_actions)
                     elif 'start_blocks' in blockly_config_req and blockly_config_req['start_blocks']:
+                        # Giữ lại logic cũ cho các trường hợp start_blocks được định nghĩa sẵn
                         raw_start_blocks = blockly_config_req['start_blocks']
                         final_inner_blocks = raw_start_blocks.replace('<xml>', '').replace('</xml>', '')
                     
                     if final_inner_blocks:
                         final_start_blocks = f"<xml><block type=\"maze_start\"><statement name=\"DO\">{final_inner_blocks}</statement></block></xml>"
                     else:
-                        # Mặc định: tạo một khối maze_start rỗng
+                        # Mặc định cho các bài không phải FixBug: tạo một khối maze_start rỗng
                         final_start_blocks = "<xml><block type=\"maze_start\"><statement name=\"DO\"></block></statement></block></xml>"
 
                     # --- Bước 7: Tổng hợp file JSON cuối cùng ---

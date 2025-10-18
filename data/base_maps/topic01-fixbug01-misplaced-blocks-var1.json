@@ -6,7 +6,7 @@
       {
         "modelKey": "ground.normal",
         "position": {
-          "x": 2,
+          "x": 6,
           "y": 0,
           "z": 3
         }
@@ -22,7 +22,7 @@
       {
         "modelKey": "ground.normal",
         "position": {
-          "x": 3,
+          "x": 8,
           "y": 0,
           "z": 3
         }
@@ -30,7 +30,7 @@
       {
         "modelKey": "ground.normal",
         "position": {
-          "x": 4,
+          "x": 9,
           "y": 0,
           "z": 3
         }
@@ -38,7 +38,7 @@
       {
         "modelKey": "ground.normal",
         "position": {
-          "x": 5,
+          "x": 10,
           "y": 0,
           "z": 3
         }
@@ -46,8 +46,16 @@
       {
         "modelKey": "ground.normal",
         "position": {
-          "x": 6,
+          "x": 11,
           "y": 0,
+          "z": 3
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 7,
+          "y": 1,
           "z": 3
         }
       }
@@ -56,17 +64,27 @@
       {
         "id": "player1",
         "start": {
-          "x": 2,
+          "x": 6,
           "y": 1,
           "z": 3,
           "direction": 1
         }
       }
     ],
-    "collectibles": [],
+    "collectibles": [
+      {
+        "id": "c1",
+        "type": "crystal",
+        "position": {
+          "x": 10,
+          "y": 1,
+          "z": 3
+        }
+      }
+    ],
     "interactibles": [],
     "finish": {
-      "x": 7,
+      "x": 11,
       "y": 1,
       "z": 3
     }

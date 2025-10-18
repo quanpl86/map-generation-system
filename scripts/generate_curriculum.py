@@ -22,13 +22,15 @@ def parse_params(param_string):
             value = value.strip()
             # Cố gắng chuyển đổi value thành số hoặc list nếu có thể
             try:
-                # Xử lý trường hợp list, ví dụ: [2,3]
+                # [SỬA LỖI] Xử lý trường hợp list, ví dụ: [2,3] hoặc ['a','b']
                 if value.startswith('[') and value.endswith(']'):
+                    # Thay thế nháy đơn bằng nháy kép để tuân thủ JSON
+                    value = value.replace("'", '"')
                     params[key] = json.loads(value)
                 else:
-                    params[key] = int(value)
+                    params[key] = int(value) # Thử chuyển thành số nguyên
             except (ValueError, json.JSONDecodeError):
-                params[key] = value
+                params[key] = value # Nếu thất bại, giữ nguyên là chuỗi
     return params
 
 def main():
