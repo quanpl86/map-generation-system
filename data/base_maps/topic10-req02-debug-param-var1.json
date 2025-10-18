@@ -8,7 +8,15 @@
         "position": {
           "x": 3,
           "y": 0,
-          "z": 6
+          "z": 5
+        }
+      },
+      {
+        "modelKey": "ground.normal",
+        "position": {
+          "x": 4,
+          "y": 0,
+          "z": 5
         }
       },
       {
@@ -36,19 +44,11 @@
         }
       },
       {
-        "modelKey": "ground.normal",
-        "position": {
-          "x": 4,
-          "y": 0,
-          "z": 9
-        }
-      },
-      {
         "modelKey": "wall.brick01",
         "position": {
           "x": 4,
           "y": 1,
-          "z": 7
+          "z": 6
         }
       }
     ],
@@ -58,7 +58,7 @@
         "start": {
           "x": 3,
           "y": 1,
-          "z": 6,
+          "z": 5,
           "direction": 1
         }
       }
@@ -70,7 +70,7 @@
         "position": {
           "x": 4,
           "y": 1,
-          "z": 8
+          "z": 7
         }
       }
     ],
@@ -78,7 +78,7 @@
     "finish": {
       "x": 4,
       "y": 1,
-      "z": 9
+      "z": 8
     }
   }
 }

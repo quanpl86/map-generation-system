@@ -75,7 +75,7 @@
       ]
     },
     "maxBlocks": 17,
-    "startBlocks": "<xml><block type=\"procedures_defnoreturn\" deletable=\"false\"><field name=\"NAME\">PROCEDURE_1</field><statement name=\"STACK\"><block type=\"maze_moveForward\"><next><block type=\"maze_collect\"><next><block type=\"maze_moveForward\"><next><block type=\"maze_collect\"><next><block type=\"maze_moveForward\" /></next></block></next></block></next></block></next></block></statement></block><block type=\"maze_start\" deletable=\"false\" movable=\"false\"><statement name=\"DO\"><block type=\"procedures_callnoreturn\"><mutation name=\"PROCEDURE_1\" /><next><block type=\"maze_collect\"><next><block type=\"maze_moveForward\" /></next></block></next></block></statement></block></xml>"
+    "startBlocks": "<xml><block type=\"procedures_defnoreturn\" deletable=\"false\"><field name=\"NAME\">PROCEDURE_1</field><statement name=\"STACK\"><block type=\"maze_moveForward\"><next><block type=\"maze_collect\"><next><block type=\"maze_moveForward\"><next><block type=\"maze_collect\"><next><block type=\"maze_moveForward\" /></next></block></next></block></next></block></next></block></statement></block><block type=\"maze_start\" deletable=\"false\" movable=\"false\"><statement name=\"DO\"><block type=\"procedures_callnoreturn\"><mutation name=\"PROCEDURE_1\" /><next><block type=\"maze_collect\"><next><block type=\"procedures_callnoreturn\"><mutation name=\"PROCEDURE_1\" /><next><block type=\"maze_collect\"><next><block type=\"maze_moveForward\" /></next></block></next></block></next></block></next></block></statement></block></xml>"
   },
   "gameConfig": {
     "type": "maze",
@@ -84,33 +84,9 @@
       {
         "modelKey": "ground.normal",
         "position": {
-          "x": 1,
-          "y": 0,
-          "z": 3
-        }
-      },
-      {
-        "modelKey": "ground.normal",
-        "position": {
-          "x": 2,
-          "y": 0,
-          "z": 3
-        }
-      },
-      {
-        "modelKey": "ground.normal",
-        "position": {
-          "x": 3,
-          "y": 0,
-          "z": 3
-        }
-      },
-      {
-        "modelKey": "ground.normal",
-        "position": {
           "x": 4,
           "y": 0,
-          "z": 3
+          "z": 5
         }
       },
       {
@@ -118,7 +94,7 @@
         "position": {
           "x": 5,
           "y": 0,
-          "z": 3
+          "z": 5
         }
       },
       {
@@ -126,7 +102,7 @@
         "position": {
           "x": 6,
           "y": 0,
-          "z": 3
+          "z": 5
         }
       },
       {
@@ -134,7 +110,7 @@
         "position": {
           "x": 7,
           "y": 0,
-          "z": 3
+          "z": 5
         }
       },
       {
@@ -142,7 +118,31 @@
         "position": {
           "x": 8,
           "y": 0,
-          "z": 3
+          "z": 5
+        }
+      },
+      {
+        "modelKey": "ground.normal",
+        "position": {
+          "x": 9,
+          "y": 0,
+          "z": 5
+        }
+      },
+      {
+        "modelKey": "ground.normal",
+        "position": {
+          "x": 10,
+          "y": 0,
+          "z": 5
+        }
+      },
+      {
+        "modelKey": "ground.normal",
+        "position": {
+          "x": 11,
+          "y": 0,
+          "z": 5
         }
       }
     ],
@@ -150,9 +150,9 @@
       {
         "id": "player1",
         "start": {
-          "x": 1,
+          "x": 4,
           "y": 1,
-          "z": 3,
+          "z": 5,
           "direction": 1
         }
       }
@@ -162,62 +162,62 @@
         "id": "c1",
         "type": "crystal",
         "position": {
-          "x": 2,
+          "x": 5,
           "y": 1,
-          "z": 3
+          "z": 5
         }
       },
       {
         "id": "c2",
         "type": "crystal",
         "position": {
-          "x": 3,
+          "x": 6,
           "y": 1,
-          "z": 3
+          "z": 5
         }
       },
       {
         "id": "c3",
         "type": "crystal",
         "position": {
-          "x": 4,
+          "x": 7,
           "y": 1,
-          "z": 3
+          "z": 5
         }
       },
       {
         "id": "c4",
         "type": "crystal",
         "position": {
-          "x": 5,
+          "x": 8,
           "y": 1,
-          "z": 3
+          "z": 5
         }
       },
       {
         "id": "c5",
         "type": "crystal",
         "position": {
-          "x": 6,
+          "x": 9,
           "y": 1,
-          "z": 3
+          "z": 5
         }
       },
       {
         "id": "c6",
         "type": "crystal",
         "position": {
-          "x": 7,
+          "x": 10,
           "y": 1,
-          "z": 3
+          "z": 5
         }
       }
     ],
     "interactibles": [],
     "finish": {
-      "x": 8,
+      "x": 11,
       "y": 1,
-      "z": 3
+      "z": 5
     }
   },
   "solution": {

@@ -173,7 +173,7 @@
         }
       ]
     },
-    "maxBlocks": 32,
+    "maxBlocks": 28,
     "startBlocks": "<xml><block type=\"maze_start\" deletable=\"false\" movable=\"false\"><statement name=\"DO\"></statement></block></xml>"
   },
   "gameConfig": {
@@ -1249,7 +1249,7 @@
         "position": {
           "x": 1,
           "y": 1,
-          "z": 8
+          "z": 6
         }
       },
       {
@@ -1281,14 +1281,6 @@
         "position": {
           "x": 2,
           "y": 1,
-          "z": 3
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 2,
-          "y": 1,
           "z": 4
         }
       },
@@ -1304,102 +1296,6 @@
         "modelKey": "wall.brick01",
         "position": {
           "x": 2,
-          "y": 1,
-          "z": 8
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 2,
-          "y": 1,
-          "z": 10
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 3,
-          "y": 1,
-          "z": 0
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 3,
-          "y": 1,
-          "z": 2
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 3,
-          "y": 1,
-          "z": 6
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 3,
-          "y": 1,
-          "z": 10
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 4,
-          "y": 1,
-          "z": 0
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 4,
-          "y": 1,
-          "z": 1
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 4,
-          "y": 1,
-          "z": 2
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 4,
-          "y": 1,
-          "z": 4
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 4,
-          "y": 1,
-          "z": 5
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 4,
-          "y": 1,
-          "z": 6
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 4,
           "y": 1,
           "z": 7
         }
@@ -1407,6 +1303,102 @@
       {
         "modelKey": "wall.brick01",
         "position": {
+          "x": 2,
+          "y": 1,
+          "z": 8
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 2,
+          "y": 1,
+          "z": 10
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 3,
+          "y": 1,
+          "z": 0
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 3,
+          "y": 1,
+          "z": 2
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 3,
+          "y": 1,
+          "z": 4
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 3,
+          "y": 1,
+          "z": 8
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 3,
+          "y": 1,
+          "z": 10
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 4,
+          "y": 1,
+          "z": 0
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 4,
+          "y": 1,
+          "z": 2
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 4,
+          "y": 1,
+          "z": 4
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 4,
+          "y": 1,
+          "z": 5
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 4,
+          "y": 1,
+          "z": 6
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
           "x": 4,
           "y": 1,
           "z": 8
@@ -1433,7 +1425,31 @@
         "position": {
           "x": 5,
           "y": 1,
+          "z": 2
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 5,
+          "y": 1,
           "z": 4
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 5,
+          "y": 1,
+          "z": 6
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 5,
+          "y": 1,
+          "z": 8
         }
       },
       {
@@ -1465,23 +1481,7 @@
         "position": {
           "x": 6,
           "y": 1,
-          "z": 3
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 6,
-          "y": 1,
           "z": 4
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 6,
-          "y": 1,
-          "z": 5
         }
       },
       {
@@ -1496,96 +1496,96 @@
         "modelKey": "wall.brick01",
         "position": {
           "x": 6,
+          "y": 1,
+          "z": 8
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 6,
+          "y": 1,
+          "z": 10
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 7,
+          "y": 1,
+          "z": 0
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 7,
+          "y": 1,
+          "z": 2
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 7,
+          "y": 1,
+          "z": 4
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 7,
+          "y": 1,
+          "z": 10
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 8,
+          "y": 1,
+          "z": 0
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 8,
+          "y": 1,
+          "z": 2
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 8,
+          "y": 1,
+          "z": 4
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 8,
+          "y": 1,
+          "z": 5
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 8,
+          "y": 1,
+          "z": 6
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 8,
           "y": 1,
           "z": 7
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 6,
-          "y": 1,
-          "z": 8
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 6,
-          "y": 1,
-          "z": 10
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 7,
-          "y": 1,
-          "z": 0
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 7,
-          "y": 1,
-          "z": 8
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 7,
-          "y": 1,
-          "z": 10
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 8,
-          "y": 1,
-          "z": 0
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 8,
-          "y": 1,
-          "z": 2
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 8,
-          "y": 1,
-          "z": 3
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 8,
-          "y": 1,
-          "z": 4
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 8,
-          "y": 1,
-          "z": 5
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 8,
-          "y": 1,
-          "z": 6
         }
       },
       {
@@ -1617,7 +1617,7 @@
         "position": {
           "x": 9,
           "y": 1,
-          "z": 4
+          "z": 2
         }
       },
       {
@@ -1741,27 +1741,27 @@
         "id": "c1",
         "type": "crystal",
         "position": {
-          "x": 3,
-          "y": 1,
-          "z": 1
-        }
-      },
-      {
-        "id": "c2",
-        "type": "crystal",
-        "position": {
           "x": 5,
           "y": 1,
           "z": 5
         }
       },
       {
+        "id": "c2",
+        "type": "crystal",
+        "position": {
+          "x": 9,
+          "y": 1,
+          "z": 1
+        }
+      },
+      {
         "id": "c3",
         "type": "crystal",
         "position": {
-          "x": 1,
+          "x": 9,
           "y": 1,
-          "z": 9
+          "z": 7
         }
       }
     ],
@@ -1775,38 +1775,43 @@
   "solution": {
     "type": "reach_target",
     "itemGoals": {},
-    "optimalBlocks": 27,
+    "optimalBlocks": 23,
     "rawActions": [
       "moveForward",
       "moveForward",
+      "moveForward",
+      "moveForward",
+      "moveForward",
+      "moveForward",
+      "moveForward",
+      "moveForward",
       "collect",
+      "turnRight",
+      "jump",
+      "moveForward",
+      "moveForward",
+      "moveForward",
+      "moveForward",
+      "moveForward",
+      "collect",
+      "turnRight",
+      "jump",
+      "moveForward",
+      "moveForward",
+      "moveForward",
+      "turnRight",
+      "jump",
+      "moveForward",
+      "collect",
+      "turnRight",
+      "moveForward",
+      "moveForward",
       "jump",
       "moveForward",
       "turnRight",
       "moveForward",
       "moveForward",
       "jump",
-      "moveForward",
-      "collect",
-      "moveForward",
-      "moveForward",
-      "moveForward",
-      "moveForward",
-      "turnRight",
-      "moveForward",
-      "moveForward",
-      "moveForward",
-      "moveForward",
-      "collect",
-      "turnLeft",
-      "turnLeft",
-      "moveForward",
-      "moveForward",
-      "moveForward",
-      "moveForward",
-      "moveForward",
-      "moveForward",
-      "moveForward",
       "moveForward"
     ],
     "structuredSolution": [
@@ -1816,29 +1821,25 @@
       "",
       "MAIN PROGRAM:",
       "  On start:",
-      "  moveForward",
-      "  moveForward",
-      "  collect",
+      "  CALL PROCEDURE_1",
+      "  repeat (2) do:",
+      "    CALL PROCEDURE_1",
+      "    moveForward",
+      "    moveForward",
+      "    collect",
+      "    maze_turn",
+      "    jump",
+      "  CALL PROCEDURE_1",
+      "  maze_turn",
       "  jump",
       "  moveForward",
-      "  maze_turn",
-      "  moveForward",
-      "  moveForward",
-      "  jump",
-      "  moveForward",
       "  collect",
-      "  CALL PROCEDURE_1",
-      "  moveForward",
-      "  maze_turn",
-      "  CALL PROCEDURE_1",
-      "  moveForward",
-      "  collect",
-      "  maze_turn",
-      "  maze_turn",
-      "  CALL PROCEDURE_1",
-      "  CALL PROCEDURE_1",
-      "  moveForward",
-      "  moveForward"
+      "  repeat (2) do:",
+      "    maze_turn",
+      "    moveForward",
+      "    moveForward",
+      "    jump",
+      "    moveForward"
     ]
   },
   "sounds": {

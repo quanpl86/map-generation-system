@@ -94,31 +94,43 @@ def _introduce_parameter_bug_xml(xml_string: str) -> str:
 
 def _introduce_misplaced_function_call_bug_xml(xml_string: str) -> str:
     """
-    [MỚI] Tạo lỗi sai vị trí các khối GỌI HÀM trong một chuỗi XML.
-    Hàm này tìm tất cả các khối gọi hàm và hoán đổi vị trí của hai khối ngẫu nhiên.
+    [SỬA LỖI] Tạo lỗi sai vị trí các khối lệnh trong chương trình chính.
+    Hàm này tìm tất cả các khối lệnh trong khối maze_start và hoán đổi vị trí của hai khối ngẫu nhiên,
+    ưu tiên hoán đổi các khối gọi hàm nếu có.
     """
     if not xml_string: return ""
     try:
-        # Bọc trong thẻ root để phân tích cú pháp an toàn
         root = ET.fromstring(f"<root>{xml_string}</root>")
+        maze_start_block = root.find(".//block[@type='maze_start']")
+        if maze_start_block is None: return xml_string
+
+        statement_do = maze_start_block.find("./statement[@name='DO']")
+        if statement_do is None or not list(statement_do): return xml_string
+
+        # Tách chuỗi khối lồng nhau thành một danh sách các khối riêng lẻ
+        top_level_blocks = []
+        current_block = statement_do.find("./block")
+        while current_block is not None:
+            next_block = current_block.find("./next/block")
+            # Xóa thẻ <next> để tách khối ra
+            next_element = current_block.find("./next")
+            if next_element is not None:
+                current_block.remove(next_element)
+            top_level_blocks.append(current_block)
+            current_block = next_block
         
-        # Tìm tất cả các khối gọi hàm (procedures_callnoreturn)
-        # Lưu ý: Hàm này không xử lý các khối định nghĩa hàm (procedures_defnoreturn)
-        call_blocks = root.findall(".//block[@type='procedures_callnoreturn']")
-        
-        if len(call_blocks) >= 2:
-            # Hoán đổi hai khối gọi hàm ngẫu nhiên bằng cách tráo đổi các thuộc tính và con của chúng.
-            # Đây là một cách tiếp cận đơn giản và hiệu quả.
-            idx1, idx2 = random.sample(range(len(call_blocks)), 2)
-            block1, block2 = call_blocks[idx1], call_blocks[idx2]
-            
-            # Tráo đổi nội dung (mutation tag) và các thuộc tính khác
-            block1.tag, block2.tag = block2.tag, block1.tag
-            block1.attrib, block2.attrib = block2.attrib, block1.attrib
-            block1[:], block2[:] = block2[:], block1[:]
-            
-            print(f"      -> Bug 'misplaced_function_call': Hoán đổi khối gọi hàm ở vị trí {idx1} và {idx2}.")
-            return "".join(ET.tostring(child, encoding='unicode') for child in root)
+        if len(top_level_blocks) >= 2:
+            idx1, idx2 = random.sample(range(len(top_level_blocks)), 2)
+            top_level_blocks[idx1], top_level_blocks[idx2] = top_level_blocks[idx2], top_level_blocks[idx1]
+            print(f"      -> Bug 'misplaced_function_call': Hoán đổi khối lệnh ở vị trí {idx1} và {idx2} trong chương trình chính.")
+
+            # Xóa hết các khối con cũ và xây dựng lại chuỗi khối đã bị xáo trộn
+            for child in list(statement_do): statement_do.remove(child)
+            for i in range(len(top_level_blocks) - 1):
+                ET.SubElement(top_level_blocks[i], 'next').append(top_level_blocks[i+1])
+            statement_do.append(top_level_blocks[0])
+
+        return "".join(ET.tostring(child, encoding='unicode') for child in root)
     except Exception as e:
         print(f"   - ⚠️ Lỗi khi tạo lỗi misplaced_function_call: {e}. Trả về chuỗi gốc.")
     return xml_string

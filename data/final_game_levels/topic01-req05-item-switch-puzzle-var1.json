@@ -75,25 +75,9 @@
       {
         "modelKey": "ground.normal",
         "position": {
-          "x": 2,
-          "y": 0,
-          "z": 3
-        }
-      },
-      {
-        "modelKey": "ground.normal",
-        "position": {
-          "x": 3,
-          "y": 0,
-          "z": 3
-        }
-      },
-      {
-        "modelKey": "ground.normal",
-        "position": {
           "x": 4,
           "y": 0,
-          "z": 3
+          "z": 4
         }
       },
       {
@@ -101,7 +85,7 @@
         "position": {
           "x": 5,
           "y": 0,
-          "z": 3
+          "z": 4
         }
       },
       {
@@ -109,7 +93,7 @@
         "position": {
           "x": 6,
           "y": 0,
-          "z": 3
+          "z": 4
         }
       },
       {
@@ -117,7 +101,7 @@
         "position": {
           "x": 7,
           "y": 0,
-          "z": 3
+          "z": 4
         }
       },
       {
@@ -125,7 +109,7 @@
         "position": {
           "x": 8,
           "y": 0,
-          "z": 3
+          "z": 4
         }
       },
       {
@@ -133,7 +117,7 @@
         "position": {
           "x": 9,
           "y": 0,
-          "z": 3
+          "z": 4
         }
       },
       {
@@ -141,7 +125,7 @@
         "position": {
           "x": 10,
           "y": 0,
-          "z": 3
+          "z": 4
         }
       },
       {
@@ -149,15 +133,31 @@
         "position": {
           "x": 11,
           "y": 0,
-          "z": 3
+          "z": 4
+        }
+      },
+      {
+        "modelKey": "ground.normal",
+        "position": {
+          "x": 12,
+          "y": 0,
+          "z": 4
+        }
+      },
+      {
+        "modelKey": "ground.normal",
+        "position": {
+          "x": 13,
+          "y": 0,
+          "z": 4
         }
       },
       {
         "modelKey": "wall.brick01",
         "position": {
-          "x": 5,
+          "x": 9,
           "y": 1,
-          "z": 3
+          "z": 4
         }
       }
     ],
@@ -165,9 +165,9 @@
       {
         "id": "player1",
         "start": {
-          "x": 2,
+          "x": 4,
           "y": 1,
-          "z": 3,
+          "z": 4,
           "direction": 1
         }
       }
@@ -177,18 +177,18 @@
         "id": "c1",
         "type": "crystal",
         "position": {
-          "x": 7,
+          "x": 8,
           "y": 1,
-          "z": 3
+          "z": 4
         }
       },
       {
         "id": "c3",
         "type": "crystal",
         "position": {
-          "x": 3,
+          "x": 6,
           "y": 1,
-          "z": 3
+          "z": 4
         }
       }
     ],
@@ -197,17 +197,17 @@
         "id": "s2",
         "type": "switch",
         "position": {
-          "x": 4,
+          "x": 11,
           "y": 1,
-          "z": 3
+          "z": 4
         },
         "initialState": "on"
       }
     ],
     "finish": {
-      "x": 11,
+      "x": 13,
       "y": 1,
-      "z": 3
+      "z": 4
     }
   },
   "solution": {
@@ -216,12 +216,12 @@
     "optimalBlocks": 12,
     "rawActions": [
       "moveForward",
+      "moveForward",
       "collect",
       "moveForward",
+      "moveForward",
+      "collect",
       "jump",
-      "moveForward",
-      "moveForward",
-      "collect",
       "moveForward",
       "moveForward",
       "moveForward",
@@ -231,12 +231,12 @@
       "MAIN PROGRAM:",
       "  On start:",
       "  moveForward",
+      "  moveForward",
       "  collect",
       "  moveForward",
+      "  moveForward",
+      "  collect",
       "  jump",
-      "  moveForward",
-      "  moveForward",
-      "  collect",
       "  moveForward",
       "  moveForward",
       "  moveForward",
