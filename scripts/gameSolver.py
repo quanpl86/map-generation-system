@@ -313,15 +313,29 @@ def find_most_frequent_sequence(actions: List[str], min_len=3, max_len=10, force
         for i in range(len(actions_tuple) - length + 1):
             sequence_counts[actions_tuple[i:i+length]] += 1
 
-    most_common, max_freq, best_savings = None, 1, 0
-    for seq, freq in sequence_counts.items():
-        if freq > 1:
-            # [SỬA] Thay đổi cách tính "lợi ích"
-            # Nếu không ép buộc tạo hàm, chỉ tạo khi nó thực sự tiết kiệm khối lệnh.
-            # Nếu ép buộc, chỉ cần nó xuất hiện nhiều hơn 1 lần là đủ.
-            savings = (freq - 1) * len(seq) - (len(seq) + freq) if not force_function else freq
-            if savings > best_savings:
-                best_savings, most_common, max_freq = savings, seq, freq
+    # [CẢI TIẾN] Ưu tiên tìm các chuỗi có 'jump' khi force_function=True
+    def find_best_sequence(sequences: List[Tuple[Tuple[str, ...], int]]) -> Optional[Tuple[List[str], int]]:
+        most_common, max_freq, best_savings = None, 1, 0
+        for seq, freq in sequences:
+            if freq > 1:
+                # Nếu không ép buộc tạo hàm, chỉ tạo khi nó thực sự tiết kiệm khối lệnh.
+                # Nếu ép buộc, chỉ cần nó xuất hiện nhiều hơn 1 lần là đủ.
+                savings = (freq - 1) * len(seq) - (len(seq) + freq) if not force_function else freq
+                if savings > best_savings:
+                    best_savings, most_common, max_freq = savings, seq, freq
+        return (list(most_common), max_freq) if most_common else None
+
+    all_sequences = list(sequence_counts.items())
+    
+    if force_function:
+        # Ưu tiên các chuỗi có 'jump'
+        jump_sequences = [item for item in all_sequences if 'jump' in item[0]]
+        best_jump_seq = find_best_sequence(jump_sequences)
+        if best_jump_seq:
+            return best_jump_seq
+
+    # Nếu không có chuỗi jump phù hợp hoặc không force, tìm trong tất cả các chuỗi
+    most_common, max_freq = find_best_sequence(all_sequences) or (None, 0)
     return (list(most_common), max_freq) if most_common else None
 
 def compress_actions_to_structure(actions: List[str], available_blocks: Set[str]) -> List[Dict]:

@@ -75,25 +75,9 @@
       {
         "modelKey": "ground.normal",
         "position": {
-          "x": 3,
-          "y": 0,
-          "z": 5
-        }
-      },
-      {
-        "modelKey": "ground.normal",
-        "position": {
-          "x": 4,
-          "y": 0,
-          "z": 5
-        }
-      },
-      {
-        "modelKey": "ground.normal",
-        "position": {
           "x": 5,
           "y": 0,
-          "z": 5
+          "z": 4
         }
       },
       {
@@ -101,7 +85,7 @@
         "position": {
           "x": 6,
           "y": 0,
-          "z": 5
+          "z": 4
         }
       },
       {
@@ -109,7 +93,7 @@
         "position": {
           "x": 7,
           "y": 0,
-          "z": 5
+          "z": 4
         }
       },
       {
@@ -117,7 +101,7 @@
         "position": {
           "x": 8,
           "y": 0,
-          "z": 5
+          "z": 4
         }
       },
       {
@@ -125,15 +109,31 @@
         "position": {
           "x": 9,
           "y": 0,
-          "z": 5
+          "z": 4
+        }
+      },
+      {
+        "modelKey": "ground.normal",
+        "position": {
+          "x": 10,
+          "y": 0,
+          "z": 4
+        }
+      },
+      {
+        "modelKey": "ground.normal",
+        "position": {
+          "x": 11,
+          "y": 0,
+          "z": 4
         }
       },
       {
         "modelKey": "wall.brick01",
         "position": {
-          "x": 4,
+          "x": 10,
           "y": 1,
-          "z": 5
+          "z": 4
         }
       }
     ],
@@ -141,9 +141,9 @@
       {
         "id": "player1",
         "start": {
-          "x": 3,
+          "x": 5,
           "y": 1,
-          "z": 5,
+          "z": 4,
           "direction": 1
         }
       }
@@ -151,9 +151,9 @@
     "collectibles": [],
     "interactibles": [],
     "finish": {
-      "x": 9,
+      "x": 11,
       "y": 1,
-      "z": 5
+      "z": 4
     }
   },
   "solution": {
@@ -161,21 +161,21 @@
     "itemGoals": {},
     "optimalBlocks": 7,
     "rawActions": [
+      "moveForward",
+      "moveForward",
+      "moveForward",
+      "moveForward",
       "jump",
-      "moveForward",
-      "moveForward",
-      "moveForward",
-      "moveForward",
       "moveForward"
     ],
     "structuredSolution": [
       "MAIN PROGRAM:",
       "  On start:",
+      "  moveForward",
+      "  moveForward",
+      "  moveForward",
+      "  moveForward",
       "  jump",
-      "  moveForward",
-      "  moveForward",
-      "  moveForward",
-      "  moveForward",
       "  moveForward"
     ]
   },
