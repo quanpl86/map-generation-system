@@ -74,8 +74,8 @@
         }
       ]
     },
-    "maxBlocks": 12,
-    "startBlocks": "<xml><block type=\"maze_start\" deletable=\"false\" movable=\"false\"><statement name=\"DO\"><block type=\"maze_moveForward\"><next><block type=\"maze_moveForward\"><next><block type=\"maze_moveForward\"><next><block type=\"maze_jump\"><next><block type=\"maze_moveForward\"><next><block type=\"maze_moveForward\" /></next></block></next></block></next></block></next></block></next></block></statement></block></xml>"
+    "maxBlocks": 14,
+    "startBlocks": "<xml><block type=\"procedures_defnoreturn\" deletable=\"false\"><field name=\"NAME\">crossObstacle</field><statement name=\"STACK\"><block type=\"maze_moveForward\"><next><block type=\"maze_moveForward\"><next><block type=\"maze_moveForward\" /></next></block></next></block></statement></block><block type=\"maze_start\" deletable=\"false\" movable=\"false\"><statement name=\"DO\"><block type=\"maze_moveForward\"><next><block type=\"maze_jump\"><next><block type=\"procedures_callnoreturn\"><mutation name=\"crossObstacle\" /><next><block type=\"maze_moveForward\" /></next></block></next></block></next></block></statement></block></xml>"
   },
   "gameConfig": {
     "type": "maze",
@@ -84,17 +84,9 @@
       {
         "modelKey": "ground.normal",
         "position": {
-          "x": 5,
-          "y": 0,
-          "z": 1
-        }
-      },
-      {
-        "modelKey": "ground.normal",
-        "position": {
           "x": 6,
           "y": 0,
-          "z": 1
+          "z": 5
         }
       },
       {
@@ -102,7 +94,7 @@
         "position": {
           "x": 7,
           "y": 0,
-          "z": 1
+          "z": 5
         }
       },
       {
@@ -110,7 +102,7 @@
         "position": {
           "x": 8,
           "y": 0,
-          "z": 1
+          "z": 5
         }
       },
       {
@@ -118,7 +110,7 @@
         "position": {
           "x": 9,
           "y": 0,
-          "z": 1
+          "z": 5
         }
       },
       {
@@ -126,7 +118,7 @@
         "position": {
           "x": 10,
           "y": 0,
-          "z": 1
+          "z": 5
         }
       },
       {
@@ -134,15 +126,23 @@
         "position": {
           "x": 11,
           "y": 0,
-          "z": 1
+          "z": 5
+        }
+      },
+      {
+        "modelKey": "ground.normal",
+        "position": {
+          "x": 12,
+          "y": 0,
+          "z": 5
         }
       },
       {
         "modelKey": "wall.brick01",
         "position": {
-          "x": 9,
+          "x": 8,
           "y": 1,
-          "z": 1
+          "z": 5
         }
       }
     ],
@@ -150,9 +150,9 @@
       {
         "id": "player1",
         "start": {
-          "x": 5,
+          "x": 6,
           "y": 1,
-          "z": 1,
+          "z": 5,
           "direction": 1
         }
       }
@@ -160,31 +160,34 @@
     "collectibles": [],
     "interactibles": [],
     "finish": {
-      "x": 11,
+      "x": 12,
       "y": 1,
-      "z": 1
+      "z": 5
     }
   },
   "solution": {
     "type": "reach_target",
     "itemGoals": {},
-    "optimalBlocks": 7,
+    "optimalBlocks": 9,
     "rawActions": [
       "moveForward",
-      "moveForward",
-      "moveForward",
       "jump",
+      "moveForward",
+      "moveForward",
       "moveForward",
       "moveForward"
     ],
     "structuredSolution": [
+      "DEFINE crossObstacle:",
+      "  moveForward",
+      "  moveForward",
+      "  moveForward",
+      "",
       "MAIN PROGRAM:",
       "  On start:",
       "  moveForward",
-      "  moveForward",
-      "  moveForward",
       "  jump",
-      "  moveForward",
+      "  CALL crossObstacle",
       "  moveForward"
     ]
   },

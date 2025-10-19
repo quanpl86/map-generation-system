@@ -98,7 +98,7 @@
         "params": {
           "path_length": 5,
           "obstacles": 1,
-          "bug_type": "incorrect_parameter",
+          "bug_type": "wrong_block_in_function",
           "start_blocks_type": "buggy_solution"
         }
       },

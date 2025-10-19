@@ -267,20 +267,23 @@ def main():
                     start_blocks_type = generation_config.get("params", {}).get("start_blocks_type", "empty")
 
                     # [CẢI TIẾN LỚN] Logic sinh startBlocks
+                    # [SỬA LỖI] Phân tách rõ ràng các loại bug để tránh xung đột logic
+                    xml_bug_types = {'incorrect_parameter', 'misplaced_function_call', 'wrong_block_in_loop', 'wrong_block_in_function'}
+                    raw_action_bug_types = {'misplaced_block', 'optimization'}
+
                     program_dict = solution_result.get("program_solution_dict", {}) if solution_result else {}
                     if start_blocks_type == "buggy_solution" and bug_type and solution_result:
-                        if bug_type in ['incorrect_parameter', 'missing_block', 'misplaced_function_call']:
-                            # 1. Lấy lời giải đã tối ưu (có vòng lặp).
+                        # Ưu tiên xử lý các bug cần cấu trúc XML (hàm, vòng lặp)
+                        if bug_type in xml_bug_types or (bug_type == 'missing_block' and program_dict.get("procedures")):
                             optimized_solution_dict = solution_result.get("program_solution_dict", {})
-                            # 2. Chuyển nó thành XML.
                             correct_xml = _create_xml_from_structured_solution(optimized_solution_dict)
-                            # 3. "Làm hỏng" chuỗi XML đó.
                             final_inner_blocks = create_bug(bug_type, correct_xml)
-                        elif bug_type in ['misplaced_block', 'missing_block', 'optimization']:
+                        # Xử lý các bug trên chuỗi hành động thô
+                        elif bug_type in raw_action_bug_types or (bug_type == 'missing_block'):
                             # Với các lỗi đơn giản, ta làm hỏng danh sách hành động thô.
                             raw_actions = solution_result.get("raw_actions", [])
                             buggy_actions = create_bug(bug_type, raw_actions)
-                            final_inner_blocks = actions_to_xml(buggy_actions)
+                            final_inner_blocks = f'<block type="maze_start" deletable="false" movable="false"><statement name="DO">{actions_to_xml(buggy_actions)}</statement></block>'
                         else:
                             print(f"   - ⚠️ Cảnh báo: bug_type '{bug_type}' chưa được xử lý, trả về start_blocks rỗng.")
                             final_inner_blocks = ''

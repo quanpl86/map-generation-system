@@ -173,7 +173,7 @@
         }
       ]
     },
-    "maxBlocks": 25,
+    "maxBlocks": 32,
     "startBlocks": "<xml><block type=\"maze_start\" deletable=\"false\" movable=\"false\"><statement name=\"DO\"></statement></block></xml>"
   },
   "gameConfig": {
@@ -1249,6 +1249,14 @@
         "position": {
           "x": 1,
           "y": 1,
+          "z": 2
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 1,
+          "y": 1,
           "z": 10
         }
       },
@@ -1297,14 +1305,6 @@
         "position": {
           "x": 2,
           "y": 1,
-          "z": 7
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 2,
-          "y": 1,
           "z": 8
         }
       },
@@ -1337,7 +1337,15 @@
         "position": {
           "x": 3,
           "y": 1,
-          "z": 4
+          "z": 6
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 3,
+          "y": 1,
+          "z": 8
         }
       },
       {
@@ -1361,7 +1369,7 @@
         "position": {
           "x": 4,
           "y": 1,
-          "z": 1
+          "z": 2
         }
       },
       {
@@ -1369,7 +1377,7 @@
         "position": {
           "x": 4,
           "y": 1,
-          "z": 2
+          "z": 3
         }
       },
       {
@@ -1386,14 +1394,6 @@
           "x": 4,
           "y": 1,
           "z": 6
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 4,
-          "y": 1,
-          "z": 7
         }
       },
       {
@@ -1433,23 +1433,7 @@
         "position": {
           "x": 5,
           "y": 1,
-          "z": 2
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 5,
-          "y": 1,
-          "z": 4
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 5,
-          "y": 1,
-          "z": 8
+          "z": 6
         }
       },
       {
@@ -1474,6 +1458,14 @@
           "x": 6,
           "y": 1,
           "z": 2
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 6,
+          "y": 1,
+          "z": 3
         }
       },
       {
@@ -1505,7 +1497,23 @@
         "position": {
           "x": 6,
           "y": 1,
+          "z": 7
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 6,
+          "y": 1,
           "z": 8
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 6,
+          "y": 1,
+          "z": 9
         }
       },
       {
@@ -1537,23 +1545,7 @@
         "position": {
           "x": 7,
           "y": 1,
-          "z": 4
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 7,
-          "y": 1,
           "z": 6
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 7,
-          "y": 1,
-          "z": 8
         }
       },
       {
@@ -1594,6 +1586,14 @@
           "x": 8,
           "y": 1,
           "z": 6
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 8,
+          "y": 1,
+          "z": 7
         }
       },
       {
@@ -1741,9 +1741,9 @@
         "id": "c1",
         "type": "crystal",
         "position": {
-          "x": 5,
+          "x": 7,
           "y": 1,
-          "z": 1
+          "z": 7
         }
       },
       {
@@ -1761,7 +1761,7 @@
         "position": {
           "x": 3,
           "y": 1,
-          "z": 1
+          "z": 9
         }
       }
     ],
@@ -1775,27 +1775,34 @@
   "solution": {
     "type": "reach_target",
     "itemGoals": {},
-    "optimalBlocks": 20,
+    "optimalBlocks": 27,
     "rawActions": [
       "moveForward",
       "moveForward",
-      "collect",
-      "jump",
-      "moveForward",
-      "collect",
       "turnRight",
       "jump",
       "moveForward",
+      "moveForward",
+      "moveForward",
       "jump",
-      "moveForward",
-      "moveForward",
       "moveForward",
       "jump",
       "moveForward",
       "collect",
       "turnLeft",
+      "jump",
+      "moveForward",
+      "collect",
+      "jump",
+      "moveForward",
+      "turnLeft",
       "moveForward",
       "moveForward",
+      "collect",
+      "turnRight",
+      "jump",
+      "moveForward",
+      "turnRight",
       "moveForward",
       "moveForward"
     ],
@@ -1804,23 +1811,30 @@
       "  On start:",
       "  moveForward",
       "  moveForward",
-      "  collect",
-      "  jump",
-      "  moveForward",
-      "  collect",
       "  maze_turn",
+      "  jump",
+      "  repeat (3) do:",
+      "    moveForward",
       "  repeat (2) do:",
       "    jump",
       "    moveForward",
-      "  moveForward",
-      "  moveForward",
+      "  collect",
+      "  maze_turn",
       "  jump",
       "  moveForward",
       "  collect",
+      "  jump",
+      "  moveForward",
       "  maze_turn",
-      "  repeat (2) do:",
-      "    moveForward",
-      "    moveForward"
+      "  moveForward",
+      "  moveForward",
+      "  collect",
+      "  maze_turn",
+      "  jump",
+      "  moveForward",
+      "  maze_turn",
+      "  moveForward",
+      "  moveForward"
     ]
   },
   "sounds": {

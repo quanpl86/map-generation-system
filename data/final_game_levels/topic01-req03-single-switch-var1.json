@@ -65,7 +65,7 @@
         }
       ]
     },
-    "maxBlocks": 13,
+    "maxBlocks": 14,
     "startBlocks": "<xml><block type=\"maze_start\" deletable=\"false\" movable=\"false\"><statement name=\"DO\"></statement></block></xml>"
   },
   "gameConfig": {
@@ -139,7 +139,7 @@
       {
         "modelKey": "wall.brick01",
         "position": {
-          "x": 10,
+          "x": 7,
           "y": 1,
           "z": 2
         }
@@ -162,11 +162,11 @@
         "id": "s1",
         "type": "switch",
         "position": {
-          "x": 9,
+          "x": 6,
           "y": 1,
           "z": 2
         },
-        "initialState": "on"
+        "initialState": "off"
       }
     ],
     "finish": {
@@ -178,14 +178,15 @@
   "solution": {
     "type": "reach_target",
     "itemGoals": {},
-    "optimalBlocks": 8,
+    "optimalBlocks": 9,
     "rawActions": [
       "moveForward",
       "moveForward",
-      "moveForward",
-      "moveForward",
-      "moveForward",
+      "toggleSwitch",
       "jump",
+      "moveForward",
+      "moveForward",
+      "moveForward",
       "moveForward"
     ],
     "structuredSolution": [
@@ -193,10 +194,11 @@
       "  On start:",
       "  moveForward",
       "  moveForward",
-      "  moveForward",
-      "  moveForward",
-      "  moveForward",
+      "  toggleSwitch",
       "  jump",
+      "  moveForward",
+      "  moveForward",
+      "  moveForward",
       "  moveForward"
     ]
   },

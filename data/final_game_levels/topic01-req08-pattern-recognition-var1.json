@@ -75,6 +75,30 @@
       {
         "modelKey": "ground.normal",
         "position": {
+          "x": 1,
+          "y": 0,
+          "z": 1
+        }
+      },
+      {
+        "modelKey": "ground.normal",
+        "position": {
+          "x": 2,
+          "y": 0,
+          "z": 1
+        }
+      },
+      {
+        "modelKey": "ground.normal",
+        "position": {
+          "x": 3,
+          "y": 0,
+          "z": 1
+        }
+      },
+      {
+        "modelKey": "ground.normal",
+        "position": {
           "x": 4,
           "y": 0,
           "z": 1
@@ -129,26 +153,10 @@
         }
       },
       {
-        "modelKey": "ground.normal",
+        "modelKey": "wall.brick01",
         "position": {
-          "x": 11,
-          "y": 0,
-          "z": 1
-        }
-      },
-      {
-        "modelKey": "ground.normal",
-        "position": {
-          "x": 12,
-          "y": 0,
-          "z": 1
-        }
-      },
-      {
-        "modelKey": "ground.normal",
-        "position": {
-          "x": 13,
-          "y": 0,
+          "x": 5,
+          "y": 1,
           "z": 1
         }
       },
@@ -159,21 +167,13 @@
           "y": 1,
           "z": 1
         }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 10,
-          "y": 1,
-          "z": 1
-        }
       }
     ],
     "players": [
       {
         "id": "player1",
         "start": {
-          "x": 4,
+          "x": 1,
           "y": 1,
           "z": 1,
           "direction": 1
@@ -185,7 +185,7 @@
         "id": "c1",
         "type": "crystal",
         "position": {
-          "x": 6,
+          "x": 4,
           "y": 1,
           "z": 1
         }
@@ -194,7 +194,7 @@
         "id": "c2",
         "type": "crystal",
         "position": {
-          "x": 11,
+          "x": 2,
           "y": 1,
           "z": 1
         }
@@ -202,7 +202,7 @@
     ],
     "interactibles": [],
     "finish": {
-      "x": 13,
+      "x": 10,
       "y": 1,
       "z": 1
     }
@@ -213,30 +213,30 @@
     "optimalBlocks": 12,
     "rawActions": [
       "moveForward",
-      "moveForward",
       "collect",
       "moveForward",
       "moveForward",
+      "collect",
       "jump",
       "moveForward",
       "moveForward",
-      "collect",
       "moveForward",
+      "jump",
       "moveForward"
     ],
     "structuredSolution": [
       "MAIN PROGRAM:",
       "  On start:",
       "  moveForward",
-      "  moveForward",
       "  collect",
       "  moveForward",
       "  moveForward",
+      "  collect",
       "  jump",
       "  moveForward",
       "  moveForward",
-      "  collect",
       "  moveForward",
+      "  jump",
       "  moveForward"
     ]
   },

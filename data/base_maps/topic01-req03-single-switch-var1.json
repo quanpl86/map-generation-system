@@ -70,7 +70,7 @@
       {
         "modelKey": "wall.brick01",
         "position": {
-          "x": 10,
+          "x": 7,
           "y": 1,
           "z": 2
         }
@@ -93,11 +93,11 @@
         "id": "s1",
         "type": "switch",
         "position": {
-          "x": 9,
+          "x": 6,
           "y": 1,
           "z": 2
         },
-        "initialState": "on"
+        "initialState": "off"
       }
     ],
     "finish": {

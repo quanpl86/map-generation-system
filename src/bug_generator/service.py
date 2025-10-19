@@ -21,7 +21,7 @@ def _introduce_missing_block_bug(actions: List[str]) -> List[str]:
     """
     [REFACTORED] Tạo lỗi thiếu sót. Hỗ trợ cả list hành động và XML.
     """
-    if isinstance(actions, str): # Xử lý XML
+    if isinstance(actions, str):  # Xử lý đầu vào là XML
         try:
             root = ET.fromstring(f"<root>{actions}</root>")
             # Ưu tiên xóa một khối trong hàm
@@ -30,7 +30,13 @@ def _introduce_missing_block_bug(actions: List[str]) -> List[str]:
             
             if target_statement is not None and len(list(target_statement)) > 1:
                 blocks_in_statement = list(target_statement)
-                remove_idx = random.randint(0, len(blocks_in_statement) - 1)
+                # Ưu tiên xóa các khối lệnh đơn giản, tránh xóa khối gọi hàm hoặc vòng lặp
+                simple_blocks_indices = [
+                    i for i, b in enumerate(blocks_in_statement) 
+                    if b.get('type') not in ['procedures_callnoreturn', 'maze_repeat']
+                ]
+                
+                remove_idx = random.choice(simple_blocks_indices) if simple_blocks_indices else random.randint(0, len(blocks_in_statement) - 1)
                 removed_block = blocks_in_statement.pop(remove_idx)
                 
                 # Xóa hết và nối lại
@@ -41,24 +47,28 @@ def _introduce_missing_block_bug(actions: List[str]) -> List[str]:
                     target_statement.append(blocks_in_statement[0])
                 print(f"      -> Bug 'missing_block' (XML): Đã xóa khối '{removed_block.get('type')}'")
                 return "".join(ET.tostring(child, encoding='unicode') for child in root)
-        except Exception:
-            return actions # Trả về chuỗi gốc nếu có lỗi
+        except Exception as e:
+            print(f"   - ⚠️ Lỗi khi tạo lỗi missing_block (XML): {e}. Trả về chuỗi gốc.")
+            return actions  # Trả về chuỗi gốc nếu có lỗi
+        return actions # Trả về nếu không có gì để xóa
     
-    # Logic cũ cho list hành động
-    if len(actions) <= 1: return actions
+    elif isinstance(actions, list): # Xử lý đầu vào là list hành động
+        if len(actions) <= 1: return actions
 
-    important_actions = ['collect', 'jump', 'toggleSwitch']
-    for act in important_actions:
-        if act in actions:
-            actions.remove(act)
-            print(f"      -> Bug 'missing_block': Đã xóa hành động quan trọng '{act}'.")
-            return actions # type: ignore
-            
-    # Nếu không có hành động quan trọng, xóa một hành động ngẫu nhiên
-    remove_idx = random.randint(0, len(actions) - 1)
-    removed_action = actions.pop(remove_idx)
-    print(f"      -> Bug 'missing_block': Đã xóa hành động ngẫu nhiên '{removed_action}' ở vị trí {remove_idx}.")
-    return actions
+        important_actions = ['collect', 'jump', 'toggleSwitch']
+        for act in important_actions:
+            if act in actions:
+                actions.remove(act)
+                print(f"      -> Bug 'missing_block' (raw): Đã xóa hành động quan trọng '{act}'")
+                return actions
+                
+        # Nếu không có hành động quan trọng, xóa một hành động ngẫu nhiên
+        remove_idx = random.randint(0, len(actions) - 1)
+        removed_action = actions.pop(remove_idx)
+        print(f"      -> Bug 'missing_block' (raw): Đã xóa hành động ngẫu nhiên '{removed_action}'")
+        return actions
+        
+    return actions # Trả về dữ liệu gốc nếu không phải str hoặc list
 
 def _introduce_redundant_block_bug(actions: List[str]) -> List[str]:
     """
