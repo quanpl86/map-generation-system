@@ -154,8 +154,7 @@
           "maze_depth": 13,
           "items_to_place": [
             "crystal",
-            "gem",
-            "key"
+            "gem"
           ]
         }
       },
@@ -167,8 +166,7 @@
         "type": "reach_target",
         "itemGoals": {
           "crystal": 1,
-          "gem": 1,
-          "key": 1
+          "gem": 1
         }
       }
     }
