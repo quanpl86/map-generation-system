@@ -769,6 +769,22 @@
         "position": {
           "x": 1,
           "y": 1,
+          "z": 2
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 1,
+          "y": 1,
+          "z": 6
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 1,
+          "y": 1,
           "z": 8
         }
       },
@@ -865,14 +881,6 @@
         "position": {
           "x": 4,
           "y": 1,
-          "z": 1
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 4,
-          "y": 1,
           "z": 2
         }
       },
@@ -913,15 +921,7 @@
         "position": {
           "x": 5,
           "y": 1,
-          "z": 4
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 5,
-          "y": 1,
-          "z": 6
+          "z": 2
         }
       },
       {
@@ -1031,28 +1031,29 @@
     "rawActions": [
       "moveForward",
       "moveForward",
-      "jump",
+      "moveForward",
       "moveForward",
       "turnRight",
-      "moveForward",
-      "moveForward",
       "jump",
       "moveForward",
-      "jump",
+      "moveForward",
+      "moveForward",
+      "moveForward",
       "moveForward"
     ],
     "structuredSolution": [
+      "DEFINE PROCEDURE_1:",
+      "  repeat (3) do:",
+      "    moveForward",
+      "",
       "MAIN PROGRAM:",
       "  On start:",
-      "  moveForward",
-      "  moveForward",
-      "  jump",
+      "  CALL PROCEDURE_1",
       "  moveForward",
       "  maze_turn",
+      "  jump",
+      "  CALL PROCEDURE_1",
       "  moveForward",
-      "  repeat (2) do:",
-      "    moveForward",
-      "    jump",
       "  moveForward"
     ]
   },

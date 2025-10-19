@@ -267,25 +267,33 @@ def main():
                     start_blocks_type = generation_config.get("params", {}).get("start_blocks_type", "empty")
 
                     # [CẢI TIẾN LỚN] Logic sinh startBlocks
-                    # [SỬA LỖI] Phân tách rõ ràng các loại bug để tránh xung đột logic
-                    xml_bug_types = {'incorrect_parameter', 'misplaced_function_call', 'wrong_block_in_loop', 'wrong_block_in_function'}
-                    raw_action_bug_types = {'misplaced_block', 'optimization'}
-
                     program_dict = solution_result.get("program_solution_dict", {}) if solution_result else {}
-                    if start_blocks_type == "buggy_solution" and bug_type and solution_result:
-                        # Ưu tiên xử lý các bug cần cấu trúc XML (hàm, vòng lặp)
-                        if bug_type in xml_bug_types or (bug_type == 'missing_block' and program_dict.get("procedures")):
-                            optimized_solution_dict = solution_result.get("program_solution_dict", {})
-                            correct_xml = _create_xml_from_structured_solution(optimized_solution_dict)
-                            final_inner_blocks = create_bug(bug_type, correct_xml)
-                        # Xử lý các bug trên chuỗi hành động thô
-                        elif bug_type in raw_action_bug_types or (bug_type == 'missing_block'):
-                            # Với các lỗi đơn giản, ta làm hỏng danh sách hành động thô.
+                    if start_blocks_type == "buggy_solution" and solution_result:
+                        bug_type = generation_config.get("params", {}).get("bug_type")
+                        bug_config = generation_config.get("params", {}).get("bug_config", {})
+
+                        # [REFACTORED] Phân loại bug type để quyết định nên tạo lỗi trên XML hay raw_actions
+                        xml_based_bugs = {
+                            'incorrect_loop_count', 'incorrect_parameter', 
+                            'incorrect_logic_in_function', 'missing_block', 
+                            'incorrect_function_call_order'
+                        }
+                        raw_action_based_bugs = {'sequence_error', 'optimization'}
+
+                        if bug_type in xml_based_bugs:
+                            # 1. Tạo XML từ lời giải có cấu trúc
+                            correct_xml = _create_xml_from_structured_solution(program_dict)
+                            # 2. Tạo lỗi trên XML đó
+                            final_inner_blocks = create_bug(bug_type, correct_xml, bug_config)
+                        elif bug_type in raw_action_based_bugs:
+                            # 1. Lấy chuỗi hành động thô
                             raw_actions = solution_result.get("raw_actions", [])
-                            buggy_actions = create_bug(bug_type, raw_actions)
+                            # 2. Tạo lỗi trên chuỗi hành động đó
+                            buggy_actions = create_bug(bug_type, raw_actions, bug_config)
+                            # 3. Chuyển chuỗi lỗi thành XML
                             final_inner_blocks = f'<block type="maze_start" deletable="false" movable="false"><statement name="DO">{actions_to_xml(buggy_actions)}</statement></block>'
                         else:
-                            print(f"   - ⚠️ Cảnh báo: bug_type '{bug_type}' chưa được xử lý, trả về start_blocks rỗng.")
+                            print(f"   - ⚠️ Cảnh báo: bug_type '{bug_type}' không được hỗ trợ hoặc chưa được phân loại.")
                             final_inner_blocks = ''
 
                     elif start_blocks_type == "raw_solution" and solution_result:

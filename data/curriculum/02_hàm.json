@@ -46,7 +46,10 @@
           "path_length": 6,
           "pattern": ["move", "collect", "move", "collect", "move", "collect", "move"],
           "start_blocks_type": "buggy_solution",
-          "bug_type": "misplaced_function_call"
+          "bug_type": "incorrect_function_call_order",
+          "bug_config": {
+            "target": "main"
+          }
         }
       },
       "blockly_config": { "toolbox_preset": "functions_basic" },
@@ -98,8 +101,12 @@
         "params": {
           "path_length": 5,
           "obstacles": 1,
-          "bug_type": "wrong_block_in_function",
-          "start_blocks_type": "buggy_solution"
+          "start_blocks_type": "buggy_solution",
+          "bug_type": "incorrect_logic_in_function",
+          "bug_config": {
+            "target": "function",
+            "function_name": "crossObstacle"
+          }
         }
       },
       "blockly_config": { "toolbox_preset": "functions_basic" },
@@ -128,8 +135,12 @@
         "params": {
           "path_length": 4,
           "items_to_place": ["switch"],
+          "start_blocks_type": "buggy_solution",
           "bug_type": "missing_block",
-          "start_blocks_type": "buggy_solution"
+          "bug_config": {
+            "target": "function",
+            "function_name": "activateAndMove"
+          }
         }
       },
       "blockly_config": { "toolbox_preset": "functions_basic" },

@@ -1,11 +1,11 @@
 # src/bug_generator/service.py
 import random
-from typing import List, Callable, Dict, Any
+from typing import List, Callable, Dict, Any, Optional
 import xml.etree.ElementTree as ET
 
 # --- SECTION 1: Bug Generators for Raw Action Lists ---
 
-def _introduce_order_bug(actions: List[str]) -> List[str]:
+def _introduce_sequence_error(actions: List[str], config: Dict) -> List[str]:
     """
     Tạo lỗi thứ tự bằng cách tráo đổi hai hành động.
     """
@@ -14,16 +14,16 @@ def _introduce_order_bug(actions: List[str]) -> List[str]:
     
     idx1, idx2 = random.sample(range(len(actions)), 2)
     actions[idx1], actions[idx2] = actions[idx2], actions[idx1]
-    print(f"      -> Bug 'misplaced_block': Hoán đổi hành động ở vị trí {idx1} và {idx2}.")
+    print(f"      -> Bug 'sequence_error': Hoán đổi hành động ở vị trí {idx1} và {idx2}.")
     return actions # type: ignore
 
-def _introduce_missing_block_bug(actions: List[str]) -> List[str]:
+def _introduce_missing_block_bug(data: Any, config: Dict) -> Any:
     """
     [REFACTORED] Tạo lỗi thiếu sót. Hỗ trợ cả list hành động và XML.
     """
-    if isinstance(actions, str):  # Xử lý đầu vào là XML
+    if isinstance(data, str):  # Xử lý đầu vào là XML
         try:
-            root = ET.fromstring(f"<root>{actions}</root>")
+            root = ET.fromstring(f"<root>{data}</root>")
             # Ưu tiên xóa một khối trong hàm
             proc_body = root.find(".//block[@type='procedures_defnoreturn']/statement[@name='STACK']")
             target_statement = proc_body if proc_body is not None and len(list(proc_body)) > 1 else root.find(".//block[@type='maze_start']/statement[@name='DO']")
@@ -49,47 +49,40 @@ def _introduce_missing_block_bug(actions: List[str]) -> List[str]:
                 return "".join(ET.tostring(child, encoding='unicode') for child in root)
         except Exception as e:
             print(f"   - ⚠️ Lỗi khi tạo lỗi missing_block (XML): {e}. Trả về chuỗi gốc.")
-            return actions  # Trả về chuỗi gốc nếu có lỗi
-        return actions # Trả về nếu không có gì để xóa
+            return data  # Trả về chuỗi gốc nếu có lỗi
+        return data # Trả về nếu không có gì để xóa
     
-    elif isinstance(actions, list): # Xử lý đầu vào là list hành động
-        if len(actions) <= 1: return actions
+    elif isinstance(data, list): # Xử lý đầu vào là list hành động
+        if len(data) <= 1: return data
 
         important_actions = ['collect', 'jump', 'toggleSwitch']
         for act in important_actions:
-            if act in actions:
-                actions.remove(act)
+            if act in data:
+                data.remove(act)
                 print(f"      -> Bug 'missing_block' (raw): Đã xóa hành động quan trọng '{act}'")
-                return actions
+                return data
                 
         # Nếu không có hành động quan trọng, xóa một hành động ngẫu nhiên
-        remove_idx = random.randint(0, len(actions) - 1)
-        removed_action = actions.pop(remove_idx)
+        remove_idx = random.randint(0, len(data) - 1)
+        removed_action = data.pop(remove_idx)
         print(f"      -> Bug 'missing_block' (raw): Đã xóa hành động ngẫu nhiên '{removed_action}'")
-        return actions
+        return data
         
-    return actions # Trả về dữ liệu gốc nếu không phải str hoặc list
+    return data # Trả về dữ liệu gốc nếu không phải str hoặc list
 
-def _introduce_redundant_block_bug(actions: List[str]) -> List[str]:
+def _introduce_lack_of_abstraction_bug(actions: List[str], config: Dict) -> List[str]:
     """
-    Tạo lỗi tối ưu hóa bằng cách thêm các khối lệnh thừa (tự triệt tiêu).
+    Đây không phải là một "lỗi" mà là một "thử thách tái cấu trúc".
+    Hàm này chỉ đơn giản là trả về chuỗi hành động thô để người chơi tự tối ưu.
     """
-    if not actions:
-        return actions
-        
-    insert_idx = random.randint(0, len(actions))
-    actions.insert(insert_idx, 'turnRight')
-    actions.insert(insert_idx, 'turnLeft')
-    print(f"      -> Bug 'optimization': Chèn cặp lệnh rẽ thừa ở vị trí {insert_idx}.")
+    print(f"      -> Challenge 'lack_of_abstraction': Cung cấp chuỗi hành động thô.")
     return actions
 
 # --- SECTION 2: Bug Generators for XML Strings ---
 
-def _introduce_parameter_bug_xml(xml_string: str) -> str:
+def _introduce_incorrect_loop_count_bug(xml_string: str, config: Dict) -> str:
     """
-    [REFACTORED] Tạo lỗi tham số trong một chuỗi XML của Blockly.
-    Hàm này sẽ chỉ thay đổi giá trị của tham số (số lần lặp, hướng rẽ),
-    chứ không thay đổi loại khối lệnh.
+    Tạo lỗi sai số lần lặp trong khối 'maze_repeat'.
     """
     if not xml_string: return ""
     try:
@@ -103,10 +96,23 @@ def _introduce_parameter_bug_xml(xml_string: str) -> str:
             bugged_num = original_num + 1 if original_num > 2 else original_num - 1
             if bugged_num <= 0: bugged_num = 1
             target_field.text = str(bugged_num)
-            print(f"      -> Bug 'incorrect_parameter': Thay đổi số lần lặp từ {original_num} thành {bugged_num}.")
+            print(f"      -> Bug 'incorrect_loop_count': Thay đổi số lần lặp từ {original_num} thành {bugged_num}.")
             return "".join(ET.tostring(child, encoding='unicode') for child in root)
+    except ET.ParseError as e:
+        print(f"   - ⚠️ Lỗi khi phân tích XML để tạo lỗi tham số: {e}. Trả về chuỗi gốc.")
+        return xml_string
 
-        # Ưu tiên 2: Tìm và thay đổi khối 'maze_turn'
+    print(f"   - ⚠️ Không tìm thấy khối 'maze_repeat' để tạo lỗi. Trả về chuỗi gốc.")
+    return xml_string
+
+def _introduce_incorrect_parameter_bug(xml_string: str, config: Dict) -> str:
+    """
+    Tạo lỗi sai tham số cho các khối lệnh đơn giản như 'maze_turn'.
+    """
+    if not xml_string: return ""
+    try:
+        root = ET.fromstring(f"<root>{xml_string}</root>")
+        # Tìm khối 'maze_turn'
         turn_fields = root.findall(".//block[@type='maze_turn']/field[@name='DIR']")
         if turn_fields:
             target_field = random.choice(turn_fields)
@@ -115,23 +121,34 @@ def _introduce_parameter_bug_xml(xml_string: str) -> str:
             target_field.text = bugged_dir
             print(f"      -> Bug 'incorrect_parameter': Thay đổi hướng rẽ từ {original_dir} thành {bugged_dir}.")
             return "".join(ET.tostring(child, encoding='unicode') for child in root)
-
     except ET.ParseError as e:
-        print(f"   - ⚠️ Lỗi khi phân tích XML để tạo lỗi tham số: {e}. Trả về chuỗi gốc.")
-        return xml_string
-
-    print(f"   - ⚠️ Không tìm thấy mục tiêu (vòng lặp/rẽ) để tạo lỗi tham số. Trả về chuỗi gốc.")
+        print(f"   - ⚠️ Lỗi khi phân tích XML để tạo lỗi incorrect_parameter: {e}. Trả về chuỗi gốc.")
+    print(f"   - ⚠️ Không tìm thấy khối 'maze_turn' để tạo lỗi incorrect_parameter.")
     return xml_string
 
-def _introduce_wrong_block_in_loop_bug_xml(xml_string: str) -> str:
+def _introduce_incorrect_logic_in_function_bug(xml_string: str, config: Dict) -> str:
     """
-    [MỚI] Tạo lỗi logic bằng cách thay đổi một khối lệnh bên trong vòng lặp hoặc hàm.
+    Tạo lỗi logic bằng cách thay đổi một khối lệnh bên trong một hàm cụ thể.
     """
     if not xml_string: return ""
     try:
         root = ET.fromstring(f"<root>{xml_string}</root>")
-        possible_targets = root.findall(".//block[@type='procedures_defnoreturn']/statement/block") + root.findall(".//block[@type='maze_repeat']/statement/block")
-        simple_action_blocks = [b for b in possible_targets if b.get('type') in ['maze_moveForward', 'maze_jump', 'maze_turn', 'maze_collect']]
+        function_name = config.get("function_name")
+        if not function_name:
+            print("   - ⚠️ Thiếu 'function_name' trong bug_config. Không thể tạo lỗi.")
+            return xml_string
+
+        # Tìm đúng hàm cần sửa
+        target_function = root.find(f".//block[@type='procedures_defnoreturn'][field[@name='NAME']='{function_name}']")
+        if not target_function:
+            print(f"   - ⚠️ Không tìm thấy hàm '{function_name}' để tạo lỗi.")
+            return xml_string
+
+        # Tìm các khối lệnh đơn giản bên trong hàm đó
+        statement = target_function.find("./statement[@name='STACK']")
+        if not statement: return xml_string
+        
+        simple_action_blocks = statement.findall("./block")
 
         if simple_action_blocks:
             target_block = random.choice(simple_action_blocks)
@@ -140,13 +157,13 @@ def _introduce_wrong_block_in_loop_bug_xml(xml_string: str) -> str:
             new_type = random.choice(list(replacements))
             target_block.set('type', new_type)
             for child in list(target_block): target_block.remove(child) # Xóa các field/value cũ
-            print(f"      -> Bug 'wrong_block_in_loop': Thay đổi logic từ '{original_type}' thành '{new_type}'.")
+            print(f"      -> Bug 'incorrect_logic_in_function': Thay đổi logic trong hàm '{function_name}' từ '{original_type}' thành '{new_type}'.")
             return "".join(ET.tostring(child, encoding='unicode') for child in root)
     except Exception as e:
-        print(f"   - ⚠️ Lỗi khi tạo lỗi wrong_block_in_loop: {e}. Trả về chuỗi gốc.")
+        print(f"   - ⚠️ Lỗi khi tạo lỗi incorrect_logic_in_function: {e}. Trả về chuỗi gốc.")
     return xml_string
 
-def _introduce_misplaced_function_call_bug_xml(xml_string: str) -> str:
+def _introduce_incorrect_function_call_order_bug(xml_string: str, config: Dict) -> str:
     """
     [SỬA LỖI] Tạo lỗi sai vị trí các khối lệnh trong chương trình chính.
     Hàm này tìm tất cả các khối lệnh trong khối maze_start và hoán đổi vị trí của hai khối ngẫu nhiên,
@@ -176,7 +193,7 @@ def _introduce_misplaced_function_call_bug_xml(xml_string: str) -> str:
         if len(top_level_blocks) >= 2:
             idx1, idx2 = random.sample(range(len(top_level_blocks)), 2)
             top_level_blocks[idx1], top_level_blocks[idx2] = top_level_blocks[idx2], top_level_blocks[idx1]
-            print(f"      -> Bug 'misplaced_function_call': Hoán đổi khối lệnh ở vị trí {idx1} và {idx2} trong chương trình chính.")
+            print(f"      -> Bug 'incorrect_function_call_order': Hoán đổi khối lệnh ở vị trí {idx1} và {idx2} trong chương trình chính.")
 
             # Xóa hết các khối con cũ và xây dựng lại chuỗi khối đã bị xáo trộn
             for child in list(statement_do): statement_do.remove(child)
@@ -193,22 +210,27 @@ def _introduce_misplaced_function_call_bug_xml(xml_string: str) -> str:
 
 # --- Bảng đăng ký các trình tạo lỗi (Bug Generator Registry) ---
 # Ánh xạ bug_type tới hàm xử lý tương ứng
-BUG_GENERATORS: Dict[str, Callable[[Any], Any]] = {
-    # Các hàm này nhận vào list[str] và trả về list[str]
-    'misplaced_block': _introduce_order_bug,
+BUG_GENERATORS: Dict[str, Callable[[Any, Dict], Any]] = {
+    # Nhóm 1: Lỗi tuần tự & cấu trúc cơ bản
+    'sequence_error': _introduce_sequence_error,
     'missing_block': _introduce_missing_block_bug,
-    'optimization': _introduce_redundant_block_bug,
+    # 'misplaced_control_structure' cần logic phức tạp hơn, tạm thời bỏ qua
 
-    # Hàm này nhận vào chuỗi XML và trả về chuỗi XML
-    'incorrect_parameter': _introduce_parameter_bug_xml,
-    'misplaced_function_call': _introduce_misplaced_function_call_bug_xml,
-    'wrong_block_in_loop': _introduce_wrong_block_in_loop_bug_xml,
-    
-    # 'refactor_challenge' được xử lý đặc biệt trong generate_all_maps.py
-    # và không cần một hàm tạo lỗi ở đây.
+    # Nhóm 2: Lỗi cấu hình khối điều khiển
+    'incorrect_loop_count': _introduce_incorrect_loop_count_bug,
+    'incorrect_parameter': _introduce_incorrect_parameter_bug,
+    # 'incorrect_loop_condition' cần khối 'while', tạm thời bỏ qua
+
+    # Nhóm 3: Lỗi liên quan đến hàm
+    'incorrect_logic_in_function': _introduce_incorrect_logic_in_function_bug,
+    'incorrect_function_call_order': _introduce_incorrect_function_call_order_bug,
+    # 'missing_function_call' có thể được xử lý bằng cách xóa khối 'procedures_callnoreturn'
+
+    # Nhóm 4: Lỗi tối ưu hóa
+    'lack_of_abstraction': _introduce_lack_of_abstraction_bug,
 }
 
-def create_bug(bug_type: str, data: Any) -> Any:
+def create_bug(bug_type: str, data: Any, config: Dict = None) -> Any:
     """
     Hàm điều phối chính để tạo lỗi.
     Nó nhận vào loại lỗi và dữ liệu (có thể là list hành động hoặc chuỗi XML)
@@ -217,17 +239,18 @@ def create_bug(bug_type: str, data: Any) -> Any:
     Args:
         bug_type: Tên của loại lỗi cần tạo.
         data: Dữ liệu đầu vào (List[str] hoặc str).
+        config: Cấu hình chi tiết cho việc tạo lỗi.
 
     Returns:
         Dữ liệu đã được làm lỗi.
     """
+    config = config or {}
     generator_func = BUG_GENERATORS.get(bug_type)
 
     if generator_func:
         print(f"    LOG: Đang tạo lỗi loại '{bug_type}'.")
-        # Tạo bản sao để không thay đổi dữ liệu gốc
         data_copy = list(data) if isinstance(data, list) else str(data)
-        return generator_func(data_copy)
+        return generator_func(data_copy, config)
     else:
         print(f"    - ⚠️ Cảnh báo: Không tìm thấy trình tạo lỗi cho loại '{bug_type}'. Trả về hành động gốc.")
         return data

@@ -18,7 +18,18 @@
       "titleKey": "Challenge.topic01-fixbug01.Title",
       "descriptionKey": "Challenge.topic01-fixbug01.Description",
       "translations": { "vi": { "Challenge.topic01-fixbug01.Title": "Sửa Lỗi: Sai Vị Trí", "Challenge.topic01-fixbug01.Description": "Các khối lệnh đang bị sai thứ tự. Hãy sắp xếp lại chúng để giúp nhân vật đến đích!" }},
-      "generation_config": { "map_type": "simple_path", "logic_type": "sequencing", "num_variants": 1, "params": { "path_length": 4, "turns": 0, "items_to_place": ["crystal"], "bug_type": "misplaced_block", "start_blocks_type": "buggy_solution" }},
+      "generation_config": {
+        "map_type": "simple_path",
+        "logic_type": "sequencing",
+        "num_variants": 1,
+        "params": {
+          "path_length": 4,
+          "turns": 0,
+          "items_to_place": ["crystal"],
+          "start_blocks_type": "buggy_solution",
+          "bug_type": "sequence_error"
+        }
+      },
       "blockly_config": { "toolbox_preset": "topic_1_sequencing" },
       "solution_config": { "type": "reach_target", "itemGoals": { "crystal": 1 } }
     },
@@ -38,7 +49,18 @@
       "titleKey": "Challenge.topic01-fixbug02.Title",
       "descriptionKey": "Challenge.topic01-fixbug02.Description",
       "translations": { "vi": { "Challenge.topic01-fixbug02.Title": "Sửa Lỗi: Sai Tham Số", "Challenge.topic01-fixbug02.Description": "Chương trình đang chạy sai hướng. Hãy sửa lại khối lệnh rẽ cho đúng!" }},
-      "generation_config": { "map_type": "simple_path", "logic_type": "sequencing", "num_variants": 1, "params": { "path_length": 6, "turns": 1, "items_to_place": [], "bug_type": "incorrect_parameter", "start_blocks_type": "buggy_solution" }},
+      "generation_config": {
+        "map_type": "simple_path",
+        "logic_type": "sequencing",
+        "num_variants": 1,
+        "params": {
+          "path_length": 6,
+          "turns": 1,
+          "items_to_place": [],
+          "start_blocks_type": "buggy_solution",
+          "bug_type": "incorrect_parameter"
+        }
+      },
       "blockly_config": { "toolbox_preset": "topic_1_sequencing" },
       "solution_config": { "type": "reach_target", "itemGoals": {} }
     },
@@ -68,7 +90,18 @@
       "titleKey": "Challenge.topic01-fixbug03.Title",
       "descriptionKey": "Challenge.topic01-fixbug03.Description",
       "translations": { "vi": { "Challenge.topic01-fixbug03.Title": "Sửa Lỗi: Thiếu Lệnh", "Challenge.topic01-fixbug03.Description": "Chương trình bị thiếu một lệnh quan trọng để vượt qua tường. Hãy tìm và bổ sung nó!" }},
-      "generation_config": { "map_type": "simple_path", "logic_type": "obstacle", "num_variants": 1, "params": { "path_length": 5, "turns": 0, "obstacles": 1, "bug_type": "missing_block", "start_blocks_type": "buggy_solution" }},
+      "generation_config": {
+        "map_type": "simple_path",
+        "logic_type": "obstacle",
+        "num_variants": 1,
+        "params": {
+          "path_length": 5,
+          "turns": 0,
+          "obstacles": 1,
+          "start_blocks_type": "buggy_solution",
+          "bug_type": "missing_block"
+        }
+      },
       "blockly_config": { "toolbox_preset": "topic_1_sequencing" },
       "solution_config": { "type": "reach_target", "itemGoals": {} }
     },
@@ -98,7 +131,18 @@
       "titleKey": "Challenge.topic01-fixbug04.Title",
       "descriptionKey": "Challenge.topic01-fixbug04.Description",
       "translations": { "vi": { "Challenge.topic01-fixbug04.Title": "Sửa Lỗi: Tối Ưu Hóa", "Challenge.topic01-fixbug04.Description": "Chương trình này hoạt động được, nhưng nó đang thừa lệnh. Hãy xóa các khối không cần thiết để đạt 3 sao!" }},
-      "generation_config": { "map_type": "simple_path", "logic_type": "sequencing", "num_variants": 1, "params": { "path_length": 5, "turns": 1, "items_to_place": [], "bug_type": "optimization", "start_blocks_type": "buggy_solution" }},
+      "generation_config": {
+        "map_type": "simple_path",
+        "logic_type": "sequencing",
+        "num_variants": 1,
+        "params": {
+          "path_length": 5,
+          "turns": 1,
+          "items_to_place": [],
+          "start_blocks_type": "buggy_solution",
+          "bug_type": "optimization"
+        }
+      },
       "blockly_config": { "toolbox_preset": "topic_1_sequencing" },
       "solution_config": { "type": "reach_target", "itemGoals": {} }
     },

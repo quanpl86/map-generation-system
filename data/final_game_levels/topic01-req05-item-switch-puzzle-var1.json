@@ -65,29 +65,13 @@
         }
       ]
     },
-    "maxBlocks": 17,
+    "maxBlocks": 18,
     "startBlocks": "<xml><block type=\"maze_start\" deletable=\"false\" movable=\"false\"><statement name=\"DO\"></statement></block></xml>"
   },
   "gameConfig": {
     "type": "maze",
     "renderer": "3d",
     "blocks": [
-      {
-        "modelKey": "ground.normal",
-        "position": {
-          "x": 1,
-          "y": 0,
-          "z": 3
-        }
-      },
-      {
-        "modelKey": "ground.normal",
-        "position": {
-          "x": 2,
-          "y": 0,
-          "z": 3
-        }
-      },
       {
         "modelKey": "ground.normal",
         "position": {
@@ -153,9 +137,25 @@
         }
       },
       {
+        "modelKey": "ground.normal",
+        "position": {
+          "x": 11,
+          "y": 0,
+          "z": 3
+        }
+      },
+      {
+        "modelKey": "ground.normal",
+        "position": {
+          "x": 12,
+          "y": 0,
+          "z": 3
+        }
+      },
+      {
         "modelKey": "wall.brick01",
         "position": {
-          "x": 4,
+          "x": 7,
           "y": 1,
           "z": 3
         }
@@ -165,7 +165,7 @@
       {
         "id": "player1",
         "start": {
-          "x": 1,
+          "x": 3,
           "y": 1,
           "z": 3,
           "direction": 1
@@ -177,7 +177,7 @@
         "id": "c1",
         "type": "crystal",
         "position": {
-          "x": 5,
+          "x": 8,
           "y": 1,
           "z": 3
         }
@@ -186,7 +186,7 @@
         "id": "c3",
         "type": "crystal",
         "position": {
-          "x": 9,
+          "x": 5,
           "y": 1,
           "z": 3
         }
@@ -197,15 +197,15 @@
         "id": "s2",
         "type": "switch",
         "position": {
-          "x": 3,
+          "x": 11,
           "y": 1,
           "z": 3
         },
-        "initialState": "on"
+        "initialState": "off"
       }
     ],
     "finish": {
-      "x": 10,
+      "x": 12,
       "y": 1,
       "z": 3
     }
@@ -213,9 +213,11 @@
   "solution": {
     "type": "reach_target",
     "itemGoals": {},
-    "optimalBlocks": 12,
+    "optimalBlocks": 13,
     "rawActions": [
       "moveForward",
+      "moveForward",
+      "collect",
       "moveForward",
       "jump",
       "moveForward",
@@ -223,8 +225,7 @@
       "moveForward",
       "moveForward",
       "moveForward",
-      "moveForward",
-      "collect",
+      "toggleSwitch",
       "moveForward"
     ],
     "structuredSolution": [
@@ -232,14 +233,15 @@
       "  On start:",
       "  moveForward",
       "  moveForward",
+      "  collect",
+      "  moveForward",
       "  jump",
       "  moveForward",
       "  collect",
       "  moveForward",
       "  moveForward",
       "  moveForward",
-      "  moveForward",
-      "  collect",
+      "  toggleSwitch",
       "  moveForward"
     ]
   },

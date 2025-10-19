@@ -25,13 +25,11 @@
           "maze_depth": [
             7,
             9
-          ]
+          ],
+          "start_blocks_type": "empty"
         }
       },
-      "blockly_config": {
-        "toolbox_preset": "full_toolbox",
-        "start_blocks": ""
-      },
+      "blockly_config": { "toolbox_preset": "full_toolbox" },
       "solution_config": {
         "type": "reach_target",
         "itemGoals": {}
@@ -54,13 +52,11 @@
         "num_variants": 2,
         "params": {
           "num_islands": 3,
-          "items_to_place": "crystal"
+          "items_to_place": "crystal",
+          "start_blocks_type": "empty"
         }
       },
-      "blockly_config": {
-        "toolbox_preset": "full_toolbox",
-        "start_blocks": ""
-      },
+      "blockly_config": { "toolbox_preset": "full_toolbox" },
       "solution_config": {
         "type": "reach_target",
         "itemGoals": {
@@ -90,13 +86,11 @@
             "crystal",
             "crystal",
             "crystal"
-          ]
+          ],
+          "start_blocks_type": "empty"
         }
       },
-      "blockly_config": {
-        "toolbox_preset": "full_toolbox",
-        "start_blocks": ""
-      },
+      "blockly_config": { "toolbox_preset": "full_toolbox" },
       "solution_config": {
         "type": "reach_target",
         "itemGoals": {
@@ -122,13 +116,11 @@
         "params": {
           "maze_width": 13,
           "maze_depth": 13,
-          "density": "0.6"
+          "density": "0.6",
+          "start_blocks_type": "empty"
         }
       },
-      "blockly_config": {
-        "toolbox_preset": "full_toolbox",
-        "start_blocks": ""
-      },
+      "blockly_config": { "toolbox_preset": "full_toolbox" },
       "solution_config": {
         "type": "reach_target",
         "itemGoals": {}
@@ -155,13 +147,11 @@
           "items_to_place": [
             "crystal",
             "gem"
-          ]
+          ],
+          "start_blocks_type": "empty"
         }
       },
-      "blockly_config": {
-        "toolbox_preset": "full_toolbox",
-        "start_blocks": ""
-      },
+      "blockly_config": { "toolbox_preset": "full_toolbox" },
       "solution_config": {
         "type": "reach_target",
         "itemGoals": {

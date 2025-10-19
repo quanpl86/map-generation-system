@@ -19,8 +19,12 @@
         "num_variants": 2,
         "params": {
           "side_length": 5,
-          "bug_type": "incorrect_parameter",
-          "start_blocks_type": "buggy_solution"
+          "start_blocks_type": "buggy_solution",
+          "bug_type": "incorrect_loop_count",
+          "bug_config": {
+            "target": "loop",
+            "options": { "change_by": -1 }
+          }
         }
       },
       "blockly_config": {
@@ -48,8 +52,11 @@
         "num_variants": 2,
         "params": {
           "pattern": "corner",
+          "start_blocks_type": "buggy_solution",
           "bug_type": "incorrect_parameter",
-          "start_blocks_type": "buggy_solution"
+          "bug_config": {
+            "target": "main"
+          }
         }
       },
       "blockly_config": {
@@ -78,8 +85,11 @@
         "params": {
           "path_length": 4,
           "items_to_place": "crystal",
-          "bug_type": "misplaced_block",
-          "start_blocks_type": "buggy_solution"
+          "start_blocks_type": "buggy_solution",
+          "bug_type": "sequence_error",
+          "bug_config": {
+            "target": "main"
+          }
         }
       },
       "blockly_config": {
@@ -110,8 +120,11 @@
         "params": {
           "path_length": 5,
           "items_to_place": "crystal",
+          "start_blocks_type": "buggy_solution",
           "bug_type": "missing_block",
-          "start_blocks_type": "buggy_solution"
+          "bug_config": {
+            "target": "main"
+          }
         }
       },
       "blockly_config": {

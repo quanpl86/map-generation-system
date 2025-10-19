@@ -75,6 +75,14 @@
       {
         "modelKey": "ground.normal",
         "position": {
+          "x": 1,
+          "y": 0,
+          "z": 3
+        }
+      },
+      {
+        "modelKey": "ground.normal",
+        "position": {
           "x": 2,
           "y": 0,
           "z": 3
@@ -153,17 +161,9 @@
         }
       },
       {
-        "modelKey": "ground.normal",
-        "position": {
-          "x": 12,
-          "y": 0,
-          "z": 3
-        }
-      },
-      {
         "modelKey": "wall.brick01",
         "position": {
-          "x": 7,
+          "x": 3,
           "y": 1,
           "z": 3
         }
@@ -173,7 +173,7 @@
       {
         "id": "player1",
         "start": {
-          "x": 2,
+          "x": 1,
           "y": 1,
           "z": 3,
           "direction": 1
@@ -185,7 +185,7 @@
         "id": "c1",
         "type": "crystal",
         "position": {
-          "x": 6,
+          "x": 10,
           "y": 1,
           "z": 3
         }
@@ -196,7 +196,7 @@
         "id": "s2",
         "type": "switch",
         "position": {
-          "x": 3,
+          "x": 9,
           "y": 1,
           "z": 3
         },
@@ -204,7 +204,7 @@
       }
     ],
     "finish": {
-      "x": 12,
+      "x": 11,
       "y": 1,
       "z": 3
     }
@@ -215,32 +215,32 @@
     "optimalBlocks": 13,
     "rawActions": [
       "moveForward",
-      "toggleSwitch",
-      "moveForward",
-      "moveForward",
-      "moveForward",
-      "collect",
       "jump",
       "moveForward",
       "moveForward",
       "moveForward",
       "moveForward",
+      "moveForward",
+      "moveForward",
+      "toggleSwitch",
+      "moveForward",
+      "collect",
       "moveForward"
     ],
     "structuredSolution": [
       "MAIN PROGRAM:",
       "  On start:",
       "  moveForward",
-      "  toggleSwitch",
-      "  moveForward",
-      "  moveForward",
-      "  moveForward",
-      "  collect",
       "  jump",
       "  moveForward",
       "  moveForward",
       "  moveForward",
       "  moveForward",
+      "  moveForward",
+      "  moveForward",
+      "  toggleSwitch",
+      "  moveForward",
+      "  collect",
       "  moveForward"
     ]
   },

@@ -75,25 +75,9 @@
       {
         "modelKey": "ground.normal",
         "position": {
-          "x": 4,
-          "y": 0,
-          "z": 1
-        }
-      },
-      {
-        "modelKey": "ground.normal",
-        "position": {
-          "x": 5,
-          "y": 0,
-          "z": 1
-        }
-      },
-      {
-        "modelKey": "ground.normal",
-        "position": {
           "x": 6,
           "y": 0,
-          "z": 1
+          "z": 6
         }
       },
       {
@@ -101,7 +85,7 @@
         "position": {
           "x": 7,
           "y": 0,
-          "z": 1
+          "z": 6
         }
       },
       {
@@ -109,7 +93,7 @@
         "position": {
           "x": 8,
           "y": 0,
-          "z": 1
+          "z": 6
         }
       },
       {
@@ -117,7 +101,7 @@
         "position": {
           "x": 9,
           "y": 0,
-          "z": 1
+          "z": 6
         }
       },
       {
@@ -125,7 +109,7 @@
         "position": {
           "x": 10,
           "y": 0,
-          "z": 1
+          "z": 6
         }
       },
       {
@@ -133,15 +117,31 @@
         "position": {
           "x": 11,
           "y": 0,
-          "z": 1
+          "z": 6
+        }
+      },
+      {
+        "modelKey": "ground.normal",
+        "position": {
+          "x": 12,
+          "y": 0,
+          "z": 6
+        }
+      },
+      {
+        "modelKey": "ground.normal",
+        "position": {
+          "x": 13,
+          "y": 0,
+          "z": 6
         }
       },
       {
         "modelKey": "wall.brick01",
         "position": {
-          "x": 5,
+          "x": 12,
           "y": 1,
-          "z": 1
+          "z": 6
         }
       }
     ],
@@ -149,9 +149,9 @@
       {
         "id": "player1",
         "start": {
-          "x": 4,
+          "x": 6,
           "y": 1,
-          "z": 1,
+          "z": 6,
           "direction": 1
         }
       }
@@ -159,9 +159,9 @@
     "collectibles": [],
     "interactibles": [],
     "finish": {
-      "x": 11,
+      "x": 13,
       "y": 1,
-      "z": 1
+      "z": 6
     }
   },
   "solution": {
@@ -169,23 +169,23 @@
     "itemGoals": {},
     "optimalBlocks": 8,
     "rawActions": [
+      "moveForward",
+      "moveForward",
+      "moveForward",
+      "moveForward",
+      "moveForward",
       "jump",
-      "moveForward",
-      "moveForward",
-      "moveForward",
-      "moveForward",
-      "moveForward",
       "moveForward"
     ],
     "structuredSolution": [
       "MAIN PROGRAM:",
       "  On start:",
+      "  moveForward",
+      "  moveForward",
+      "  moveForward",
+      "  moveForward",
+      "  moveForward",
       "  jump",
-      "  moveForward",
-      "  moveForward",
-      "  moveForward",
-      "  moveForward",
-      "  moveForward",
       "  moveForward"
     ]
   },
