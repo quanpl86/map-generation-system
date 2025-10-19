@@ -272,7 +272,8 @@ def main():
                         bug_type = generation_config.get("params", {}).get("bug_type")
                         bug_config = generation_config.get("params", {}).get("bug_config", {})
 
-                        # [REFACTORED] Phân loại bug type để quyết định nên tạo lỗi trên XML hay raw_actions
+                        # [REFACTORED] Phân loại bug type để quyết định nên tạo lỗi trên XML hay raw_actions.
+                        # Điều này khắc phục lỗi các bài fixbug tuần tự (Topic 1) bị xử lý sai.
                         xml_based_bugs = {
                             'incorrect_loop_count', 'incorrect_parameter', 
                             'incorrect_logic_in_function', 'missing_block', 
@@ -280,21 +281,27 @@ def main():
                         }
                         raw_action_based_bugs = {'sequence_error', 'optimization'}
 
+                        # Ưu tiên xử lý các bug cần cấu trúc XML (hàm, vòng lặp)
                         if bug_type in xml_based_bugs:
                             # 1. Tạo XML từ lời giải có cấu trúc
                             correct_xml = _create_xml_from_structured_solution(program_dict)
                             # 2. Tạo lỗi trên XML đó
                             final_inner_blocks = create_bug(bug_type, correct_xml, bug_config)
                         elif bug_type in raw_action_based_bugs:
-                            # 1. Lấy chuỗi hành động thô
+                            # Xử lý các bug trên chuỗi hành động thô
                             raw_actions = solution_result.get("raw_actions", [])
-                            # 2. Tạo lỗi trên chuỗi hành động đó
                             buggy_actions = create_bug(bug_type, raw_actions, bug_config)
-                            # 3. Chuyển chuỗi lỗi thành XML
                             final_inner_blocks = f'<block type="maze_start" deletable="false" movable="false"><statement name="DO">{actions_to_xml(buggy_actions)}</statement></block>'
                         else:
                             print(f"   - ⚠️ Cảnh báo: bug_type '{bug_type}' không được hỗ trợ hoặc chưa được phân loại.")
                             final_inner_blocks = ''
+                    
+                    elif start_blocks_type == "raw_solution" and solution_result:
+                        # Cung cấp lời giải tuần tự (chưa tối ưu)
+                        raw_actions = solution_result.get("raw_actions", [])
+                        # [SỬA LỖI] Bọc các khối tuần tự trong một khối maze_start
+                        inner_xml = actions_to_xml(raw_actions)
+                        final_inner_blocks = f'<block type="maze_start" deletable="false" movable="false"><statement name="DO">{inner_xml}</statement></block>'
 
                     elif start_blocks_type == "raw_solution" and solution_result:
                         # Cung cấp lời giải tuần tự (chưa tối ưu)
@@ -317,7 +324,11 @@ def main():
                             final_inner_blocks = raw_start_blocks.replace('<xml>', '').replace('</xml>', '')
                     
                     if final_inner_blocks:
-                        final_start_blocks = f"<xml>{final_inner_blocks}</xml>"
+                        # [SỬA LỖI] Đảm bảo thẻ <xml> luôn được thêm vào, ngay cả khi final_inner_blocks đã chứa nó
+                        if final_inner_blocks.strip().startswith('<block'):
+                             final_start_blocks = f"<xml>{final_inner_blocks}</xml>"
+                        else: # Trường hợp raw_solution đã tự bọc
+                             final_start_blocks = final_inner_blocks
                     else:
                         # Mặc định: tạo một khối maze_start rỗng
                         final_start_blocks = "<xml><block type=\"maze_start\" deletable=\"false\" movable=\"false\"><statement name=\"DO\"></statement></block></xml>"

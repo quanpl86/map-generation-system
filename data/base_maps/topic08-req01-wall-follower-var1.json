@@ -472,14 +472,6 @@
         "position": {
           "x": 1,
           "y": 1,
-          "z": 4
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 1,
-          "y": 1,
           "z": 6
         }
       },
@@ -536,6 +528,14 @@
         "position": {
           "x": 3,
           "y": 1,
+          "z": 4
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 3,
+          "y": 1,
           "z": 6
         }
       },
@@ -553,14 +553,6 @@
           "x": 4,
           "y": 1,
           "z": 2
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 4,
-          "y": 1,
-          "z": 3
         }
       },
       {
@@ -585,6 +577,14 @@
           "x": 5,
           "y": 1,
           "z": 0
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 5,
+          "y": 1,
+          "z": 4
         }
       },
       {

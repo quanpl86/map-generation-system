@@ -173,7 +173,7 @@
         }
       ]
     },
-    "maxBlocks": 28,
+    "maxBlocks": 37,
     "startBlocks": "<xml><block type=\"maze_start\" deletable=\"false\" movable=\"false\"><statement name=\"DO\"></statement></block></xml>"
   },
   "gameConfig": {
@@ -1649,7 +1649,7 @@
         "position": {
           "x": 1,
           "y": 1,
-          "z": 4
+          "z": 2
         }
       },
       {
@@ -1657,7 +1657,7 @@
         "position": {
           "x": 1,
           "y": 1,
-          "z": 6
+          "z": 10
         }
       },
       {
@@ -1745,14 +1745,6 @@
         "position": {
           "x": 3,
           "y": 1,
-          "z": 2
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 3,
-          "y": 1,
           "z": 4
         }
       },
@@ -1761,7 +1753,7 @@
         "position": {
           "x": 3,
           "y": 1,
-          "z": 10
+          "z": 8
         }
       },
       {
@@ -1825,14 +1817,6 @@
         "position": {
           "x": 4,
           "y": 1,
-          "z": 7
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 4,
-          "y": 1,
           "z": 8
         }
       },
@@ -1856,102 +1840,6 @@
         "modelKey": "wall.brick01",
         "position": {
           "x": 4,
-          "y": 1,
-          "z": 12
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 5,
-          "y": 1,
-          "z": 0
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 5,
-          "y": 1,
-          "z": 6
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 5,
-          "y": 1,
-          "z": 12
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 6,
-          "y": 1,
-          "z": 0
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 6,
-          "y": 1,
-          "z": 2
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 6,
-          "y": 1,
-          "z": 3
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 6,
-          "y": 1,
-          "z": 4
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 6,
-          "y": 1,
-          "z": 6
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 6,
-          "y": 1,
-          "z": 8
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 6,
-          "y": 1,
-          "z": 9
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 6,
-          "y": 1,
-          "z": 10
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 6,
           "y": 1,
           "z": 11
         }
@@ -1959,6 +1847,110 @@
       {
         "modelKey": "wall.brick01",
         "position": {
+          "x": 4,
+          "y": 1,
+          "z": 12
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 5,
+          "y": 1,
+          "z": 0
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 5,
+          "y": 1,
+          "z": 2
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 5,
+          "y": 1,
+          "z": 8
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 5,
+          "y": 1,
+          "z": 12
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 6,
+          "y": 1,
+          "z": 0
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 6,
+          "y": 1,
+          "z": 2
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 6,
+          "y": 1,
+          "z": 4
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 6,
+          "y": 1,
+          "z": 5
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 6,
+          "y": 1,
+          "z": 6
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 6,
+          "y": 1,
+          "z": 7
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 6,
+          "y": 1,
+          "z": 8
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 6,
+          "y": 1,
+          "z": 10
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
           "x": 6,
           "y": 1,
           "z": 12
@@ -1977,7 +1969,7 @@
         "position": {
           "x": 7,
           "y": 1,
-          "z": 4
+          "z": 2
         }
       },
       {
@@ -1985,7 +1977,7 @@
         "position": {
           "x": 7,
           "y": 1,
-          "z": 8
+          "z": 10
         }
       },
       {
@@ -2009,7 +2001,7 @@
         "position": {
           "x": 8,
           "y": 1,
-          "z": 1
+          "z": 2
         }
       },
       {
@@ -2017,7 +2009,7 @@
         "position": {
           "x": 8,
           "y": 1,
-          "z": 2
+          "z": 3
         }
       },
       {
@@ -2097,6 +2089,14 @@
         "position": {
           "x": 9,
           "y": 1,
+          "z": 2
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 9,
+          "y": 1,
           "z": 4
         }
       },
@@ -2129,7 +2129,7 @@
         "position": {
           "x": 10,
           "y": 1,
-          "z": 3
+          "z": 4
         }
       },
       {
@@ -2137,7 +2137,7 @@
         "position": {
           "x": 10,
           "y": 1,
-          "z": 4
+          "z": 5
         }
       },
       {
@@ -2185,6 +2185,14 @@
         "position": {
           "x": 10,
           "y": 1,
+          "z": 11
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 10,
+          "y": 1,
           "z": 12
         }
       },
@@ -2194,14 +2202,6 @@
           "x": 11,
           "y": 1,
           "z": 0
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 11,
-          "y": 1,
-          "z": 6
         }
       },
       {
@@ -2333,9 +2333,9 @@
         "id": "c1",
         "type": "crystal",
         "position": {
-          "x": 7,
+          "x": 9,
           "y": 1,
-          "z": 9
+          "z": 3
         }
       },
       {
@@ -2344,7 +2344,7 @@
         "position": {
           "x": 1,
           "y": 1,
-          "z": 5
+          "z": 11
         }
       }
     ],
@@ -2358,59 +2358,85 @@
   "solution": {
     "type": "reach_target",
     "itemGoals": {},
-    "optimalBlocks": 23,
+    "optimalBlocks": 32,
     "rawActions": [
+      "moveForward",
+      "moveForward",
+      "moveForward",
+      "moveForward",
+      "moveForward",
+      "moveForward",
+      "moveForward",
+      "moveForward",
       "turnRight",
-      "moveForward",
-      "moveForward",
       "jump",
       "moveForward",
       "collect",
+      "jump",
+      "moveForward",
+      "moveForward",
+      "moveForward",
+      "moveForward",
+      "moveForward",
+      "moveForward",
+      "moveForward",
+      "turnRight",
+      "moveForward",
+      "moveForward",
+      "moveForward",
+      "moveForward",
       "jump",
       "moveForward",
       "moveForward",
       "moveForward",
       "turnLeft",
-      "moveForward",
-      "moveForward",
-      "jump",
-      "moveForward",
-      "jump",
-      "moveForward",
+      "turnLeft",
       "collect",
-      "jump",
+      "moveForward",
       "moveForward",
       "jump",
       "moveForward",
-      "turnRight",
       "moveForward",
+      "moveForward",
+      "moveForward",
+      "moveForward",
+      "jump",
       "moveForward"
     ],
     "structuredSolution": [
       "DEFINE PROCEDURE_1:",
-      "  moveForward",
-      "  jump",
-      "  moveForward",
+      "  repeat (3) do:",
+      "    moveForward",
       "",
       "MAIN PROGRAM:",
       "  On start:",
-      "  maze_turn",
-      "  moveForward",
       "  CALL PROCEDURE_1",
-      "  collect",
-      "  jump",
-      "  repeat (3) do:",
-      "    moveForward",
-      "  maze_turn",
-      "  moveForward",
       "  CALL PROCEDURE_1",
+      "  moveForward",
+      "  moveForward",
+      "  maze_turn",
       "  jump",
       "  moveForward",
       "  collect",
       "  jump",
       "  CALL PROCEDURE_1",
-      "  maze_turn",
+      "  CALL PROCEDURE_1",
       "  moveForward",
+      "  maze_turn",
+      "  CALL PROCEDURE_1",
+      "  moveForward",
+      "  jump",
+      "  CALL PROCEDURE_1",
+      "  maze_turn",
+      "  maze_turn",
+      "  collect",
+      "  moveForward",
+      "  moveForward",
+      "  jump",
+      "  CALL PROCEDURE_1",
+      "  moveForward",
+      "  moveForward",
+      "  jump",
       "  moveForward"
     ]
   },

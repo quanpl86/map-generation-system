@@ -380,17 +380,17 @@ def synthesize_program(actions: List[Action], world: GameWorld) -> Dict:
     procedures, remaining_actions = {}, list(actions)
     available_blocks = world.available_blocks
     can_use_procedures = 'PROCEDURE' in available_blocks
-    # [SỬA] Lấy các cấu hình từ solution_config
+    # [CẢI TIẾN] Lấy các cấu hình từ solution_config
     force_function = world.solution_config.get('force_function', False)
-    function_names = world.solution_config.get('function_names', [])
+    suggested_function_names = world.solution_config.get('function_names', [])
 
     if can_use_procedures: # Chỉ tạo hàm nếu được phép
         for i in range(3): # Thử tạo tối đa 3 hàm
             result = find_most_frequent_sequence(remaining_actions, force_function=force_function)
             if result:
                 sequence = result[0]
-                # [SỬA] Ưu tiên sử dụng tên hàm được định nghĩa trong curriculum
-                proc_name = function_names[i] if i < len(function_names) else f"PROCEDURE_{i+1}"
+                # [CẢI TIẾN] Ưu tiên sử dụng tên hàm được định nghĩa trong curriculum
+                proc_name = suggested_function_names[i] if i < len(suggested_function_names) else f"PROCEDURE_{i+1}"
 
                 procedures[proc_name] = compress_actions_to_structure(sequence, available_blocks)
                 new_actions, j, seq_tuple = [], 0, tuple(sequence)

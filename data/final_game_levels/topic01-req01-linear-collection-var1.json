@@ -139,7 +139,7 @@
       {
         "modelKey": "wall.brick01",
         "position": {
-          "x": 8,
+          "x": 4,
           "y": 1,
           "z": 1
         }
@@ -161,7 +161,7 @@
         "id": "c1",
         "type": "crystal",
         "position": {
-          "x": 6,
+          "x": 7,
           "y": 1,
           "z": 1
         }
@@ -170,7 +170,7 @@
         "id": "c2",
         "type": "crystal",
         "position": {
-          "x": 4,
+          "x": 6,
           "y": 1,
           "z": 1
         }
@@ -189,26 +189,26 @@
     "optimalBlocks": 10,
     "rawActions": [
       "moveForward",
-      "moveForward",
-      "collect",
-      "moveForward",
-      "moveForward",
-      "collect",
-      "moveForward",
       "jump",
+      "moveForward",
+      "moveForward",
+      "collect",
+      "moveForward",
+      "collect",
+      "moveForward",
       "moveForward"
     ],
     "structuredSolution": [
       "MAIN PROGRAM:",
       "  On start:",
       "  moveForward",
-      "  moveForward",
-      "  collect",
-      "  moveForward",
-      "  moveForward",
-      "  collect",
-      "  moveForward",
       "  jump",
+      "  moveForward",
+      "  moveForward",
+      "  collect",
+      "  moveForward",
+      "  collect",
+      "  moveForward",
       "  moveForward"
     ]
   },

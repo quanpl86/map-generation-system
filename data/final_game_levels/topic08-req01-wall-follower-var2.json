@@ -777,14 +777,6 @@
         "position": {
           "x": 1,
           "y": 1,
-          "z": 6
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 1,
-          "y": 1,
           "z": 8
         }
       },
@@ -825,6 +817,14 @@
         "position": {
           "x": 2,
           "y": 1,
+          "z": 5
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 2,
+          "y": 1,
           "z": 6
         }
       },
@@ -849,14 +849,6 @@
         "position": {
           "x": 3,
           "y": 1,
-          "z": 4
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 3,
-          "y": 1,
           "z": 6
         }
       },
@@ -881,7 +873,23 @@
         "position": {
           "x": 4,
           "y": 1,
+          "z": 1
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 4,
+          "y": 1,
           "z": 2
+        }
+      },
+      {
+        "modelKey": "wall.brick01",
+        "position": {
+          "x": 4,
+          "y": 1,
+          "z": 3
         }
       },
       {
@@ -914,14 +922,6 @@
           "x": 5,
           "y": 1,
           "z": 0
-        }
-      },
-      {
-        "modelKey": "wall.brick01",
-        "position": {
-          "x": 5,
-          "y": 1,
-          "z": 2
         }
       },
       {
@@ -1031,10 +1031,10 @@
     "rawActions": [
       "moveForward",
       "moveForward",
-      "moveForward",
+      "jump",
       "moveForward",
       "turnRight",
-      "jump",
+      "moveForward",
       "moveForward",
       "moveForward",
       "moveForward",
@@ -1048,13 +1048,13 @@
       "",
       "MAIN PROGRAM:",
       "  On start:",
-      "  CALL PROCEDURE_1",
+      "  moveForward",
+      "  moveForward",
+      "  jump",
       "  moveForward",
       "  maze_turn",
-      "  jump",
       "  CALL PROCEDURE_1",
-      "  moveForward",
-      "  moveForward"
+      "  CALL PROCEDURE_1"
     ]
   },
   "sounds": {

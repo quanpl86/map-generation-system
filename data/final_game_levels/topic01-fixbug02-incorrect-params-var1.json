@@ -66,20 +66,12 @@
       ]
     },
     "maxBlocks": 13,
-    "startBlocks": "<xml><block type=\"maze_start\" deletable=\"false\" movable=\"false\"><statement name=\"DO\"><block type=\"maze_moveForward\"><next><block type=\"maze_moveForward\"><next><block type=\"maze_moveForward\"><next><block type=\"maze_jump\"><next><block type=\"maze_moveForward\"><next><block type=\"maze_moveForward\"><next><block type=\"maze_moveForward\" /></next></block></next></block></next></block></next></block></next></block></next></block></statement></block></xml>"
+    "startBlocks": "<xml><block type=\"maze_start\" deletable=\"false\" movable=\"false\"><statement name=\"DO\"><block type=\"maze_moveForward\"><next><block type=\"maze_moveForward\"><next><block type=\"maze_moveForward\"><next><block type=\"maze_moveForward\"><next><block type=\"maze_moveForward\"><next><block type=\"maze_jump\"><next><block type=\"maze_moveForward\" /></next></block></next></block></next></block></next></block></next></block></next></block></statement></block></xml>"
   },
   "gameConfig": {
     "type": "maze",
     "renderer": "3d",
     "blocks": [
-      {
-        "modelKey": "ground.normal",
-        "position": {
-          "x": 5,
-          "y": 0,
-          "z": 4
-        }
-      },
       {
         "modelKey": "ground.normal",
         "position": {
@@ -137,9 +129,17 @@
         }
       },
       {
+        "modelKey": "ground.normal",
+        "position": {
+          "x": 13,
+          "y": 0,
+          "z": 4
+        }
+      },
+      {
         "modelKey": "wall.brick01",
         "position": {
-          "x": 9,
+          "x": 12,
           "y": 1,
           "z": 4
         }
@@ -149,7 +149,7 @@
       {
         "id": "player1",
         "start": {
-          "x": 5,
+          "x": 6,
           "y": 1,
           "z": 4,
           "direction": 1
@@ -159,7 +159,7 @@
     "collectibles": [],
     "interactibles": [],
     "finish": {
-      "x": 12,
+      "x": 13,
       "y": 1,
       "z": 4
     }
@@ -172,9 +172,9 @@
       "moveForward",
       "moveForward",
       "moveForward",
+      "moveForward",
+      "moveForward",
       "jump",
-      "moveForward",
-      "moveForward",
       "moveForward"
     ],
     "structuredSolution": [
@@ -183,9 +183,9 @@
       "  moveForward",
       "  moveForward",
       "  moveForward",
+      "  moveForward",
+      "  moveForward",
       "  jump",
-      "  moveForward",
-      "  moveForward",
       "  moveForward"
     ]
   },

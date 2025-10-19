@@ -6,54 +6,6 @@
       {
         "modelKey": "ground.normal",
         "position": {
-          "x": 1,
-          "y": 0,
-          "z": 1
-        }
-      },
-      {
-        "modelKey": "ground.normal",
-        "position": {
-          "x": 1,
-          "y": 0,
-          "z": 6
-        }
-      },
-      {
-        "modelKey": "ground.normal",
-        "position": {
-          "x": 2,
-          "y": 0,
-          "z": 1
-        }
-      },
-      {
-        "modelKey": "ground.normal",
-        "position": {
-          "x": 2,
-          "y": 0,
-          "z": 6
-        }
-      },
-      {
-        "modelKey": "ground.normal",
-        "position": {
-          "x": 3,
-          "y": 0,
-          "z": 1
-        }
-      },
-      {
-        "modelKey": "ground.normal",
-        "position": {
-          "x": 3,
-          "y": 0,
-          "z": 6
-        }
-      },
-      {
-        "modelKey": "ground.normal",
-        "position": {
           "x": 4,
           "y": 0,
           "z": 1
@@ -111,6 +63,54 @@
         "modelKey": "ground.normal",
         "position": {
           "x": 7,
+          "y": 0,
+          "z": 6
+        }
+      },
+      {
+        "modelKey": "ground.normal",
+        "position": {
+          "x": 8,
+          "y": 0,
+          "z": 1
+        }
+      },
+      {
+        "modelKey": "ground.normal",
+        "position": {
+          "x": 8,
+          "y": 0,
+          "z": 6
+        }
+      },
+      {
+        "modelKey": "ground.normal",
+        "position": {
+          "x": 9,
+          "y": 0,
+          "z": 1
+        }
+      },
+      {
+        "modelKey": "ground.normal",
+        "position": {
+          "x": 9,
+          "y": 0,
+          "z": 6
+        }
+      },
+      {
+        "modelKey": "ground.normal",
+        "position": {
+          "x": 10,
+          "y": 0,
+          "z": 1
+        }
+      },
+      {
+        "modelKey": "ground.normal",
+        "position": {
+          "x": 10,
           "y": 0,
           "z": 2
         }
@@ -118,7 +118,7 @@
       {
         "modelKey": "ground.normal",
         "position": {
-          "x": 7,
+          "x": 10,
           "y": 0,
           "z": 3
         }
@@ -126,7 +126,7 @@
       {
         "modelKey": "ground.normal",
         "position": {
-          "x": 7,
+          "x": 10,
           "y": 0,
           "z": 4
         }
@@ -134,7 +134,7 @@
       {
         "modelKey": "ground.normal",
         "position": {
-          "x": 7,
+          "x": 10,
           "y": 0,
           "z": 5
         }
@@ -142,7 +142,7 @@
       {
         "modelKey": "ground.normal",
         "position": {
-          "x": 7,
+          "x": 10,
           "y": 0,
           "z": 6
         }
@@ -152,7 +152,7 @@
       {
         "id": "player1",
         "start": {
-          "x": 1,
+          "x": 4,
           "y": 1,
           "z": 1,
           "direction": 1
@@ -164,7 +164,7 @@
         "id": "c1",
         "type": "crystal",
         "position": {
-          "x": 2,
+          "x": 5,
           "y": 1,
           "z": 1
         }
@@ -173,7 +173,7 @@
         "id": "c2",
         "type": "crystal",
         "position": {
-          "x": 7,
+          "x": 10,
           "y": 1,
           "z": 1
         }
@@ -182,7 +182,7 @@
         "id": "c3",
         "type": "crystal",
         "position": {
-          "x": 7,
+          "x": 10,
           "y": 1,
           "z": 6
         }
@@ -191,7 +191,7 @@
         "id": "c4",
         "type": "crystal",
         "position": {
-          "x": 2,
+          "x": 5,
           "y": 1,
           "z": 6
         }
@@ -199,7 +199,7 @@
     ],
     "interactibles": [],
     "finish": {
-      "x": 1,
+      "x": 4,
       "y": 1,
       "z": 6
     }

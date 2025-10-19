@@ -70,7 +70,7 @@
       {
         "modelKey": "wall.brick01",
         "position": {
-          "x": 8,
+          "x": 4,
           "y": 1,
           "z": 1
         }
@@ -92,7 +92,7 @@
         "id": "c1",
         "type": "crystal",
         "position": {
-          "x": 6,
+          "x": 7,
           "y": 1,
           "z": 1
         }
@@ -101,7 +101,7 @@
         "id": "c2",
         "type": "crystal",
         "position": {
-          "x": 4,
+          "x": 6,
           "y": 1,
           "z": 1
         }

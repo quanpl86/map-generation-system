@@ -6,22 +6,6 @@
       {
         "modelKey": "ground.normal",
         "position": {
-          "x": 4,
-          "y": 0,
-          "z": 2
-        }
-      },
-      {
-        "modelKey": "ground.normal",
-        "position": {
-          "x": 5,
-          "y": 0,
-          "z": 2
-        }
-      },
-      {
-        "modelKey": "ground.normal",
-        "position": {
           "x": 5,
           "y": 0,
           "z": 3
@@ -30,7 +14,15 @@
       {
         "modelKey": "ground.normal",
         "position": {
-          "x": 5,
+          "x": 6,
+          "y": 0,
+          "z": 3
+        }
+      },
+      {
+        "modelKey": "ground.normal",
+        "position": {
+          "x": 6,
           "y": 0,
           "z": 4
         }
@@ -38,15 +30,23 @@
       {
         "modelKey": "ground.normal",
         "position": {
-          "x": 5,
+          "x": 6,
           "y": 0,
           "z": 5
         }
       },
       {
+        "modelKey": "ground.normal",
+        "position": {
+          "x": 6,
+          "y": 0,
+          "z": 6
+        }
+      },
+      {
         "modelKey": "wall.brick01",
         "position": {
-          "x": 5,
+          "x": 6,
           "y": 1,
           "z": 4
         }
@@ -56,9 +56,9 @@
       {
         "id": "player1",
         "start": {
-          "x": 4,
+          "x": 5,
           "y": 1,
-          "z": 2,
+          "z": 3,
           "direction": 1
         }
       }
@@ -68,17 +68,17 @@
         "id": "c1",
         "type": "crystal",
         "position": {
-          "x": 5,
+          "x": 6,
           "y": 1,
-          "z": 2
+          "z": 3
         }
       }
     ],
     "interactibles": [],
     "finish": {
-      "x": 5,
+      "x": 6,
       "y": 1,
-      "z": 5
+      "z": 6
     }
   }
 }

@@ -70,12 +70,17 @@ def _introduce_missing_block_bug(data: Any, config: Dict) -> Any:
         
     return data # Trả về dữ liệu gốc nếu không phải str hoặc list
 
-def _introduce_lack_of_abstraction_bug(actions: List[str], config: Dict) -> List[str]:
+def _introduce_optimization_bug(actions: List[str], config: Dict) -> List[str]:
     """
-    Đây không phải là một "lỗi" mà là một "thử thách tái cấu trúc".
-    Hàm này chỉ đơn giản là trả về chuỗi hành động thô để người chơi tự tối ưu.
+    Tạo lỗi tối ưu hóa bằng cách thêm các khối lệnh thừa (tự triệt tiêu).
+    Ví dụ: thêm một cặp turnLeft và turnRight.
     """
-    print(f"      -> Challenge 'lack_of_abstraction': Cung cấp chuỗi hành động thô.")
+    if not actions:
+        return actions
+    insert_idx = random.randint(0, len(actions))
+    actions.insert(insert_idx, 'turnRight')
+    actions.insert(insert_idx, 'turnLeft')
+    print(f"      -> Bug 'optimization': Chèn cặp lệnh rẽ thừa ở vị trí {insert_idx}.")
     return actions
 
 # --- SECTION 2: Bug Generators for XML Strings ---
@@ -226,8 +231,8 @@ BUG_GENERATORS: Dict[str, Callable[[Any, Dict], Any]] = {
     'incorrect_function_call_order': _introduce_incorrect_function_call_order_bug,
     # 'missing_function_call' có thể được xử lý bằng cách xóa khối 'procedures_callnoreturn'
 
-    # Nhóm 4: Lỗi tối ưu hóa
-    'lack_of_abstraction': _introduce_lack_of_abstraction_bug,
+    # Nhóm 4: Lỗi tối ưu hóa (hoạt động trên raw_actions)
+    'optimization': _introduce_optimization_bug,
 }
 
 def create_bug(bug_type: str, data: Any, config: Dict = None) -> Any:

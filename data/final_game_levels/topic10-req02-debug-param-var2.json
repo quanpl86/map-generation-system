@@ -47,28 +47,12 @@
       ]
     },
     "maxBlocks": 12,
-    "startBlocks": "<xml><block type=\"maze_start\" deletable=\"false\" movable=\"false\"><statement name=\"DO\"><block type=\"maze_moveForward\"><next><block type=\"maze_collect\"><next><block type=\"maze_turn\"><field name=\"DIR\">turnLeft</field><next><block type=\"maze_moveForward\"><next><block type=\"maze_jump\"><next><block type=\"maze_moveForward\" /></next></block></next></block></next></block></next></block></next></block></statement></block></xml>"
+    "startBlocks": "<xml><block type=\"maze_start\" deletable=\"false\" movable=\"false\"><statement name=\"DO\"><block type=\"maze_moveForward\"><next><block type=\"maze_collect\"><next><block type=\"maze_turn\"><field name=\"DIR\">turnLeft</field><next><block type=\"maze_jump\"><next><block type=\"maze_moveForward\"><next><block type=\"maze_moveForward\" /></next></block></next></block></next></block></next></block></next></block></statement></block></xml>"
   },
   "gameConfig": {
     "type": "maze",
     "renderer": "3d",
     "blocks": [
-      {
-        "modelKey": "ground.normal",
-        "position": {
-          "x": 4,
-          "y": 0,
-          "z": 2
-        }
-      },
-      {
-        "modelKey": "ground.normal",
-        "position": {
-          "x": 5,
-          "y": 0,
-          "z": 2
-        }
-      },
       {
         "modelKey": "ground.normal",
         "position": {
@@ -80,7 +64,15 @@
       {
         "modelKey": "ground.normal",
         "position": {
-          "x": 5,
+          "x": 6,
+          "y": 0,
+          "z": 3
+        }
+      },
+      {
+        "modelKey": "ground.normal",
+        "position": {
+          "x": 6,
           "y": 0,
           "z": 4
         }
@@ -88,15 +80,23 @@
       {
         "modelKey": "ground.normal",
         "position": {
-          "x": 5,
+          "x": 6,
           "y": 0,
           "z": 5
         }
       },
       {
+        "modelKey": "ground.normal",
+        "position": {
+          "x": 6,
+          "y": 0,
+          "z": 6
+        }
+      },
+      {
         "modelKey": "wall.brick01",
         "position": {
-          "x": 5,
+          "x": 6,
           "y": 1,
           "z": 4
         }
@@ -106,9 +106,9 @@
       {
         "id": "player1",
         "start": {
-          "x": 4,
+          "x": 5,
           "y": 1,
-          "z": 2,
+          "z": 3,
           "direction": 1
         }
       }
@@ -118,17 +118,17 @@
         "id": "c1",
         "type": "crystal",
         "position": {
-          "x": 5,
+          "x": 6,
           "y": 1,
-          "z": 2
+          "z": 3
         }
       }
     ],
     "interactibles": [],
     "finish": {
-      "x": 5,
+      "x": 6,
       "y": 1,
-      "z": 5
+      "z": 6
     }
   },
   "solution": {
@@ -139,8 +139,8 @@
       "moveForward",
       "collect",
       "turnRight",
-      "moveForward",
       "jump",
+      "moveForward",
       "moveForward"
     ],
     "structuredSolution": [
@@ -149,8 +149,8 @@
       "  moveForward",
       "  collect",
       "  maze_turn",
-      "  moveForward",
       "  jump",
+      "  moveForward",
       "  moveForward"
     ]
   },
