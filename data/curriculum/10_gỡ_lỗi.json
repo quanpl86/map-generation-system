@@ -19,7 +19,8 @@
         "num_variants": 2,
         "params": {
           "side_length": 5,
-          "bug_type": "incorrect_parameter"
+          "bug_type": "incorrect_parameter",
+          "start_blocks_type": "buggy_solution"
         }
       },
       "blockly_config": {
@@ -47,7 +48,8 @@
         "num_variants": 2,
         "params": {
           "pattern": "corner",
-          "bug_type": "incorrect_parameter"
+          "bug_type": "incorrect_parameter",
+          "start_blocks_type": "buggy_solution"
         }
       },
       "blockly_config": {
@@ -76,7 +78,8 @@
         "params": {
           "path_length": 4,
           "items_to_place": "crystal",
-          "bug_type": "misplaced_block"
+          "bug_type": "misplaced_block",
+          "start_blocks_type": "buggy_solution"
         }
       },
       "blockly_config": {
@@ -107,7 +110,8 @@
         "params": {
           "path_length": 5,
           "items_to_place": "crystal",
-          "bug_type": "missing_block"
+          "bug_type": "missing_block",
+          "start_blocks_type": "buggy_solution"
         }
       },
       "blockly_config": {

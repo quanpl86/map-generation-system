@@ -6,6 +6,22 @@
       {
         "modelKey": "ground.normal",
         "position": {
+          "x": 2,
+          "y": 0,
+          "z": 5
+        }
+      },
+      {
+        "modelKey": "ground.normal",
+        "position": {
+          "x": 3,
+          "y": 0,
+          "z": 5
+        }
+      },
+      {
+        "modelKey": "ground.normal",
+        "position": {
           "x": 4,
           "y": 0,
           "z": 5
@@ -50,29 +66,13 @@
           "y": 0,
           "z": 5
         }
-      },
-      {
-        "modelKey": "ground.normal",
-        "position": {
-          "x": 10,
-          "y": 0,
-          "z": 5
-        }
-      },
-      {
-        "modelKey": "ground.normal",
-        "position": {
-          "x": 11,
-          "y": 0,
-          "z": 5
-        }
       }
     ],
     "players": [
       {
         "id": "player1",
         "start": {
-          "x": 4,
+          "x": 2,
           "y": 1,
           "z": 5,
           "direction": 1
@@ -84,7 +84,7 @@
         "id": "c1",
         "type": "crystal",
         "position": {
-          "x": 5,
+          "x": 3,
           "y": 1,
           "z": 5
         }
@@ -93,7 +93,7 @@
         "id": "c2",
         "type": "crystal",
         "position": {
-          "x": 6,
+          "x": 4,
           "y": 1,
           "z": 5
         }
@@ -102,7 +102,7 @@
         "id": "c3",
         "type": "crystal",
         "position": {
-          "x": 7,
+          "x": 5,
           "y": 1,
           "z": 5
         }
@@ -111,7 +111,7 @@
         "id": "c4",
         "type": "crystal",
         "position": {
-          "x": 8,
+          "x": 6,
           "y": 1,
           "z": 5
         }
@@ -120,7 +120,7 @@
         "id": "c5",
         "type": "crystal",
         "position": {
-          "x": 9,
+          "x": 7,
           "y": 1,
           "z": 5
         }
@@ -129,7 +129,7 @@
         "id": "c6",
         "type": "crystal",
         "position": {
-          "x": 10,
+          "x": 8,
           "y": 1,
           "z": 5
         }
@@ -137,7 +137,7 @@
     ],
     "interactibles": [],
     "finish": {
-      "x": 11,
+      "x": 9,
       "y": 1,
       "z": 5
     }

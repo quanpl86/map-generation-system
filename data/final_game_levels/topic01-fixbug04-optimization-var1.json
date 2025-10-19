@@ -66,7 +66,7 @@
       ]
     },
     "maxBlocks": 12,
-    "startBlocks": "<xml><block type=\"maze_moveForward\"><next><block type=\"maze_turn\"><field name=\"DIR\">turnLeft</field><next><block type=\"maze_turn\"><field name=\"DIR\">turnRight</field><next><block type=\"maze_moveForward\"><next><block type=\"maze_moveForward\"><next><block type=\"maze_jump\"><next><block type=\"maze_moveForward\"><next><block type=\"maze_moveForward\"></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></xml>"
+    "startBlocks": "<xml><block type=\"maze_moveForward\"><next><block type=\"maze_moveForward\"><next><block type=\"maze_moveForward\"><next><block type=\"maze_moveForward\"><next><block type=\"maze_jump\"><next><block type=\"maze_turn\"><field name=\"DIR\">turnLeft</field><next><block type=\"maze_turn\"><field name=\"DIR\">turnRight</field><next><block type=\"maze_moveForward\"></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></xml>"
   },
   "gameConfig": {
     "type": "maze",
@@ -75,9 +75,17 @@
       {
         "modelKey": "ground.normal",
         "position": {
+          "x": 6,
+          "y": 0,
+          "z": 3
+        }
+      },
+      {
+        "modelKey": "ground.normal",
+        "position": {
           "x": 7,
           "y": 0,
-          "z": 7
+          "z": 3
         }
       },
       {
@@ -85,7 +93,7 @@
         "position": {
           "x": 8,
           "y": 0,
-          "z": 7
+          "z": 3
         }
       },
       {
@@ -93,7 +101,7 @@
         "position": {
           "x": 9,
           "y": 0,
-          "z": 7
+          "z": 3
         }
       },
       {
@@ -101,7 +109,7 @@
         "position": {
           "x": 10,
           "y": 0,
-          "z": 7
+          "z": 3
         }
       },
       {
@@ -109,7 +117,7 @@
         "position": {
           "x": 11,
           "y": 0,
-          "z": 7
+          "z": 3
         }
       },
       {
@@ -117,15 +125,7 @@
         "position": {
           "x": 12,
           "y": 0,
-          "z": 7
-        }
-      },
-      {
-        "modelKey": "ground.normal",
-        "position": {
-          "x": 13,
-          "y": 0,
-          "z": 7
+          "z": 3
         }
       },
       {
@@ -133,7 +133,7 @@
         "position": {
           "x": 11,
           "y": 1,
-          "z": 7
+          "z": 3
         }
       }
     ],
@@ -141,9 +141,9 @@
       {
         "id": "player1",
         "start": {
-          "x": 7,
+          "x": 6,
           "y": 1,
-          "z": 7,
+          "z": 3,
           "direction": 1
         }
       }
@@ -151,9 +151,9 @@
     "collectibles": [],
     "interactibles": [],
     "finish": {
-      "x": 13,
+      "x": 12,
       "y": 1,
-      "z": 7
+      "z": 3
     }
   },
   "solution": {
@@ -164,8 +164,8 @@
       "moveForward",
       "moveForward",
       "moveForward",
-      "jump",
       "moveForward",
+      "jump",
       "moveForward"
     ],
     "structuredSolution": [
@@ -174,8 +174,8 @@
       "  moveForward",
       "  moveForward",
       "  moveForward",
-      "  jump",
       "  moveForward",
+      "  jump",
       "  moveForward"
     ]
   },

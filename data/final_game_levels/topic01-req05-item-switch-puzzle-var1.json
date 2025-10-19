@@ -65,7 +65,7 @@
         }
       ]
     },
-    "maxBlocks": 17,
+    "maxBlocks": 18,
     "startBlocks": "<xml><block type=\"maze_start\" deletable=\"false\" movable=\"false\"><statement name=\"DO\"></statement></block></xml>"
   },
   "gameConfig": {
@@ -75,9 +75,25 @@
       {
         "modelKey": "ground.normal",
         "position": {
+          "x": 2,
+          "y": 0,
+          "z": 2
+        }
+      },
+      {
+        "modelKey": "ground.normal",
+        "position": {
+          "x": 3,
+          "y": 0,
+          "z": 2
+        }
+      },
+      {
+        "modelKey": "ground.normal",
+        "position": {
           "x": 4,
           "y": 0,
-          "z": 4
+          "z": 2
         }
       },
       {
@@ -85,7 +101,7 @@
         "position": {
           "x": 5,
           "y": 0,
-          "z": 4
+          "z": 2
         }
       },
       {
@@ -93,7 +109,7 @@
         "position": {
           "x": 6,
           "y": 0,
-          "z": 4
+          "z": 2
         }
       },
       {
@@ -101,7 +117,7 @@
         "position": {
           "x": 7,
           "y": 0,
-          "z": 4
+          "z": 2
         }
       },
       {
@@ -109,7 +125,7 @@
         "position": {
           "x": 8,
           "y": 0,
-          "z": 4
+          "z": 2
         }
       },
       {
@@ -117,7 +133,7 @@
         "position": {
           "x": 9,
           "y": 0,
-          "z": 4
+          "z": 2
         }
       },
       {
@@ -125,7 +141,7 @@
         "position": {
           "x": 10,
           "y": 0,
-          "z": 4
+          "z": 2
         }
       },
       {
@@ -133,31 +149,15 @@
         "position": {
           "x": 11,
           "y": 0,
-          "z": 4
-        }
-      },
-      {
-        "modelKey": "ground.normal",
-        "position": {
-          "x": 12,
-          "y": 0,
-          "z": 4
-        }
-      },
-      {
-        "modelKey": "ground.normal",
-        "position": {
-          "x": 13,
-          "y": 0,
-          "z": 4
+          "z": 2
         }
       },
       {
         "modelKey": "wall.brick01",
         "position": {
-          "x": 9,
+          "x": 10,
           "y": 1,
-          "z": 4
+          "z": 2
         }
       }
     ],
@@ -165,9 +165,9 @@
       {
         "id": "player1",
         "start": {
-          "x": 4,
+          "x": 2,
           "y": 1,
-          "z": 4,
+          "z": 2,
           "direction": 1
         }
       }
@@ -177,18 +177,18 @@
         "id": "c1",
         "type": "crystal",
         "position": {
-          "x": 8,
+          "x": 3,
           "y": 1,
-          "z": 4
+          "z": 2
         }
       },
       {
         "id": "c3",
         "type": "crystal",
         "position": {
-          "x": 6,
+          "x": 8,
           "y": 1,
-          "z": 4
+          "z": 2
         }
       }
     ],
@@ -197,49 +197,51 @@
         "id": "s2",
         "type": "switch",
         "position": {
-          "x": 11,
+          "x": 4,
           "y": 1,
-          "z": 4
+          "z": 2
         },
-        "initialState": "on"
+        "initialState": "off"
       }
     ],
     "finish": {
-      "x": 13,
+      "x": 11,
       "y": 1,
-      "z": 4
+      "z": 2
     }
   },
   "solution": {
     "type": "reach_target",
     "itemGoals": {},
-    "optimalBlocks": 12,
+    "optimalBlocks": 13,
     "rawActions": [
       "moveForward",
+      "collect",
+      "moveForward",
+      "toggleSwitch",
+      "moveForward",
+      "moveForward",
+      "moveForward",
       "moveForward",
       "collect",
       "moveForward",
-      "moveForward",
-      "collect",
       "jump",
-      "moveForward",
-      "moveForward",
-      "moveForward",
       "moveForward"
     ],
     "structuredSolution": [
       "MAIN PROGRAM:",
       "  On start:",
       "  moveForward",
+      "  collect",
+      "  moveForward",
+      "  toggleSwitch",
+      "  moveForward",
+      "  moveForward",
+      "  moveForward",
       "  moveForward",
       "  collect",
       "  moveForward",
-      "  moveForward",
-      "  collect",
       "  jump",
-      "  moveForward",
-      "  moveForward",
-      "  moveForward",
       "  moveForward"
     ]
   },

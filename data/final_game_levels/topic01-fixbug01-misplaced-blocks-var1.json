@@ -66,7 +66,7 @@
       ]
     },
     "maxBlocks": 12,
-    "startBlocks": "<xml><block type=\"maze_moveForward\"><next><block type=\"maze_jump\"><next><block type=\"maze_collect\"><next><block type=\"maze_moveForward\"><next><block type=\"maze_moveForward\"><next><block type=\"maze_moveForward\"></block></next></block></next></block></next></block></next></block></next></block></xml>"
+    "startBlocks": "<xml><block type=\"maze_jump\"><next><block type=\"maze_moveForward\"><next><block type=\"maze_moveForward\"><next><block type=\"maze_moveForward\"><next><block type=\"maze_collect\"><next><block type=\"maze_moveForward\"></block></next></block></next></block></next></block></next></block></next></block></xml>"
   },
   "gameConfig": {
     "type": "maze",
@@ -75,57 +75,57 @@
       {
         "modelKey": "ground.normal",
         "position": {
-          "x": 1,
+          "x": 7,
           "y": 0,
-          "z": 5
+          "z": 3
         }
       },
       {
         "modelKey": "ground.normal",
         "position": {
-          "x": 2,
+          "x": 8,
           "y": 0,
-          "z": 5
+          "z": 3
         }
       },
       {
         "modelKey": "ground.normal",
         "position": {
-          "x": 3,
+          "x": 9,
           "y": 0,
-          "z": 5
+          "z": 3
         }
       },
       {
         "modelKey": "ground.normal",
         "position": {
-          "x": 4,
+          "x": 10,
           "y": 0,
-          "z": 5
+          "z": 3
         }
       },
       {
         "modelKey": "ground.normal",
         "position": {
-          "x": 5,
+          "x": 11,
           "y": 0,
-          "z": 5
+          "z": 3
         }
       },
       {
         "modelKey": "ground.normal",
         "position": {
-          "x": 6,
+          "x": 12,
           "y": 0,
-          "z": 5
+          "z": 3
         }
       },
       {
         "modelKey": "wall.brick01",
         "position": {
-          "x": 2,
+          "x": 8,
           "y": 1,
-          "z": 5
+          "z": 3
         }
       }
     ],
@@ -133,9 +133,9 @@
       {
         "id": "player1",
         "start": {
-          "x": 1,
+          "x": 7,
           "y": 1,
-          "z": 5,
+          "z": 3,
           "direction": 1
         }
       }
@@ -145,17 +145,17 @@
         "id": "c1",
         "type": "crystal",
         "position": {
-          "x": 3,
+          "x": 11,
           "y": 1,
-          "z": 5
+          "z": 3
         }
       }
     ],
     "interactibles": [],
     "finish": {
-      "x": 6,
+      "x": 12,
       "y": 1,
-      "z": 5
+      "z": 3
     }
   },
   "solution": {
@@ -165,9 +165,9 @@
     "rawActions": [
       "jump",
       "moveForward",
+      "moveForward",
+      "moveForward",
       "collect",
-      "moveForward",
-      "moveForward",
       "moveForward"
     ],
     "structuredSolution": [
@@ -175,9 +175,9 @@
       "  On start:",
       "  jump",
       "  moveForward",
+      "  moveForward",
+      "  moveForward",
       "  collect",
-      "  moveForward",
-      "  moveForward",
       "  moveForward"
     ]
   },

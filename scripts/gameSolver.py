@@ -305,18 +305,21 @@ def solve_level(world: GameWorld) -> Optional[List[Action]]:
     return None
 
 # --- SECTION 5: CODE SYNTHESIS & OPTIMIZATION (Tổng hợp & Tối ưu code) ---
-def find_most_frequent_sequence(actions: List[str], min_len=3, max_len=10) -> Optional[Tuple[List[str], int]]:
+def find_most_frequent_sequence(actions: List[str], min_len=3, max_len=10, force_function=False) -> Optional[Tuple[List[str], int]]:
     """Tìm chuỗi con xuất hiện thường xuyên nhất để đề xuất tạo Hàm."""
     sequence_counts = Counter()
     actions_tuple = tuple(actions)
     for length in range(min_len, max_len + 1):
         for i in range(len(actions_tuple) - length + 1):
             sequence_counts[actions_tuple[i:i+length]] += 1
-    
+
     most_common, max_freq, best_savings = None, 1, 0
     for seq, freq in sequence_counts.items():
         if freq > 1:
-            savings = (freq - 1) * len(seq) - (len(seq) + freq)
+            # [SỬA] Thay đổi cách tính "lợi ích"
+            # Nếu không ép buộc tạo hàm, chỉ tạo khi nó thực sự tiết kiệm khối lệnh.
+            # Nếu ép buộc, chỉ cần nó xuất hiện nhiều hơn 1 lần là đủ.
+            savings = (freq - 1) * len(seq) - (len(seq) + freq) if not force_function else freq
             if savings > best_savings:
                 best_savings, most_common, max_freq = savings, seq, freq
     return (list(most_common), max_freq) if most_common else None
@@ -363,12 +366,18 @@ def synthesize_program(actions: List[Action], world: GameWorld) -> Dict:
     procedures, remaining_actions = {}, list(actions)
     available_blocks = world.available_blocks
     can_use_procedures = 'PROCEDURE' in available_blocks
+    # [SỬA] Lấy các cấu hình từ solution_config
+    force_function = world.solution_config.get('force_function', False)
+    function_names = world.solution_config.get('function_names', [])
 
     if can_use_procedures: # Chỉ tạo hàm nếu được phép
         for i in range(3): # Thử tạo tối đa 3 hàm
-            result = find_most_frequent_sequence(remaining_actions)
+            result = find_most_frequent_sequence(remaining_actions, force_function=force_function)
             if result:
-                sequence, proc_name = result[0], f"PROCEDURE_{i+1}"
+                sequence = result[0]
+                # [SỬA] Ưu tiên sử dụng tên hàm được định nghĩa trong curriculum
+                proc_name = function_names[i] if i < len(function_names) else f"PROCEDURE_{i+1}"
+
                 procedures[proc_name] = compress_actions_to_structure(sequence, available_blocks)
                 new_actions, j, seq_tuple = [], 0, tuple(sequence)
                 while j < len(remaining_actions):

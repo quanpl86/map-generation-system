@@ -18,9 +18,10 @@
         "logic_type": "function_definition",
         "num_variants": 1,
         "params": {
-          "path_length": 7,
-          "pattern": [ "move", "collect", "move", "move", "collect" ],
-          "items_to_place": ["crystal", "crystal"]
+          "path_length": 8,
+          "pattern": [ "move", "collect", "move", "collect", "move", "collect", "move", "collect" ],
+          "items_to_place": ["crystal", "crystal", "crystal", "crystal"],
+          "start_blocks_type": "empty"
         }
       },
       "blockly_config": { "toolbox_preset": "functions_basic" },
@@ -43,12 +44,17 @@
         "num_variants": 1,
         "params": {
           "path_length": 6,
-          "pattern": ["move", "turn_right", "move", "move", "turn_left", "move"],
+          "pattern": ["move", "collect", "move", "collect", "move", "collect", "move"],
+          "start_blocks_type": "buggy_solution",
           "bug_type": "misplaced_function_call"
         }
       },
       "blockly_config": { "toolbox_preset": "functions_basic" },
-      "solution_config": { "type": "reach_target", "itemGoals": {} }
+      "solution_config": {
+        "type": "reach_target",
+        "itemGoals": {},
+        "force_function": true
+      }
     },
     {
       "id": "topic02-req02-refactor-obstacle",
@@ -67,8 +73,8 @@
         "num_variants": 1,
         "params": {
           "path_length": 7,
-          "obstacles": 2,
-          "bug_type": "refactor_challenge"
+          "obstacles": 2,          
+          "start_blocks_type": "raw_solution"
         }
       },
       "blockly_config": { "toolbox_preset": "functions_basic" },
@@ -92,11 +98,17 @@
         "params": {
           "path_length": 5,
           "obstacles": 1,
-          "bug_type": "incorrect_parameter"
+          "bug_type": "incorrect_parameter",
+          "start_blocks_type": "buggy_solution"
         }
       },
       "blockly_config": { "toolbox_preset": "functions_basic" },
-      "solution_config": { "type": "reach_target", "itemGoals": {} }
+      "solution_config": {
+        "type": "reach_target",
+        "itemGoals": {},
+        "force_function": true,
+        "function_names": ["crossObstacle"]
+      }
     },
     {
       "id": "topic02-fixbug03-missing-block",
@@ -116,11 +128,17 @@
         "params": {
           "path_length": 4,
           "items_to_place": ["switch"],
-          "bug_type": "missing_block"
+          "bug_type": "missing_block",
+          "start_blocks_type": "buggy_solution"
         }
       },
       "blockly_config": { "toolbox_preset": "functions_basic" },
-      "solution_config": { "type": "reach_target", "itemGoals": { "switch": 1 } }
+      "solution_config": {
+        "type": "reach_target",
+        "itemGoals": { "switch": 1 },
+        "force_function": true,
+        "function_names": ["activateAndMove"]
+      }
     }
   ]
 }

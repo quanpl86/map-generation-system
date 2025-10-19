@@ -19,17 +19,40 @@ def _introduce_order_bug(actions: List[str]) -> List[str]:
 
 def _introduce_missing_block_bug(actions: List[str]) -> List[str]:
     """
-    Tạo lỗi thiếu sót bằng cách xóa một hành động quan trọng.
+    [REFACTORED] Tạo lỗi thiếu sót. Hỗ trợ cả list hành động và XML.
     """
-    if len(actions) <= 1:
-        return actions
+    if isinstance(actions, str): # Xử lý XML
+        try:
+            root = ET.fromstring(f"<root>{actions}</root>")
+            # Ưu tiên xóa một khối trong hàm
+            proc_body = root.find(".//block[@type='procedures_defnoreturn']/statement[@name='STACK']")
+            target_statement = proc_body if proc_body is not None and len(list(proc_body)) > 1 else root.find(".//block[@type='maze_start']/statement[@name='DO']")
+            
+            if target_statement is not None and len(list(target_statement)) > 1:
+                blocks_in_statement = list(target_statement)
+                remove_idx = random.randint(0, len(blocks_in_statement) - 1)
+                removed_block = blocks_in_statement.pop(remove_idx)
+                
+                # Xóa hết và nối lại
+                for child in list(target_statement): target_statement.remove(child)
+                if blocks_in_statement:
+                    for i in range(len(blocks_in_statement) - 1):
+                        ET.SubElement(blocks_in_statement[i], 'next').append(blocks_in_statement[i+1])
+                    target_statement.append(blocks_in_statement[0])
+                print(f"      -> Bug 'missing_block' (XML): Đã xóa khối '{removed_block.get('type')}'")
+                return "".join(ET.tostring(child, encoding='unicode') for child in root)
+        except Exception:
+            return actions # Trả về chuỗi gốc nếu có lỗi
+    
+    # Logic cũ cho list hành động
+    if len(actions) <= 1: return actions
 
     important_actions = ['collect', 'jump', 'toggleSwitch']
     for act in important_actions:
         if act in actions:
             actions.remove(act)
             print(f"      -> Bug 'missing_block': Đã xóa hành động quan trọng '{act}'.")
-            return actions
+            return actions # type: ignore
             
     # Nếu không có hành động quan trọng, xóa một hành động ngẫu nhiên
     remove_idx = random.randint(0, len(actions) - 1)
@@ -54,25 +77,23 @@ def _introduce_redundant_block_bug(actions: List[str]) -> List[str]:
 
 def _introduce_parameter_bug_xml(xml_string: str) -> str:
     """
-    Tạo lỗi tham số trong một chuỗi XML của Blockly.
-    Ưu tiên thay đổi số lần lặp, sau đó là hướng rẽ.
+    [REFACTORED] Tạo lỗi tham số trong một chuỗi XML của Blockly.
+    Hàm này sẽ chỉ thay đổi giá trị của tham số (số lần lặp, hướng rẽ),
+    chứ không thay đổi loại khối lệnh.
     """
     if not xml_string: return ""
     try:
-        # Bọc chuỗi XML trong một thẻ gốc tạm thời để phân tích cú pháp an toàn
         root = ET.fromstring(f"<root>{xml_string}</root>")
-        
+
         # Ưu tiên 1: Tìm và thay đổi khối 'maze_repeat'
         repeat_fields = root.findall(".//block[@type='maze_repeat']//field[@name='NUM']")
         if repeat_fields:
             target_field = random.choice(repeat_fields)
-            original_num = int(target_field.text)
-            # Tạo lỗi một cách thông minh: +1 hoặc -1
+            original_num = int(target_field.text or 1)
             bugged_num = original_num + 1 if original_num > 2 else original_num - 1
             if bugged_num <= 0: bugged_num = 1
             target_field.text = str(bugged_num)
             print(f"      -> Bug 'incorrect_parameter': Thay đổi số lần lặp từ {original_num} thành {bugged_num}.")
-            # Trả về nội dung bên trong thẻ <root>
             return "".join(ET.tostring(child, encoding='unicode') for child in root)
 
         # Ưu tiên 2: Tìm và thay đổi khối 'maze_turn'
@@ -90,6 +111,29 @@ def _introduce_parameter_bug_xml(xml_string: str) -> str:
         return xml_string
 
     print(f"   - ⚠️ Không tìm thấy mục tiêu (vòng lặp/rẽ) để tạo lỗi tham số. Trả về chuỗi gốc.")
+    return xml_string
+
+def _introduce_wrong_block_in_loop_bug_xml(xml_string: str) -> str:
+    """
+    [MỚI] Tạo lỗi logic bằng cách thay đổi một khối lệnh bên trong vòng lặp hoặc hàm.
+    """
+    if not xml_string: return ""
+    try:
+        root = ET.fromstring(f"<root>{xml_string}</root>")
+        possible_targets = root.findall(".//block[@type='procedures_defnoreturn']/statement/block") + root.findall(".//block[@type='maze_repeat']/statement/block")
+        simple_action_blocks = [b for b in possible_targets if b.get('type') in ['maze_moveForward', 'maze_jump', 'maze_turn', 'maze_collect']]
+
+        if simple_action_blocks:
+            target_block = random.choice(simple_action_blocks)
+            original_type = target_block.get('type')
+            replacements = {'maze_moveForward', 'maze_jump', 'maze_turn', 'maze_collect'} - {original_type}
+            new_type = random.choice(list(replacements))
+            target_block.set('type', new_type)
+            for child in list(target_block): target_block.remove(child) # Xóa các field/value cũ
+            print(f"      -> Bug 'wrong_block_in_loop': Thay đổi logic từ '{original_type}' thành '{new_type}'.")
+            return "".join(ET.tostring(child, encoding='unicode') for child in root)
+    except Exception as e:
+        print(f"   - ⚠️ Lỗi khi tạo lỗi wrong_block_in_loop: {e}. Trả về chuỗi gốc.")
     return xml_string
 
 def _introduce_misplaced_function_call_bug_xml(xml_string: str) -> str:
@@ -148,6 +192,7 @@ BUG_GENERATORS: Dict[str, Callable[[Any], Any]] = {
     # Hàm này nhận vào chuỗi XML và trả về chuỗi XML
     'incorrect_parameter': _introduce_parameter_bug_xml,
     'misplaced_function_call': _introduce_misplaced_function_call_bug_xml,
+    'wrong_block_in_loop': _introduce_wrong_block_in_loop_bug_xml,
     
     # 'refactor_challenge' được xử lý đặc biệt trong generate_all_maps.py
     # và không cần một hàm tạo lỗi ở đây.

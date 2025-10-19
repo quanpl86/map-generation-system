@@ -75,9 +75,17 @@
       {
         "modelKey": "ground.normal",
         "position": {
+          "x": 2,
+          "y": 0,
+          "z": 1
+        }
+      },
+      {
+        "modelKey": "ground.normal",
+        "position": {
           "x": 3,
           "y": 0,
-          "z": 4
+          "z": 1
         }
       },
       {
@@ -85,7 +93,7 @@
         "position": {
           "x": 4,
           "y": 0,
-          "z": 4
+          "z": 1
         }
       },
       {
@@ -93,7 +101,7 @@
         "position": {
           "x": 5,
           "y": 0,
-          "z": 4
+          "z": 1
         }
       },
       {
@@ -101,7 +109,7 @@
         "position": {
           "x": 6,
           "y": 0,
-          "z": 4
+          "z": 1
         }
       },
       {
@@ -109,7 +117,7 @@
         "position": {
           "x": 7,
           "y": 0,
-          "z": 4
+          "z": 1
         }
       },
       {
@@ -117,7 +125,7 @@
         "position": {
           "x": 8,
           "y": 0,
-          "z": 4
+          "z": 1
         }
       },
       {
@@ -125,7 +133,7 @@
         "position": {
           "x": 9,
           "y": 0,
-          "z": 4
+          "z": 1
         }
       },
       {
@@ -133,7 +141,7 @@
         "position": {
           "x": 10,
           "y": 0,
-          "z": 4
+          "z": 1
         }
       },
       {
@@ -141,23 +149,15 @@
         "position": {
           "x": 11,
           "y": 0,
-          "z": 4
-        }
-      },
-      {
-        "modelKey": "ground.normal",
-        "position": {
-          "x": 12,
-          "y": 0,
-          "z": 4
+          "z": 1
         }
       },
       {
         "modelKey": "wall.brick01",
         "position": {
-          "x": 11,
+          "x": 6,
           "y": 1,
-          "z": 4
+          "z": 1
         }
       }
     ],
@@ -165,9 +165,9 @@
       {
         "id": "player1",
         "start": {
-          "x": 3,
+          "x": 2,
           "y": 1,
-          "z": 4,
+          "z": 1,
           "direction": 1
         }
       }
@@ -175,9 +175,9 @@
     "collectibles": [],
     "interactibles": [],
     "finish": {
-      "x": 12,
+      "x": 11,
       "y": 1,
-      "z": 4
+      "z": 1
     }
   },
   "solution": {
@@ -188,11 +188,11 @@
       "moveForward",
       "moveForward",
       "moveForward",
-      "moveForward",
-      "moveForward",
-      "moveForward",
-      "moveForward",
       "jump",
+      "moveForward",
+      "moveForward",
+      "moveForward",
+      "moveForward",
       "moveForward"
     ],
     "structuredSolution": [
@@ -201,11 +201,11 @@
       "  moveForward",
       "  moveForward",
       "  moveForward",
-      "  moveForward",
-      "  moveForward",
-      "  moveForward",
-      "  moveForward",
       "  jump",
+      "  moveForward",
+      "  moveForward",
+      "  moveForward",
+      "  moveForward",
       "  moveForward"
     ]
   },

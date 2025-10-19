@@ -259,16 +259,17 @@ def main():
                         "blocklyConfig": {"toolbox": toolbox_data},
                         "solution": map_request.get('solution_config', {})
                     }
-                    solution_result = solve_map_and_get_solution(temp_level_for_solver)
+                    solution_result = solve_map_and_get_solution(temp_level_for_solver) # type: ignore
 
                     # --- Logic mới để sinh startBlocks động cho các thử thách FixBug ---
                     final_inner_blocks = ''
                     bug_type = generation_config.get("params", {}).get("bug_type")
+                    start_blocks_type = generation_config.get("params", {}).get("start_blocks_type", "empty")
 
                     # [CẢI TIẾN LỚN] Logic sinh startBlocks
                     program_dict = solution_result.get("program_solution_dict", {}) if solution_result else {}
-                    if bug_type and solution_result:
-                        if bug_type == 'incorrect_parameter':
+                    if start_blocks_type == "buggy_solution" and bug_type and solution_result:
+                        if bug_type in ['incorrect_parameter', 'missing_block', 'misplaced_function_call']:
                             # 1. Lấy lời giải đã tối ưu (có vòng lặp).
                             optimized_solution_dict = solution_result.get("program_solution_dict", {})
                             # 2. Chuyển nó thành XML.
@@ -276,21 +277,23 @@ def main():
                             # 3. "Làm hỏng" chuỗi XML đó.
                             final_inner_blocks = create_bug(bug_type, correct_xml)
                         elif bug_type in ['misplaced_block', 'missing_block', 'optimization']:
-                            # 2. Với các lỗi đơn giản, ta làm hỏng danh sách hành động thô.
+                            # Với các lỗi đơn giản, ta làm hỏng danh sách hành động thô.
                             raw_actions = solution_result.get("raw_actions", [])
                             buggy_actions = create_bug(bug_type, raw_actions)
                             final_inner_blocks = actions_to_xml(buggy_actions)
-                        elif bug_type == 'misplaced_function_call':
-                            # [SỬA LỖI] Xử lý bug_type 'misplaced_function_call' một cách chính xác
-                            correct_xml = _create_xml_from_structured_solution(program_dict)
-                            final_inner_blocks = create_bug(bug_type, correct_xml)
                         else:
                             print(f"   - ⚠️ Cảnh báo: bug_type '{bug_type}' chưa được xử lý, trả về start_blocks rỗng.")
                             final_inner_blocks = ''
 
-                    # Logic cho các bài học thông thường (không phải fixbug)
-                    elif solution_result and logic_type in ['for_loop', 'function_definition', 'function_decomposition', 'variable']:
-                        # Cung cấp lời giải đã tối ưu làm startBlocks để người chơi tham khảo/tái cấu trúc
+                    elif start_blocks_type == "raw_solution" and solution_result:
+                        # Cung cấp lời giải tuần tự (chưa tối ưu)
+                        raw_actions = solution_result.get("raw_actions", [])
+                        # [SỬA LỖI] Bọc các khối tuần tự trong một khối maze_start
+                        inner_xml = actions_to_xml(raw_actions)
+                        final_inner_blocks = f'<block type="maze_start" deletable="false" movable="false"><statement name="DO">{inner_xml}</statement></block>'
+                    
+                    elif start_blocks_type == "optimized_solution" and solution_result:
+                        # Cung cấp lời giải đã tối ưu
                         final_inner_blocks = _create_xml_from_structured_solution(program_dict)
                     elif 'start_blocks' in blockly_config_req and blockly_config_req['start_blocks']:
                         raw_start_blocks = blockly_config_req['start_blocks']
