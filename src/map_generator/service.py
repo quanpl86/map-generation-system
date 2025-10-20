@@ -7,6 +7,7 @@ from .topologies.straight_line import StraightLineTopology
 from .topologies.staircase import StaircaseTopology
 from .topologies.square import SquareTopology
 from .topologies.plowing_field import PlowingFieldTopology
+from .topologies.grid import GridTopology
 from .topologies.symmetrical_islands import SymmetricalIslandsTopology
 from .topologies.spiral import SpiralTopology
 from .topologies.interspersed_path import InterspersedPathTopology
@@ -28,6 +29,7 @@ class MapGeneratorService:
             'staircase': StaircaseTopology(),
             'square_shape': SquareTopology(),
             'plowing_field': PlowingFieldTopology(),
+            'grid': GridTopology(),
             'symmetrical_islands': SymmetricalIslandsTopology(),
             'spiral_path': SpiralTopology(),
             'interspersed_path': InterspersedPathTopology(),
@@ -48,13 +50,23 @@ class MapGeneratorService:
             'for_loop_simple': ForLoopPlacer(),
             'for_loop_complex': ForLoopPlacer(),
             'nested_for_loop': ForLoopPlacer(),
+            # Các placer cho Topic 4 (Biến & Toán học)
+            'variable_loop': VariablePlacer(),
+            'variable_counter': VariablePlacer(),
             'variable_update': VariablePlacer(),
             'variable_control_loop': VariablePlacer(),
+            'coordinate_math': VariablePlacer(),
+            'math_basic': VariablePlacer(),
+            'math_complex': VariablePlacer(),
+            'math_expression_loop': VariablePlacer(),
+            'config_driven_execution': VariablePlacer(),
+            'math_puzzle': VariablePlacer(),
             'if_else_logic': WhileIfPlacer(),
             'if_elseif_logic': WhileIfPlacer(),
             'logical_operators': WhileIfPlacer(),
             'while_loop': WhileIfPlacer(),
             'algorithm_design': AlgorithmPlacer(),
+            'advanced_algorithm': AlgorithmPlacer(),
         }
         print("👍 Đã đăng ký thành công tất cả các chiến lược.")
 

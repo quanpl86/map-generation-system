@@ -62,6 +62,51 @@
       { "kind": "category", "name": "%{BKY_GAMES_CATPROCEDURES}", "custom": "PROCEDURE", "categorystyle": "procedure_category" }
     ]
   },
+  "variables_basic": {
+    "kind": "categoryToolbox",
+    "contents": [
+      { "kind": "category", "name": "Movement", "categorystyle": "turtle_category", "contents": [
+        { "kind": "block", "type": "maze_moveForward" },
+        { "kind": "block", "type": "maze_jump" },
+        { "kind": "block", "type": "maze_turn" }
+      ]},
+      { "kind": "category", "name": "Actions", "categorystyle": "pond_category", "contents": [
+        { "kind": "block", "type": "maze_collect" },
+        { "kind": "block", "type": "maze_toggle_switch" }
+      ]},
+      { "kind": "category", "name": "Loops", "categorystyle": "loops_category", "contents": [
+        { "kind": "block", "type": "maze_repeat", "inputs": { "TIMES": { "shadow": { "type": "math_number", "fields": { "NUM": 5 }}}}}
+      ]},
+      { "kind": "sep" },
+      { "kind": "category", "name": "%{BKY_GAMES_CATVARIABLES}", "custom": "VARIABLE", "categorystyle": "variable_category" }
+    ]
+  },
+  "variables_full": {
+    "kind": "categoryToolbox",
+    "contents": [
+      { "kind": "category", "name": "Movement", "categorystyle": "turtle_category", "contents": [
+        { "kind": "block", "type": "maze_moveForward" },
+        { "kind": "block", "type": "maze_jump" },
+        { "kind": "block", "type": "maze_turn" }
+      ]},
+      { "kind": "category", "name": "Actions", "categorystyle": "pond_category", "contents": [
+        { "kind": "block", "type": "maze_collect" },
+        { "kind": "block", "type": "maze_toggle_switch" }
+      ]},
+      { "kind": "category", "name": "Logic", "categorystyle": "logic_category", "contents": [
+        { "kind": "block", "type": "logic_compare" },
+        { "kind": "block", "type": "logic_operation" },
+        { "kind": "block", "type": "logic_boolean" }
+      ]},
+      { "kind": "category", "name": "Math", "categorystyle": "math_category", "contents": [
+        { "kind": "block", "type": "math_number" },
+        { "kind": "block", "type": "math_arithmetic", "inputs": { "A": { "shadow": { "type": "math_number", "fields": { "NUM": 1 }}}, "B": { "shadow": { "type": "math_number", "fields": { "NUM": 1 }}} }}
+      ]},
+      { "kind": "sep" },
+      { "kind": "category", "name": "%{BKY_GAMES_CATVARIABLES}", "custom": "VARIABLE", "categorystyle": "variable_category" },
+      { "kind": "category", "name": "%{BKY_GAMES_CATPROCEDURES}", "custom": "PROCEDURE", "categorystyle": "procedure_category" }
+    ]
+  },
   "loops_basic": {
     "kind": "categoryToolbox",
     "contents": [

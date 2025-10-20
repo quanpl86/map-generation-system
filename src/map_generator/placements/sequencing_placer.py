@@ -17,11 +17,16 @@ class SequencingPlacer(BasePlacer):
         # --- Đọc các tham số chi tiết từ params ---
         # `items_to_place` sẽ là một danh sách các loại vật phẩm cần đặt
         # Ví dụ: ["crystal", "crystal", "switch"]
-        items_to_place = params.get('items_to_place', ["crystal"])
+        items_to_place_param = params.get('items_to_place', ["crystal"])
+        # [SỬA LỖI] Đảm bảo items_to_place luôn là một list.
+        # Một số curriculum có thể định nghĩa nó là một string đơn lẻ (ví dụ: "crystal").
+        items_to_place = items_to_place_param if isinstance(items_to_place_param, list) else [items_to_place_param]
         
         # `obstacles_to_place` là danh sách các loại chướng ngại vật
         # Ví dụ: ["pit", "pit"]
-        obstacles_to_place = params.get('obstacles_to_place', ["pit"])
+        obstacles_to_place_param = params.get('obstacles_to_place', [])
+        # [SỬA LỖI] Tương tự, đảm bảo obstacles_to_place cũng là một list.
+        obstacles_to_place = obstacles_to_place_param if isinstance(obstacles_to_place_param, list) else [obstacles_to_place_param]
 
         # Lấy tất cả các vị trí có thể đặt đối tượng và xáo trộn chúng
         available_slots = shuffle_list(path_info.path_coords)

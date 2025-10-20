@@ -32,7 +32,7 @@ class VariablePlacer(BasePlacer):
         # Để đơn giản, ta đặt ở tất cả các điểm mà Topology đã cung cấp.
         # (SỬA LỖI) Không đặt vật phẩm ở vị trí sẽ đặt cổng logic (target_pos).
         # Điều này áp dụng cho các map như SpiralPath.
-        items_to_collect = [{"type": "gem", "pos": pos} for pos in path_info.path_coords if pos != path_info.target_pos]
+        items_to_collect = [{"type": "crystal", "pos": pos} for pos in path_info.path_coords if pos != path_info.target_pos]
         
         # --- Bước 2: Tạo "Cổng logic" ---
         # Đây là một chướng ngại vật đặc biệt. Game engine sẽ hiểu rằng
@@ -53,7 +53,7 @@ class VariablePlacer(BasePlacer):
             "pos": gate_pos,
             # Thêm metadata cho game engine biết điều kiện để vượt qua
             "condition": {
-                "item_type": "gem",
+                "item_type": "crystal",
                 "required_count": len(items_to_collect)
             }
         }]

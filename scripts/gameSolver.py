@@ -187,7 +187,8 @@ def solve_level(world: GameWorld) -> Optional[List[Action]]:
                     # Logic này sẽ được cải tiến sau để đếm số lần 'jump'.
                     pass
                 else: # Mặc định là các vật phẩm có thể thu thập (collectibles)
-                    collected_count = sum(1 for item_id in state.collected_items if world.collectibles_by_id.get(item_id, {}).get('type') == goal_type)
+                    # [SỬA LỖI] Đếm số lượng vật phẩm đã thu thập khớp với loại mục tiêu.
+                    collected_count = sum(1 for item_id in state.collected_items if world.collectibles_by_id.get(item_id, {}).get('type') == goal_type or (goal_type == 'crystal' and world.collectibles_by_id.get(item_id, {}).get('type') == 'gem'))
                     if collected_count < required_count:
                         all_goals_met = False
                         break

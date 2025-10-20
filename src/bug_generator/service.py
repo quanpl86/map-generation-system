@@ -211,6 +211,61 @@ def _introduce_incorrect_function_call_order_bug(xml_string: str, config: Dict) 
         print(f"   - ⚠️ Lỗi khi tạo lỗi misplaced_function_call: {e}. Trả về chuỗi gốc.")
     return xml_string
 
+def _introduce_incorrect_initial_value_bug(xml_string: str, config: Dict) -> str:
+    """
+    [MỚI] Tạo lỗi sai giá trị khởi tạo của một biến.
+    Tìm khối 'variables_set' và thay đổi giá trị trong khối 'math_number' bên trong nó.
+    """
+    if not xml_string: return ""
+    try:
+        root = ET.fromstring(f"<root>{xml_string}</root>")
+        # Tìm một khối gán biến có chứa một số
+        var_set_blocks = root.findall(".//block[@type='variables_set']/value/shadow[@type='math_number']/field[@name='NUM']")
+        if var_set_blocks:
+            target_field = random.choice(var_set_blocks)
+            original_num = int(target_field.text or 1)
+            # Thay đổi giá trị đi một chút
+            change = random.choice([-2, -1, 1, 2])
+            bugged_num = max(0, original_num + change) # Đảm bảo không âm
+            if bugged_num == original_num: bugged_num += 1 # Đảm bảo giá trị thay đổi
+            
+            target_field.text = str(bugged_num)
+            print(f"      -> Bug 'incorrect_initial_value': Thay đổi giá trị khởi tạo của biến từ {original_num} thành {bugged_num}.")
+            return "".join(ET.tostring(child, encoding='unicode') for child in root)
+    except Exception as e:
+        print(f"   - ⚠️ Lỗi khi tạo lỗi incorrect_initial_value: {e}. Trả về chuỗi gốc.")
+    return xml_string
+
+def _introduce_incorrect_math_operator_bug(xml_string: str, config: Dict) -> str:
+    """
+    [MỚI] Tạo lỗi sai toán tử trong khối 'math_arithmetic'.
+    """
+    if not xml_string: return ""
+    try:
+        root = ET.fromstring(f"<root>{xml_string}</root>")
+        op_map = {
+            "ADD": ["SUBTRACT", "MULTIPLY", "DIVIDE"],
+            "SUBTRACT": ["ADD", "MULTIPLY", "DIVIDE"],
+            "MULTIPLY": ["ADD", "SUBTRACT"],
+            "DIVIDE": ["ADD", "SUBTRACT", "MULTIPLY"]
+        }
+        # Tìm một khối toán học
+        math_blocks = root.findall(".//block[@type='math_arithmetic']/field[@name='OP']")
+        if math_blocks:
+            target_field = random.choice(math_blocks)
+            original_op = target_field.text
+            if original_op in op_map:
+                bugged_op = random.choice(op_map[original_op])
+                target_field.text = bugged_op
+                print(f"      -> Bug 'incorrect_math_operator': Thay đổi toán tử từ {original_op} thành {bugged_op}.")
+                return "".join(ET.tostring(child, encoding='unicode') for child in root)
+    except Exception as e:
+        print(f"   - ⚠️ Lỗi khi tạo lỗi incorrect_math_operator: {e}. Trả về chuỗi gốc.")
+    return xml_string
+
+# Hàm _introduce_missing_block_bug đã có thể xử lý việc xóa khối 'variables_set' hoặc 'math_change'
+# nên ta có thể dùng nó cho 'missing_variable_update'
+
 # --- SECTION 3: Registry and Dispatcher ---
 
 # --- Bảng đăng ký các trình tạo lỗi (Bug Generator Registry) ---
@@ -233,6 +288,14 @@ BUG_GENERATORS: Dict[str, Callable[[Any, Dict], Any]] = {
 
     # Nhóm 4: Lỗi tối ưu hóa (hoạt động trên raw_actions)
     'optimization': _introduce_optimization_bug,
+
+    # [MỚI] Nhóm 5: Lỗi liên quan đến Biến và Toán học (Topic 4)
+    'incorrect_initial_value': _introduce_incorrect_initial_value_bug,
+    'incorrect_math_operator': _introduce_incorrect_math_operator_bug,
+    'missing_variable_update': _introduce_missing_block_bug, # Dùng lại hàm xóa khối
+    'incorrect_math_expression': _introduce_incorrect_math_operator_bug, # Tương tự sai toán tử
+    'wrong_logic_in_algorithm': _introduce_sequence_error, # Tạm thời dùng lỗi sai thứ tự
+    'optimization_logic': _introduce_optimization_bug, # Dùng lại lỗi tối ưu hóa
 }
 
 def create_bug(bug_type: str, data: Any, config: Dict = None) -> Any:

@@ -175,10 +175,10 @@ class MapData:
             item_type = item.get('type')
             item_pos_on_ground = coord_to_obj(item['pos'], y_offset=1)
             
-            if item_type in ['crystal', 'gem']:
+            if item_type in ['crystal', 'gem']: # [SỬA] Chấp nhận cả 'gem' và 'crystal'
                 collectibles.append({
                     "id": f"c{i+1}",
-                    "type": item_type,
+                    "type": "crystal", # Luôn xuất ra là 'crystal' để game engine hiểu
                     "position": item_pos_on_ground
                 })
             elif item_type == 'switch':
