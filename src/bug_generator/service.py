@@ -25,15 +25,16 @@ def _introduce_missing_block_bug(data: Any, config: Dict) -> Any:
         try:
             root = ET.fromstring(f"<root>{data}</root>")
             # Ưu tiên xóa một khối trong hàm
-            proc_body = root.find(".//block[@type='procedures_defnoreturn']/statement[@name='STACK']")
-            target_statement = proc_body if proc_body is not None and len(list(proc_body)) > 1 else root.find(".//block[@type='maze_start']/statement[@name='DO']")
+            possible_parents = root.findall(".//statement/..") # Tìm tất cả các khối có statement
+            target_parent = random.choice(possible_parents) if possible_parents else root
+            target_statement = target_parent.find("./statement")
             
             if target_statement is not None and len(list(target_statement)) > 1:
                 blocks_in_statement = list(target_statement)
                 # Ưu tiên xóa các khối lệnh đơn giản, tránh xóa khối gọi hàm hoặc vòng lặp
                 simple_blocks_indices = [
                     i for i, b in enumerate(blocks_in_statement) 
-                    if b.get('type') not in ['procedures_callnoreturn', 'maze_repeat']
+                    if b.get('type') not in ['procedures_callnoreturn', 'maze_repeat', 'variables_set']
                 ]
                 
                 remove_idx = random.choice(simple_blocks_indices) if simple_blocks_indices else random.randint(0, len(blocks_in_statement) - 1)
@@ -219,15 +220,17 @@ def _introduce_incorrect_initial_value_bug(xml_string: str, config: Dict) -> str
     if not xml_string: return ""
     try:
         root = ET.fromstring(f"<root>{xml_string}</root>")
-        # Tìm một khối gán biến có chứa một số
-        var_set_blocks = root.findall(".//block[@type='variables_set']/value/shadow[@type='math_number']/field[@name='NUM']")
-        if var_set_blocks:
-            target_field = random.choice(var_set_blocks)
+        # [CẢI TIẾN] Tìm tất cả các khối có thể chứa giá trị số để thay đổi (gán hoặc thay đổi)
+        # Ưu tiên các khối shadow, là nơi chứa giá trị khởi tạo.
+        potential_fields = root.findall(".//field[@name='NUM']")
+        
+        if potential_fields:
+            target_field = random.choice(potential_fields)
             original_num = int(target_field.text or 1)
-            # Thay đổi giá trị đi một chút
+            # Thay đổi giá trị đi một chút, đảm bảo giá trị mới khác giá trị cũ
             change = random.choice([-2, -1, 1, 2])
             bugged_num = max(0, original_num + change) # Đảm bảo không âm
-            if bugged_num == original_num: bugged_num += 1 # Đảm bảo giá trị thay đổi
+            if bugged_num == original_num: bugged_num = original_num + 1 if original_num > 0 else 2
             
             target_field.text = str(bugged_num)
             print(f"      -> Bug 'incorrect_initial_value': Thay đổi giá trị khởi tạo của biến từ {original_num} thành {bugged_num}.")

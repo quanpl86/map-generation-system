@@ -50,6 +50,7 @@ def _create_xml_from_structured_solution(program_dict: dict) -> str:
         elements = []
         for block_data in block_list:
             block_type = block_data.get("type")
+            block_element = None # Khởi tạo là None
             
             if block_type == "CALL":
                 # [SỬA] Xử lý khối gọi hàm
@@ -69,6 +70,25 @@ def _create_xml_from_structured_solution(program_dict: dict) -> str:
                     for i in range(len(inner_blocks) - 1):
                         ET.SubElement(inner_blocks[i], 'next').append(inner_blocks[i+1])
                     statement_el.append(inner_blocks[0])
+            elif block_type == "variables_set":
+                block_element = ET.Element('block', {'type': 'variables_set'})
+                field_var = ET.SubElement(block_element, 'field', {'name': 'VAR'})
+                field_var.text = block_data.get("variable", "item")
+                value_el = ET.SubElement(block_element, 'value', {'name': 'VALUE'})
+                shadow_el = ET.SubElement(value_el, 'shadow', {'type': 'math_number'})
+                field_num = ET.SubElement(shadow_el, 'field', {'name': 'NUM'})
+                field_num.text = str(block_data.get("value", 0))
+            elif block_type == "maze_repeat_variable":
+                block_element = ET.Element('block', {'type': 'maze_repeat'})
+                value_el = ET.SubElement(block_element, 'value', {'name': 'TIMES'})
+                # Thay vì shadow, chúng ta tạo một khối variables_get
+                var_get_el = ET.SubElement(value_el, 'block', {'type': 'variables_get'})
+                field_var = ET.SubElement(var_get_el, 'field', {'name': 'VAR'})
+                field_var.text = block_data.get("variable", "item")
+                statement_el = ET.SubElement(block_element, 'statement', {'name': 'DO'})
+                inner_blocks = build_blocks_recursively(block_data.get("body", []))
+                if inner_blocks:
+                    statement_el.append(inner_blocks[0])
             else:
                 # [SỬA] Xử lý các khối đơn giản khác
                 action = block_type.replace("maze_", "") if block_type.startswith("maze_") else block_type
@@ -85,7 +105,8 @@ def _create_xml_from_structured_solution(program_dict: dict) -> str:
                     field_el = ET.SubElement(block_element, 'field', {'name': 'DIR'})
                     field_el.text = direction
             
-            elements.append(block_element)
+            if block_element is not None:
+                elements.append(block_element)
         return elements
     
     # --- [SỬA LỖI] Logic mới để xử lý cả hàm và chương trình chính ---
@@ -254,10 +275,13 @@ def main():
 
                     # --- Bước 6: Gọi gameSolver để tìm lời giải ---
                     # Tạo một đối tượng level tạm thời để solver đọc
+                    solution_config = map_request.get('solution_config', {})
+                    # [MỚI] Chèn logic_type vào solution_config để solver biết cách tổng hợp code
+                    solution_config['logic_type'] = logic_type
                     temp_level_for_solver = {
                         "gameConfig": game_config['gameConfig'],
                         "blocklyConfig": {"toolbox": toolbox_data},
-                        "solution": map_request.get('solution_config', {})
+                        "solution": solution_config
                     }
                     solution_result = solve_map_and_get_solution(temp_level_for_solver) # type: ignore
 

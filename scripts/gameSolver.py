@@ -379,13 +379,57 @@ def compress_actions_to_structure(actions: List[str], available_blocks: Set[str]
 def synthesize_program(actions: List[Action], world: GameWorld) -> Dict:
     """Quy trình tổng hợp code chính, tạo hàm và vòng lặp."""
     procedures, remaining_actions = {}, list(actions)
-    available_blocks = world.available_blocks
-    can_use_procedures = 'PROCEDURE' in available_blocks
     # [CẢI TIẾN] Lấy các cấu hình từ solution_config
+    available_blocks = world.available_blocks
     force_function = world.solution_config.get('force_function', False)
     suggested_function_names = world.solution_config.get('function_names', [])
+    # [MỚI] Lấy logic_type để quyết định cách tổng hợp code
+    # Điều này rất quan trọng cho các bài toán về biến
+    logic_type = world.solution_config.get('logic_type', 'sequencing')
 
-    if can_use_procedures: # Chỉ tạo hàm nếu được phép
+    # --- [REWRITTEN] Xử lý các trường hợp đặc biệt dựa trên logic_type ---
+    if logic_type in ['variable_loop', 'variable_counter', 'math_basic', 'math_complex', 'math_expression_loop']:
+        # Đối với logic này, chúng ta muốn tạo ra một lời giải tường minh sử dụng biến
+        # mà không cố gắng tạo ra các hàm (function) phức tạp.
+        # Bước 1: Tìm mẫu lặp đơn giản nhất (ví dụ: 'moveForward' lặp lại nhiều lần)
+        if not actions: return {"main": [], "procedures": {}}
+
+        # Đếm số lần xuất hiện của mỗi hành động
+        action_counts = Counter(actions)
+        # Tìm hành động lặp lại nhiều nhất, thường là 'moveForward'
+        most_common_action, num_repeats = action_counts.most_common(1)[0]
+
+        # Logic cho bài toán dùng biến để lặp
+        if logic_type == 'variable_loop' and num_repeats > 1:
+            # Tạo lời giải: set steps = N; repeat (steps) { moveForward }
+            main_program = [
+                {"type": "variables_set", "variable": "steps", "value": num_repeats},
+                {
+                    "type": "maze_repeat_variable", # Loại khối đặc biệt để chỉ định dùng biến
+                    "variable": "steps",
+                    "body": [{"type": most_common_action}]
+                }
+            ]
+            # Thêm các hành động còn lại (nếu có)
+            remaining_actions_after_loop = [a for a in actions if a != most_common_action]
+            main_program.extend(compress_actions_to_structure(remaining_actions_after_loop, available_blocks))
+            return {"main": main_program, "procedures": {}}
+
+        # Logic cho bài toán đếm (counter)
+        if logic_type == 'variable_counter':
+            # Tạo lời giải: set count = 0; ...; change count by 1; ...
+            # Đây là một cấu trúc phức tạp, tạm thời chúng ta sẽ trả về một lời giải tuần tự
+            # và bug_generator sẽ xóa khối 'change by 1' nếu có.
+            # Để làm được điều này, chúng ta cần một cấu trúc giải pháp có khối 'change by 1'.
+            # Hiện tại, chúng ta sẽ trả về một giải pháp tuần tự đơn giản.
+            pass # Rơi xuống logic mặc định bên dưới
+
+        # Nếu không có logic đặc biệt nào khớp, trả về lời giải tuần tự đã được nén vòng lặp cơ bản
+        return {"main": compress_actions_to_structure(remaining_actions, available_blocks), "procedures": procedures}
+
+    # --- Logic cũ để tạo hàm ---
+    can_use_procedures = 'PROCEDURE' in available_blocks
+    if can_use_procedures and logic_type not in ['math_basic', 'variable_loop', 'variable_counter']: # Không tạo hàm cho các bài toán biến/toán đơn giản
         for i in range(3): # Thử tạo tối đa 3 hàm
             result = find_most_frequent_sequence(remaining_actions, force_function=force_function)
             if result:
