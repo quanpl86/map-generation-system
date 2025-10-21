@@ -1,76 +1,63 @@
-    logic_type = world.solution_config.get('logic_type', 'sequencing')
-
-    # --- [REWRITTEN] Xử lý các trường hợp đặc biệt dựa trên logic_type ---
-    if logic_type in ['variable_loop', 'variable_counter', 'math_basic', 'math_complex', 'math_expression_loop', 'advanced_algorithm', 'config_driven_execution', 'math_puzzle']:
-        # Đối với các logic này, chúng ta muốn tạo ra một lời giải tường minh sử dụng biến
-        # mà không cố gắng tạo ra các hàm (function) phức tạp.
-        if not actions: return {"main": [], "procedures": {}}
-
-        # Logic cho bài toán dùng biến để lặp
-        if logic_type == 'variable_loop':
-            # Tìm hành động lặp lại nhiều nhất, thường là 'moveForward'
-            action_counts = Counter(a for a in actions if a in ['moveForward', 'collect'])
-            if not action_counts: # Nếu không có hành động nào, trả về giải pháp tuần tự
-                return {"main": compress_actions_to_structure(actions, available_blocks), "procedures": {}}
+        for obs in self.obstacles:
+            potential_ground_coords.add(tuple(obs['pos']))
+        
+        # --- (CẢI TIẾN) Xử lý trường hợp đặc biệt cho map maze ---
+        if self.map_type == 'complex_maze_2d':
+            print("    LOG: (Game Engine) Phát hiện map maze, dùng BFS để tìm các ô ground cần thiết...")
             
-            most_common_action, num_repeats = action_counts.most_common(1)[0]
+            # Tạo một set chứa tọa độ của tất cả các bức tường để tra cứu nhanh.
+            wall_coords = {tuple(obs['pos']) for obs in self.obstacles if obs.get('type') == 'wall'}
             
-            # Tạo lời giải: set steps = N; repeat (steps) { action }
-            main_program = [
-                {"type": "variables_set", "variable": "steps", "value": num_repeats},
-                {
-                    "type": "maze_repeat_variable", # Loại khối đặc biệt để chỉ định dùng biến
-                    "variable": "steps",
-                    "body": [{"type": f"maze_{most_common_action}" if most_common_action in ['collect', 'toggleSwitch'] else most_common_action}]
-                }
-            ]
-            # Thêm các hành động còn lại (nếu có)
-            # Đây là một cách đơn giản hóa, có thể cần cải tiến
-            remaining_actions_after_loop = [a for a in actions if a != most_common_action or (actions.count(a) > num_repeats)]
-            main_program.extend(compress_actions_to_structure(remaining_actions_after_loop, available_blocks))
-            return {"main": main_program, "procedures": {}}
+            # Sử dụng thuật toán BFS để tìm tất cả các ô ground có thể đi được.
+            # Hàng đợi (queue) cho BFS, bắt đầu từ vị trí của người chơi.
+            queue = [self.start_pos]
+            # Set để lưu các ô đã ghé thăm, tránh lặp vô hạn.
+            visited_grounds = {self.start_pos}
 
-        # Logic cho bài toán dùng biểu thức toán học
-        if logic_type in ['math_expression_loop', 'math_complex', 'math_basic']:
-            # Giả lập tạo 2 biến và dùng chúng trong vòng lặp
-            total_moves = actions.count('moveForward')
-            if total_moves < 2: # Cần ít nhất 2 bước để chia thành a+b
-                return {"main": compress_actions_to_structure(actions, available_blocks), "procedures": {}}
-
-            val_a = random.randint(1, total_moves - 1)
-            val_b = total_moves - val_a
+            while queue:
+                current_pos = queue.pop(0)
+                
+                # Khám phá 4 hướng xung quanh (trên mặt phẳng XZ)
+                for dx, _, dz in [(1,0,0), (-1,0,0), (0,0,1), (0,0,-1)]:
+                    next_pos = (current_pos[0] + dx, 0, current_pos[2] + dz)
+                    
+                    # Kiểm tra các điều kiện để một ô là hợp lệ:
+                    # 1. Nằm trong biên của lưới.
+                    # 2. Chưa được ghé thăm.
+                    # 3. Không phải là một bức tường.
+                    if (0 <= next_pos[0] < self.grid_size[0] and
+                        0 <= next_pos[2] < self.grid_size[2] and
+                        next_pos not in visited_grounds and
+                        next_pos not in wall_coords):
+                        visited_grounds.add(next_pos)
+                        queue.append(next_pos)
             
-            main_program = [
-                {"type": "variables_set", "variable": "a", "value": val_a},
-                {"type": "variables_set", "variable": "b", "value": val_b},
-                {
-                    "type": "maze_repeat_expression", # Loại khối đặc biệt
-                    "expression": {
-                        "type": "math_arithmetic",
-                        "op": "ADD",
-                        "var_a": "a",
-                        "var_b": "b"
-                    },
-                    "body": [{"type": "moveForward"}]
-                }
-            ]
-            # Thêm các hành động không phải moveForward
-            other_actions = [a for a in actions if a != 'moveForward']
-            main_program.extend(compress_actions_to_structure(other_actions, available_blocks))
-            return {"main": main_program, "procedures": {}}
+            # Ground cuối cùng bao gồm các ô đi được và các ô nền móng của tường.
+            final_ground_coords = visited_grounds.union(wall_coords)
+        else:
+            # Logic cũ cho các map có đường đi định trước
+            final_ground_coords = potential_ground_coords
 
-        # Logic cho các bài toán thuật toán phức tạp (Fibonacci, config-driven)
-        if logic_type in ['advanced_algorithm', 'config_driven_execution']:
-            # Tạm thời, tạo một cấu trúc có nhiều biến để bug_generator có thể hoạt động
-            main_program = [
-                {"type": "variables_set", "variable": "param1", "value": 1},
-                {"type": "variables_set", "variable": "param2", "value": 1},
-                {"type": "variables_set", "variable": "temp", "value": 0},
-            ]
-            # Nối với lời giải tuần tự
-            main_program.extend(compress_actions_to_structure(actions, available_blocks))
-            return {"main": main_program, "procedures": {}}
+        # --- Hàm tiện ích để tạo cây ---
+        def _create_tree(root_pos: Coord, occupied_coords: set) -> list:
+            # [REWRITTEN] Logic xây dựng địa hình từ dưới lên để đảm bảo không bị chồng chéo.
+            
+            # --- Bước 1.5.1: Đặt các khối cấu trúc CỐ ĐỊNH vào trước (đường đi, nền móng, viền đá) ---
+            # --- Tính toán Grid Size Động ---
+            # [SỬA LỖI] final_ground_coords giờ đã chứa tất cả các tọa độ cần thiết.
+            all_game_coords = final_ground_coords
+                        game_blocks.append({"modelKey": random.choice(ROCK_MODELS), "position": coord_to_obj((seed_x, 1, seed_z))})
+                        if random.random() < 0.5:
+                            game_blocks.append({"modelKey": random.choice(ROCK_MODELS), "position": coord_to_obj((seed_x, 2, seed_z))})
 
-        # Nếu không có logic đặc biệt nào khớp, trả về lời giải tuần tự đã được nén vòng lặp cơ bản
-        return {"main": compress_actions_to_structure(remaining_actions, available_blocks), "procedures": procedures}
+            # --- Bước 1.5.5: Đặt các khối đường đi ---
+            # [SỬA LỖI] Đối với maze, final_ground_coords chứa cả tường, ta cần loại chúng ra.
+            # Đối với các map khác, final_ground_coords chỉ chứa đường đi.
+            walkable_coords = final_ground_coords - wall_coords if self.map_type == 'complex_maze_2d' else final_ground_coords
+            # Đảm bảo start/target luôn có ground, ngay cả khi chúng nằm ngoài path_coords
+            walkable_coords.update({self.start_pos, self.target_pos})
+            for coord in walkable_coords:
+                game_blocks.append({"modelKey": "ground.normal", "position": coord_to_obj(coord)})
+        else:
+            # Nếu không có theme, sử dụng logic cũ để đặt các khối đất cần thiết
 

@@ -65,7 +65,7 @@
         }
       ]
     },
-    "maxBlocks": 25,
+    "maxBlocks": 21,
     "startBlocks": "<xml><block type=\"maze_start\" deletable=\"false\" movable=\"false\"><statement name=\"DO\"></statement></block></xml>"
   },
   "gameConfig": {
@@ -353,43 +353,267 @@
         }
       },
       {
-        "modelKey": "stone.stone02",
+        "modelKey": "ground.mud",
         "position": {
-          "x": 3,
+          "x": 6,
           "y": 1,
-          "z": 5
+          "z": 3
         }
       },
       {
-        "modelKey": "stone.stone03",
+        "modelKey": "ground.mud",
         "position": {
-          "x": 3,
+          "x": 6,
           "y": 2,
-          "z": 5
+          "z": 3
         }
       },
       {
-        "modelKey": "stone.stone02",
+        "modelKey": "ground.mud",
         "position": {
-          "x": 3,
-          "y": 1,
-          "z": 5
+          "x": 6,
+          "y": 3,
+          "z": 3
         }
       },
       {
-        "modelKey": "stone.stone03",
+        "modelKey": "ground.mud",
         "position": {
-          "x": 3,
-          "y": 2,
-          "z": 5
+          "x": 6,
+          "y": 4,
+          "z": 3
+        }
+      },
+      {
+        "modelKey": "ground.mud",
+        "position": {
+          "x": 6,
+          "y": 5,
+          "z": 3
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 5,
+          "y": 5,
+          "z": 3
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 5,
+          "y": 6,
+          "z": 2
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 5,
+          "y": 6,
+          "z": 3
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 5,
+          "y": 6,
+          "z": 4
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 5,
+          "y": 7,
+          "z": 3
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 6,
+          "y": 5,
+          "z": 2
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 6,
+          "y": 5,
+          "z": 3
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 6,
+          "y": 5,
+          "z": 4
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 6,
+          "y": 6,
+          "z": 2
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 6,
+          "y": 6,
+          "z": 3
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 6,
+          "y": 6,
+          "z": 4
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 6,
+          "y": 7,
+          "z": 2
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 6,
+          "y": 7,
+          "z": 3
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 6,
+          "y": 7,
+          "z": 4
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 7,
+          "y": 5,
+          "z": 3
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 7,
+          "y": 6,
+          "z": 2
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 7,
+          "y": 6,
+          "z": 3
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 7,
+          "y": 6,
+          "z": 4
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 7,
+          "y": 7,
+          "z": 3
         }
       },
       {
         "modelKey": "stone.stone01",
         "position": {
-          "x": 3,
+          "x": 5,
+          "y": 0,
+          "z": 2
+        }
+      },
+      {
+        "modelKey": "stone.stone04",
+        "position": {
+          "x": 6,
+          "y": 0,
+          "z": 2
+        }
+      },
+      {
+        "modelKey": "stone.stone02",
+        "position": {
+          "x": 2,
+          "y": 0,
+          "z": 0
+        }
+      },
+      {
+        "modelKey": "stone.stone03",
+        "position": {
+          "x": 2,
           "y": 1,
-          "z": 5
+          "z": 0
+        }
+      },
+      {
+        "modelKey": "stone.stone01",
+        "position": {
+          "x": 1,
+          "y": 0,
+          "z": 0
+        }
+      },
+      {
+        "modelKey": "stone.stone04",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 2
+        }
+      },
+      {
+        "modelKey": "stone.stone03",
+        "position": {
+          "x": -1,
+          "y": 0,
+          "z": 2
+        }
+      },
+      {
+        "modelKey": "stone.stone02",
+        "position": {
+          "x": 3,
+          "y": 0,
+          "z": 2
+        }
+      },
+      {
+        "modelKey": "stone.stone01",
+        "position": {
+          "x": 4,
+          "y": 0,
+          "z": 2
         }
       },
       {
@@ -473,9 +697,9 @@
         "id": "c1",
         "type": "crystal",
         "position": {
-          "x": 4,
+          "x": 2,
           "y": 1,
-          "z": 2
+          "z": 1
         }
       },
       {
@@ -507,18 +731,14 @@
   "solution": {
     "type": "reach_target",
     "itemGoals": {},
-    "optimalBlocks": 20,
+    "optimalBlocks": 16,
     "rawActions": [
       "moveForward",
+      "collect",
       "moveForward",
       "moveForward",
       "collect",
-      "turnRight",
-      "moveForward",
-      "collect",
       "turnLeft",
-      "turnLeft",
-      "moveForward",
       "moveForward",
       "moveForward",
       "collect",
@@ -533,15 +753,11 @@
       "MAIN PROGRAM:",
       "  On start:",
       "  moveForward",
+      "  collect",
       "  moveForward",
       "  moveForward",
       "  collect",
       "  maze_turn",
-      "  moveForward",
-      "  collect",
-      "  maze_turn",
-      "  maze_turn",
-      "  moveForward",
       "  moveForward",
       "  moveForward",
       "  collect",

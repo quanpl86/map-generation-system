@@ -13,27 +13,42 @@ class SymmetricalIslandsTopology(BaseTopology):
     và phân rã vấn đề thành các hàm có thể tái sử dụng.
     """
 
-    def _create_island_pattern(self, top_left_corner: Coord) -> list[Coord]:
+    def _create_island_pattern(self, top_left_corner: Coord) -> tuple[list[Coord], list[dict]]:
         """
-        Tạo ra một mẫu hình hòn đảo cụ thể.
-        Hàm này có thể được thay đổi để tạo ra các mẫu phức tạp hơn.
+        Tạo ra một mẫu hình hòn đảo lớn hơn (hình vuông rỗng 3x3)
+        và một viền đá xung quanh nó.
         
         Args:
             top_left_corner (Coord): Tọa độ góc trên bên trái của hòn đảo.
             
         Returns:
-            list[Coord]: Một danh sách các tọa độ tạo nên con đường trên đảo.
+            tuple[list[Coord], list[dict]]: Một tuple chứa (danh sách tọa độ đường đi, danh sách chướng ngại vật viền đá).
         """
         x, y, z = top_left_corner
+        path = []
+        obstacles = []
         
-        # Tạo một mẫu hình chữ U đơn giản
-        # Path: (x,z) -> (x+1,z) -> (x+1,z+1) -> (x,z+1)
-        p1 = (x, y, z)
-        p2 = (x + 1, y, z)
-        p3 = (x + 1, y, z + 1)
-        p4 = (x, y, z + 1)
+        # Tạo một mẫu hình vuông rỗng 3x3
+        path.extend([(x, y, z), (x + 1, y, z), (x + 2, y, z)]) # Cạnh trên
+        path.extend([(x + 2, y, z + 1), (x + 2, y, z + 2)])    # Cạnh phải
+        path.extend([(x + 1, y, z + 2), (x, y, z + 2)])       # Cạnh dưới
+        path.append((x, y, z + 1))                             # Cạnh trái
+
+        # Tạo viền đá xung quanh đường đi
+        path_set = set(path)
+        border_coords = set()
+        for px, py, pz in path:
+            for dx in range(-1, 2):
+                for dz in range(-1, 2):
+                    if dx == 0 and dz == 0: continue
+                    neighbor = (px + dx, py, pz + dz)
+                    if neighbor not in path_set:
+                        border_coords.add(neighbor)
         
-        return [p1, p2, p3, p4]
+        for b_coord in border_coords:
+            obstacles.append({'type': 'stone_border', 'pos': b_coord})
+            
+        return path, obstacles
 
     def generate_path_info(self, grid_size: tuple, params: dict) -> PathInfo:
         """
@@ -57,43 +72,43 @@ class SymmetricalIslandsTopology(BaseTopology):
             num_islands = num_islands_param
 
         # --- (CẢI TIẾN) Tự động tính toán khoảng cách tối ưu giữa các đảo ---
-        # Chiều rộng của mỗi hòn đảo là 2 (từ x đến x+1)
-        island_width = 2
+        # Chiều rộng của mỗi hòn đảo là 3 (từ x đến x+2)
+        island_width = 3
         # Tổng chiều rộng mà tất cả các đảo chiếm dụng
-        total_islands_width = num_islands * island_width
-        # Không gian còn lại trên lưới để phân bổ cho các cây cầu
-        available_spacing = grid_size[0] - total_islands_width - 2 # Trừ 2 cho lề an toàn
+        # Khoảng cách giữa các đảo
+        gap_between_islands = 3
+        total_islands_width = (num_islands * island_width) + ((num_islands - 1) * gap_between_islands)
         
         # Khoảng cách giữa các góc bắt đầu của hai đảo liên tiếp
-        # Nếu chỉ có 1 đảo, spacing không có ý nghĩa.
-        island_spacing = island_width + (available_spacing // (num_islands - 1)) if num_islands > 1 else 0
+        island_spacing = island_width + gap_between_islands
 
-        # Tính toán vị trí bắt đầu an toàn
-        start_x = 1
-        start_z = random.randint(1, grid_size[2] - 4) # 4 là kích thước mẫu đảo
+        # [SỬA] Tính toán vị trí bắt đầu để căn giữa toàn bộ cụm đảo
+        start_x = (grid_size[0] - total_islands_width) // 2
+        # Kích thước của đảo theo chiều sâu là 3, cộng thêm viền đá 2 bên là 5
+        island_depth = 5
+        start_z = (grid_size[2] - island_depth) // 2
         y = 0
         
         start_pos: Coord = (start_x, y, start_z)
         
         all_path_coords: list[Coord] = []
+        all_obstacles: list[dict] = []
         
         # Vòng lặp để tạo ra các hòn đảo
         for i in range(num_islands):
             # Tọa độ góc của mỗi hòn đảo được tính toán dựa trên khoảng cách
             island_corner = (start_x + i * island_spacing, y, start_z)
             
-            # Tạo đường đi cho hòn đảo hiện tại
-            island_path = self._create_island_pattern(island_corner)
+            # Tạo đường đi và viền đá cho hòn đảo hiện tại
+            island_path, island_obstacles = self._create_island_pattern(island_corner)
             all_path_coords.extend(island_path)
+            all_obstacles.extend(island_obstacles)
             
             # Tạo "cây cầu" nối giữa các đảo (nếu không phải đảo cuối cùng)
             if i < num_islands - 1:
-                # Điểm cuối của đảo hiện tại là island_path[-1] = (x, y, z+1)
-                # Điểm đầu của đảo tiếp theo là (x + island_spacing, y, z)
-                # Cầu sẽ nối từ (x, y, z+1) -> (x, y, z) -> ... -> (x + island_spacing, y, z)
-                # Tuy nhiên, để đơn giản, ta sẽ tạo một cây cầu thẳng từ một điểm trên đảo này
-                # đến điểm đầu của đảo tiếp theo.
-                bridge_start = (island_corner[0] + 1, y, island_corner[2]) # Điểm (x+1, y, z)
+                # Cầu nối từ điểm (x+2, y, z) của đảo hiện tại
+                bridge_start = (island_corner[0] + 2, y, start_z)
+                # đến điểm (x, y, z) của đảo tiếp theo
                 bridge_end = (start_x + (i + 1) * island_spacing, y, start_z) # Điểm đầu của đảo tiếp theo
                 
                 # (SỬA LỖI) Tạo cầu nối từ điểm sau bridge_start đến trước bridge_end
@@ -105,5 +120,6 @@ class SymmetricalIslandsTopology(BaseTopology):
         return PathInfo(
             start_pos=start_pos,
             target_pos=target_pos,
-            path_coords=all_path_coords # Chứa tất cả các điểm của các đảo và cầu
+            path_coords=all_path_coords, # Chứa tất cả các điểm của các đảo và cầu
+            obstacles=all_obstacles
         )

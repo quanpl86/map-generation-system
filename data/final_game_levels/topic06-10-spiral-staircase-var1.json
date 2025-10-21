@@ -1063,779 +1063,267 @@
         }
       },
       {
-        "modelKey": "ground.mud",
-        "position": {
-          "x": 0,
-          "y": 1,
-          "z": 3
-        }
-      },
-      {
-        "modelKey": "ground.mud",
-        "position": {
-          "x": 0,
-          "y": 2,
-          "z": 3
-        }
-      },
-      {
-        "modelKey": "ground.mud",
-        "position": {
-          "x": 0,
-          "y": 3,
-          "z": 3
-        }
-      },
-      {
-        "modelKey": "ground.checker",
-        "position": {
-          "x": -1,
-          "y": 3,
-          "z": 3
-        }
-      },
-      {
-        "modelKey": "ground.checker",
-        "position": {
-          "x": -1,
-          "y": 4,
-          "z": 2
-        }
-      },
-      {
-        "modelKey": "ground.checker",
-        "position": {
-          "x": -1,
-          "y": 4,
-          "z": 3
-        }
-      },
-      {
-        "modelKey": "ground.checker",
-        "position": {
-          "x": -1,
-          "y": 4,
-          "z": 4
-        }
-      },
-      {
-        "modelKey": "ground.checker",
-        "position": {
-          "x": -1,
-          "y": 5,
-          "z": 3
-        }
-      },
-      {
-        "modelKey": "ground.checker",
-        "position": {
-          "x": 0,
-          "y": 3,
-          "z": 2
-        }
-      },
-      {
-        "modelKey": "ground.checker",
-        "position": {
-          "x": 0,
-          "y": 3,
-          "z": 3
-        }
-      },
-      {
-        "modelKey": "ground.checker",
-        "position": {
-          "x": 0,
-          "y": 3,
-          "z": 4
-        }
-      },
-      {
-        "modelKey": "ground.checker",
-        "position": {
-          "x": 0,
-          "y": 4,
-          "z": 2
-        }
-      },
-      {
-        "modelKey": "ground.checker",
-        "position": {
-          "x": 0,
-          "y": 4,
-          "z": 3
-        }
-      },
-      {
-        "modelKey": "ground.checker",
-        "position": {
-          "x": 0,
-          "y": 4,
-          "z": 4
-        }
-      },
-      {
-        "modelKey": "ground.checker",
-        "position": {
-          "x": 0,
-          "y": 5,
-          "z": 2
-        }
-      },
-      {
-        "modelKey": "ground.checker",
-        "position": {
-          "x": 0,
-          "y": 5,
-          "z": 3
-        }
-      },
-      {
-        "modelKey": "ground.checker",
-        "position": {
-          "x": 0,
-          "y": 5,
-          "z": 4
-        }
-      },
-      {
-        "modelKey": "ground.checker",
-        "position": {
-          "x": 1,
-          "y": 3,
-          "z": 3
-        }
-      },
-      {
-        "modelKey": "ground.checker",
-        "position": {
-          "x": 1,
-          "y": 4,
-          "z": 2
-        }
-      },
-      {
-        "modelKey": "ground.checker",
-        "position": {
-          "x": 1,
-          "y": 4,
-          "z": 3
-        }
-      },
-      {
-        "modelKey": "ground.checker",
-        "position": {
-          "x": 1,
-          "y": 4,
-          "z": 4
-        }
-      },
-      {
-        "modelKey": "ground.checker",
-        "position": {
-          "x": 1,
-          "y": 5,
-          "z": 3
-        }
-      },
-      {
-        "modelKey": "ground.mud",
-        "position": {
-          "x": 5,
-          "y": 1,
-          "z": 12
-        }
-      },
-      {
-        "modelKey": "ground.mud",
-        "position": {
-          "x": 5,
-          "y": 2,
-          "z": 12
-        }
-      },
-      {
-        "modelKey": "ground.mud",
-        "position": {
-          "x": 5,
-          "y": 3,
-          "z": 12
-        }
-      },
-      {
-        "modelKey": "ground.mud",
-        "position": {
-          "x": 5,
-          "y": 4,
-          "z": 12
-        }
-      },
-      {
-        "modelKey": "ground.checker",
-        "position": {
-          "x": 4,
-          "y": 4,
-          "z": 12
-        }
-      },
-      {
-        "modelKey": "ground.checker",
-        "position": {
-          "x": 4,
-          "y": 5,
-          "z": 11
-        }
-      },
-      {
-        "modelKey": "ground.checker",
-        "position": {
-          "x": 4,
-          "y": 5,
-          "z": 12
-        }
-      },
-      {
-        "modelKey": "ground.checker",
-        "position": {
-          "x": 4,
-          "y": 5,
-          "z": 13
-        }
-      },
-      {
-        "modelKey": "ground.checker",
-        "position": {
-          "x": 4,
-          "y": 6,
-          "z": 12
-        }
-      },
-      {
-        "modelKey": "ground.checker",
-        "position": {
-          "x": 5,
-          "y": 4,
-          "z": 11
-        }
-      },
-      {
-        "modelKey": "ground.checker",
-        "position": {
-          "x": 5,
-          "y": 4,
-          "z": 12
-        }
-      },
-      {
-        "modelKey": "ground.checker",
-        "position": {
-          "x": 5,
-          "y": 4,
-          "z": 13
-        }
-      },
-      {
-        "modelKey": "ground.checker",
-        "position": {
-          "x": 5,
-          "y": 5,
-          "z": 11
-        }
-      },
-      {
-        "modelKey": "ground.checker",
-        "position": {
-          "x": 5,
-          "y": 5,
-          "z": 12
-        }
-      },
-      {
-        "modelKey": "ground.checker",
-        "position": {
-          "x": 5,
-          "y": 5,
-          "z": 13
-        }
-      },
-      {
-        "modelKey": "ground.checker",
-        "position": {
-          "x": 5,
-          "y": 6,
-          "z": 11
-        }
-      },
-      {
-        "modelKey": "ground.checker",
-        "position": {
-          "x": 5,
-          "y": 6,
-          "z": 12
-        }
-      },
-      {
-        "modelKey": "ground.checker",
-        "position": {
-          "x": 5,
-          "y": 6,
-          "z": 13
-        }
-      },
-      {
-        "modelKey": "ground.checker",
-        "position": {
-          "x": 6,
-          "y": 4,
-          "z": 12
-        }
-      },
-      {
-        "modelKey": "ground.checker",
-        "position": {
-          "x": 6,
-          "y": 5,
-          "z": 11
-        }
-      },
-      {
-        "modelKey": "ground.checker",
-        "position": {
-          "x": 6,
-          "y": 5,
-          "z": 12
-        }
-      },
-      {
-        "modelKey": "ground.checker",
-        "position": {
-          "x": 6,
-          "y": 5,
-          "z": 13
-        }
-      },
-      {
-        "modelKey": "ground.checker",
-        "position": {
-          "x": 6,
-          "y": 6,
-          "z": 12
-        }
-      },
-      {
-        "modelKey": "ground.mud",
-        "position": {
-          "x": 12,
-          "y": 1,
-          "z": 12
-        }
-      },
-      {
-        "modelKey": "ground.mud",
-        "position": {
-          "x": 12,
-          "y": 2,
-          "z": 12
-        }
-      },
-      {
-        "modelKey": "ground.mud",
-        "position": {
-          "x": 12,
-          "y": 3,
-          "z": 12
-        }
-      },
-      {
-        "modelKey": "ground.mud",
-        "position": {
-          "x": 12,
-          "y": 4,
-          "z": 12
-        }
-      },
-      {
-        "modelKey": "ground.mud",
-        "position": {
-          "x": 12,
-          "y": 5,
-          "z": 12
-        }
-      },
-      {
-        "modelKey": "ground.checker",
+        "modelKey": "plant.grass01",
         "position": {
           "x": 11,
-          "y": 5,
+          "y": 1,
           "z": 12
         }
       },
       {
-        "modelKey": "ground.checker",
+        "modelKey": "plant.bush01",
+        "position": {
+          "x": 13,
+          "y": 1,
+          "z": 12
+        }
+      },
+      {
+        "modelKey": "plant.bush01",
         "position": {
           "x": 11,
-          "y": 6,
-          "z": 11
-        }
-      },
-      {
-        "modelKey": "ground.checker",
-        "position": {
-          "x": 11,
-          "y": 6,
-          "z": 12
-        }
-      },
-      {
-        "modelKey": "ground.checker",
-        "position": {
-          "x": 11,
-          "y": 6,
-          "z": 13
-        }
-      },
-      {
-        "modelKey": "ground.checker",
-        "position": {
-          "x": 11,
-          "y": 7,
-          "z": 12
-        }
-      },
-      {
-        "modelKey": "ground.checker",
-        "position": {
-          "x": 12,
-          "y": 5,
-          "z": 11
-        }
-      },
-      {
-        "modelKey": "ground.checker",
-        "position": {
-          "x": 12,
-          "y": 5,
-          "z": 12
-        }
-      },
-      {
-        "modelKey": "ground.checker",
-        "position": {
-          "x": 12,
-          "y": 5,
-          "z": 13
-        }
-      },
-      {
-        "modelKey": "ground.checker",
-        "position": {
-          "x": 12,
-          "y": 6,
-          "z": 11
-        }
-      },
-      {
-        "modelKey": "ground.checker",
-        "position": {
-          "x": 12,
-          "y": 6,
-          "z": 12
-        }
-      },
-      {
-        "modelKey": "ground.checker",
-        "position": {
-          "x": 12,
-          "y": 6,
-          "z": 13
-        }
-      },
-      {
-        "modelKey": "ground.checker",
-        "position": {
-          "x": 12,
-          "y": 7,
-          "z": 11
-        }
-      },
-      {
-        "modelKey": "ground.checker",
-        "position": {
-          "x": 12,
-          "y": 7,
-          "z": 12
-        }
-      },
-      {
-        "modelKey": "ground.checker",
-        "position": {
-          "x": 12,
-          "y": 7,
-          "z": 13
-        }
-      },
-      {
-        "modelKey": "ground.checker",
-        "position": {
-          "x": 13,
-          "y": 5,
-          "z": 12
-        }
-      },
-      {
-        "modelKey": "ground.checker",
-        "position": {
-          "x": 13,
-          "y": 6,
-          "z": 11
-        }
-      },
-      {
-        "modelKey": "ground.checker",
-        "position": {
-          "x": 13,
-          "y": 6,
-          "z": 12
-        }
-      },
-      {
-        "modelKey": "ground.checker",
-        "position": {
-          "x": 13,
-          "y": 6,
-          "z": 13
-        }
-      },
-      {
-        "modelKey": "ground.checker",
-        "position": {
-          "x": 13,
-          "y": 7,
-          "z": 12
-        }
-      },
-      {
-        "modelKey": "stone.stone04",
-        "position": {
-          "x": 9,
           "y": 1,
           "z": 6
         }
       },
       {
-        "modelKey": "stone.stone04",
+        "modelKey": "plant.grass01",
         "position": {
-          "x": 9,
-          "y": 1,
-          "z": 6
-        }
-      },
-      {
-        "modelKey": "stone.stone01",
-        "position": {
-          "x": 9,
-          "y": 2,
-          "z": 6
-        }
-      },
-      {
-        "modelKey": "stone.stone01",
-        "position": {
-          "x": 9,
-          "y": 1,
-          "z": 6
-        }
-      },
-      {
-        "modelKey": "stone.stone02",
-        "position": {
-          "x": 9,
-          "y": 1,
-          "z": 6
-        }
-      },
-      {
-        "modelKey": "stone.stone04",
-        "position": {
-          "x": 9,
-          "y": 1,
-          "z": 6
-        }
-      },
-      {
-        "modelKey": "stone.stone02",
-        "position": {
-          "x": 3,
+          "x": 6,
           "y": 1,
           "z": 12
         }
       },
       {
-        "modelKey": "stone.stone02",
-        "position": {
-          "x": 3,
-          "y": 2,
-          "z": 12
-        }
-      },
-      {
-        "modelKey": "stone.stone03",
-        "position": {
-          "x": 3,
-          "y": 1,
-          "z": 12
-        }
-      },
-      {
-        "modelKey": "stone.stone01",
-        "position": {
-          "x": 3,
-          "y": 2,
-          "z": 12
-        }
-      },
-      {
-        "modelKey": "stone.stone03",
-        "position": {
-          "x": 3,
-          "y": 1,
-          "z": 12
-        }
-      },
-      {
-        "modelKey": "stone.stone02",
-        "position": {
-          "x": 3,
-          "y": 1,
-          "z": 12
-        }
-      },
-      {
-        "modelKey": "stone.stone03",
-        "position": {
-          "x": 0,
-          "y": 1,
-          "z": 2
-        }
-      },
-      {
-        "modelKey": "stone.stone03",
-        "position": {
-          "x": 0,
-          "y": 2,
-          "z": 2
-        }
-      },
-      {
-        "modelKey": "stone.stone01",
-        "position": {
-          "x": 0,
-          "y": 1,
-          "z": 2
-        }
-      },
-      {
-        "modelKey": "stone.stone03",
-        "position": {
-          "x": 0,
-          "y": 2,
-          "z": 2
-        }
-      },
-      {
-        "modelKey": "stone.stone04",
-        "position": {
-          "x": 0,
-          "y": 1,
-          "z": 2
-        }
-      },
-      {
-        "modelKey": "stone.stone02",
-        "position": {
-          "x": 0,
-          "y": 1,
-          "z": 2
-        }
-      },
-      {
-        "modelKey": "stone.stone02",
-        "position": {
-          "x": 0,
-          "y": 1,
-          "z": 2
-        }
-      },
-      {
-        "modelKey": "stone.stone02",
-        "position": {
-          "x": 7,
-          "y": 1,
-          "z": 12
-        }
-      },
-      {
-        "modelKey": "stone.stone01",
-        "position": {
-          "x": 7,
-          "y": 2,
-          "z": 12
-        }
-      },
-      {
-        "modelKey": "stone.stone03",
-        "position": {
-          "x": 7,
-          "y": 1,
-          "z": 12
-        }
-      },
-      {
-        "modelKey": "stone.stone02",
-        "position": {
-          "x": 7,
-          "y": 1,
-          "z": 12
-        }
-      },
-      {
-        "modelKey": "stone.stone03",
-        "position": {
-          "x": 7,
-          "y": 2,
-          "z": 12
-        }
-      },
-      {
-        "modelKey": "stone.stone03",
+        "modelKey": "plant.bush01",
         "position": {
           "x": 13,
+          "y": 1,
+          "z": 1
+        }
+      },
+      {
+        "modelKey": "plant.grass01",
+        "position": {
+          "x": 0,
           "y": 1,
           "z": 10
         }
       },
       {
-        "modelKey": "stone.stone04",
+        "modelKey": "plant.grass01",
         "position": {
           "x": 13,
-          "y": 2,
-          "z": 10
+          "y": 1,
+          "z": 8
+        }
+      },
+      {
+        "modelKey": "plant.bush01",
+        "position": {
+          "x": 7,
+          "y": 1,
+          "z": 4
+        }
+      },
+      {
+        "modelKey": "plant.bush01",
+        "position": {
+          "x": 1,
+          "y": 1,
+          "z": 12
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 2,
+          "y": 0,
+          "z": 6
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 13,
+          "y": 0,
+          "z": 0
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 13,
+          "y": 0,
+          "z": 11
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 4,
+          "y": 0,
+          "z": 0
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 8,
+          "y": 0,
+          "z": 7
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 2
+        }
+      },
+      {
+        "modelKey": "stone.stone01",
+        "position": {
+          "x": 9,
+          "y": 1,
+          "z": 0
         }
       },
       {
         "modelKey": "stone.stone03",
         "position": {
-          "x": 13,
+          "x": 9,
           "y": 1,
-          "z": 10
+          "z": 0
+        }
+      },
+      {
+        "modelKey": "stone.stone04",
+        "position": {
+          "x": 9,
+          "y": 1,
+          "z": 0
+        }
+      },
+      {
+        "modelKey": "stone.stone03",
+        "position": {
+          "x": 2,
+          "y": 1,
+          "z": 6
+        }
+      },
+      {
+        "modelKey": "stone.stone04",
+        "position": {
+          "x": 2,
+          "y": 1,
+          "z": 6
+        }
+      },
+      {
+        "modelKey": "stone.stone01",
+        "position": {
+          "x": 11,
+          "y": 1,
+          "z": 11
+        }
+      },
+      {
+        "modelKey": "stone.stone03",
+        "position": {
+          "x": 11,
+          "y": 2,
+          "z": 11
+        }
+      },
+      {
+        "modelKey": "stone.stone01",
+        "position": {
+          "x": 11,
+          "y": 1,
+          "z": 11
         }
       },
       {
         "modelKey": "stone.stone02",
         "position": {
-          "x": 13,
+          "x": 11,
           "y": 1,
-          "z": 10
+          "z": 11
+        }
+      },
+      {
+        "modelKey": "stone.stone02",
+        "position": {
+          "x": 11,
+          "y": 1,
+          "z": 11
+        }
+      },
+      {
+        "modelKey": "stone.stone04",
+        "position": {
+          "x": 10,
+          "y": 1,
+          "z": 12
+        }
+      },
+      {
+        "modelKey": "stone.stone02",
+        "position": {
+          "x": 10,
+          "y": 2,
+          "z": 12
+        }
+      },
+      {
+        "modelKey": "stone.stone02",
+        "position": {
+          "x": 10,
+          "y": 1,
+          "z": 12
+        }
+      },
+      {
+        "modelKey": "stone.stone02",
+        "position": {
+          "x": 10,
+          "y": 1,
+          "z": 12
+        }
+      },
+      {
+        "modelKey": "stone.stone03",
+        "position": {
+          "x": 10,
+          "y": 2,
+          "z": 12
+        }
+      },
+      {
+        "modelKey": "stone.stone03",
+        "position": {
+          "x": 12,
+          "y": 1,
+          "z": 12
+        }
+      },
+      {
+        "modelKey": "stone.stone02",
+        "position": {
+          "x": 12,
+          "y": 2,
+          "z": 12
+        }
+      },
+      {
+        "modelKey": "stone.stone04",
+        "position": {
+          "x": 12,
+          "y": 1,
+          "z": 12
         }
       },
       {
@@ -2351,18 +1839,18 @@
         "id": "c1",
         "type": "crystal",
         "position": {
-          "x": 3,
-          "y": 1,
-          "z": 1
+          "x": 12,
+          "y": 2,
+          "z": 7
         }
       },
       {
         "id": "c2",
         "type": "crystal",
         "position": {
-          "x": 5,
-          "y": 3,
-          "z": 10
+          "x": 9,
+          "y": 7,
+          "z": 8
         }
       }
     ],

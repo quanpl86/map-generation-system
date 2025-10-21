@@ -126,8 +126,13 @@ class MapData:
         potential_ground_coords.add(self.start_pos)
         potential_ground_coords.add(self.target_pos)
 
+        # [SỬA LỖI] Thêm tọa độ của tất cả các chướng ngại vật (wall, pit, foundation_stone)
+        # vào danh sách cần có ground để đảm bảo chúng có nền móng và được tính vào khung trang trí.
+        for obs in self.obstacles:
+            potential_ground_coords.add(tuple(obs['pos']))
+        
         # --- (CẢI TIẾN) Xử lý trường hợp đặc biệt cho map maze ---
-        if not self.path_coords and self.map_type == 'complex_maze_2d':
+        if self.map_type == 'complex_maze_2d':
             print("    LOG: (Game Engine) Phát hiện map maze, dùng BFS để tìm các ô ground cần thiết...")
             
             # Tạo một set chứa tọa độ của tất cả các bức tường để tra cứu nhanh.
@@ -170,8 +175,11 @@ class MapData:
             trunk_height = random.randint(3, 5)
             trunk_x, trunk_y, trunk_z = root_pos
             
-            # [SỬA] Chọn model thân và lá cây dựa trên theme
-            trunk_model = "ground.mud" if self.params.get('decoration_theme') == 'rocky_mountain' else "ground.mud"
+            # [SỬA] Chọn model thân và lá cây dựa trên theme, thêm đa dạng cho theme 'forest'
+            if self.params.get('decoration_theme') == 'forest':
+                trunk_model = random.choice(["tree.pine01", "tree.oak01", "tree.normal01"])
+            else:
+                trunk_model = "ground.mud"
             leaf_model = "ground.checker" if self.params.get('decoration_theme') == 'rocky_mountain' else "tree.leaves01"
 
             # 1. Tạo thân cây
@@ -199,11 +207,14 @@ class MapData:
         decoration_theme = self.params.get('decoration_theme')
 
         if decoration_theme:
-            print(f"    LOG: (Game Engine) Applying '{decoration_theme}' decoration theme...")
+            print(f"    LOG: (Game Engine) Applying '{decoration_theme}' decoration theme...")            
+
+            # [REWRITTEN] Logic xây dựng địa hình từ dưới lên để đảm bảo không bị chồng chéo.
             
+            # --- Bước 1.5.1: Đặt các khối cấu trúc CỐ ĐỊNH vào trước (đường đi, nền móng, viền đá) ---
             # --- Tính toán Grid Size Động ---
-            # [SỬA LỖI] Đảm bảo bao gồm cả start_pos và target_pos khi tính toán biên
-            all_game_coords = final_ground_coords.union({obs['pos'] for obs in self.obstacles}, {self.start_pos, self.target_pos})
+            # [SỬA LỖI] final_ground_coords giờ đã chứa tất cả các tọa độ cần thiết.
+            all_game_coords = final_ground_coords
             
             if not all_game_coords: # Xử lý trường hợp không có tọa độ nào
                 min_x, max_x, min_z, max_z = 0, 1, 0, 1
@@ -222,26 +233,24 @@ class MapData:
             print(f"    LOG: (Game Engine) Dynamic grid calculated: X({grid_min_x}-{grid_max_x}), Z({grid_min_z}-{grid_max_z})")
 
             # --- Bắt đầu xây dựng cảnh quan ---
-            ROCK_MODELS = ["stone.stone01", "stone.stone02", "stone.stone03", "stone.stone04"]
+            # [SỬA LỖI] Đọc decoration_density từ params và cung cấp giá trị mặc định.
             decoration_density = self.params.get('decoration_density', 0.15)
 
-            # [REWRITTEN] Logic xây dựng địa hình từ dưới lên
-            
-            # 1. Đặt các khối nền móng (foundation_stone) trước tiên
+            # --- Bước 1.5.2: Đặt các khối nền móng và viền đá ---
             foundation_coords = set()
             for obs in self.obstacles:
                 if obs.get('type') == 'foundation_stone':
                     pos = obs['pos']
                     game_blocks.append({"modelKey": "stone.stone01", "position": coord_to_obj(pos)})
                     foundation_coords.add(pos)
+                elif obs.get('type') == 'stone_border':
+                    game_blocks.append({"modelKey": "stone.stone02", "position": coord_to_obj(obs['pos'])})
 
-            # 2. [REWRITTEN] Tạo các cụm trang trí (cluster) thay vì các cột đơn lẻ
+            # --- Bước 1.5.3: Xác định các ô trống và đặt nền trang trí (nước, đất bùn) ---
             available_deco_coords = set()
             for x in range(grid_min_x, grid_max_x + 1):
                 for z in range(grid_min_z, grid_max_z + 1):
-                    # Chỉ thêm vào nếu ô (x, 0, z) không bị chiếm bởi đường đi
-                    is_occupied = any(c[0] == x and c[2] == z for c in final_ground_coords) or \
-                                  any(f[0] == x and f[2] == z and f[1] == 0 for f in foundation_coords)
+                    is_occupied = any(c[0] == x and c[2] == z for c in final_ground_coords)
                     if not is_occupied:
                         available_deco_coords.add((x, z))
 
@@ -249,14 +258,34 @@ class MapData:
             if self.map_type == 'spiral_path' and decoration_theme == 'forest':
                 # [MỚI] Trường hợp đặc biệt cho map xoắn ốc, dùng nền đá để làm nổi bật
                 base_model = "stone.stone01"
+            elif decoration_theme == "water_world":
+                base_model = "water.water01"
+            elif decoration_theme in ["forest", "rocky_mountain"]:
+                base_model = "ground.mud" # [SỬA] Dùng nền đất bùn cho rừng và núi
             else:
-                base_model = "water.water01" if decoration_theme == "water_world" else \
-                             "ground.mud" if decoration_theme == "rocky_mountain" else "ground.earth"
+                base_model = "ground.earth" # Mặc định
             
             for x, z in available_deco_coords:
                 game_blocks.append({"modelKey": base_model, "position": coord_to_obj((x, 0, z))})
 
+            # --- Bước 1.5.4: Đặt các chi tiết trang trí (cỏ, nước, cây, đá) lên trên nền ---
+            # [MỚI] Thêm cỏ, bụi cây và vũng nước cho các theme đất liền
+            if decoration_theme in ['forest', 'rocky_mountain']:
+                num_grass = int(len(available_deco_coords) * decoration_density * 0.5) # 50% mật độ là cỏ
+                grass_coords = random.sample(list(available_deco_coords), k=min(num_grass, len(available_deco_coords)))
+                for gx, gz in grass_coords:
+                    if random.random() < 0.7: # 70% là cỏ
+                        game_blocks.append({"modelKey": "plant.grass01", "position": coord_to_obj((gx, 1, gz))})
+                    else: # 30% là bụi cây
+                        game_blocks.append({"modelKey": "plant.bush01", "position": coord_to_obj((gx, 1, gz))})
+                # Thêm các vũng nước nhỏ
+                num_puddles = int(len(available_deco_coords) * 0.05) # 5% là nước
+                puddle_coords = random.sample(list(available_deco_coords - set(grass_coords)), k=min(num_puddles, len(available_deco_coords) - num_grass))
+                for px, pz in puddle_coords:
+                    game_blocks.append({"modelKey": "water.water01", "position": coord_to_obj((px, 0, pz))})
+
             # Tạo các cụm
+            ROCK_MODELS = ["stone.stone01", "stone.stone02", "stone.stone03", "stone.stone04"]
             num_features = int(len(available_deco_coords) * decoration_density)
             
             # [REWRITTEN] Tạo cây và núi đá riêng biệt
@@ -271,22 +300,42 @@ class MapData:
                     tree_blocks = _create_tree((x, 1, z), final_ground_coords)
                     game_blocks.extend(tree_blocks)
 
-            # 2. Tạo các cụm đá
-            num_rock_clusters = int(len(coords_for_rocks) * decoration_density / 3)
-            for _ in range(num_rock_clusters):
-                if not available_deco_coords: break
-                if not coords_for_rocks: break
-                seed_x, seed_z = random.choice(list(coords_for_rocks))
-                coords_for_rocks.remove((seed_x, seed_z))
-                for _ in range(random.randint(2, 5)): # Mỗi cụm có 2-5 khối
-                    # Lớp đế (y=1)
-                    game_blocks.append({"modelKey": random.choice(ROCK_MODELS), "position": coord_to_obj((seed_x, 0, seed_z), y_offset=1)})
-                    # Lớp đỉnh (y=2) với xác suất thấp hơn để tạo hình dạng đồi
-                    if random.random() < 0.5:
-                        game_blocks.append({"modelKey": random.choice(ROCK_MODELS), "position": coord_to_obj((seed_x, 0, seed_z), y_offset=2)})
-            
-            # 4. Cuối cùng, đặt các khối đất cho đường đi chính (bảo toàn cấu trúc 3D)
-            for coord in final_ground_coords:
+            # 2. Tạo các cụm đá / đảo nhỏ
+            # [CẢI TIẾN] Logic cho theme water_world
+            if decoration_theme == "water_world":
+                # Tạo các đảo đá nhỏ trên mặt nước
+                num_islets = int(len(coords_for_rocks) * decoration_density)
+                for _ in range(num_islets):
+                    if not coords_for_rocks: break
+                    seed_x, seed_z = random.choice(list(coords_for_rocks))
+                    coords_for_rocks.remove((seed_x, seed_z))
+                    # Tạo một hòn đảo nhỏ 1-3 khối, có thể cao 1-2 lớp
+                    game_blocks.append({"modelKey": random.choice(ROCK_MODELS), "position": coord_to_obj((seed_x, 0, seed_z))})
+                    if random.random() < 0.4:
+                        game_blocks.append({"modelKey": random.choice(ROCK_MODELS), "position": coord_to_obj((seed_x, 1, seed_z))})
+                    if random.random() < 0.6: # Tạo thêm khối bên cạnh
+                        game_blocks.append({"modelKey": random.choice(ROCK_MODELS), "position": coord_to_obj((seed_x + random.choice([-1, 1]), 0, seed_z))})
+            else:
+                # Logic tạo cụm đá cũ cho các theme khác
+                num_rock_clusters = int(len(coords_for_rocks) * decoration_density / 3)
+                for _ in range(num_rock_clusters):
+                    if not coords_for_rocks: break
+                    seed_x, seed_z = random.choice(list(coords_for_rocks))
+                    coords_for_rocks.remove((seed_x, seed_z))
+                    for _ in range(random.randint(2, 5)): # Mỗi cụm có 2-5 khối
+                        game_blocks.append({"modelKey": random.choice(ROCK_MODELS), "position": coord_to_obj((seed_x, 1, seed_z))})
+                        if random.random() < 0.5:
+                            game_blocks.append({"modelKey": random.choice(ROCK_MODELS), "position": coord_to_obj((seed_x, 2, seed_z))})
+
+            # --- [REWRITTEN] Bước 1.5.5: Đặt các khối đường đi ---
+            if self.map_type == 'complex_maze_2d':
+                # Đối với maze, đường đi là các ô không phải tường đã được tìm bằng BFS
+                walkable_coords = final_ground_coords - wall_coords
+            else:
+                # Đối với các map khác, đường đi chỉ bao gồm path_coords, start_pos và target_pos.
+                # Không bao gồm các chướng ngại vật trang trí như foundation_stone hay stone_border.
+                walkable_coords = set(self.path_coords) | {self.start_pos, self.target_pos}
+            for coord in walkable_coords:
                 game_blocks.append({"modelKey": "ground.normal", "position": coord_to_obj(coord)})
         else:
             # Nếu không có theme, sử dụng logic cũ để đặt các khối đất cần thiết

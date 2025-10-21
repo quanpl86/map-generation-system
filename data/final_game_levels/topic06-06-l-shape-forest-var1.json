@@ -73,7 +73,7 @@
     "renderer": "3d",
     "blocks": [
       {
-        "modelKey": "ground.earth",
+        "modelKey": "ground.mud",
         "position": {
           "x": 4,
           "y": 0,
@@ -81,7 +81,7 @@
         }
       },
       {
-        "modelKey": "ground.earth",
+        "modelKey": "ground.mud",
         "position": {
           "x": 3,
           "y": 0,
@@ -89,7 +89,7 @@
         }
       },
       {
-        "modelKey": "ground.earth",
+        "modelKey": "ground.mud",
         "position": {
           "x": 4,
           "y": 0,
@@ -97,7 +97,7 @@
         }
       },
       {
-        "modelKey": "ground.earth",
+        "modelKey": "ground.mud",
         "position": {
           "x": 3,
           "y": 0,
@@ -105,7 +105,7 @@
         }
       },
       {
-        "modelKey": "ground.earth",
+        "modelKey": "ground.mud",
         "position": {
           "x": 4,
           "y": 0,
@@ -113,7 +113,7 @@
         }
       },
       {
-        "modelKey": "ground.earth",
+        "modelKey": "ground.mud",
         "position": {
           "x": 5,
           "y": 0,
@@ -121,7 +121,7 @@
         }
       },
       {
-        "modelKey": "ground.earth",
+        "modelKey": "ground.mud",
         "position": {
           "x": 0,
           "y": 0,
@@ -129,7 +129,7 @@
         }
       },
       {
-        "modelKey": "ground.earth",
+        "modelKey": "ground.mud",
         "position": {
           "x": 0,
           "y": 0,
@@ -137,7 +137,7 @@
         }
       },
       {
-        "modelKey": "ground.earth",
+        "modelKey": "ground.mud",
         "position": {
           "x": 2,
           "y": 0,
@@ -145,7 +145,7 @@
         }
       },
       {
-        "modelKey": "ground.earth",
+        "modelKey": "ground.mud",
         "position": {
           "x": 1,
           "y": 0,
@@ -153,7 +153,7 @@
         }
       },
       {
-        "modelKey": "ground.earth",
+        "modelKey": "ground.mud",
         "position": {
           "x": 1,
           "y": 0,
@@ -161,7 +161,7 @@
         }
       },
       {
-        "modelKey": "ground.earth",
+        "modelKey": "ground.mud",
         "position": {
           "x": 2,
           "y": 0,
@@ -169,7 +169,7 @@
         }
       },
       {
-        "modelKey": "ground.earth",
+        "modelKey": "ground.mud",
         "position": {
           "x": 1,
           "y": 0,
@@ -177,7 +177,7 @@
         }
       },
       {
-        "modelKey": "ground.earth",
+        "modelKey": "ground.mud",
         "position": {
           "x": 7,
           "y": 0,
@@ -185,7 +185,7 @@
         }
       },
       {
-        "modelKey": "ground.earth",
+        "modelKey": "ground.mud",
         "position": {
           "x": 6,
           "y": 0,
@@ -193,7 +193,7 @@
         }
       },
       {
-        "modelKey": "ground.earth",
+        "modelKey": "ground.mud",
         "position": {
           "x": 7,
           "y": 0,
@@ -201,7 +201,7 @@
         }
       },
       {
-        "modelKey": "ground.earth",
+        "modelKey": "ground.mud",
         "position": {
           "x": 7,
           "y": 0,
@@ -209,7 +209,7 @@
         }
       },
       {
-        "modelKey": "ground.earth",
+        "modelKey": "ground.mud",
         "position": {
           "x": 6,
           "y": 0,
@@ -217,7 +217,7 @@
         }
       },
       {
-        "modelKey": "ground.earth",
+        "modelKey": "ground.mud",
         "position": {
           "x": 4,
           "y": 0,
@@ -225,7 +225,7 @@
         }
       },
       {
-        "modelKey": "ground.earth",
+        "modelKey": "ground.mud",
         "position": {
           "x": 3,
           "y": 0,
@@ -233,7 +233,7 @@
         }
       },
       {
-        "modelKey": "ground.earth",
+        "modelKey": "ground.mud",
         "position": {
           "x": 4,
           "y": 0,
@@ -241,7 +241,7 @@
         }
       },
       {
-        "modelKey": "ground.earth",
+        "modelKey": "ground.mud",
         "position": {
           "x": 3,
           "y": 0,
@@ -249,7 +249,7 @@
         }
       },
       {
-        "modelKey": "ground.earth",
+        "modelKey": "ground.mud",
         "position": {
           "x": 5,
           "y": 0,
@@ -257,7 +257,7 @@
         }
       },
       {
-        "modelKey": "ground.earth",
+        "modelKey": "ground.mud",
         "position": {
           "x": 5,
           "y": 0,
@@ -265,7 +265,7 @@
         }
       },
       {
-        "modelKey": "ground.earth",
+        "modelKey": "ground.mud",
         "position": {
           "x": 3,
           "y": 0,
@@ -273,7 +273,7 @@
         }
       },
       {
-        "modelKey": "ground.earth",
+        "modelKey": "ground.mud",
         "position": {
           "x": 0,
           "y": 0,
@@ -281,7 +281,7 @@
         }
       },
       {
-        "modelKey": "ground.earth",
+        "modelKey": "ground.mud",
         "position": {
           "x": 0,
           "y": 0,
@@ -289,7 +289,7 @@
         }
       },
       {
-        "modelKey": "ground.earth",
+        "modelKey": "ground.mud",
         "position": {
           "x": 2,
           "y": 0,
@@ -297,7 +297,7 @@
         }
       },
       {
-        "modelKey": "ground.earth",
+        "modelKey": "ground.mud",
         "position": {
           "x": 1,
           "y": 0,
@@ -305,7 +305,7 @@
         }
       },
       {
-        "modelKey": "ground.earth",
+        "modelKey": "ground.mud",
         "position": {
           "x": 0,
           "y": 0,
@@ -313,7 +313,7 @@
         }
       },
       {
-        "modelKey": "ground.earth",
+        "modelKey": "ground.mud",
         "position": {
           "x": 2,
           "y": 0,
@@ -321,7 +321,7 @@
         }
       },
       {
-        "modelKey": "ground.earth",
+        "modelKey": "ground.mud",
         "position": {
           "x": 1,
           "y": 0,
@@ -329,7 +329,7 @@
         }
       },
       {
-        "modelKey": "ground.earth",
+        "modelKey": "ground.mud",
         "position": {
           "x": 6,
           "y": 0,
@@ -337,7 +337,7 @@
         }
       },
       {
-        "modelKey": "ground.earth",
+        "modelKey": "ground.mud",
         "position": {
           "x": 7,
           "y": 0,
@@ -345,7 +345,7 @@
         }
       },
       {
-        "modelKey": "ground.earth",
+        "modelKey": "ground.mud",
         "position": {
           "x": 6,
           "y": 0,
@@ -353,7 +353,7 @@
         }
       },
       {
-        "modelKey": "ground.earth",
+        "modelKey": "ground.mud",
         "position": {
           "x": 7,
           "y": 0,
@@ -361,7 +361,7 @@
         }
       },
       {
-        "modelKey": "ground.earth",
+        "modelKey": "ground.mud",
         "position": {
           "x": 6,
           "y": 0,
@@ -369,7 +369,7 @@
         }
       },
       {
-        "modelKey": "ground.earth",
+        "modelKey": "ground.mud",
         "position": {
           "x": 7,
           "y": 0,
@@ -377,7 +377,7 @@
         }
       },
       {
-        "modelKey": "ground.earth",
+        "modelKey": "ground.mud",
         "position": {
           "x": 3,
           "y": 0,
@@ -385,7 +385,7 @@
         }
       },
       {
-        "modelKey": "ground.earth",
+        "modelKey": "ground.mud",
         "position": {
           "x": 4,
           "y": 0,
@@ -393,7 +393,7 @@
         }
       },
       {
-        "modelKey": "ground.earth",
+        "modelKey": "ground.mud",
         "position": {
           "x": 3,
           "y": 0,
@@ -401,7 +401,7 @@
         }
       },
       {
-        "modelKey": "ground.earth",
+        "modelKey": "ground.mud",
         "position": {
           "x": 4,
           "y": 0,
@@ -409,7 +409,7 @@
         }
       },
       {
-        "modelKey": "ground.earth",
+        "modelKey": "ground.mud",
         "position": {
           "x": 0,
           "y": 0,
@@ -417,7 +417,7 @@
         }
       },
       {
-        "modelKey": "ground.earth",
+        "modelKey": "ground.mud",
         "position": {
           "x": 0,
           "y": 0,
@@ -425,7 +425,7 @@
         }
       },
       {
-        "modelKey": "ground.earth",
+        "modelKey": "ground.mud",
         "position": {
           "x": 2,
           "y": 0,
@@ -433,7 +433,7 @@
         }
       },
       {
-        "modelKey": "ground.earth",
+        "modelKey": "ground.mud",
         "position": {
           "x": 1,
           "y": 0,
@@ -441,7 +441,7 @@
         }
       },
       {
-        "modelKey": "ground.earth",
+        "modelKey": "ground.mud",
         "position": {
           "x": 0,
           "y": 0,
@@ -449,7 +449,7 @@
         }
       },
       {
-        "modelKey": "ground.earth",
+        "modelKey": "ground.mud",
         "position": {
           "x": 2,
           "y": 0,
@@ -457,7 +457,7 @@
         }
       },
       {
-        "modelKey": "ground.earth",
+        "modelKey": "ground.mud",
         "position": {
           "x": 1,
           "y": 0,
@@ -465,7 +465,7 @@
         }
       },
       {
-        "modelKey": "ground.earth",
+        "modelKey": "ground.mud",
         "position": {
           "x": 2,
           "y": 0,
@@ -473,7 +473,7 @@
         }
       },
       {
-        "modelKey": "ground.earth",
+        "modelKey": "ground.mud",
         "position": {
           "x": 7,
           "y": 0,
@@ -481,7 +481,7 @@
         }
       },
       {
-        "modelKey": "ground.earth",
+        "modelKey": "ground.mud",
         "position": {
           "x": 6,
           "y": 0,
@@ -489,7 +489,7 @@
         }
       },
       {
-        "modelKey": "ground.earth",
+        "modelKey": "ground.mud",
         "position": {
           "x": 6,
           "y": 0,
@@ -497,7 +497,7 @@
         }
       },
       {
-        "modelKey": "ground.earth",
+        "modelKey": "ground.mud",
         "position": {
           "x": 7,
           "y": 0,
@@ -505,7 +505,7 @@
         }
       },
       {
-        "modelKey": "ground.earth",
+        "modelKey": "ground.mud",
         "position": {
           "x": 6,
           "y": 0,
@@ -513,89 +513,113 @@
         }
       },
       {
-        "modelKey": "ground.mud",
+        "modelKey": "plant.grass01",
+        "position": {
+          "x": 0,
+          "y": 1,
+          "z": 0
+        }
+      },
+      {
+        "modelKey": "plant.bush01",
+        "position": {
+          "x": 0,
+          "y": 1,
+          "z": 4
+        }
+      },
+      {
+        "modelKey": "plant.grass01",
+        "position": {
+          "x": 7,
+          "y": 1,
+          "z": 1
+        }
+      },
+      {
+        "modelKey": "plant.bush01",
         "position": {
           "x": 6,
           "y": 1,
+          "z": 5
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 0,
+          "y": 0,
           "z": 7
         }
       },
       {
-        "modelKey": "ground.mud",
+        "modelKey": "water.water01",
         "position": {
-          "x": 6,
+          "x": 2,
+          "y": 0,
+          "z": 3
+        }
+      },
+      {
+        "modelKey": "tree.normal01",
+        "position": {
+          "x": 1,
+          "y": 1,
+          "z": 6
+        }
+      },
+      {
+        "modelKey": "tree.normal01",
+        "position": {
+          "x": 1,
           "y": 2,
-          "z": 7
+          "z": 6
         }
       },
       {
-        "modelKey": "ground.mud",
+        "modelKey": "tree.normal01",
         "position": {
-          "x": 6,
+          "x": 1,
           "y": 3,
-          "z": 7
+          "z": 6
         }
       },
       {
-        "modelKey": "ground.mud",
+        "modelKey": "tree.leaves01",
         "position": {
-          "x": 6,
+          "x": 0,
+          "y": 3,
+          "z": 6
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 0,
+          "y": 4,
+          "z": 5
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 0,
+          "y": 4,
+          "z": 6
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 0,
           "y": 4,
           "z": 7
         }
       },
       {
-        "modelKey": "ground.mud",
-        "position": {
-          "x": 6,
-          "y": 5,
-          "z": 7
-        }
-      },
-      {
         "modelKey": "tree.leaves01",
         "position": {
-          "x": 5,
-          "y": 5,
-          "z": 7
-        }
-      },
-      {
-        "modelKey": "tree.leaves01",
-        "position": {
-          "x": 5,
-          "y": 6,
-          "z": 6
-        }
-      },
-      {
-        "modelKey": "tree.leaves01",
-        "position": {
-          "x": 5,
-          "y": 6,
-          "z": 7
-        }
-      },
-      {
-        "modelKey": "tree.leaves01",
-        "position": {
-          "x": 5,
-          "y": 6,
-          "z": 8
-        }
-      },
-      {
-        "modelKey": "tree.leaves01",
-        "position": {
-          "x": 5,
-          "y": 7,
-          "z": 7
-        }
-      },
-      {
-        "modelKey": "tree.leaves01",
-        "position": {
-          "x": 6,
+          "x": 0,
           "y": 5,
           "z": 6
         }
@@ -603,383 +627,159 @@
       {
         "modelKey": "tree.leaves01",
         "position": {
-          "x": 6,
-          "y": 5,
-          "z": 7
+          "x": 1,
+          "y": 3,
+          "z": 5
         }
       },
       {
         "modelKey": "tree.leaves01",
         "position": {
-          "x": 6,
-          "y": 5,
-          "z": 8
-        }
-      },
-      {
-        "modelKey": "tree.leaves01",
-        "position": {
-          "x": 6,
-          "y": 6,
+          "x": 1,
+          "y": 3,
           "z": 6
         }
       },
       {
         "modelKey": "tree.leaves01",
         "position": {
-          "x": 6,
-          "y": 6,
-          "z": 7
-        }
-      },
-      {
-        "modelKey": "tree.leaves01",
-        "position": {
-          "x": 6,
-          "y": 6,
-          "z": 8
-        }
-      },
-      {
-        "modelKey": "tree.leaves01",
-        "position": {
-          "x": 6,
-          "y": 7,
-          "z": 6
-        }
-      },
-      {
-        "modelKey": "tree.leaves01",
-        "position": {
-          "x": 6,
-          "y": 7,
-          "z": 7
-        }
-      },
-      {
-        "modelKey": "tree.leaves01",
-        "position": {
-          "x": 6,
-          "y": 7,
-          "z": 8
-        }
-      },
-      {
-        "modelKey": "tree.leaves01",
-        "position": {
-          "x": 7,
-          "y": 5,
-          "z": 7
-        }
-      },
-      {
-        "modelKey": "tree.leaves01",
-        "position": {
-          "x": 7,
-          "y": 6,
-          "z": 6
-        }
-      },
-      {
-        "modelKey": "tree.leaves01",
-        "position": {
-          "x": 7,
-          "y": 6,
-          "z": 7
-        }
-      },
-      {
-        "modelKey": "tree.leaves01",
-        "position": {
-          "x": 7,
-          "y": 6,
-          "z": 8
-        }
-      },
-      {
-        "modelKey": "tree.leaves01",
-        "position": {
-          "x": 7,
-          "y": 7,
-          "z": 7
-        }
-      },
-      {
-        "modelKey": "ground.mud",
-        "position": {
-          "x": 4,
-          "y": 1,
-          "z": 7
-        }
-      },
-      {
-        "modelKey": "ground.mud",
-        "position": {
-          "x": 4,
-          "y": 2,
-          "z": 7
-        }
-      },
-      {
-        "modelKey": "ground.mud",
-        "position": {
-          "x": 4,
+          "x": 1,
           "y": 3,
           "z": 7
         }
       },
       {
-        "modelKey": "ground.mud",
+        "modelKey": "tree.leaves01",
         "position": {
-          "x": 4,
+          "x": 1,
+          "y": 4,
+          "z": 5
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 1,
+          "y": 4,
+          "z": 6
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 1,
           "y": 4,
           "z": 7
         }
       },
       {
-        "modelKey": "ground.mud",
-        "position": {
-          "x": 4,
-          "y": 5,
-          "z": 7
-        }
-      },
-      {
         "modelKey": "tree.leaves01",
-        "position": {
-          "x": 3,
-          "y": 5,
-          "z": 7
-        }
-      },
-      {
-        "modelKey": "tree.leaves01",
-        "position": {
-          "x": 3,
-          "y": 6,
-          "z": 6
-        }
-      },
-      {
-        "modelKey": "tree.leaves01",
-        "position": {
-          "x": 3,
-          "y": 6,
-          "z": 7
-        }
-      },
-      {
-        "modelKey": "tree.leaves01",
-        "position": {
-          "x": 3,
-          "y": 6,
-          "z": 8
-        }
-      },
-      {
-        "modelKey": "tree.leaves01",
-        "position": {
-          "x": 3,
-          "y": 7,
-          "z": 7
-        }
-      },
-      {
-        "modelKey": "tree.leaves01",
-        "position": {
-          "x": 4,
-          "y": 5,
-          "z": 6
-        }
-      },
-      {
-        "modelKey": "tree.leaves01",
-        "position": {
-          "x": 4,
-          "y": 5,
-          "z": 7
-        }
-      },
-      {
-        "modelKey": "tree.leaves01",
-        "position": {
-          "x": 4,
-          "y": 5,
-          "z": 8
-        }
-      },
-      {
-        "modelKey": "tree.leaves01",
-        "position": {
-          "x": 4,
-          "y": 6,
-          "z": 6
-        }
-      },
-      {
-        "modelKey": "tree.leaves01",
-        "position": {
-          "x": 4,
-          "y": 6,
-          "z": 7
-        }
-      },
-      {
-        "modelKey": "tree.leaves01",
-        "position": {
-          "x": 4,
-          "y": 6,
-          "z": 8
-        }
-      },
-      {
-        "modelKey": "tree.leaves01",
-        "position": {
-          "x": 4,
-          "y": 7,
-          "z": 6
-        }
-      },
-      {
-        "modelKey": "tree.leaves01",
-        "position": {
-          "x": 4,
-          "y": 7,
-          "z": 7
-        }
-      },
-      {
-        "modelKey": "tree.leaves01",
-        "position": {
-          "x": 4,
-          "y": 7,
-          "z": 8
-        }
-      },
-      {
-        "modelKey": "tree.leaves01",
-        "position": {
-          "x": 5,
-          "y": 5,
-          "z": 7
-        }
-      },
-      {
-        "modelKey": "tree.leaves01",
-        "position": {
-          "x": 5,
-          "y": 6,
-          "z": 6
-        }
-      },
-      {
-        "modelKey": "tree.leaves01",
-        "position": {
-          "x": 5,
-          "y": 6,
-          "z": 7
-        }
-      },
-      {
-        "modelKey": "tree.leaves01",
-        "position": {
-          "x": 5,
-          "y": 6,
-          "z": 8
-        }
-      },
-      {
-        "modelKey": "tree.leaves01",
-        "position": {
-          "x": 5,
-          "y": 7,
-          "z": 7
-        }
-      },
-      {
-        "modelKey": "ground.mud",
         "position": {
           "x": 1,
+          "y": 5,
+          "z": 5
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 1,
+          "y": 5,
+          "z": 6
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 1,
+          "y": 5,
+          "z": 7
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 2,
+          "y": 3,
+          "z": 6
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 2,
+          "y": 4,
+          "z": 5
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 2,
+          "y": 4,
+          "z": 6
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 2,
+          "y": 4,
+          "z": 7
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 2,
+          "y": 5,
+          "z": 6
+        }
+      },
+      {
+        "modelKey": "tree.pine01",
+        "position": {
+          "x": 7,
           "y": 1,
           "z": 4
         }
       },
       {
-        "modelKey": "ground.mud",
+        "modelKey": "tree.pine01",
         "position": {
-          "x": 1,
+          "x": 7,
           "y": 2,
           "z": 4
         }
       },
       {
-        "modelKey": "ground.mud",
+        "modelKey": "tree.pine01",
         "position": {
-          "x": 1,
+          "x": 7,
           "y": 3,
           "z": 4
         }
       },
       {
-        "modelKey": "ground.mud",
+        "modelKey": "tree.pine01",
         "position": {
-          "x": 1,
+          "x": 7,
           "y": 4,
           "z": 4
         }
       },
       {
-        "modelKey": "ground.mud",
+        "modelKey": "tree.leaves01",
         "position": {
-          "x": 1,
-          "y": 5,
+          "x": 6,
+          "y": 4,
           "z": 4
         }
       },
       {
         "modelKey": "tree.leaves01",
         "position": {
-          "x": 0,
-          "y": 5,
-          "z": 4
-        }
-      },
-      {
-        "modelKey": "tree.leaves01",
-        "position": {
-          "x": 0,
-          "y": 6,
-          "z": 3
-        }
-      },
-      {
-        "modelKey": "tree.leaves01",
-        "position": {
-          "x": 0,
-          "y": 6,
-          "z": 4
-        }
-      },
-      {
-        "modelKey": "tree.leaves01",
-        "position": {
-          "x": 0,
-          "y": 6,
-          "z": 5
-        }
-      },
-      {
-        "modelKey": "tree.leaves01",
-        "position": {
-          "x": 0,
-          "y": 7,
-          "z": 4
-        }
-      },
-      {
-        "modelKey": "tree.leaves01",
-        "position": {
-          "x": 1,
+          "x": 6,
           "y": 5,
           "z": 3
         }
@@ -987,7 +787,7 @@
       {
         "modelKey": "tree.leaves01",
         "position": {
-          "x": 1,
+          "x": 6,
           "y": 5,
           "z": 4
         }
@@ -995,7 +795,7 @@
       {
         "modelKey": "tree.leaves01",
         "position": {
-          "x": 1,
+          "x": 6,
           "y": 5,
           "z": 5
         }
@@ -1003,15 +803,7 @@
       {
         "modelKey": "tree.leaves01",
         "position": {
-          "x": 1,
-          "y": 6,
-          "z": 3
-        }
-      },
-      {
-        "modelKey": "tree.leaves01",
-        "position": {
-          "x": 1,
+          "x": 6,
           "y": 6,
           "z": 4
         }
@@ -1019,39 +811,39 @@
       {
         "modelKey": "tree.leaves01",
         "position": {
-          "x": 1,
-          "y": 6,
-          "z": 5
-        }
-      },
-      {
-        "modelKey": "tree.leaves01",
-        "position": {
-          "x": 1,
-          "y": 7,
+          "x": 7,
+          "y": 4,
           "z": 3
         }
       },
       {
         "modelKey": "tree.leaves01",
         "position": {
-          "x": 1,
-          "y": 7,
+          "x": 7,
+          "y": 4,
           "z": 4
         }
       },
       {
         "modelKey": "tree.leaves01",
         "position": {
-          "x": 1,
-          "y": 7,
+          "x": 7,
+          "y": 4,
           "z": 5
         }
       },
       {
         "modelKey": "tree.leaves01",
         "position": {
-          "x": 2,
+          "x": 7,
+          "y": 5,
+          "z": 3
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 7,
           "y": 5,
           "z": 4
         }
@@ -1059,7 +851,15 @@
       {
         "modelKey": "tree.leaves01",
         "position": {
-          "x": 2,
+          "x": 7,
+          "y": 5,
+          "z": 5
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 7,
           "y": 6,
           "z": 3
         }
@@ -1067,7 +867,7 @@
       {
         "modelKey": "tree.leaves01",
         "position": {
-          "x": 2,
+          "x": 7,
           "y": 6,
           "z": 4
         }
@@ -1075,7 +875,7 @@
       {
         "modelKey": "tree.leaves01",
         "position": {
-          "x": 2,
+          "x": 7,
           "y": 6,
           "z": 5
         }
@@ -1083,31 +883,79 @@
       {
         "modelKey": "tree.leaves01",
         "position": {
-          "x": 2,
-          "y": 7,
+          "x": 8,
+          "y": 4,
           "z": 4
         }
       },
       {
-        "modelKey": "stone.stone03",
+        "modelKey": "tree.leaves01",
         "position": {
-          "x": 3,
+          "x": 8,
+          "y": 5,
+          "z": 3
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 8,
+          "y": 5,
+          "z": 4
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 8,
+          "y": 5,
+          "z": 5
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 8,
+          "y": 6,
+          "z": 4
+        }
+      },
+      {
+        "modelKey": "stone.stone02",
+        "position": {
+          "x": 2,
           "y": 1,
-          "z": 7
-        }
-      },
-      {
-        "modelKey": "stone.stone01",
-        "position": {
-          "x": 3,
-          "y": 2,
           "z": 7
         }
       },
       {
         "modelKey": "stone.stone03",
         "position": {
-          "x": 3,
+          "x": 2,
+          "y": 2,
+          "z": 7
+        }
+      },
+      {
+        "modelKey": "stone.stone04",
+        "position": {
+          "x": 2,
+          "y": 1,
+          "z": 7
+        }
+      },
+      {
+        "modelKey": "stone.stone04",
+        "position": {
+          "x": 2,
+          "y": 2,
+          "z": 7
+        }
+      },
+      {
+        "modelKey": "stone.stone02",
+        "position": {
+          "x": 2,
           "y": 1,
           "z": 7
         }
@@ -1115,41 +963,57 @@
       {
         "modelKey": "stone.stone02",
         "position": {
-          "x": 3,
-          "y": 1,
-          "z": 7
-        }
-      },
-      {
-        "modelKey": "stone.stone01",
-        "position": {
-          "x": 3,
+          "x": 2,
           "y": 2,
           "z": 7
-        }
-      },
-      {
-        "modelKey": "stone.stone01",
-        "position": {
-          "x": 7,
-          "y": 1,
-          "z": 2
-        }
-      },
-      {
-        "modelKey": "stone.stone02",
-        "position": {
-          "x": 7,
-          "y": 2,
-          "z": 2
         }
       },
       {
         "modelKey": "stone.stone03",
         "position": {
-          "x": 7,
+          "x": 2,
           "y": 1,
-          "z": 2
+          "z": 7
+        }
+      },
+      {
+        "modelKey": "stone.stone04",
+        "position": {
+          "x": 2,
+          "y": 2,
+          "z": 7
+        }
+      },
+      {
+        "modelKey": "stone.stone01",
+        "position": {
+          "x": 5,
+          "y": 1,
+          "z": 7
+        }
+      },
+      {
+        "modelKey": "stone.stone02",
+        "position": {
+          "x": 5,
+          "y": 1,
+          "z": 7
+        }
+      },
+      {
+        "modelKey": "stone.stone02",
+        "position": {
+          "x": 5,
+          "y": 2,
+          "z": 7
+        }
+      },
+      {
+        "modelKey": "stone.stone04",
+        "position": {
+          "x": 5,
+          "y": 1,
+          "z": 7
         }
       },
       {
@@ -1241,7 +1105,7 @@
         "id": "c1",
         "type": "crystal",
         "position": {
-          "x": 3,
+          "x": 2,
           "y": 1,
           "z": 1
         }
@@ -1250,9 +1114,9 @@
         "id": "c2",
         "type": "crystal",
         "position": {
-          "x": 5,
+          "x": 3,
           "y": 1,
-          "z": 2
+          "z": 1
         }
       }
     ],
@@ -1269,13 +1133,13 @@
     "optimalBlocks": 12,
     "rawActions": [
       "moveForward",
+      "collect",
       "moveForward",
       "collect",
       "moveForward",
       "moveForward",
       "turnRight",
       "moveForward",
-      "collect",
       "moveForward",
       "moveForward",
       "moveForward"
@@ -1284,13 +1148,13 @@
       "MAIN PROGRAM:",
       "  On start:",
       "  moveForward",
+      "  collect",
       "  moveForward",
       "  collect",
       "  moveForward",
       "  moveForward",
       "  maze_turn",
       "  moveForward",
-      "  collect",
       "  moveForward",
       "  moveForward",
       "  moveForward"
