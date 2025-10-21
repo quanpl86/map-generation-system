@@ -136,7 +136,7 @@
         }
       ]
     },
-    "maxBlocks": 22,
+    "maxBlocks": 6,
     "startBlocks": "<xml><block type=\"maze_start\" deletable=\"false\" movable=\"false\"><statement name=\"DO\"></statement></block></xml>"
   },
   "gameConfig": {
@@ -146,25 +146,9 @@
       {
         "modelKey": "ground.normal",
         "position": {
-          "x": 2,
-          "y": 0,
-          "z": 3
-        }
-      },
-      {
-        "modelKey": "ground.normal",
-        "position": {
-          "x": 3,
-          "y": 0,
-          "z": 3
-        }
-      },
-      {
-        "modelKey": "ground.normal",
-        "position": {
           "x": 4,
           "y": 0,
-          "z": 3
+          "z": 4
         }
       },
       {
@@ -172,7 +156,7 @@
         "position": {
           "x": 5,
           "y": 0,
-          "z": 3
+          "z": 4
         }
       },
       {
@@ -180,7 +164,7 @@
         "position": {
           "x": 6,
           "y": 0,
-          "z": 3
+          "z": 4
         }
       },
       {
@@ -188,7 +172,7 @@
         "position": {
           "x": 7,
           "y": 0,
-          "z": 3
+          "z": 4
         }
       },
       {
@@ -196,7 +180,7 @@
         "position": {
           "x": 8,
           "y": 0,
-          "z": 3
+          "z": 4
         }
       },
       {
@@ -204,7 +188,7 @@
         "position": {
           "x": 9,
           "y": 0,
-          "z": 3
+          "z": 4
         }
       },
       {
@@ -212,7 +196,7 @@
         "position": {
           "x": 10,
           "y": 0,
-          "z": 3
+          "z": 4
         }
       },
       {
@@ -220,7 +204,23 @@
         "position": {
           "x": 11,
           "y": 0,
-          "z": 3
+          "z": 4
+        }
+      },
+      {
+        "modelKey": "ground.normal",
+        "position": {
+          "x": 12,
+          "y": 0,
+          "z": 4
+        }
+      },
+      {
+        "modelKey": "ground.normal",
+        "position": {
+          "x": 13,
+          "y": 0,
+          "z": 4
         }
       }
     ],
@@ -228,9 +228,9 @@
       {
         "id": "player1",
         "start": {
-          "x": 2,
+          "x": 4,
           "y": 1,
-          "z": 3,
+          "z": 4,
           "direction": 1
         }
       }
@@ -240,114 +240,81 @@
         "id": "c1",
         "type": "crystal",
         "position": {
-          "x": 3,
+          "x": 5,
           "y": 1,
-          "z": 3
+          "z": 4
         }
       },
       {
         "id": "c2",
         "type": "crystal",
         "position": {
-          "x": 4,
+          "x": 6,
           "y": 1,
-          "z": 3
+          "z": 4
         }
       },
       {
         "id": "c3",
         "type": "crystal",
         "position": {
-          "x": 5,
+          "x": 7,
           "y": 1,
-          "z": 3
+          "z": 4
         }
       },
       {
         "id": "c4",
         "type": "crystal",
         "position": {
-          "x": 6,
+          "x": 8,
           "y": 1,
-          "z": 3
+          "z": 4
         }
       },
       {
         "id": "c5",
         "type": "crystal",
         "position": {
-          "x": 7,
+          "x": 9,
           "y": 1,
-          "z": 3
+          "z": 4
         }
       },
       {
         "id": "c6",
         "type": "crystal",
         "position": {
-          "x": 8,
+          "x": 10,
           "y": 1,
-          "z": 3
+          "z": 4
         }
       },
       {
         "id": "c7",
         "type": "crystal",
         "position": {
-          "x": 9,
+          "x": 11,
           "y": 1,
-          "z": 3
+          "z": 4
         }
       }
     ],
     "interactibles": [],
     "finish": {
-      "x": 11,
+      "x": 13,
       "y": 1,
-      "z": 3
+      "z": 4
     }
   },
   "solution": {
     "type": "reach_target",
     "itemGoals": {},
-    "optimalBlocks": 17,
-    "rawActions": [
-      "moveForward",
-      "collect",
-      "moveForward",
-      "collect",
-      "moveForward",
-      "collect",
-      "moveForward",
-      "collect",
-      "moveForward",
-      "collect",
-      "moveForward",
-      "collect",
-      "moveForward",
-      "collect",
-      "moveForward",
-      "moveForward"
-    ],
+    "optimalBlocks": 1,
+    "rawActions": [],
     "structuredSolution": [
       "MAIN PROGRAM:",
-      "  On start:",
-      "  moveForward",
-      "  collect",
-      "  moveForward",
-      "  collect",
-      "  moveForward",
-      "  collect",
-      "  moveForward",
-      "  collect",
-      "  moveForward",
-      "  collect",
-      "  moveForward",
-      "  collect",
-      "  moveForward",
-      "  collect",
-      "  moveForward",
-      "  moveForward"
+      "  On start:"
     ]
   },
   "sounds": {

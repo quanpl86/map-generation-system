@@ -33,34 +33,47 @@ class AlgorithmPlacer(BasePlacer):
         items = []
         obstacles = path_info.obstacles
         
-        if items_to_place:
+        # [SỬA LỖI] Xử lý hai trường hợp:
+        # 1. Có chướng ngại vật (dành cho map mê cung): Tìm ngõ cụt để đặt.
+        # 2. Không có chướng ngại vật (dành cho map đường thẳng): Đặt ngẫu nhiên trên đường đi.
+        if items_to_place and obstacles:
             # --- Tìm các vị trí có thể đặt vật phẩm (ngõ cụt) ---
             wall_coords = {obs['pos'] for obs in obstacles}
             possible_placements = []
             
-            # Duyệt qua các ô không phải là tường
-            grid_width = max(c[0] for c in wall_coords) + 1
-            grid_depth = max(c[2] for c in wall_coords) + 1
-
-            for x in range(1, grid_width, 2):
-                for z in range(1, grid_depth, 2):
-                    pos = (x, 0, z)
-                    if pos not in wall_coords and pos != path_info.start_pos and pos != path_info.target_pos:
-                        # Đếm số lượng tường xung quanh
-                        neighbor_walls = 0
-                        for dx, _, dz in [(1,0,0), (-1,0,0), (0,0,1), (0,0,-1)]:
-                            if (pos[0] + dx, 0, pos[2] + dz) in wall_coords:
-                                neighbor_walls += 1
-                        # Nếu có 3 bức tường xung quanh, đó là ngõ cụt
-                        if neighbor_walls == 3:
-                            possible_placements.append(pos)
-            
-            # Xáo trộn các vị trí và đặt vật phẩm
-            shuffled_placements = shuffle_list(possible_placements)
+            # Chỉ chạy logic này nếu có tường, tránh lỗi max() trên list rỗng
+            if wall_coords:
+                # Duyệt qua các ô không phải là tường
+                grid_width = max(c[0] for c in wall_coords) + 1
+                grid_depth = max(c[2] for c in wall_coords) + 1
+    
+                for x in range(1, grid_width, 2):
+                    for z in range(1, grid_depth, 2):
+                        pos = (x, 0, z)
+                        if pos not in wall_coords and pos != path_info.start_pos and pos != path_info.target_pos:
+                            # Đếm số lượng tường xung quanh
+                            neighbor_walls = 0
+                            for dx, _, dz in [(1,0,0), (-1,0,0), (0,0,1), (0,0,-1)]:
+                                if (pos[0] + dx, 0, pos[2] + dz) in wall_coords:
+                                    neighbor_walls += 1
+                            # Nếu có 3 bức tường xung quanh, đó là ngõ cụt
+                            if neighbor_walls == 3:
+                                possible_placements.append(pos)
+                
+                # Xáo trộn các vị trí và đặt vật phẩm
+                shuffled_placements = shuffle_list(possible_placements)
+                for item_type in items_to_place:
+                    if shuffled_placements:
+                        item_pos = shuffled_placements.pop()
+                        items.append({"type": item_type, "pos": item_pos})
+        elif items_to_place and not obstacles:
+            # Logic dự phòng: Nếu không có tường, đặt vật phẩm ngẫu nhiên trên đường đi
+            print("    LOG: (AlgorithmPlacer) No obstacles found. Placing items randomly on path.")
+            available_slots = shuffle_list([p for p in path_info.path_coords if p != path_info.start_pos and p != path_info.target_pos])
             for item_type in items_to_place:
-                if shuffled_placements:
-                    item_pos = shuffled_placements.pop()
-                    items.append({"type": item_type, "pos": item_pos})
+                if available_slots:
+                    pos = available_slots.pop()
+                    items.append({"type": item_type, "pos": pos})
 
         return {
             "start_pos": path_info.start_pos,

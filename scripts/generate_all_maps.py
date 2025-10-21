@@ -74,10 +74,18 @@ def _create_xml_from_structured_solution(program_dict: dict) -> str:
                 block_element = ET.Element('block', {'type': 'variables_set'})
                 field_var = ET.SubElement(block_element, 'field', {'name': 'VAR'})
                 field_var.text = block_data.get("variable", "item")
+                
                 value_el = ET.SubElement(block_element, 'value', {'name': 'VALUE'})
-                shadow_el = ET.SubElement(value_el, 'shadow', {'type': 'math_number'})
-                field_num = ET.SubElement(shadow_el, 'field', {'name': 'NUM'})
-                field_num.text = str(block_data.get("value", 0))
+                # [FIX] Xử lý giá trị có thể là một khối khác (variables_get, math_arithmetic)
+                value_content = block_data.get("value", 0)
+                if isinstance(value_content, dict): # Nếu giá trị là một khối lồng nhau
+                    nested_value_blocks = build_blocks_recursively([value_content])
+                    if nested_value_blocks:
+                        value_el.append(nested_value_blocks[0])
+                else: # Nếu giá trị là một số đơn giản
+                    shadow_el = ET.SubElement(value_el, 'shadow', {'type': 'math_number'})
+                    field_num = ET.SubElement(shadow_el, 'field', {'name': 'NUM'})
+                    field_num.text = str(value_content)
             elif block_type == "maze_repeat_variable":
                 block_element = ET.Element('block', {'type': 'maze_repeat'})
                 value_el = ET.SubElement(block_element, 'value', {'name': 'TIMES'})
@@ -89,6 +97,43 @@ def _create_xml_from_structured_solution(program_dict: dict) -> str:
                 inner_blocks = build_blocks_recursively(block_data.get("body", []))
                 if inner_blocks:
                     statement_el.append(inner_blocks[0])
+            elif block_type == "maze_repeat_expression":
+                block_element = ET.Element('block', {'type': 'maze_repeat'})
+                value_el = ET.SubElement(block_element, 'value', {'name': 'TIMES'})
+                # Tạo khối biểu thức toán học
+                expr_data = block_data.get("expression", {})
+                math_block = ET.SubElement(value_el, 'block', {'type': expr_data.get("type", "math_arithmetic")})
+                ET.SubElement(math_block, 'field', {'name': 'OP'}).text = expr_data.get("op", "ADD")
+                # Input A
+                val_a = ET.SubElement(math_block, 'value', {'name': 'A'})
+                var_a_block = ET.SubElement(val_a, 'block', {'type': 'variables_get'})
+                ET.SubElement(var_a_block, 'field', {'name': 'VAR'}).text = expr_data.get("var_a", "a")
+                # Input B
+                val_b = ET.SubElement(math_block, 'value', {'name': 'B'})
+                var_b_block = ET.SubElement(val_b, 'block', {'type': 'variables_get'})
+                ET.SubElement(var_b_block, 'field', {'name': 'VAR'}).text = expr_data.get("var_b", "b")
+
+                statement_el = ET.SubElement(block_element, 'statement', {'name': 'DO'})
+                inner_blocks = build_blocks_recursively(block_data.get("body", []))
+                if inner_blocks:
+                    statement_el.append(inner_blocks[0])
+            elif block_type == "variables_get":
+                # [SỬA LỖI] Xử lý tường minh khối variables_get
+                block_element = ET.Element('block', {'type': 'variables_get'})
+                field_var = ET.SubElement(block_element, 'field', {'name': 'VAR'})
+                field_var.text = block_data.get("variable", "item")
+            elif block_type == "math_arithmetic":
+                # [SỬA LỖI] Xử lý tường minh khối math_arithmetic
+                block_element = ET.Element('block', {'type': 'math_arithmetic'})
+                ET.SubElement(block_element, 'field', {'name': 'OP'}).text = block_data.get("op", "ADD")
+                # Input A
+                val_a_el = ET.SubElement(block_element, 'value', {'name': 'A'})
+                var_a_block = ET.SubElement(val_a_el, 'block', {'type': 'variables_get'})
+                ET.SubElement(var_a_block, 'field', {'name': 'VAR'}).text = block_data.get("var_a", "a")
+                # Input B
+                val_b_el = ET.SubElement(block_element, 'value', {'name': 'B'})
+                var_b_block = ET.SubElement(val_b_el, 'block', {'type': 'variables_get'})
+                ET.SubElement(var_b_block, 'field', {'name': 'VAR'}).text = block_data.get("var_b", "b")
             else:
                 # [SỬA] Xử lý các khối đơn giản khác
                 action = block_type.replace("maze_", "") if block_type.startswith("maze_") else block_type
@@ -272,18 +317,47 @@ def main():
                     if 'contents' not in base_toolbox: base_toolbox['contents'] = []
                     base_toolbox['contents'].insert(0, events_category)
                     toolbox_data = base_toolbox
-
-                    # --- Bước 6: Gọi gameSolver để tìm lời giải ---
-                    # Tạo một đối tượng level tạm thời để solver đọc
+                    
+                    # --- [CẢI TIẾN] Logic xử lý lời giải ---
                     solution_config = map_request.get('solution_config', {})
-                    # [MỚI] Chèn logic_type vào solution_config để solver biết cách tổng hợp code
                     solution_config['logic_type'] = logic_type
-                    temp_level_for_solver = {
+                    
+                    # [SỬA LỖI] Các logic_type này không thể giải bằng A* truyền thống.
+                    # Chúng ta sẽ bỏ qua bước giải và tạo lời giải "giả lập" trực tiếp.
+                    logic_types_to_skip_solving = [
+                        'advanced_algorithm', 
+                        'config_driven_execution',
+                        'math_expression_loop',
+                        'math_puzzle'
+                    ]
+
+                    solution_result = None
+                    if logic_type not in logic_types_to_skip_solving:
+                        # --- Bước 6: Gọi gameSolver để tìm lời giải (chỉ cho các map giải được bằng A*) ---
+                        temp_level_for_solver = {
                         "gameConfig": game_config['gameConfig'],
                         "blocklyConfig": {"toolbox": toolbox_data},
                         "solution": solution_config
                     }
-                    solution_result = solve_map_and_get_solution(temp_level_for_solver) # type: ignore
+                        solution_result = solve_map_and_get_solution(temp_level_for_solver) # type: ignore
+                    else:
+                        print(f"    LOG: Bỏ qua bước giải A* cho logic_type '{logic_type}'. Sẽ tạo lời giải giả lập.")
+                        # Tạo một đối tượng world để hàm synthesize_program có thể đọc
+                        from scripts.gameSolver import GameWorld, synthesize_program, count_blocks, format_program_for_json
+                        world = GameWorld({
+                            "gameConfig": game_config['gameConfig'],
+                            "blocklyConfig": {"toolbox": toolbox_data},
+                            "solution": solution_config
+                        })
+                        # Gọi trực tiếp hàm synthesize_program với một danh sách hành động trống
+                        # vì lời giải sẽ được tạo dựa trên logic_type, không phải hành động.
+                        program_dict = synthesize_program([], world)
+                        solution_result = {
+                            "block_count": count_blocks(program_dict),
+                            "program_solution_dict": program_dict,
+                            "raw_actions": [], # Không có hành động thô
+                            "structuredSolution": format_program_for_json(program_dict)
+                        }
 
                     # --- Logic mới để sinh startBlocks động cho các thử thách FixBug ---
                     final_inner_blocks = ''
@@ -308,10 +382,18 @@ def main():
                             'incorrect_math_operator', 'incorrect_math_expression',
                             'wrong_logic_in_algorithm', 'optimization_logic'
                         }
-                        raw_action_based_bugs = {'sequence_error', 'optimization', 'optimization_no_variable'}
+                        raw_action_based_bugs = {'sequence_error', 'optimization'}
+                        # [MỚI] Các loại bug đặc biệt cần xử lý riêng
+                        special_bugs = {'optimization_logic', 'optimization_no_variable'}
 
-                        # Ưu tiên xử lý các bug cần cấu trúc XML (hàm, vòng lặp)
-                        if bug_type in xml_based_bugs:
+                        if bug_type in special_bugs:
+                            # Đối với bug tối ưu hóa, startBlocks chính là lời giải chưa tối ưu (raw actions)
+                            print(f"    LOG: Tạo bug tối ưu hóa, sử dụng lời giải thô làm startBlocks.")
+                            raw_actions = solution_result.get("raw_actions", [])
+                            inner_xml = actions_to_xml(raw_actions)
+                            # Bọc trong khối maze_start để đảm bảo XML hợp lệ
+                            final_inner_blocks = f'<block type="maze_start" deletable="false" movable="false"><statement name="DO">{inner_xml}</statement></block>'
+                        elif bug_type in xml_based_bugs:
                             # 1. Tạo XML từ lời giải có cấu trúc
                             correct_xml = _create_xml_from_structured_solution(program_dict)
                             # 2. Tạo lỗi trên XML đó
@@ -371,6 +453,7 @@ def main():
                         "gameType": "maze",
                         "level": map_request.get('level', 1),
                         "titleKey": map_request.get('titleKey'),
+                        #"questTitleKey": map_request.get('descriptionKey'),
                         "descriptionKey": map_request.get('descriptionKey'),
                         "translations": map_request.get('translations'),
                         "supportedEditors": ["blockly", "monaco"],

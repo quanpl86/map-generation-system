@@ -136,7 +136,7 @@
         }
       ]
     },
-    "maxBlocks": 99,
+    "maxBlocks": 6,
     "startBlocks": "<xml><block type=\"maze_start\" deletable=\"false\" movable=\"false\"><statement name=\"DO\"></statement></block></xml>"
   },
   "gameConfig": {
@@ -148,7 +148,7 @@
         "position": {
           "x": 1,
           "y": 0,
-          "z": 1
+          "z": 2
         }
       },
       {
@@ -156,7 +156,7 @@
         "position": {
           "x": 2,
           "y": 0,
-          "z": 1
+          "z": 2
         }
       },
       {
@@ -164,7 +164,7 @@
         "position": {
           "x": 3,
           "y": 0,
-          "z": 1
+          "z": 2
         }
       },
       {
@@ -172,7 +172,7 @@
         "position": {
           "x": 4,
           "y": 0,
-          "z": 1
+          "z": 2
         }
       },
       {
@@ -180,7 +180,7 @@
         "position": {
           "x": 5,
           "y": 0,
-          "z": 1
+          "z": 2
         }
       },
       {
@@ -188,7 +188,7 @@
         "position": {
           "x": 6,
           "y": 0,
-          "z": 1
+          "z": 2
         }
       },
       {
@@ -196,7 +196,7 @@
         "position": {
           "x": 7,
           "y": 0,
-          "z": 1
+          "z": 2
         }
       },
       {
@@ -204,7 +204,7 @@
         "position": {
           "x": 8,
           "y": 0,
-          "z": 1
+          "z": 2
         }
       },
       {
@@ -212,7 +212,7 @@
         "position": {
           "x": 9,
           "y": 0,
-          "z": 1
+          "z": 2
         }
       },
       {
@@ -220,7 +220,7 @@
         "position": {
           "x": 10,
           "y": 0,
-          "z": 1
+          "z": 2
         }
       },
       {
@@ -228,7 +228,7 @@
         "position": {
           "x": 11,
           "y": 0,
-          "z": 1
+          "z": 2
         }
       },
       {
@@ -236,7 +236,7 @@
         "position": {
           "x": 12,
           "y": 0,
-          "z": 1
+          "z": 2
         }
       },
       {
@@ -244,7 +244,7 @@
         "position": {
           "x": 13,
           "y": 0,
-          "z": 1
+          "z": 2
         }
       }
     ],
@@ -254,7 +254,7 @@
         "start": {
           "x": 1,
           "y": 1,
-          "z": 1,
+          "z": 2,
           "direction": 1
         }
       }
@@ -266,7 +266,7 @@
         "position": {
           "x": 2,
           "y": 1,
-          "z": 1
+          "z": 2
         }
       },
       {
@@ -275,7 +275,7 @@
         "position": {
           "x": 3,
           "y": 1,
-          "z": 1
+          "z": 2
         }
       },
       {
@@ -284,7 +284,7 @@
         "position": {
           "x": 4,
           "y": 1,
-          "z": 1
+          "z": 2
         }
       },
       {
@@ -293,7 +293,7 @@
         "position": {
           "x": 5,
           "y": 1,
-          "z": 1
+          "z": 2
         }
       },
       {
@@ -302,7 +302,7 @@
         "position": {
           "x": 6,
           "y": 1,
-          "z": 1
+          "z": 2
         }
       },
       {
@@ -311,7 +311,7 @@
         "position": {
           "x": 7,
           "y": 1,
-          "z": 1
+          "z": 2
         }
       },
       {
@@ -320,7 +320,7 @@
         "position": {
           "x": 8,
           "y": 1,
-          "z": 1
+          "z": 2
         }
       },
       {
@@ -329,7 +329,7 @@
         "position": {
           "x": 9,
           "y": 1,
-          "z": 1
+          "z": 2
         }
       },
       {
@@ -338,7 +338,7 @@
         "position": {
           "x": 10,
           "y": 1,
-          "z": 1
+          "z": 2
         }
       },
       {
@@ -347,7 +347,7 @@
         "position": {
           "x": 11,
           "y": 1,
-          "z": 1
+          "z": 2
         }
       }
     ],
@@ -355,15 +355,18 @@
     "finish": {
       "x": 13,
       "y": 1,
-      "z": 1
+      "z": 2
     }
   },
   "solution": {
     "type": "reach_target",
     "itemGoals": {},
-    "optimalBlocks": 0,
+    "optimalBlocks": 1,
     "rawActions": [],
-    "structuredSolution": []
+    "structuredSolution": [
+      "MAIN PROGRAM:",
+      "  On start:"
+    ]
   },
   "sounds": {
     "win": "/assets/maze/win.mp3",

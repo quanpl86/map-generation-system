@@ -136,7 +136,7 @@
         }
       ]
     },
-    "maxBlocks": 18,
+    "maxBlocks": 6,
     "startBlocks": "<xml><block type=\"maze_start\" deletable=\"false\" movable=\"false\"><statement name=\"DO\"></statement></block></xml>"
   },
   "gameConfig": {
@@ -146,17 +146,9 @@
       {
         "modelKey": "ground.normal",
         "position": {
-          "x": 5,
-          "y": 0,
-          "z": 5
-        }
-      },
-      {
-        "modelKey": "ground.normal",
-        "position": {
           "x": 6,
           "y": 0,
-          "z": 5
+          "z": 4
         }
       },
       {
@@ -164,7 +156,7 @@
         "position": {
           "x": 7,
           "y": 0,
-          "z": 5
+          "z": 4
         }
       },
       {
@@ -172,7 +164,7 @@
         "position": {
           "x": 8,
           "y": 0,
-          "z": 5
+          "z": 4
         }
       },
       {
@@ -180,7 +172,7 @@
         "position": {
           "x": 9,
           "y": 0,
-          "z": 5
+          "z": 4
         }
       },
       {
@@ -188,7 +180,7 @@
         "position": {
           "x": 10,
           "y": 0,
-          "z": 5
+          "z": 4
         }
       },
       {
@@ -196,7 +188,7 @@
         "position": {
           "x": 11,
           "y": 0,
-          "z": 5
+          "z": 4
         }
       },
       {
@@ -204,7 +196,7 @@
         "position": {
           "x": 12,
           "y": 0,
-          "z": 5
+          "z": 4
         }
       },
       {
@@ -212,7 +204,15 @@
         "position": {
           "x": 13,
           "y": 0,
-          "z": 5
+          "z": 4
+        }
+      },
+      {
+        "modelKey": "ground.normal",
+        "position": {
+          "x": 14,
+          "y": 0,
+          "z": 4
         }
       }
     ],
@@ -220,9 +220,9 @@
       {
         "id": "player1",
         "start": {
-          "x": 5,
+          "x": 6,
           "y": 1,
-          "z": 5,
+          "z": 4,
           "direction": 1
         }
       }
@@ -232,100 +232,72 @@
         "id": "c1",
         "type": "crystal",
         "position": {
-          "x": 6,
+          "x": 7,
           "y": 1,
-          "z": 5
+          "z": 4
         }
       },
       {
         "id": "c2",
         "type": "crystal",
         "position": {
-          "x": 7,
+          "x": 8,
           "y": 1,
-          "z": 5
+          "z": 4
         }
       },
       {
         "id": "c3",
         "type": "crystal",
         "position": {
-          "x": 8,
+          "x": 9,
           "y": 1,
-          "z": 5
+          "z": 4
         }
       },
       {
         "id": "c4",
         "type": "crystal",
         "position": {
-          "x": 9,
+          "x": 10,
           "y": 1,
-          "z": 5
+          "z": 4
         }
       },
       {
         "id": "c5",
         "type": "crystal",
         "position": {
-          "x": 10,
+          "x": 11,
           "y": 1,
-          "z": 5
+          "z": 4
         }
       },
       {
         "id": "c6",
         "type": "crystal",
         "position": {
-          "x": 11,
+          "x": 12,
           "y": 1,
-          "z": 5
+          "z": 4
         }
       }
     ],
     "interactibles": [],
     "finish": {
-      "x": 13,
+      "x": 14,
       "y": 1,
-      "z": 5
+      "z": 4
     }
   },
   "solution": {
     "type": "reach_target",
     "itemGoals": {},
-    "optimalBlocks": 13,
-    "rawActions": [
-      "moveForward",
-      "collect",
-      "moveForward",
-      "collect",
-      "moveForward",
-      "collect",
-      "moveForward",
-      "collect",
-      "moveForward",
-      "collect",
-      "moveForward",
-      "collect",
-      "moveForward",
-      "moveForward"
-    ],
+    "optimalBlocks": 1,
+    "rawActions": [],
     "structuredSolution": [
-      "DEFINE PROCEDURE_1:",
-      "  moveForward",
-      "  collect",
-      "  moveForward",
-      "  collect",
-      "  moveForward",
-      "",
       "MAIN PROGRAM:",
-      "  On start:",
-      "  CALL PROCEDURE_1",
-      "  collect",
-      "  CALL PROCEDURE_1",
-      "  collect",
-      "  moveForward",
-      "  moveForward"
+      "  On start:"
     ]
   },
   "sounds": {

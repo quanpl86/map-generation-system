@@ -83,7 +83,13 @@ class MapGeneratorService:
             
         # (CẢI TIẾN) Tăng kích thước lưới để có không gian cho các map lớn hơn
         grid_size = (14, 14, 14)
-        path_info: PathInfo = topology_strategy.generate_path_info(grid_size=grid_size, params=params)
+
+        # [SỬA LỖI] Một số Topology (ví dụ: GridTopology) có thể truyền toàn bộ params vào PathInfo,
+        # gây ra lỗi "unexpected keyword argument" nếu params chứa các key không mong muốn (như 'map_type').
+        # Tạo một bản sao của params và loại bỏ các key không liên quan đến topology để đảm bảo an toàn.
+        topology_params = params.copy()
+        topology_params.pop('map_type', None) # Xóa 'map_type' nếu có
+        path_info: PathInfo = topology_strategy.generate_path_info(grid_size=grid_size, params=topology_params)
         
         placement_strategy = self.placements.get(logic_type)
         if not placement_strategy:

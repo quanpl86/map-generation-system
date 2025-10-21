@@ -2,6 +2,7 @@ import json
 import sys
 import traceback
 from typing import Set, Dict, List, Tuple, Any, Optional
+import random # [FIX] Import the random module
 from collections import Counter
 
 # --- SECTION 1: TYPE DEFINITIONS (Định nghĩa kiểu dữ liệu) ---
@@ -376,6 +377,36 @@ def compress_actions_to_structure(actions: List[str], available_blocks: Set[str]
             i += 1
     return structured_code
 
+def _synthesize_fibonacci(world: GameWorld, template: Dict) -> Dict:
+    """
+    [MỚI] Hàm helper chuyên dụng để tổng hợp lời giải cho thuật toán Fibonacci.
+    Đọc các thông số từ template để tạo ra cấu trúc code.
+    """
+    # Xác định số lần lặp dựa trên số lượng vật phẩm cần tương tác
+    num_items = len(world.collectibles_by_id) + len(world.switches)
+    loop_times = num_items if num_items > 0 else 5 # Ít nhất 5 lần lặp nếu không có item
+    if loop_times < 3: loop_times = 3 # Đảm bảo đủ số lần lặp để có logic Fibonacci
+
+    # Lấy tên các biến từ template, sử dụng giá trị mặc định nếu không có
+    var_a = template.get("variables", ["a", "b", "temp"])[0]
+    var_b = template.get("variables", ["a", "b", "temp"])[1]
+    var_temp = template.get("variables", ["a", "b", "temp"])[2]
+
+    main_program = [
+        {"type": "variables_set", "variable": var_a, "value": 0},
+        {"type": "variables_set", "variable": var_b, "value": 1},
+        {"type": "variables_set", "variable": var_temp, "value": 0},
+        {"type": "maze_repeat", "times": loop_times, "body": [
+            # Logic Fibonacci: temp = a; a = b; b = temp + b
+            {"type": "variables_set", "variable": var_temp, "value": {"type": "variables_get", "variable": var_a}},
+            {"type": "variables_set", "variable": var_a, "value": {"type": "variables_get", "variable": var_b}},
+            {"type": "variables_set", "variable": var_b, "value": {"type": "math_arithmetic", "op": "ADD", "var_a": var_temp, "var_b": var_b}},
+            {"type": "maze_moveForward"},
+            {"type": "maze_toggle_switch"}
+        ]}
+    ]
+    return {"main": main_program, "procedures": {}}
+
 def synthesize_program(actions: List[Action], world: GameWorld) -> Dict:
     """Quy trình tổng hợp code chính, tạo hàm và vòng lặp."""
     procedures, remaining_actions = {}, list(actions)
@@ -386,47 +417,80 @@ def synthesize_program(actions: List[Action], world: GameWorld) -> Dict:
     # [MỚI] Lấy logic_type để quyết định cách tổng hợp code
     # Điều này rất quan trọng cho các bài toán về biến
     logic_type = world.solution_config.get('logic_type', 'sequencing')
+    # [CẢI TIẾN] Đọc cấu hình thuật toán từ curriculum
+    algorithm_template = world.solution_config.get('algorithm_template')
 
     # --- [REWRITTEN] Xử lý các trường hợp đặc biệt dựa trên logic_type ---
-    if logic_type in ['variable_loop', 'variable_counter', 'math_basic', 'math_complex', 'math_expression_loop']:
+    if logic_type in ['variable_loop', 'variable_counter', 'math_basic', 'math_complex', 'math_expression_loop', 'advanced_algorithm', 'config_driven_execution', 'math_puzzle']:
         # Đối với logic này, chúng ta muốn tạo ra một lời giải tường minh sử dụng biến
         # mà không cố gắng tạo ra các hàm (function) phức tạp.
-        # Bước 1: Tìm mẫu lặp đơn giản nhất (ví dụ: 'moveForward' lặp lại nhiều lần)
         if not actions: return {"main": [], "procedures": {}}
 
-        # Đếm số lần xuất hiện của mỗi hành động
-        action_counts = Counter(actions)
-        # Tìm hành động lặp lại nhiều nhất, thường là 'moveForward'
-        most_common_action, num_repeats = action_counts.most_common(1)[0]
-
         # Logic cho bài toán dùng biến để lặp
-        if logic_type == 'variable_loop' and num_repeats > 1:
-            # Tạo lời giải: set steps = N; repeat (steps) { moveForward }
+        if logic_type == 'variable_loop':
+            # Tìm hành động lặp lại nhiều nhất, thường là 'moveForward'
+            action_counts = Counter(a for a in actions if a in ['moveForward', 'collect'])
+            if not action_counts: # Nếu không có hành động nào, trả về giải pháp tuần tự
+                return {"main": compress_actions_to_structure(actions, available_blocks), "procedures": {}}
+            
+            most_common_action, num_repeats = action_counts.most_common(1)[0]
+            
+            # Tạo lời giải: set steps = N; repeat (steps) { action }
             main_program = [
                 {"type": "variables_set", "variable": "steps", "value": num_repeats},
                 {
                     "type": "maze_repeat_variable", # Loại khối đặc biệt để chỉ định dùng biến
                     "variable": "steps",
-                    "body": [{"type": most_common_action}]
+                    "body": [{"type": f"maze_{most_common_action}" if most_common_action in ['collect', 'toggleSwitch'] else most_common_action}]
                 }
             ]
             # Thêm các hành động còn lại (nếu có)
-            remaining_actions_after_loop = [a for a in actions if a != most_common_action]
+            # Đây là một cách đơn giản hóa, có thể cần cải tiến
+            remaining_actions_after_loop = [a for a in actions if a != most_common_action or (actions.count(a) > num_repeats)]
             main_program.extend(compress_actions_to_structure(remaining_actions_after_loop, available_blocks))
             return {"main": main_program, "procedures": {}}
 
-        # Logic cho bài toán đếm (counter)
-        if logic_type == 'variable_counter':
-            # Tạo lời giải: set count = 0; ...; change count by 1; ...
-            # Đây là một cấu trúc phức tạp, tạm thời chúng ta sẽ trả về một lời giải tuần tự
-            # và bug_generator sẽ xóa khối 'change by 1' nếu có.
-            # Để làm được điều này, chúng ta cần một cấu trúc giải pháp có khối 'change by 1'.
-            # Hiện tại, chúng ta sẽ trả về một giải pháp tuần tự đơn giản.
-            pass # Rơi xuống logic mặc định bên dưới
+        # Logic cho bài toán dùng biểu thức toán học
+        if logic_type in ['math_expression_loop', 'math_complex', 'math_basic']:
+            # Giả lập tạo 2 biến và dùng chúng trong vòng lặp
+            total_moves = actions.count('moveForward')
+            if total_moves < 2: # Cần ít nhất 2 bước để chia thành a+b
+                return {"main": compress_actions_to_structure(actions, available_blocks), "procedures": {}}
+
+            val_a = random.randint(1, total_moves - 1)
+            val_b = total_moves - val_a
+            
+            main_program = [
+                {"type": "variables_set", "variable": "a", "value": val_a},
+                {"type": "variables_set", "variable": "b", "value": val_b},
+                {
+                    "type": "maze_repeat_expression", # Loại khối đặc biệt
+                    "expression": {
+                        "type": "math_arithmetic",
+                        "op": "ADD",
+                        "var_a": "a",
+                        "var_b": "b"
+                    },
+                    "body": [{"type": "moveForward"}]
+                }
+            ]
+            # Thêm các hành động không phải moveForward
+            other_actions = [a for a in actions if a != 'moveForward']
+            main_program.extend(compress_actions_to_structure(other_actions, available_blocks))
+            return {"main": main_program, "procedures": {}}
+
+        # [CẢI TIẾN] Logic cho các bài toán thuật toán phức tạp (Fibonacci, config-driven)
+        if logic_type == 'advanced_algorithm' and algorithm_template:
+            # Thay vì hard-code, chúng ta đọc template và gọi hàm tương ứng
+            if algorithm_template.get("name") == "fibonacci":
+                print("    LOG: (Solver) Synthesizing solution based on 'fibonacci' template.")
+                return _synthesize_fibonacci(world, algorithm_template)
+            # Có thể thêm các thuật toán khác ở đây, ví dụ:
+            # elif algorithm_template.get("name") == "factorial":
+            #     return _synthesize_factorial(world, algorithm_template)
 
         # Nếu không có logic đặc biệt nào khớp, trả về lời giải tuần tự đã được nén vòng lặp cơ bản
         return {"main": compress_actions_to_structure(remaining_actions, available_blocks), "procedures": procedures}
-
     # --- Logic cũ để tạo hàm ---
     can_use_procedures = 'PROCEDURE' in available_blocks
     if can_use_procedures and logic_type not in ['math_basic', 'variable_loop', 'variable_counter']: # Không tạo hàm cho các bài toán biến/toán đơn giản

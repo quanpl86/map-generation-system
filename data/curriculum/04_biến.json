@@ -20,7 +20,7 @@
       "generation_config": {
         "map_type": "simple_path",
         "logic_type": "variable_loop",
-        "num_variants": 5,
+        "num_variants": 1,
         "params": {
           "path_length": 4,
           "obstacles": 0,
@@ -59,7 +59,7 @@
       "generation_config": {
         "map_type": "simple_path",
         "logic_type": "variable_loop",
-        "num_variants": 5,
+        "num_variants": 1,
         "params": {
           "path_length": 4,
           "obstacles": 0,
@@ -102,7 +102,7 @@
       "generation_config": {
         "map_type": "simple_path",
         "logic_type": "variable_loop",
-        "num_variants": 5,
+        "num_variants": 1,
         "params": {
           "path_length": 8,
           "obstacles": 1,
@@ -137,7 +137,7 @@
       "generation_config": {
         "map_type": "simple_path",
         "logic_type": "variable_counter",
-        "num_variants": 5,
+        "num_variants": 1,
         "params": {
           "path_length": 7,
           "obstacles": 0,
@@ -177,7 +177,7 @@
       "generation_config": {
         "map_type": "simple_path",
         "logic_type": "math_basic",
-        "num_variants": 5,
+        "num_variants": 1,
         "params": {
           "path_length": 5,
           "obstacles": 0,
@@ -215,7 +215,7 @@
       "generation_config": {
         "map_type": "simple_path",
         "logic_type": "variable_counter",
-        "num_variants": 5,
+        "num_variants": 1,
         "params": {
           "path_length": 9,
           "obstacles": 1,
@@ -258,7 +258,7 @@
       "generation_config": {
         "map_type": "simple_path",
         "logic_type": "math_basic",
-        "num_variants": 5,
+        "num_variants": 1,
         "params": {
           "path_length": 6,
           "obstacles": 1,
@@ -292,7 +292,7 @@
       "generation_config": {
         "map_type": "simple_path",
         "logic_type": "variable_counter",
-        "num_variants": 5,
+        "num_variants": 1,
         "params": {
           "path_length": 5,
           "obstacles": 0,
@@ -335,7 +335,7 @@
       "generation_config": {
         "map_type": "simple_path",
         "logic_type": "math_complex",
-        "num_variants": 5,
+        "num_variants": 1,
         "params": {
           "path_length": 10,
           "obstacles": 2,
@@ -370,7 +370,7 @@
       "generation_config": {
         "map_type": "grid",
         "logic_type": "coordinate_math",
-        "num_variants": 5,
+        "num_variants": 1,
         "params": {
           "items_to_place": [
             "crystal"
@@ -406,7 +406,7 @@
       "generation_config": {
         "map_type": "simple_path",
         "logic_type": "sequencing",
-        "num_variants": 5,
+        "num_variants": 1,
         "params": {
           "path_length": 5,
           "obstacles": 0,
@@ -444,7 +444,7 @@
       "generation_config": {
         "map_type": "grid",
         "logic_type": "coordinate_math",
-        "num_variants": 5,
+        "num_variants": 1,
         "params": {
           "obstacles": 2,
           "items_to_place": [
@@ -481,7 +481,7 @@
       "generation_config": {
         "map_type": "simple_path",
         "logic_type": "math_expression_loop",
-        "num_variants": 5,
+        "num_variants": 1,
         "params": {
           "path_length": 7,
           "obstacles": 1,
@@ -520,7 +520,7 @@
       "generation_config": {
         "map_type": "simple_path",
         "logic_type": "math_expression_loop",
-        "num_variants": 5,
+        "num_variants": 1,
         "params": {
           "path_length": 5,
           "obstacles": 1,
@@ -558,7 +558,7 @@
       "generation_config": {
         "map_type": "simple_path",
         "logic_type": "math_expression_loop",
-        "num_variants": 5,
+        "num_variants": 1,
         "params": {
           "path_length": 9,
           "obstacles": 2,
@@ -599,7 +599,7 @@
       "generation_config": {
         "map_type": "simple_path",
         "logic_type": "advanced_algorithm",
-        "num_variants": 5,
+        "num_variants": 1,
         "params": {
           "path_length": 8,
           "obstacles": 0,
@@ -617,6 +617,10 @@
       },
       "solution_config": {
         "type": "reach_target",
+        "algorithm_template": {
+          "name": "fibonacci",
+          "variables": ["a", "b", "temp"]
+        },
         "itemGoals": {
           "switch": 4
         }
@@ -640,7 +644,7 @@
       "generation_config": {
         "map_type": "simple_path",
         "logic_type": "advanced_algorithm",
-        "num_variants": 5,
+        "num_variants": 1,
         "params": {
           "path_length": 9,
           "obstacles": 0,
@@ -663,6 +667,10 @@
       },
       "solution_config": {
         "type": "reach_target",
+        "algorithm_template": {
+          "name": "fibonacci",
+          "variables": ["a", "b", "temp"]
+        },
         "itemGoals": {
           "switch": 5
         }
@@ -686,7 +694,7 @@
       "generation_config": {
         "map_type": "simple_path",
         "logic_type": "advanced_algorithm",
-        "num_variants": 5,
+        "num_variants": 1,
         "params": {
           "path_length": 12,
           "obstacles": 0,
@@ -706,6 +714,10 @@
       },
       "solution_config": {
         "type": "reach_target",
+        "algorithm_template": {
+          "name": "fibonacci",
+          "variables": ["a", "b", "temp"]
+        },
         "itemGoals": {
           "switch": 6
         }
@@ -729,7 +741,7 @@
       "generation_config": {
         "map_type": "simple_path",
         "logic_type": "config_driven_execution",
-        "num_variants": 5,
+        "num_variants": 1,
         "params": {
           "path_length": 10,
           "obstacles": 1,
@@ -770,7 +782,7 @@
       "generation_config": {
         "map_type": "simple_path",
         "logic_type": "config_driven_execution",
-        "num_variants": 5,
+        "num_variants": 1,
         "params": {
           "path_length": 9,
           "obstacles": 1,
@@ -815,7 +827,7 @@
       "generation_config": {
         "map_type": "simple_path",
         "logic_type": "math_puzzle",
-        "num_variants": 5,
+        "num_variants": 1,
         "params": {
           "path_length": 6,
           "obstacles": 1,

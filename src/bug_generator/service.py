@@ -266,6 +266,57 @@ def _introduce_incorrect_math_operator_bug(xml_string: str, config: Dict) -> str
         print(f"   - ⚠️ Lỗi khi tạo lỗi incorrect_math_operator: {e}. Trả về chuỗi gốc.")
     return xml_string
 
+def _introduce_fibonacci_logic_bug(xml_string: str, config: Dict) -> str:
+    """
+    [MỚI] Tạo lỗi logic đặc thù cho thuật toán Fibonacci bằng cách hoán đổi thứ tự các khối gán biến.
+    Ví dụ, hoán đổi `temp = a` và `a = b` sẽ phá vỡ logic.
+    """
+    if not xml_string: return ""
+    try:
+        root = ET.fromstring(f"<root>{xml_string}</root>")
+        # Tìm một statement chứa nhiều hơn một khối gán biến
+        # Điều này thường xảy ra trong các vòng lặp hoặc hàm của thuật toán
+        all_statements = root.findall(".//statement")
+
+        # [FIX] Cần duyệt qua các khối được liên kết bằng thẻ <next>
+        def get_all_blocks_in_statement(statement_element: ET.Element) -> List[ET.Element]:
+            blocks = []
+            current_block = statement_element.find("./block")
+            while current_block is not None:
+                blocks.append(current_block)
+                current_block = current_block.find("./next/block")
+            return blocks
+
+        potential_swap_locations = []
+        for statement in all_statements:
+            statement_blocks = get_all_blocks_in_statement(statement)
+            var_set_indices = [i for i, block in enumerate(statement_blocks) if block.tag == 'block' and block.get('type') == 'variables_set']
+            if len(var_set_indices) >= 2:
+                potential_swap_locations.append((statement, var_set_indices, statement_blocks)) # Truyền cả danh sách khối đã duyệt
+
+        if not potential_swap_locations:
+            print("   - ⚠️ Không tìm thấy vị trí phù hợp (nhiều khối gán biến) để tạo lỗi Fibonacci.")
+            return xml_string
+
+        # Chọn một vị trí ngẫu nhiên để thực hiện hoán đổi
+        target_statement, indices_to_swap, statement_blocks_to_modify = random.choice(potential_swap_locations)
+        idx1, idx2 = random.sample(indices_to_swap, 2)
+        
+        # Hoán đổi hai khối lệnh trong danh sách
+        statement_blocks_to_modify[idx1], statement_blocks_to_modify[idx2] = statement_blocks_to_modify[idx2], statement_blocks_to_modify[idx1]
+        
+        # Xóa và xây dựng lại chuỗi khối lồng nhau
+        for child in list(target_statement): target_statement.remove(child)
+        if statement_blocks_to_modify: # Đảm bảo có khối để thêm vào
+            for i in range(len(statement_blocks_to_modify) - 1):
+                ET.SubElement(statement_blocks_to_modify[i], 'next').append(statement_blocks_to_modify[i+1])
+            target_statement.append(statement_blocks_to_modify[0])
+        
+        print(f"      -> Bug 'wrong_logic_in_algorithm': Hoán đổi thứ tự các khối lệnh ở vị trí {idx1} và {idx2}.")
+        return "".join(ET.tostring(child, encoding='unicode') for child in root)
+    except Exception as e:
+        print(f"   - ⚠️ Lỗi khi tạo lỗi wrong_logic_in_algorithm: {e}. Trả về chuỗi gốc.")
+    return xml_string
 # Hàm _introduce_missing_block_bug đã có thể xử lý việc xóa khối 'variables_set' hoặc 'math_change'
 # nên ta có thể dùng nó cho 'missing_variable_update'
 
@@ -297,7 +348,7 @@ BUG_GENERATORS: Dict[str, Callable[[Any, Dict], Any]] = {
     'incorrect_math_operator': _introduce_incorrect_math_operator_bug,
     'missing_variable_update': _introduce_missing_block_bug, # Dùng lại hàm xóa khối
     'incorrect_math_expression': _introduce_incorrect_math_operator_bug, # Tương tự sai toán tử
-    'wrong_logic_in_algorithm': _introduce_sequence_error, # Tạm thời dùng lỗi sai thứ tự
+    'wrong_logic_in_algorithm': _introduce_fibonacci_logic_bug, # [SỬA] Dùng hàm chuyên dụng mới
     'optimization_logic': _introduce_optimization_bug, # Dùng lại lỗi tối ưu hóa
 }
 
