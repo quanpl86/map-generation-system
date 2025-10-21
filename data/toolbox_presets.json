@@ -124,6 +124,27 @@
       ]}
     ]
   },
+  "sequencing_basic": {
+    "kind": "flyoutToolbox",
+    "contents": [
+      { "kind": "block", "type": "maze_moveForward" },
+      { "kind": "block", "type": "maze_turn" }
+    ]
+  },
+  "sequencing_full": {
+    "kind": "categoryToolbox",
+    "contents": [
+      { "kind": "category", "name": "Movement", "categorystyle": "turtle_category", "contents": [
+        { "kind": "block", "type": "maze_moveForward" },
+        { "kind": "block", "type": "maze_jump" },
+        { "kind": "block", "type": "maze_turn" }
+      ]},
+      { "kind": "category", "name": "Actions", "categorystyle": "pond_category", "contents": [
+        { "kind": "block", "type": "maze_collect" },
+        { "kind": "block", "type": "maze_toggle_switch" }
+      ]}
+    ]
+  },
   "logic_basic": {
     "kind": "categoryToolbox",
     "contents": [
@@ -172,4 +193,3 @@
     ]
   }
 }
-

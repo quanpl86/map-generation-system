@@ -261,12 +261,20 @@ def main():
         for request_index, map_request in enumerate(topic.get('suggested_maps', [])):
             # Lấy thông tin từ cấu trúc mới
             generation_config = map_request.get('generation_config', {})
-            map_type = generation_config.get('map_type')
+            
+            # [CẢI TIẾN] Hỗ trợ nhiều map_type cho một yêu cầu để tăng đa dạng
+            # Ưu tiên đọc danh sách 'map_types', nếu không có thì dùng 'map_type' đơn lẻ
+            map_types_list = generation_config.get('map_types')
+            if not map_types_list:
+                single_map_type = generation_config.get('map_type')
+                if single_map_type:
+                    map_types_list = [single_map_type]
+
             logic_type = generation_config.get('logic_type')
             num_variants = generation_config.get('num_variants', 1)
 
-            if not map_type or not logic_type:
-                print(f"   ⚠️ Cảnh báo: Bỏ qua yêu cầu #{request_index + 1} trong topic {topic_code} vì thiếu 'map_type' hoặc 'logic_type'.")
+            if not map_types_list or not logic_type:
+                print(f"   ⚠️ Cảnh báo: Bỏ qua yêu cầu #{request_index + 1} trong topic {topic_code} vì thiếu 'map_types' hoặc 'map_type', hoặc 'logic_type'.")
                 continue
             
             print(f"  -> Chuẩn bị sinh {num_variants} biến thể cho Yêu cầu '{map_request.get('id', 'N/A')}'")
@@ -274,11 +282,15 @@ def main():
             # Lặp để tạo ra số lượng biến thể mong muốn
             for variant_index in range(num_variants):
                 try:
+                    # [CẢI TIẾN] Chọn map_type luân phiên từ danh sách
+                    # Ví dụ: variant 0 -> map_types_list[0], variant 1 -> map_types_list[1], ...
+                    current_map_type = map_types_list[variant_index % len(map_types_list)]
+
                     # --- Bước 4: Sinh map và tạo gameConfig ---
                     params_for_generation = generation_config.get('params', {})
                     
                     generated_map = map_generator.generate_map(
-                        map_type=map_type,
+                        map_type=current_map_type,
                         logic_type=logic_type,
                         params=params_for_generation
                     )
@@ -328,7 +340,11 @@ def main():
                         'advanced_algorithm', 
                         'config_driven_execution',
                         'math_expression_loop',
-                        'math_puzzle'
+                        'math_puzzle',
+                        # [SỬA LỖI] Thêm các logic_type của vòng lặp for vào danh sách bỏ qua.
+                        # Chúng không thể giải bằng A* và cần được tổng hợp lời giải.
+                        'for_loop_simple',
+                        'nested_for_loop'
                     ]
 
                     solution_result = None

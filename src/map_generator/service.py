@@ -11,6 +11,12 @@ from .topologies.grid import GridTopology
 from .topologies.symmetrical_islands import SymmetricalIslandsTopology
 from .topologies.spiral import SpiralTopology
 from .topologies.interspersed_path import InterspersedPathTopology
+from .topologies.l_shape import LShapeTopology
+from .topologies.spiral_staircase import SpiralStaircaseTopology
+from .topologies.spiral_platform_staircase import SpiralPlatformStaircaseTopology
+from .topologies.t_shape import TShapeTopology
+from .topologies.staircase_2d import Staircase2DTopology
+from .topologies.terraced_field import TerracedFieldTopology # THÊM MỚI
 from .topologies.complex_maze import ComplexMazeTopology
 from .placements.sequencing_placer import SequencingPlacer
 from .placements.obstacle_placer import ObstaclePlacer # THÊM MỚI
@@ -33,6 +39,12 @@ class MapGeneratorService:
             'symmetrical_islands': SymmetricalIslandsTopology(),
             'spiral_path': SpiralTopology(),
             'interspersed_path': InterspersedPathTopology(),
+            'l_shape': LShapeTopology(),
+            'spiral_staircase': SpiralStaircaseTopology(),
+            'spiral_platform_staircase': SpiralPlatformStaircaseTopology(),
+            't_shape': TShapeTopology(),
+            'staircase_2d': Staircase2DTopology(),
+            'terraced_field': TerracedFieldTopology(), # THÊM MỚI
             'complex_maze_2d': ComplexMazeTopology(),
             'variable_length_sides': StraightLineTopology(),
             'item_counting_path': StraightLineTopology(),
@@ -43,6 +55,7 @@ class MapGeneratorService:
         self.placements = {
             'sequencing': SequencingPlacer(),
             'obstacle': ObstaclePlacer(), # THÊM MỚI
+            'functions': FunctionPlacer(),
             'function_definition': FunctionPlacer(),
             'function_decomposition': FunctionPlacer(),
             'function_with_params': FunctionPlacer(),
@@ -51,11 +64,16 @@ class MapGeneratorService:
             'for_loop_complex': ForLoopPlacer(),
             'nested_for_loop': ForLoopPlacer(),
             # Các placer cho Topic 4 (Biến & Toán học)
-            'variable_loop': VariablePlacer(),
+            # [SỬA LỖI] Dùng SequencingPlacer cho variable_loop để nó không lấp đầy map bằng vật phẩm.
+            # Điều này buộc solver phải tạo ra lời giải dùng biến để di chuyển qua các đoạn đường trống.
+            'variable_loop': SequencingPlacer(),
             'variable_counter': VariablePlacer(),
             'variable_update': VariablePlacer(),
             'variable_control_loop': VariablePlacer(),
-            'coordinate_math': VariablePlacer(),
+            # [SỬA LỖI] Dùng SequencingPlacer cho coordinate_math.
+            # Logic của nó là đặt một số vật phẩm giới hạn lên map, phù hợp với
+            # yêu cầu của bài toán tìm tọa độ, thay vì lấp đầy map như VariablePlacer.
+            'coordinate_math': SequencingPlacer(),
             'math_basic': VariablePlacer(),
             'math_complex': VariablePlacer(),
             'math_expression_loop': VariablePlacer(),
@@ -103,6 +121,7 @@ class MapGeneratorService:
             target_pos=final_layout.get('target_pos'),
             items=final_layout.get('items', []),
             obstacles=final_layout.get('obstacles', []),
+            params=params, # [MỚI] Truyền params vào MapData
             path_coords=path_info.path_coords, # (SỬA LỖI) Truyền path_coords vào MapData
             map_type=map_type,
             logic_type=logic_type

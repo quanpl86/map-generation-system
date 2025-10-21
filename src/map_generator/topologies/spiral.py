@@ -38,13 +38,13 @@ class SpiralTopology(BaseTopology):
             for x in range(min_x, max_x):
                 current_x += 1
                 path_coords.append((current_x, y, current_z))
-            min_z += 1 # Thu hẹp biên trên
+            min_z += 2 # [SỬA] Thu hẹp biên trên 2 đơn vị để tạo khoảng trống
 
             # 2. Vẽ cạnh dưới v
             for z in range(min_z, max_z):
                 current_z += 1
                 path_coords.append((current_x, y, current_z))
-            max_x -= 1 # Thu hẹp biên phải
+            max_x -= 2 # [SỬA] Thu hẹp biên phải 2 đơn vị
 
             # Kiểm tra để tránh vẽ chồng lên nhau nếu xoắn ốc đã kết thúc
             if not (min_x < max_x and min_z < max_z):
@@ -54,13 +54,13 @@ class SpiralTopology(BaseTopology):
             for x in range(max_x, min_x, -1):
                 current_x -= 1
                 path_coords.append((current_x, y, current_z))
-            max_z -= 1 # Thu hẹp biên dưới
+            max_z -= 2 # [SỬA] Thu hẹp biên dưới 2 đơn vị
 
             # 4. Vẽ cạnh trên ^
             for z in range(max_z, min_z, -1):
                 current_z -= 1
                 path_coords.append((current_x, y, current_z))
-            min_x += 1 # Thu hẹp biên trái
+            min_x += 2 # [SỬA] Thu hẹp biên trái 2 đơn vị
 
         # Vị trí đích là điểm cuối cùng của đường đi
         target_pos = path_coords[-1] if path_coords else start_pos

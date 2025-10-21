@@ -1,0 +1,1951 @@
+{
+  "id": "topic06-03-water-square-var1",
+  "gameType": "maze",
+  "level": 3,
+  "titleKey": "Challenge.topic06-03.Title",
+  "descriptionKey": "Challenge.topic06-03.Description",
+  "translations": {
+    "vi": {
+      "Challenge.topic06-03.Title": "Đền Thờ Giữa Hồ",
+      "Challenge.topic06-03.Description": "Một con đường hình vuông bao quanh một ngôi đền cổ giữa hồ nước. Hãy đi hết một vòng."
+    }
+  },
+  "supportedEditors": [
+    "blockly",
+    "monaco"
+  ],
+  "blocklyConfig": {
+    "toolbox": {
+      "kind": "categoryToolbox",
+      "contents": [
+        {
+          "kind": "category",
+          "name": "Events",
+          "categorystyle": "procedure_category",
+          "contents": [
+            {
+              "kind": "block",
+              "type": "maze_start"
+            }
+          ]
+        },
+        {
+          "kind": "category",
+          "name": "Movement",
+          "categorystyle": "turtle_category",
+          "contents": [
+            {
+              "kind": "block",
+              "type": "maze_moveForward"
+            },
+            {
+              "kind": "block",
+              "type": "maze_jump"
+            },
+            {
+              "kind": "block",
+              "type": "maze_turn"
+            }
+          ]
+        },
+        {
+          "kind": "category",
+          "name": "Actions",
+          "categorystyle": "pond_category",
+          "contents": [
+            {
+              "kind": "block",
+              "type": "maze_collect"
+            },
+            {
+              "kind": "block",
+              "type": "maze_toggle_switch"
+            }
+          ]
+        },
+        {
+          "kind": "category",
+          "name": "Loops",
+          "categorystyle": "loops_category",
+          "contents": [
+            {
+              "kind": "block",
+              "type": "maze_repeat",
+              "inputs": {
+                "TIMES": {
+                  "shadow": {
+                    "type": "math_number",
+                    "fields": {
+                      "NUM": 5
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "maxBlocks": 6,
+    "startBlocks": "<xml><block type=\"maze_start\" deletable=\"false\" movable=\"false\"><statement name=\"DO\"></statement></block></xml>"
+  },
+  "gameConfig": {
+    "type": "maze",
+    "renderer": "3d",
+    "blocks": [
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 4,
+          "y": 0,
+          "z": 9
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 10,
+          "y": 0,
+          "z": 6
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 9,
+          "y": 0,
+          "z": 8
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 5
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 2,
+          "y": 0,
+          "z": 11
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 6,
+          "y": 0,
+          "z": 11
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 3,
+          "y": 0,
+          "z": 6
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 5,
+          "y": 0,
+          "z": 3
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 5,
+          "y": 0,
+          "z": 12
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 8,
+          "y": 0,
+          "z": 11
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 9,
+          "y": 0,
+          "z": 10
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 7
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 2,
+          "y": 0,
+          "z": 4
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 1,
+          "y": 0,
+          "z": 8
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 6,
+          "y": 0,
+          "z": 4
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 7,
+          "y": 0,
+          "z": 3
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 7,
+          "y": 0,
+          "z": 12
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 3,
+          "y": 0,
+          "z": 8
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 8,
+          "y": 0,
+          "z": 4
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 9,
+          "y": 0,
+          "z": 3
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 9,
+          "y": 0,
+          "z": 12
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 9
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 1,
+          "y": 0,
+          "z": 10
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 6,
+          "y": 0,
+          "z": 6
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 5,
+          "y": 0,
+          "z": 7
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 9,
+          "y": 0,
+          "z": 5
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 1,
+          "y": 0,
+          "z": 3
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 1,
+          "y": 0,
+          "z": 12
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 7,
+          "y": 0,
+          "z": 7
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 3,
+          "y": 0,
+          "z": 3
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 3,
+          "y": 0,
+          "z": 12
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 5,
+          "y": 0,
+          "z": 9
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 4,
+          "y": 0,
+          "z": 11
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 9,
+          "y": 0,
+          "z": 7
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 10,
+          "y": 0,
+          "z": 8
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 1,
+          "y": 0,
+          "z": 5
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 7,
+          "y": 0,
+          "z": 9
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 4,
+          "y": 0,
+          "z": 4
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 5,
+          "y": 0,
+          "z": 11
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 9,
+          "y": 0,
+          "z": 9
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 10,
+          "y": 0,
+          "z": 10
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 1,
+          "y": 0,
+          "z": 7
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 2,
+          "y": 0,
+          "z": 6
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 7,
+          "y": 0,
+          "z": 11
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 3,
+          "y": 0,
+          "z": 7
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 5,
+          "y": 0,
+          "z": 4
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 4,
+          "y": 0,
+          "z": 6
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 10,
+          "y": 0,
+          "z": 3
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 10,
+          "y": 0,
+          "z": 12
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 1,
+          "y": 0,
+          "z": 9
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 11
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 2,
+          "y": 0,
+          "z": 8
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 7,
+          "y": 0,
+          "z": 4
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 6,
+          "y": 0,
+          "z": 8
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 3,
+          "y": 0,
+          "z": 9
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 5,
+          "y": 0,
+          "z": 6
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 4,
+          "y": 0,
+          "z": 8
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 10,
+          "y": 0,
+          "z": 5
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 4
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 1,
+          "y": 0,
+          "z": 11
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 3,
+          "y": 0,
+          "z": 11
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 10,
+          "y": 0,
+          "z": 7
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 1,
+          "y": 0,
+          "z": 4
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 6
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 2,
+          "y": 0,
+          "z": 3
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 2,
+          "y": 0,
+          "z": 12
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 6,
+          "y": 0,
+          "z": 3
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 6,
+          "y": 0,
+          "z": 12
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 3,
+          "y": 0,
+          "z": 4
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 4,
+          "y": 0,
+          "z": 3
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 4,
+          "y": 0,
+          "z": 12
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 8,
+          "y": 0,
+          "z": 3
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 8,
+          "y": 0,
+          "z": 12
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 10,
+          "y": 0,
+          "z": 9
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 1,
+          "y": 0,
+          "z": 6
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 8
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 9,
+          "y": 0,
+          "z": 11
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 9,
+          "y": 0,
+          "z": 4
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 10,
+          "y": 0,
+          "z": 11
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 10
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 2,
+          "y": 0,
+          "z": 7
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 6,
+          "y": 0,
+          "z": 7
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 7,
+          "y": 0,
+          "z": 6
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 4,
+          "y": 0,
+          "z": 7
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 5,
+          "y": 0,
+          "z": 8
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 10,
+          "y": 0,
+          "z": 4
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 9,
+          "y": 0,
+          "z": 6
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 3
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 12
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 2,
+          "y": 0,
+          "z": 9
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 6,
+          "y": 0,
+          "z": 9
+        }
+      },
+      {
+        "modelKey": "water.water01",
+        "position": {
+          "x": 7,
+          "y": 0,
+          "z": 8
+        }
+      },
+      {
+        "modelKey": "ground.mud",
+        "position": {
+          "x": 4,
+          "y": 1,
+          "z": 8
+        }
+      },
+      {
+        "modelKey": "ground.mud",
+        "position": {
+          "x": 4,
+          "y": 2,
+          "z": 8
+        }
+      },
+      {
+        "modelKey": "ground.mud",
+        "position": {
+          "x": 4,
+          "y": 3,
+          "z": 8
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 3,
+          "y": 3,
+          "z": 8
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 3,
+          "y": 4,
+          "z": 7
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 3,
+          "y": 4,
+          "z": 8
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 3,
+          "y": 4,
+          "z": 9
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 3,
+          "y": 5,
+          "z": 8
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 4,
+          "y": 3,
+          "z": 7
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 4,
+          "y": 3,
+          "z": 8
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 4,
+          "y": 3,
+          "z": 9
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 4,
+          "y": 4,
+          "z": 7
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 4,
+          "y": 4,
+          "z": 8
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 4,
+          "y": 4,
+          "z": 9
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 4,
+          "y": 5,
+          "z": 7
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 4,
+          "y": 5,
+          "z": 8
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 4,
+          "y": 5,
+          "z": 9
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 5,
+          "y": 3,
+          "z": 8
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 5,
+          "y": 4,
+          "z": 7
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 5,
+          "y": 4,
+          "z": 8
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 5,
+          "y": 4,
+          "z": 9
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 5,
+          "y": 5,
+          "z": 8
+        }
+      },
+      {
+        "modelKey": "ground.mud",
+        "position": {
+          "x": 0,
+          "y": 1,
+          "z": 7
+        }
+      },
+      {
+        "modelKey": "ground.mud",
+        "position": {
+          "x": 0,
+          "y": 2,
+          "z": 7
+        }
+      },
+      {
+        "modelKey": "ground.mud",
+        "position": {
+          "x": 0,
+          "y": 3,
+          "z": 7
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": -1,
+          "y": 3,
+          "z": 7
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": -1,
+          "y": 4,
+          "z": 6
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": -1,
+          "y": 4,
+          "z": 7
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": -1,
+          "y": 4,
+          "z": 8
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": -1,
+          "y": 5,
+          "z": 7
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 0,
+          "y": 3,
+          "z": 6
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 0,
+          "y": 3,
+          "z": 7
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 0,
+          "y": 3,
+          "z": 8
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 0,
+          "y": 4,
+          "z": 6
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 0,
+          "y": 4,
+          "z": 7
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 0,
+          "y": 4,
+          "z": 8
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 0,
+          "y": 5,
+          "z": 6
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 0,
+          "y": 5,
+          "z": 7
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 0,
+          "y": 5,
+          "z": 8
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 1,
+          "y": 3,
+          "z": 7
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 1,
+          "y": 4,
+          "z": 6
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 1,
+          "y": 4,
+          "z": 7
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 1,
+          "y": 4,
+          "z": 8
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 1,
+          "y": 5,
+          "z": 7
+        }
+      },
+      {
+        "modelKey": "ground.mud",
+        "position": {
+          "x": 0,
+          "y": 1,
+          "z": 8
+        }
+      },
+      {
+        "modelKey": "ground.mud",
+        "position": {
+          "x": 0,
+          "y": 2,
+          "z": 8
+        }
+      },
+      {
+        "modelKey": "ground.mud",
+        "position": {
+          "x": 0,
+          "y": 3,
+          "z": 8
+        }
+      },
+      {
+        "modelKey": "ground.mud",
+        "position": {
+          "x": 0,
+          "y": 4,
+          "z": 8
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": -1,
+          "y": 4,
+          "z": 8
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": -1,
+          "y": 5,
+          "z": 7
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": -1,
+          "y": 5,
+          "z": 8
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": -1,
+          "y": 5,
+          "z": 9
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": -1,
+          "y": 6,
+          "z": 8
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 0,
+          "y": 4,
+          "z": 7
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 0,
+          "y": 4,
+          "z": 8
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 0,
+          "y": 4,
+          "z": 9
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 0,
+          "y": 5,
+          "z": 7
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 0,
+          "y": 5,
+          "z": 8
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 0,
+          "y": 5,
+          "z": 9
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 0,
+          "y": 6,
+          "z": 7
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 0,
+          "y": 6,
+          "z": 8
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 0,
+          "y": 6,
+          "z": 9
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 1,
+          "y": 4,
+          "z": 8
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 1,
+          "y": 5,
+          "z": 7
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 1,
+          "y": 5,
+          "z": 8
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 1,
+          "y": 5,
+          "z": 9
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 1,
+          "y": 6,
+          "z": 8
+        }
+      },
+      {
+        "modelKey": "ground.mud",
+        "position": {
+          "x": 3,
+          "y": 1,
+          "z": 3
+        }
+      },
+      {
+        "modelKey": "ground.mud",
+        "position": {
+          "x": 3,
+          "y": 2,
+          "z": 3
+        }
+      },
+      {
+        "modelKey": "ground.mud",
+        "position": {
+          "x": 3,
+          "y": 3,
+          "z": 3
+        }
+      },
+      {
+        "modelKey": "ground.mud",
+        "position": {
+          "x": 3,
+          "y": 4,
+          "z": 3
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 2,
+          "y": 4,
+          "z": 3
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 2,
+          "y": 5,
+          "z": 2
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 2,
+          "y": 5,
+          "z": 3
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 2,
+          "y": 5,
+          "z": 4
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 2,
+          "y": 6,
+          "z": 3
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 3,
+          "y": 4,
+          "z": 2
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 3,
+          "y": 4,
+          "z": 3
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 3,
+          "y": 4,
+          "z": 4
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 3,
+          "y": 5,
+          "z": 2
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 3,
+          "y": 5,
+          "z": 3
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 3,
+          "y": 5,
+          "z": 4
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 3,
+          "y": 6,
+          "z": 2
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 3,
+          "y": 6,
+          "z": 3
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 3,
+          "y": 6,
+          "z": 4
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 4,
+          "y": 4,
+          "z": 3
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 4,
+          "y": 5,
+          "z": 2
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 4,
+          "y": 5,
+          "z": 3
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 4,
+          "y": 5,
+          "z": 4
+        }
+      },
+      {
+        "modelKey": "tree.leaves01",
+        "position": {
+          "x": 4,
+          "y": 6,
+          "z": 3
+        }
+      },
+      {
+        "modelKey": "stone.stone03",
+        "position": {
+          "x": 2,
+          "y": 1,
+          "z": 7
+        }
+      },
+      {
+        "modelKey": "stone.stone01",
+        "position": {
+          "x": 2,
+          "y": 1,
+          "z": 7
+        }
+      },
+      {
+        "modelKey": "stone.stone03",
+        "position": {
+          "x": 2,
+          "y": 2,
+          "z": 7
+        }
+      },
+      {
+        "modelKey": "stone.stone04",
+        "position": {
+          "x": 2,
+          "y": 1,
+          "z": 7
+        }
+      },
+      {
+        "modelKey": "stone.stone04",
+        "position": {
+          "x": 2,
+          "y": 1,
+          "z": 7
+        }
+      },
+      {
+        "modelKey": "stone.stone02",
+        "position": {
+          "x": 2,
+          "y": 2,
+          "z": 7
+        }
+      },
+      {
+        "modelKey": "stone.stone04",
+        "position": {
+          "x": 2,
+          "y": 1,
+          "z": 7
+        }
+      },
+      {
+        "modelKey": "stone.stone02",
+        "position": {
+          "x": 2,
+          "y": 2,
+          "z": 7
+        }
+      },
+      {
+        "modelKey": "stone.stone03",
+        "position": {
+          "x": 4,
+          "y": 1,
+          "z": 11
+        }
+      },
+      {
+        "modelKey": "stone.stone01",
+        "position": {
+          "x": 4,
+          "y": 2,
+          "z": 11
+        }
+      },
+      {
+        "modelKey": "stone.stone03",
+        "position": {
+          "x": 4,
+          "y": 1,
+          "z": 11
+        }
+      },
+      {
+        "modelKey": "stone.stone03",
+        "position": {
+          "x": 4,
+          "y": 2,
+          "z": 11
+        }
+      },
+      {
+        "modelKey": "stone.stone02",
+        "position": {
+          "x": 5,
+          "y": 1,
+          "z": 7
+        }
+      },
+      {
+        "modelKey": "stone.stone02",
+        "position": {
+          "x": 5,
+          "y": 1,
+          "z": 7
+        }
+      },
+      {
+        "modelKey": "stone.stone01",
+        "position": {
+          "x": 5,
+          "y": 2,
+          "z": 7
+        }
+      },
+      {
+        "modelKey": "stone.stone01",
+        "position": {
+          "x": 5,
+          "y": 1,
+          "z": 7
+        }
+      },
+      {
+        "modelKey": "stone.stone02",
+        "position": {
+          "x": 5,
+          "y": 2,
+          "z": 7
+        }
+      },
+      {
+        "modelKey": "stone.stone04",
+        "position": {
+          "x": 5,
+          "y": 1,
+          "z": 7
+        }
+      },
+      {
+        "modelKey": "stone.stone02",
+        "position": {
+          "x": 5,
+          "y": 1,
+          "z": 7
+        }
+      },
+      {
+        "modelKey": "stone.stone02",
+        "position": {
+          "x": 7,
+          "y": 1,
+          "z": 4
+        }
+      },
+      {
+        "modelKey": "stone.stone03",
+        "position": {
+          "x": 7,
+          "y": 1,
+          "z": 4
+        }
+      },
+      {
+        "modelKey": "stone.stone02",
+        "position": {
+          "x": 7,
+          "y": 1,
+          "z": 4
+        }
+      },
+      {
+        "modelKey": "stone.stone04",
+        "position": {
+          "x": 7,
+          "y": 2,
+          "z": 4
+        }
+      },
+      {
+        "modelKey": "ground.normal",
+        "position": {
+          "x": 8,
+          "y": 0,
+          "z": 9
+        }
+      },
+      {
+        "modelKey": "ground.normal",
+        "position": {
+          "x": 5,
+          "y": 0,
+          "z": 5
+        }
+      },
+      {
+        "modelKey": "ground.normal",
+        "position": {
+          "x": 6,
+          "y": 0,
+          "z": 10
+        }
+      },
+      {
+        "modelKey": "ground.normal",
+        "position": {
+          "x": 2,
+          "y": 0,
+          "z": 5
+        }
+      },
+      {
+        "modelKey": "ground.normal",
+        "position": {
+          "x": 8,
+          "y": 0,
+          "z": 8
+        }
+      },
+      {
+        "modelKey": "ground.normal",
+        "position": {
+          "x": 7,
+          "y": 0,
+          "z": 10
+        }
+      },
+      {
+        "modelKey": "ground.normal",
+        "position": {
+          "x": 8,
+          "y": 0,
+          "z": 5
+        }
+      },
+      {
+        "modelKey": "ground.normal",
+        "position": {
+          "x": 4,
+          "y": 0,
+          "z": 10
+        }
+      },
+      {
+        "modelKey": "ground.normal",
+        "position": {
+          "x": 5,
+          "y": 0,
+          "z": 10
+        }
+      },
+      {
+        "modelKey": "ground.normal",
+        "position": {
+          "x": 6,
+          "y": 0,
+          "z": 5
+        }
+      },
+      {
+        "modelKey": "ground.normal",
+        "position": {
+          "x": 8,
+          "y": 0,
+          "z": 10
+        }
+      },
+      {
+        "modelKey": "ground.normal",
+        "position": {
+          "x": 3,
+          "y": 0,
+          "z": 5
+        }
+      },
+      {
+        "modelKey": "ground.normal",
+        "position": {
+          "x": 8,
+          "y": 0,
+          "z": 7
+        }
+      },
+      {
+        "modelKey": "ground.normal",
+        "position": {
+          "x": 2,
+          "y": 0,
+          "z": 10
+        }
+      },
+      {
+        "modelKey": "ground.normal",
+        "position": {
+          "x": 3,
+          "y": 0,
+          "z": 10
+        }
+      },
+      {
+        "modelKey": "ground.normal",
+        "position": {
+          "x": 7,
+          "y": 0,
+          "z": 5
+        }
+      },
+      {
+        "modelKey": "ground.normal",
+        "position": {
+          "x": 4,
+          "y": 0,
+          "z": 5
+        }
+      },
+      {
+        "modelKey": "ground.normal",
+        "position": {
+          "x": 8,
+          "y": 0,
+          "z": 6
+        }
+      }
+    ],
+    "players": [
+      {
+        "id": "player1",
+        "start": {
+          "x": 2,
+          "y": 1,
+          "z": 5,
+          "direction": 1
+        }
+      }
+    ],
+    "collectibles": [
+      {
+        "id": "c1",
+        "type": "crystal",
+        "position": {
+          "x": 3,
+          "y": 1,
+          "z": 5
+        }
+      },
+      {
+        "id": "c2",
+        "type": "crystal",
+        "position": {
+          "x": 8,
+          "y": 1,
+          "z": 5
+        }
+      },
+      {
+        "id": "c3",
+        "type": "crystal",
+        "position": {
+          "x": 8,
+          "y": 1,
+          "z": 10
+        }
+      },
+      {
+        "id": "c4",
+        "type": "crystal",
+        "position": {
+          "x": 3,
+          "y": 1,
+          "z": 10
+        }
+      }
+    ],
+    "interactibles": [],
+    "finish": {
+      "x": 2,
+      "y": 1,
+      "z": 10
+    }
+  },
+  "solution": {
+    "type": "reach_target",
+    "itemGoals": {},
+    "optimalBlocks": 1,
+    "rawActions": [],
+    "structuredSolution": [
+      "MAIN PROGRAM:",
+      "  On start:"
+    ]
+  },
+  "sounds": {
+    "win": "/assets/maze/win.mp3",
+    "fail": "/assets/maze/fail_pegman.mp3"
+  }
+}

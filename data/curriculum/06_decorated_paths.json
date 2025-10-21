@@ -1,0 +1,289 @@
+{
+  "topic_code": "TOPIC_06",
+  "topic_name": "Decorated Worlds",
+  "suggested_maps": [
+    {
+      "id": "topic06-01-forest-path",
+      "level": 1,
+      "titleKey": "Challenge.topic06-01.Title",
+      "descriptionKey": "Challenge.topic06-01.Description",
+      "translations": {
+        "vi": {
+          "Challenge.topic06-01.Title": "Con Đường Xuyên Rừng",
+          "Challenge.topic06-01.Description": "Một con đường thẳng dẫn qua khu rừng rậm. Hãy đi theo con đường và thu thập các vật phẩm."
+        }
+      },
+      "generation_config": {
+        "map_type": "simple_path",
+        "logic_type": "sequencing",
+        "num_variants": 1,
+        "params": {
+          "path_length": 10,
+          "items_to_place": ["crystal", "crystal"],
+          "decoration_theme": "forest",
+          "decoration_density": 0.2
+        }
+      },
+      "blockly_config": { "toolbox_preset": "sequencing_basic" },
+      "solution_config": { "type": "reach_target", "itemGoals": { "crystal": 2 } }
+    },
+    {
+      "id": "topic06-02-mountain-stairs",
+      "level": 2,
+      "titleKey": "Challenge.topic06-02.Title",
+      "descriptionKey": "Challenge.topic06-02.Description",
+      "translations": {
+        "vi": {
+          "Challenge.topic06-02.Title": "Leo Núi Đá",
+          "Challenge.topic06-02.Description": "Một cầu thang đá dẫn lên đỉnh núi. Hãy cẩn thận với những vách đá xung quanh."
+        }
+      },
+      "generation_config": {
+        "map_type": "staircase",
+        "logic_type": "sequencing",
+        "num_variants": 1,
+        "params": {
+          "num_steps": 7,
+          "items_to_place": ["crystal", "crystal"],
+          "decoration_theme": "rocky_mountain",
+          "decoration_density": 0.15
+        }
+      },
+      "blockly_config": { "toolbox_preset": "sequencing_full" },
+      "solution_config": { "type": "reach_target", "itemGoals": { "crystal": 2 } }
+    },
+    {
+      "id": "topic06-03-water-square",
+      "level": 3,
+      "titleKey": "Challenge.topic06-03.Title",
+      "descriptionKey": "Challenge.topic06-03.Description",
+      "translations": {
+        "vi": {
+          "Challenge.topic06-03.Title": "Đền Thờ Giữa Hồ",
+          "Challenge.topic06-03.Description": "Một con đường hình vuông bao quanh một ngôi đền cổ giữa hồ nước. Hãy đi hết một vòng."
+        }
+      },
+      "generation_config": {
+        "map_type": "square_shape",
+        "logic_type": "for_loop_simple",
+        "num_variants": 1,
+        "params": {
+          "side_length": 5,
+          "items_to_place": ["crystal", "crystal", "crystal", "crystal"],
+          "decoration_theme": "water_world"
+        }
+      },
+      "blockly_config": { "toolbox_preset": "loops_basic" },
+      "solution_config": { "type": "reach_target", "itemGoals": { "crystal": 4 } }
+    },
+    {
+      "id": "topic06-04-forest-spiral",
+      "level": 4,
+      "titleKey": "Challenge.topic06-04.Title",
+      "descriptionKey": "Challenge.topic06-04.Description",
+      "translations": {
+        "vi": {
+          "Challenge.topic06-04.Title": "Mê Cung Rừng Xoắn Ốc",
+          "Challenge.topic06-04.Description": "Một con đường xoắn ốc dẫn vào sâu trong rừng. Sử dụng biến để vượt qua nó."
+        }
+      },
+      "generation_config": {
+        "map_type": "spiral_path",
+        "logic_type": "variable_loop",
+        "num_variants": 1,
+        "params": {
+          "items_to_place": ["crystal", "crystal", "crystal", "crystal"],
+          "decoration_theme": "forest"
+        }
+      },
+      "blockly_config": { "toolbox_preset": "variables_basic" },
+      "solution_config": { "type": "reach_target", "itemGoals": { "crystal": 4 } }
+    },
+    {
+      "id": "topic06-05-mountain-field",
+      "level": 5,
+      "titleKey": "Challenge.topic06-05.Title",
+      "descriptionKey": "Challenge.topic06-05.Description",
+      "translations": {
+        "vi": {
+          "Challenge.topic06-05.Title": "Ruộng Bậc Thang",
+          "Challenge.topic06-05.Description": "Cày hết các luống trên một thửa ruộng bậc thang trên núi. Vòng lặp lồng nhau sẽ là chìa khóa!"
+        }
+      },
+      "generation_config": {
+        "map_type": "plowing_field",
+        "logic_type": "nested_for_loop",
+        "num_variants": 1,
+        "params": {
+          "rows": 4,
+          "cols": 5,
+          "items_to_place": ["crystal"],
+          "decoration_theme": "rocky_mountain"
+        }
+      },
+      "blockly_config": {
+        "toolbox_preset": "loops_basic"
+      },
+      "solution_config": { "type": "reach_target", "itemGoals": { "crystal": 20 } }
+    },
+    {
+      "id": "topic06-06-l-shape-forest",
+      "level": 6,
+      "titleKey": "Challenge.topic06-06.Title",
+      "descriptionKey": "Challenge.topic06-06.Description",
+      "translations": {
+        "vi": {
+          "Challenge.topic06-06.Title": "Đường Mòn Chữ L",
+          "Challenge.topic06-06.Description": "Con đường này có hình chữ L. Rẽ đúng lúc để đến đích."
+        }
+      },
+      "generation_config": {
+        "map_type": "l_shape",
+        "logic_type": "sequencing",
+        "num_variants": 1,
+        "params": {
+          "len1": 5,
+          "len2": 5,
+          "items_to_place": ["crystal", "crystal"],
+          "decoration_theme": "forest"
+        }
+      },
+      "blockly_config": { "toolbox_preset": "sequencing_full" },
+      "solution_config": { "type": "reach_target", "itemGoals": { "crystal": 2 } }
+    },
+    {
+      "id": "topic06-07-t-shape-water",
+      "level": 7,
+      "titleKey": "Challenge.topic06-07.Title",
+      "descriptionKey": "Challenge.topic06-07.Description",
+      "translations": {
+        "vi": {
+          "Challenge.topic06-07.Title": "Ngã Ba Chữ T",
+          "Challenge.topic06-07.Description": "Con đường này có hình chữ T. Hãy khám phá hết các nhánh."
+        }
+      },
+      "generation_config": {
+        "map_type": "t_shape",
+        "logic_type": "sequencing",
+        "num_variants": 1,
+        "params": {
+          "len1": 4,
+          "len2": 4,
+          "items_to_place": ["crystal", "crystal", "crystal"],
+          "decoration_theme": "water_world"
+        }
+      },
+      "blockly_config": { "toolbox_preset": "sequencing_full" },
+      "solution_config": { "type": "reach_target", "itemGoals": { "crystal": 3 } }
+    },
+    {
+      "id": "topic06-08-2d-staircase-mountain",
+      "level": 8,
+      "titleKey": "Challenge.topic06-08.Title",
+      "descriptionKey": "Challenge.topic06-08.Description",
+      "translations": {
+        "vi": {
+          "Challenge.topic06-08.Title": "Đường Zic-Zac Trên Núi",
+          "Challenge.topic06-08.Description": "Một con đường zic-zac trên mặt phẳng. Dùng vòng lặp để đi hết con đường."
+        }
+      },
+      "generation_config": {
+        "map_type": "staircase_2d",
+        "logic_type": "for_loop_simple",
+        "num_variants": 1,
+        "params": {
+          "num_steps": 4,
+          "items_to_place": ["crystal", "crystal"],
+          "decoration_theme": "rocky_mountain"
+        }
+      },
+      "blockly_config": { "toolbox_preset": "loops_basic" },
+      "solution_config": { "type": "reach_target", "itemGoals": { "crystal": 2 } }
+    },
+    {
+      "id": "topic06-09-island-hopping",
+      "level": 9,
+      "titleKey": "Challenge.topic06-09.Title",
+      "descriptionKey": "Challenge.topic06-09.Description",
+      "translations": {
+        "vi": {
+          "Challenge.topic06-09.Title": "Nhảy Qua Đảo",
+          "Challenge.topic06-09.Description": "Các hòn đảo có cấu trúc giống hệt nhau. Hãy viết một hàm để đi qua một đảo, sau đó gọi nó nhiều lần."
+        }
+      },
+      "generation_config": {
+        "map_type": "symmetrical_islands",
+        "logic_type": "functions",
+        "num_variants": 3,
+        "params": {
+          "num_islands": [2, 4],
+          "items_to_place": ["crystal", "crystal", "crystal", "crystal"],
+          "decoration_theme": "water_world"
+        }
+      },
+      "blockly_config": {
+        "toolbox_preset": "functions_basic"
+      },
+      "solution_config": {
+        "type": "reach_target",
+        "itemGoals": { "crystal": 4 },
+        "force_function": true,
+        "function_names": ["cross_one_island"]
+      }
+    },
+    {
+      "id": "topic06-10-spiral-staircase",
+      "level": 10,
+      "titleKey": "Challenge.topic06-10.Title",
+      "descriptionKey": "Challenge.topic06-10.Description",
+      "translations": {
+        "vi": {
+          "Challenge.topic06-10.Title": "Tháp Cổ Xoắn Ốc",
+          "Challenge.topic06-10.Description": "Leo lên đỉnh của một ngọn tháp cổ với cầu thang xoắn ốc. Sử dụng biến để giải quyết."
+        }
+      },
+      "generation_config": {
+        "map_type": "spiral_platform_staircase",
+        "logic_type": "variable_loop",
+        "num_variants": 1,
+        "params": {
+          "items_to_place": ["crystal", "crystal"],
+          "decoration_theme": "rocky_mountain"
+        }
+      },
+      "blockly_config": { "toolbox_preset": "variables_basic" },
+      "solution_config": { "type": "reach_target", "itemGoals": { "crystal": 2 } }
+    },
+    {
+      "id": "topic06-11-terraced-field-3d",
+      "level": 11,
+      "titleKey": "Challenge.topic06-11.Title",
+      "descriptionKey": "Challenge.topic06-11.Description",
+      "translations": {
+        "vi": {
+          "Challenge.topic06-11.Title": "Ruộng Bậc Thang 3D",
+          "Challenge.topic06-11.Description": "Thu hoạch hết các luống cày trên một thửa ruộng bậc thang 3D. Bạn sẽ cần vòng lặp lồng nhau và cả lệnh nhảy nữa!"
+        }
+      },
+      "generation_config": {
+        "map_type": "terraced_field",
+        "logic_type": "nested_for_loop",
+        "num_variants": 2,
+        "params": {
+          "rows": [3, 5],
+          "cols": [4, 6],
+          "items_to_place": ["crystal", "switch"],
+          "decoration_theme": "rocky_mountain",
+          "decoration_density": 0.1
+        }
+      },
+      "blockly_config": {
+        "toolbox_preset": "loops_full"
+      },
+      "solution_config": {
+        "type": "reach_target",
+        "itemGoals": { "crystal": 20 }
+      }
+    }
+  ]
+}

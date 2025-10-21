@@ -29,7 +29,9 @@ class SequencingPlacer(BasePlacer):
         obstacles_to_place = obstacles_to_place_param if isinstance(obstacles_to_place_param, list) else [obstacles_to_place_param]
 
         # Lấy tất cả các vị trí có thể đặt đối tượng và xáo trộn chúng
-        available_slots = shuffle_list(path_info.path_coords)
+        # [SỬA LỖI] Loại trừ vị trí bắt đầu và kết thúc khỏi danh sách các ô có thể đặt vật phẩm.
+        # Điều này ngăn chặn việc vật phẩm/chướng ngại vật bị đặt trùng với người chơi hoặc đích đến.
+        available_slots = shuffle_list([p for p in path_info.path_coords if p != path_info.start_pos and p != path_info.target_pos])
 
         # Kiểm tra để đảm bảo có đủ chỗ
         total_objects = len(items_to_place) + len(obstacles_to_place)

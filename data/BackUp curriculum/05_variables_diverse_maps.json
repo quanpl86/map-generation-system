@@ -1,0 +1,54 @@
+{
+  "topic_code": "TOPIC_05",
+  "topic_name": "Variables with Diverse Maps",
+  "suggested_maps": [
+    {
+      "id": "topic05-01-variable-diverse-maps",
+      "level": 1,
+      "titleKey": "Challenge.topic05-01.Title",
+      "descriptionKey": "Challenge.topic05-01.Description",
+      "translations": {
+        "en": {
+          "Challenge.topic05-01.Title": "Diverse Variable Paths",
+          "Challenge.topic05-01.Description": "The path ahead is unknown! Use a variable to control your movement and collect all the crystals."
+        },
+        "vi": {
+          "Challenge.topic05-01.Title": "Biến và Các Con Đường Đa Dạng",
+          "Challenge.topic05-01.Description": "Con đường phía trước không thể đoán trước! Hãy sử dụng một biến để điều khiển di chuyển và thu thập tất cả các viên pha lê."
+        }
+      },
+      "generation_config": {
+        "map_types": [
+          "simple_path",
+          "staircase",
+          "square_shape",
+          "spiral_path",
+          "plowing_field"
+        ],
+        "logic_type": "variable_loop",
+        "num_variants": 5,
+        "params": {
+          "path_length": 10,
+          "obstacles": 0,
+          "items_to_place": [
+            "crystal",
+            "crystal",
+            "crystal",
+            "crystal"
+          ],
+          "turns": 3,
+          "start_blocks_type": "empty"
+        }
+      },
+      "blockly_config": {
+        "toolbox_preset": "variables_basic"
+      },
+      "solution_config": {
+        "type": "reach_target",
+        "itemGoals": {
+          "crystal": 4
+        }
+      }
+    }
+  ]
+}
